@@ -3,8 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import configureStore from './store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore({});
+
+const render = (RootComponent) => {
+  ReactDOM.render(
+    <RootComponent store={store} />,
+    document.getElementById('root')
+  );
+};
+
+render(App);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

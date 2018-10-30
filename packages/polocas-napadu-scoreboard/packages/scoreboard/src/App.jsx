@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import { Editor } from './editor/components';
+
 import logo from './logo.svg';
 import './App.css';
 
