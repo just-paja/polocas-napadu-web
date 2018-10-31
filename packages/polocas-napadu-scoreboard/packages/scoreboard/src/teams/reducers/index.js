@@ -1,9 +1,13 @@
-import { combineReducers } from 'redux';
+import { handleActions } from 'redux-actions';
 
-import logo from './logo';
-import name from './name';
+const initialState = {
+  logo: '',
+  name: '',
+}
 
-export const createTeamReducer = routine => combineReducers({
-  logo: logo(routine),
-  name: name(routine),
-});
+export const createTeamReducer = routine => handleActions({
+  [routine.DATA_CHANGE]: (state, action) => ({
+    ...state,
+    ...action.payload,
+  }),
+}, initialState);

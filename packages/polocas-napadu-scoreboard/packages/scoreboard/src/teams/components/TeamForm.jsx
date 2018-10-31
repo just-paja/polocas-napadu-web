@@ -9,6 +9,7 @@ import { Input } from '../../components';
 
 const TeamForm = ({ handleSubmit, name }) => (
   <Form onSubmit={handleSubmit}>
+    <h1>{name}</h1>
     <Field
       component={Input}
       label="Team name"
@@ -17,7 +18,7 @@ const TeamForm = ({ handleSubmit, name }) => (
     <Field
       component={Input}
       label="Team logo"
-      name="name"
+      name="logoUrl"
       type="url"
     />
     <Button type="submit">

@@ -7,7 +7,11 @@ import { createTeamReducer } from '../../teams/reducers';
 const guest = createTeamReducer(teamGuest);
 const home = createTeamReducer(teamHome);
 
-export default combineReducers({
+const teams = combineReducers({
   guest,
   home,
+});
+
+export default combineReducers({
+  teams,
 });

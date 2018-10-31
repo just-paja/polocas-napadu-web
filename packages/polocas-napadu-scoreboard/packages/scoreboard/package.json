@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.3.2",
+    "@material-ui/icons": "^3.0.1",
     "camelcase": "^5.0.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -11,7 +13,8 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.3",
     "redux-form": "^7.4.2",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "redux-saga-restart": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +30,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
+  }
 }
