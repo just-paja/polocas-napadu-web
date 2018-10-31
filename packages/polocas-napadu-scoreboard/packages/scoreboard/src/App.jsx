@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Provider } from 'react-redux';
 
-import { Editor } from './editor/components';
+import { Editor } from './editor/containers';
 
 import './App.css';
 
