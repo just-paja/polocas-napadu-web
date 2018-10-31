@@ -4,9 +4,11 @@ import { all, fork } from 'redux-saga/effects';
 import { logError, compatLogWarning } from '../clientLogger';
 
 import editor from '../editor/sagas';
+import spectator from '../spectator/sagas';
 
 const sagas = [
   ...editor,
+  ...spectator,
 ];
 
 export default function* rootSaga() {
