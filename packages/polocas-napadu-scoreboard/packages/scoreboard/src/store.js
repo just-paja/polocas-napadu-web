@@ -5,15 +5,34 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 
+import { listenToParentWindow, passMessagesToSpectator } from './spectator';
+
+import * as constants from './spectator/constants';
+
 export const sagaMiddleware = createSagaMiddleware();
 
 const DEVELOPMENT = process.env.NODE_ENV !== 'production'; // eslint-disable-line no-undef
+const SPECTATOR = document.location.search.indexOf('?spectator') !== -1;
+
 let store;
 
 export default function configureStore(initialState = {}) {
   const middlewares = [];
+  let state = { ...initialState };
 
   middlewares.push(sagaMiddleware);
+
+  if (SPECTATOR) {
+    state = {
+      ...state,
+      spectator: {
+        ...state.spectator,
+        role: constants.ROLE_SPECTATOR,
+      },
+    };
+  } else {
+    middlewares.push(passMessagesToSpectator);
+  }
 
   if (DEVELOPMENT) {
     middlewares.push(createLogger({
@@ -28,9 +47,13 @@ export default function configureStore(initialState = {}) {
 
   store = createStore(
     reducers,
-    initialState,
+    state,
     compose(...enhancers)
   );
+
+  if (SPECTATOR) {
+    listenToParentWindow(store);
+  }
 
   // Create hook for async sagas
   store.sagaMiddleware = sagaMiddleware;
