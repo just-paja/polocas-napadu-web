@@ -18,7 +18,7 @@ const TeamForm = ({ handleSubmit, name }) => (
     <Field
       component={Input}
       label="Team logo"
-      name="logoUrl"
+      name="logo"
       type="url"
     />
     <Button type="submit">
