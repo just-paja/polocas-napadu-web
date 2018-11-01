@@ -9,7 +9,7 @@ export default (routine, initialValueSelector, form, name) => {
   });
 
   const mapDispatchToProps = {
-    onSubmit: routine.dataChange,
+    onSubmit: values => routine.dataChange(values),
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(reduxForm({

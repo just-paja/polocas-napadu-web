@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Editor from '../components/Editor';
+import MonitorView from '../components/MonitorView';
 
 import { getSides } from '../../board/selectors';
 
@@ -8,4 +8,4 @@ const mapStateToProps = state => ({
   sides: getSides(state),
 });
 
-export default connect(mapStateToProps)(Editor);
+export default connect(mapStateToProps)(MonitorView);

@@ -7,7 +7,7 @@ import { flipSides } from '../../board/actions';
 const mapStateToProps = undefined;
 
 const mapDispatchToProps = {
-  onClick: flipSides.trigger,
+  onClick: () => flipSides.trigger(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlipSidesButton);
