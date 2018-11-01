@@ -7,7 +7,7 @@ import { spectatorWindow } from '../actions';
 const mapStateToProps = undefined;
 
 const mapDispatchToProps = {
-  onClick: spectatorWindow.open,
+  onClick: () => spectatorWindow.open(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OpenSpectatorWindowButton);
