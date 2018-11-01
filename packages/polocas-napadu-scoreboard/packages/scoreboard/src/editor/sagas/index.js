@@ -1,5 +1,1 @@
-import saveTeam from './saveTeam';
-
-export default [
-  ...saveTeam,
-];
+export default [];
