@@ -36,9 +36,7 @@ const TeamSummary = ({
       <Button onClick={onScoreIncrease}>
         +1 Score
       </Button>
-    </div>
-    <div>
-      <Button onClick={onScoreDecrease}>
+      <Button onClick={onScoreDecrease} disabled={team.score === 0}>
         -1 Score
       </Button>
     </div>
