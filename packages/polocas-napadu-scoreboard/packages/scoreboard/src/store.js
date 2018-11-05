@@ -4,6 +4,10 @@ import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
+import {
+  localStorageMiddleware,
+  initLocalStorageMiddleware,
+} from './localStorageMiddleware';
 
 import {
   listenToParentWindow,
@@ -36,6 +40,7 @@ export default function configureStore(initialState = {}) {
       },
     };
   } else {
+    middlewares.push(localStorageMiddleware);
     middlewares.push(passMessagesToSpectator);
   }
 
@@ -60,6 +65,7 @@ export default function configureStore(initialState = {}) {
     listenToParentWindow(store);
     reportToMonitor();
   } else {
+    initLocalStorageMiddleware(store);
     listenToSpectatorSync(store);
   }
 
