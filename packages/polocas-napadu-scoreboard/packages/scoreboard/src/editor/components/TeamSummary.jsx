@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import EditTeamButton from '../containers/EditTeamButton';
 
 import { withStyles } from '@material-ui/core/styles';
+import { Classes } from '../../proptypes';
 
 import * as constants from '../../board/constants';
 
@@ -32,7 +33,7 @@ const TeamSummary = ({
         className={classes.logo}
         src={team.logo || constants.TEAM_LOGO_DEFAULT}
       />
-      <span>{team.name} ({team.score}, {team.penalties})</span>
+      <h1>{team.name} ({team.score}, {team.penalties})</h1>
     </div>
     <div>
       <Button onClick={onScoreIncrease}>
@@ -55,7 +56,7 @@ const TeamSummary = ({
 );
 
 TeamSummary.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+  classes: Classes.isRequired,
   team: PropTypes.shape({
     name: PropTypes.string,
     logo: PropTypes.string,

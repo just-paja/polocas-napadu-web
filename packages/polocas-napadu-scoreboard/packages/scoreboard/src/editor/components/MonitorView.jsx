@@ -7,6 +7,7 @@ import FlipSidesButton from '../containers/FlipSidesButton';
 import OpenSpectatorWindowButton from '../../spectator/containers/OpenSpectatorWindowButton';
 import Team from '../containers/Team';
 
+import { Classes } from '../../proptypes';
 import { SplitView } from '../../board/components';
 
 const styles = {
@@ -35,7 +36,7 @@ const MonitorView = ({ classes, sides }) => (
 );
 
 MonitorView.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+  classes: Classes.isRequired,
   sides: PropTypes.shape({
     left: PropTypes.string.isRequired,
     right: PropTypes.string.isRequired,
