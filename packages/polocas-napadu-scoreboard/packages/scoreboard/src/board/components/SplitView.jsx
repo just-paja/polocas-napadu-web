@@ -4,6 +4,8 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import { Classes, ClassName } from '../../proptypes';
+
 const styles = {
   teams: {
     display: 'flex',
@@ -22,8 +24,8 @@ const styles = {
   },
 };
 
-const SplitView = ({ children, classes }) => (
-  <div className={classes.teams}>
+const SplitView = ({ children, className, classes }) => (
+  <div className={classnames(classes.teams, className)}>
     <div className={classnames(classes.team, { withMiddle: Boolean(children[2]) })}>
       {children[0]}
     </div>
@@ -39,7 +41,8 @@ const SplitView = ({ children, classes }) => (
 );
 
 SplitView.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: Classes.isRequired,
+  className: ClassName.isRequired,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 

@@ -3,7 +3,6 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Score from '../containers/Score';
 import TeamDetails from '../containers/TeamDetails';
 
 import { SplitView } from '../../board/components';
@@ -19,7 +18,6 @@ const styles = {
     top: 0,
   },
   board: {
-    background: 'white',
     bottom: '50%',
     display: 'flex',
     flexDirection: 'column',
@@ -32,16 +30,18 @@ const styles = {
     right: 0,
     top: 0,
   },
+  split: {
+    width: '100%',
+  },
 };
 
 const SpectatorView = ({ classes, sides }) => (
   <div className={classes.spectatorView}>
     <div className={classes.board}>
-      <SplitView>
+      <SplitView className={classes.split}>
         <TeamDetails side="left" />
         <TeamDetails side="right" />
       </SplitView>
-      <Score />
     </div>
   </div>
 );

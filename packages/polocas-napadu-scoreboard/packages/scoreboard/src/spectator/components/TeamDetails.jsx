@@ -9,48 +9,93 @@ import * as constants from '../../board/constants';
 
 const styles = {
   name: {
-    fontSize: '3rem',
+    display: 'flex',
+    margin: '0 3rem 0 auto',
+  },
+  score: {
+    background: 'blue',
+    borderRadius: '1rem',
+    display: 'block',
+    flexShrink: 0,
+    fontWeight: 'bold',
+    margin: '-1.1rem',
+    padding: '1.1rem',
+    width: '4rem',
   },
   nameBar: {
     display: 'flex',
     alignItems: 'flex-start',
-  },
-  nameBarRight: {
-    textAlign: 'left',
     justifyContent: 'flex-start',
   },
-  nameBarLeft: {
-    textAlign: 'right',
-    justifyContent: 'flex-end',
+  nameBarRight: {
+    flexDirection: 'row-reverse',
+  },
+  nameRight: {
+    margin: '0 auto 0 3rem',
   },
   logo: {
     maxHeight: '3rem',
     margin: '0 1rem',
   },
+  penalty: {
+    background: 'red',
+    display: 'inline-block',
+    height: '3rem',
+    width: '1.25rem',
+    margin: '0 .25rem',
+    opacity: .75,
+  },
+  penalties: {
+    position: 'absolute',
+    bottom: '-2.9rem',
+    right: '0.5rem',
+  },
+  penaltiesRight: {
+    right: 'auto',
+    left: '0.5rem',
+  },
+  teamBubble: {
+    background: 'white',
+    flexStretch: 0,
+    padding: '1rem',
+    borderRadius: '1rem',
+    fontSize: '3rem',
+    position: 'relative',
+  }
+};
+
+const generatePenalties = (classes, number) => {
+  const items = [];
+  for (let i = 0; i < number; i++) {
+    items.push(<span key={i} className={classes.penalty}></span>);
+  }
+  return items;
 };
 
 const TeamDetails = ({ classes, side, team }) => {
   if (!team) {
     return null;
   }
-  const contents = [
-    <span className={classes.name} key="name">{team.name}</span>,
-    <img
-      className={classes.logo}
-      src={team.logo || constants.TEAM_LOGO_DEFAULT}
-      alt="Team logo"
-      key="logo"
-    />,
-  ];
   return (
-    <div>
+    <div className={classes.teamBubble}>
       <div
         className={classnames(
           classes.nameBar,
           classes[camelCase(`nameBar-${side}`)]
         )}
       >
-        {side === 'right' ? contents.reverse() : contents}
+        <img
+          className={classes.logo}
+          src={team.logo || constants.TEAM_LOGO_DEFAULT}
+          alt="Team logo"
+        />
+        <span
+          className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
+        >{team.name}</span>
+        <span className={classes.score}>{team.score}</span>
+        <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
+          {generatePenalties(classes, team.penalties)}
+        </span>
       </div>
     </div>
   );
