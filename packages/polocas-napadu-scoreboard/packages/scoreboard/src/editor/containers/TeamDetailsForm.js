@@ -13,8 +13,9 @@ const mapStateToProps = (state, { side }) => {
   return {
     form: `${FORM_TEAM_DETAILS}/${teamId}`,
     initialValues: {
-      name: team.name,
+      color: team.color,
       logo: team.logo,
+      name: team.name,
     },
     teamId,
   };

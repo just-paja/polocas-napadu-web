@@ -13,7 +13,6 @@ const styles = {
     margin: '0 3rem 0 auto',
   },
   score: {
-    background: 'blue',
     borderRadius: '1rem',
     display: 'block',
     flexShrink: 0,
@@ -92,7 +91,10 @@ const TeamDetails = ({ classes, side, team }) => {
         <span
           className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
         >{team.name}</span>
-        <span className={classes.score}>{team.score}</span>
+        <span
+          className={classes.score}
+          style={{ backgroundColor: team.color }}
+        >{team.score}</span>
         <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
           {generatePenalties(classes, team.penalties)}
         </span>

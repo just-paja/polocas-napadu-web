@@ -22,6 +22,12 @@ const TeamForm = ({ handleSubmit, teamId }) => (
       name="logo"
       type="url"
     />
+    <Field
+      component={Input}
+      label="Team color"
+      name="color"
+      type="color"
+    />
     <Button type="submit">
       <Save />
       Save

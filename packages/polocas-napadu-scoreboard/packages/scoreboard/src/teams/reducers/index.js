@@ -4,6 +4,7 @@ import { MAX_PENALTIES } from '../constants';
 import { team } from '../actions';
 
 const teamInitialState = {
+  color: '#199638',
   logo: '',
   name: '',
   penalties: 0,
