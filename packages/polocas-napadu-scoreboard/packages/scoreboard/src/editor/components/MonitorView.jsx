@@ -10,16 +10,27 @@ import Team from '../containers/Team';
 import { SplitView } from '../../board/components';
 
 const styles = {
+  controls: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '2rem',
+  },
+  teams: {
+  }
 };
 
 const MonitorView = ({ classes, sides }) => (
   <div>
-    <SplitView>
-      <Team side="left" />
-      <Team side="right" />
-    </SplitView>
-    <FlipSidesButton />
-    <OpenSpectatorWindowButton />
+    <div className={classes.teams}>
+      <SplitView>
+        <Team side="left" />
+        <Team side="right" />
+      </SplitView>
+    </div>
+    <div className={classes.controls}>
+      <FlipSidesButton />
+      <OpenSpectatorWindowButton />
+    </div>
   </div>
 );
 
