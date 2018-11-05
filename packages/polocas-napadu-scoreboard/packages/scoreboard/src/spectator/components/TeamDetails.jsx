@@ -34,8 +34,8 @@ const styles = {
     margin: '0 auto 0 3rem',
   },
   logo: {
-    maxHeight: '3rem',
-    margin: '0 1rem',
+    maxHeight: '4.5rem',
+    margin: '-0.5rem 0',
   },
   penalty: {
     background: 'red',
