@@ -1,4 +1,6 @@
 import { handleActions } from 'redux-actions';
+
+import { MAX_PENALTIES } from '../constants';
 import { team } from '../actions';
 
 const teamInitialState = {
@@ -20,6 +22,18 @@ const teamDataReducer = handleActions({
   [team.SCORE_DECREASE]: state => ({
     ...state,
     score: state.score > 0 ? state.score - 1 : state.score,
+  }),
+  [team.PENALTY_INCREASE]: state => ({
+    ...state,
+    penalties: state.penalties < MAX_PENALTIES ? state.penalties + 1 : state.penalties,
+  }),
+  [team.PENALTY_DECREASE]: state => ({
+    ...state,
+    penalties: state.penalties > 0 ? state.penalties - 1 : state.penalties,
+  }),
+  [team.PENALTY_RESET]: state => ({
+    ...state,
+    penalties: 0,
   }),
   [team.PENALTIES_SET]: (state, action) => ({
     ...state,

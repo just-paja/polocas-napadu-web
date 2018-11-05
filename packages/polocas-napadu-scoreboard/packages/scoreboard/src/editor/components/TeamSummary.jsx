@@ -18,6 +18,8 @@ const styles = {
 
 const TeamSummary = ({
   classes,
+  onPenaltyDecrease,
+  onPenaltyIncrease,
   onScoreDecrease,
   onScoreIncrease,
   team,
@@ -30,7 +32,7 @@ const TeamSummary = ({
         className={classes.logo}
         src={team.logo || constants.TEAM_LOGO_DEFAULT}
       />
-      <span>{team.name}</span>
+      <span>{team.name} ({team.score}, {team.penalties})</span>
     </div>
     <div>
       <Button onClick={onScoreIncrease}>
@@ -38,6 +40,14 @@ const TeamSummary = ({
       </Button>
       <Button onClick={onScoreDecrease} disabled={team.score === 0}>
         -1 Score
+      </Button>
+    </div>
+    <div>
+      <Button onClick={onPenaltyIncrease}>
+        +1 Penalty
+      </Button>
+      <Button onClick={onPenaltyDecrease} disabled={team.penalties === 0}>
+        -1 Penalty
       </Button>
     </div>
     <EditTeamButton teamId={teamId} />

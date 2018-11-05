@@ -11,6 +11,8 @@ const mapStateToProps = (state, { side }) => ({
 });
 
 const mapDispatchToProps = {
+  onPenaltyDecrease: team.penaltyDecrease,
+  onPenaltyIncrease: team.penaltyIncrease,
   onScoreDecrease: team.scoreDecrease,
   onScoreIncrease: team.scoreIncrease,
 };
@@ -19,6 +21,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...ownProps,
   ...stateProps,
   ...dispatchProps,
+  onPenaltyDecrease: () => dispatchProps.onPenaltyDecrease(null, stateProps.teamId),
+  onPenaltyIncrease: () => dispatchProps.onPenaltyIncrease(null, stateProps.teamId),
   onScoreDecrease: () => dispatchProps.onScoreDecrease(null, stateProps.teamId),
   onScoreIncrease: () => dispatchProps.onScoreIncrease(null, stateProps.teamId),
 })
