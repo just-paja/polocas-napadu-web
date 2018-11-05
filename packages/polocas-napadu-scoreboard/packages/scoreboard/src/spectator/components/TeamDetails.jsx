@@ -13,17 +13,21 @@ const styles = {
     margin: '0 3rem 0 auto',
   },
   score: {
-    borderRadius: '1rem',
+    borderRadius: '5rem',
     display: 'block',
     flexShrink: 0,
+    fontSize: '5rem',
     fontWeight: 'bold',
-    margin: '-1.1rem',
-    padding: '1.1rem',
-    width: '4rem',
+    margin: '-2rem',
+    height: '8rem',
+    lineHeight: '8rem',
+    width: '8rem',
+    textAlign: 'center',
+    justifyContent: 'center',
   },
   nameBar: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start',
   },
   nameBarRight: {
@@ -47,17 +51,17 @@ const styles = {
   penalties: {
     position: 'absolute',
     bottom: '-2.9rem',
-    right: '0.5rem',
+    right: '8rem',
   },
   penaltiesRight: {
     right: 'auto',
-    left: '0.5rem',
+    left: '8rem',
   },
   teamBubble: {
     background: 'white',
     flexStretch: 0,
     padding: '1rem',
-    borderRadius: '1rem',
+    borderRadius: '3rem',
     fontSize: '3rem',
     position: 'relative',
   }
