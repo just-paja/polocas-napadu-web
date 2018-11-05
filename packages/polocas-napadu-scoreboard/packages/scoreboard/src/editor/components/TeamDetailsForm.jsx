@@ -6,10 +6,11 @@ import Save from '@material-ui/icons/Save';
 import { Field, Form } from 'redux-form';
 
 import { Input } from '../../components';
+import { TeamId } from '../../board/components';
 
-const TeamForm = ({ handleSubmit, name }) => (
+const TeamForm = ({ handleSubmit, teamId }) => (
   <Form onSubmit={handleSubmit}>
-    <h1>{name}</h1>
+    <h1><TeamId teamId={teamId} /></h1>
     <Field
       component={Input}
       label="Team name"
@@ -29,7 +30,7 @@ const TeamForm = ({ handleSubmit, name }) => (
 );
 
 TeamForm.propTypes = {
-  name: PropTypes.string.isRequired,
+  teamId: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
 

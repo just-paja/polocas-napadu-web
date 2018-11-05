@@ -1,7 +1,9 @@
 import { createRoutine } from '../../actions/routines';
 
-export const createTeamRoutine = baseName => createRoutine(`TEAM_${baseName}`, [
+export const team = createRoutine('TEAM', [
   'DATA_CHANGE',
   'LOGO_CHANGE',
   'NAME_CHANGE',
+  'SCORE_DECREASE',
+  'SCORE_INCREASE',
 ]);

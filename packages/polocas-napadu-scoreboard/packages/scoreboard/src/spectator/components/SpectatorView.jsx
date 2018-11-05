@@ -3,42 +3,45 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import TeamGuest from '../containers/TeamGuest';
-import TeamHome from '../containers/TeamHome';
+import Score from '../containers/Score';
+import TeamDetails from '../containers/TeamDetails';
 
-import * as constants from '../../board/constants';
+import { SplitView } from '../../board/components';
 
 const styles = {
   spectatorView: {
     alignItems: 'center',
+    background: 'black',
     bottom: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
     left: 0,
     position: 'fixed',
     right: 0,
     top: 0,
-    padding: '5%',
   },
-  team: {
-    textAlign: 'center',
-    width: '50%',
+  board: {
+    background: 'white',
+    bottom: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    left: 0,
+    minHeight: 300,
+    padding: '5%',
+    position: 0,
+    right: 0,
+    top: 0,
   },
 };
 
-const getTeam = team => (
-  team === constants.TEAM_HOME
-    ? <TeamHome />
-    : <TeamGuest />
-);
-
 const SpectatorView = ({ classes, sides }) => (
   <div className={classes.spectatorView}>
-    <div className={classes.team}>
-      {getTeam(sides.left)}
-    </div>
-    <div className={classes.team}>
-      {getTeam(sides.right)}
+    <div className={classes.board}>
+      <SplitView>
+        <TeamDetails side="left" />
+        <TeamDetails side="right" />
+      </SplitView>
+      <Score />
     </div>
   </div>
 );

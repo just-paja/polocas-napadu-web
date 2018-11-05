@@ -5,39 +5,19 @@ import { withStyles } from '@material-ui/core/styles';
 
 import FlipSidesButton from '../containers/FlipSidesButton';
 import OpenSpectatorWindowButton from '../../spectator/containers/OpenSpectatorWindowButton';
-import TeamGuestForm from '../containers/TeamGuestForm';
-import TeamHomeForm from '../containers/TeamHomeForm';
+import Team from '../containers/Team';
 
-import * as constants from '../../board/constants';
+import { SplitView } from '../../board/components';
 
 const styles = {
-  editTeams: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '5%',
-  },
-  team: {
-    width: '45%',
-  },
 };
-
-const getForm = team => (
-  team === constants.TEAM_HOME
-    ? <TeamHomeForm />
-    : <TeamGuestForm />
-);
 
 const MonitorView = ({ classes, sides }) => (
   <div>
-    <div className={classes.editTeams}>
-      <div className={classes.team}>
-        {getForm(sides.left)}
-      </div>
-      <div className={classes.team}>
-        {getForm(sides.right)}
-      </div>
-    </div>
+    <SplitView>
+      <Team side="left" />
+      <Team side="right" />
+    </SplitView>
     <FlipSidesButton />
     <OpenSpectatorWindowButton />
   </div>

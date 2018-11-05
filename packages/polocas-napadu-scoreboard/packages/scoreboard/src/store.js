@@ -5,7 +5,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducers from './reducers';
 
-import { listenToParentWindow, passMessagesToSpectator } from './spectator';
+import {
+  listenToParentWindow,
+  listenToSpectatorSync,
+  passMessagesToSpectator,
+  reportToMonitor,
+} from './spectator';
 
 import * as constants from './spectator/constants';
 
@@ -53,6 +58,9 @@ export default function configureStore(initialState = {}) {
 
   if (SPECTATOR) {
     listenToParentWindow(store);
+    reportToMonitor();
+  } else {
+    listenToSpectatorSync(store);
   }
 
   // Create hook for async sagas
