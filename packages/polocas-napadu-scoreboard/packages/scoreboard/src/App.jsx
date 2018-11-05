@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Root } from './containers';
 
 import './App.css';
+import 'animate.css'
 
 class App extends Component {
   render() {

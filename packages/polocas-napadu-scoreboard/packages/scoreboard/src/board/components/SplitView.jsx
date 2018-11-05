@@ -6,15 +6,19 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { Classes, ClassName } from '../../proptypes';
 
-const styles = {
+const styles = theme => ({
   teams: {
-    display: 'flex',
-    justifyContent: 'space-between',
     padding: '0 2.5%',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
   },
   team: {
     textAlign: 'center',
-    width: '47.5%',
+    [theme.breakpoints.up('md')]: {
+      width: '47.5%',
+    },
   },
   middle: {
     width: '10%',
@@ -22,7 +26,7 @@ const styles = {
   withMiddle: {
     width: '37.5%',
   },
-};
+});
 
 const SplitView = ({ children, className, classes }) => (
   <div className={classnames(classes.teams, className)}>

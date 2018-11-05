@@ -3,6 +3,7 @@ import { takeEvery } from 'redux-saga/effects';
 
 import { team } from '../../teams/actions';
 import { spectatorOnly } from './spectatorOnly';
+import { getNewRandomItem } from '../../shuffle';
 
 import AudioManager from '../AudioManager';
 
@@ -25,13 +26,6 @@ const handlePointIncrease = spectatorOnly(function* () {
     }));
     return sound;
   });
-
-  const getRandomItem = (items) => items[Math.floor(Math.random() * items.length)];
-
-  const getNewRandomItem = (items, last) => {
-    const nextItems = items.filter(item => item !== last);
-    return getRandomItem(nextItems);
-  };
 
   const playFanfare = () => {
     const soundId = getNewRandomItem(fanfares, lastFanfare);
