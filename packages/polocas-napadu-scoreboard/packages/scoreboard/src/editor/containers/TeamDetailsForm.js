@@ -9,9 +9,13 @@ import { FORM_TEAM_DETAILS } from '../constants';
 
 const mapStateToProps = (state, { side }) => {
   const teamId = getSideTeamId(state, side);
+  const team = getSideTeam(state, side);
   return {
     form: `${FORM_TEAM_DETAILS}/${teamId}`,
-    initialValues: getSideTeam(state, side),
+    initialValues: {
+      name: team.name,
+      logo: team.logo,
+    },
     teamId,
   };
 };
