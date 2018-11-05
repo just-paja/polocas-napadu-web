@@ -18,10 +18,5 @@ export const getOtherSide = (state, side) =>
 export const getOtherSideTeamId = (state, teamId) =>
   getSideTeamId(state, getOtherSide(state, getTeamSide(state, teamId)));
 
-export const getScore = (state, side) => {
-  console.log(getSideTeam(state, side), side);
-  return getSideTeam(state, side).score;
-};
-
 export const getTeamGuest = state => getTeam(state, constants.TEAM_GUEST);
 export const getTeamHome = state => getTeam(state, constants.TEAM_HOME);
