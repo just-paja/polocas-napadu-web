@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import TeamDetails from '../containers/TeamDetails';
+import Score from './Score';
 
-import { SplitView } from '../../board/components';
+import { Classes } from '../../proptypes';
 
 const styles = {
   spectatorView: {
@@ -30,25 +29,18 @@ const styles = {
     right: 0,
     top: 0,
   },
-  split: {
-    width: '100%',
-  },
 };
 
-const SpectatorView = ({ classes, sides }) => (
+const SpectatorView = ({ classes }) => (
   <div className={classes.spectatorView}>
     <div className={classes.board}>
-      <SplitView className={classes.split}>
-        <TeamDetails side="left" />
-        <TeamDetails side="right" />
-      </SplitView>
+      <Score />
     </div>
   </div>
 );
 
 SpectatorView.propTypes = {
-  name: PropTypes.string,
-  logo: PropTypes.string,
+  classes: Classes.isRequired,
 };
 
 export default withStyles(styles)(SpectatorView);
