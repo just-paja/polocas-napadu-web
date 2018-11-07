@@ -19,7 +19,7 @@ class StageChangeButton extends Component {
 
   render() {
     return (
-      <Button onClick={this.handleClick} variant="outlined">
+      <Button disabled={this.props.disabled} onClick={this.handleClick} variant="outlined">
         {this.getStageName()}
       </Button>
     );
@@ -27,6 +27,7 @@ class StageChangeButton extends Component {
 }
 
 StageChangeButton.propTypes = {
+  disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   stage: PropTypes.string.isRequired,
 }

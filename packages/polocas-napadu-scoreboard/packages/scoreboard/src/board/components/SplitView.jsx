@@ -8,8 +8,7 @@ import { Classes, ClassName } from '../../proptypes';
 
 const styles = theme => ({
   teams: {
-    padding: '0 2.5%',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'flex',
       justifyContent: 'space-between',
     },

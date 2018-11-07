@@ -4,11 +4,14 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import GameSetupStage from './GameSetupStage';
+import GameStage from './GameStage';
+import GameResultsStage from './GameResultsStage';
+import PauseStage from './PauseStage';
 import ShowSetupStage from './ShowSetupStage';
 
 import { Classes } from '../../proptypes';
 
-import { STAGE_GAME_SETUP } from '../../board/constants';
+import * as constants from '../../board/constants';
 
 const styles = {
   spectatorView: {
@@ -32,7 +35,16 @@ const styles = {
 };
 
 const getStageView = (stage) => {
-  if (stage === STAGE_GAME_SETUP) {
+  if (stage === constants.STAGE_PAUSE) {
+    return <PauseStage />;
+  }
+  if (stage === constants.STAGE_GAME_RESULTS) {
+    return <GameResultsStage />;
+  }
+  if (stage === constants.STAGE_GAME) {
+    return <GameStage />;
+  }
+  if (stage === constants.STAGE_GAME_SETUP) {
     return <GameSetupStage />;
   }
   return <ShowSetupStage />;

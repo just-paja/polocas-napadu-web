@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 
 import TeamSummary from '../components/TeamSummary';
 
-import { getSideTeam, getSideTeamId } from '../../board/selectors';
+import { areTeamsEditable, getSideTeam, getSideTeamId } from '../../board/selectors';
 
 const mapStateToProps = (state, { side }) => ({
+  allowEdit: areTeamsEditable(state),
   team: getSideTeam(state, side),
   teamId: getSideTeamId(state, side),
 });

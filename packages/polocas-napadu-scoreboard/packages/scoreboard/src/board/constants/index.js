@@ -31,25 +31,92 @@ export const STAGE_FLOW = {
   ],
 };
 
-export const STAGE_FLOW_BACK = {
-  [STAGE_GAME_RESULTS]: [
-    STAGE_GAME,
-  ],
-  [STAGE_GAME_SETUP]: [
-    STAGE_SHOW_SETUP,
-  ],
-  [STAGE_GAME]: [
-    STAGE_GAME_SETUP,
-  ],
-  [STAGE_PAUSE]: [
-    STAGE_GAME_SETUP,
-  ],
-  [STAGE_FINALE]: [
-    STAGE_PAUSE,
-  ],
-};
-
 export const STAGES_SCORE_CHANGES = [
   STAGE_GAME_RESULTS,
   STAGE_GAME_SETUP,
+];
+
+export const STAGES_TEAM_EDITS = [
+  STAGE_SHOW_SETUP,
+];
+
+export const STAGES_GAME_SETUP = [
+  STAGE_GAME_SETUP,
+];
+
+export const STAGES_WITH_GAME = [
+  STAGE_GAME_RESULTS,
+  STAGE_GAME_SETUP,
+  STAGE_GAME,
+];
+
+export const STAGES_GAME_RESET = [
+  STAGE_GAME_RESULTS,
+];
+
+export const GAMES = [
+  'Barman song',
+  'Báseň od publika',
+  'Co tím chceš jako říct',
+  'Červená knihovna',
+  'Čtverec',
+  'Dabing ABC',
+  'Dabing filmu',
+  'Dabovaná',
+  'Diapozitivy',
+  'Dopis',
+  'Duál',
+  'Duet',
+  'Dům a zahrada',
+  'Dva na pět',
+  'Dvojitá stíhačka',
+  'En face',
+  'Filmové žánry',
+  'Kam zmizel ten starý song',
+  'Komiks',
+  'Kvartet',
+  'Loutky',
+  'Love song',
+  'Metafory',
+  'Mikrofon',
+  'Monolog',
+  'Národní divadlo',
+  'Nátlak',
+  'Opilecká píseň',
+  'Počet slov',
+  'Poetická',
+  'Polovina času',
+  'Poslední věta',
+  'Prskavka',
+  'Prskavka ala šanson',
+  'Překlad do znakové řeči',
+  'Pyramida',
+  'Reklamace',
+  'Rozhlasová hra',
+  'Ruce',
+  'Ryba (ve čtyřech)',
+  'S rekvizitou',
+  'Sci-fi',
+  'Schizofrenie',
+  'Smrt v 1 minutě',
+  'Spoon river',
+  'Sportovní komentátor',
+  'Stíhačka',
+  'Šumlovaná',
+  'Šumlovaná se simultánním překladem',
+  'Tam a zpět',
+  'Televizní komentátor',
+  'Toaster',
+  'Trojitá stíhačka',
+  'Věty z kapsy',
+  'Vnitřní hlasy',
+  'Volná',
+  'Vyprávěná',
+  'Vysílání FM',
+  'Western',
+  'Změna',
+  'Zpívaná',
+  'Žánrová vyprávěná',
+  'Ženy vs muži (kategorie)',
+  'Živé rekvizity',
 ];

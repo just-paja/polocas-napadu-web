@@ -2,10 +2,16 @@ import { connect } from 'react-redux';
 
 import StageNavigation from '../components/StageNavigation';
 
-import { getPrevStages } from '../../board/selectors';
+import { stage } from '../../board/actions';
+import { canMoveBackward } from '../../board/selectors';
 
 const mapStateToProps = state => ({
-  availableStages: getPrevStages(state),
+  availableStages: [],
+  canMoveBackward: canMoveBackward(state),
 });
 
-export default connect(mapStateToProps)(StageNavigation);
+const mapDispatchToProps = {
+  onBack: () => stage.back(),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StageNavigation);

@@ -30,18 +30,22 @@ const animations = [
 const styles = theme => ({
   name: {
     display: 'flex',
-    margin: '0 3rem 0 auto',
+    margin: '0 4rem 0 auto',
+    minWidth: 0,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   score: {
     borderRadius: '5rem',
     display: 'block',
     flexShrink: 0,
-    fontSize: '5rem',
+    fontSize: '6rem',
     fontWeight: 'bold',
-    margin: '-2rem',
-    height: '8rem',
-    lineHeight: '8rem',
-    width: '8rem',
+    margin: '-3rem',
+    height: '10rem',
+    lineHeight: '10rem',
+    width: '10rem',
     textAlign: 'center',
     justifyContent: 'center',
   },
@@ -57,12 +61,16 @@ const styles = theme => ({
   },
   nameRight: {
     [theme.breakpoints.up('md')]: {
-      margin: '0 auto 0 3rem',
+      margin: '0 auto 0 4rem',
     },
   },
   logo: {
     maxHeight: '4.5rem',
-    margin: '-0.5rem 0',
+    margin: '-0.5rem 1rem -0.5rem 0',
+  },
+  logoRight: {
+    marginLeft: '1rem',
+    marginRight: 0,
   },
   penalty: {
     background: 'red',
@@ -129,7 +137,7 @@ class TeamDetails extends Component {
 
   render() {
     const { classes, hideScore, side, team } = this.props;
-    if (!team) {
+    if (!team || !team.name) {
       return null;
     }
     return (
@@ -141,7 +149,7 @@ class TeamDetails extends Component {
           )}
         >
           <img
-            className={classes.logo}
+            className={classnames(classes.logo, classes[camelCase(`logo-${side}`)])}
             src={team.logo || constants.TEAM_LOGO_DEFAULT}
             alt="Team logo"
           />

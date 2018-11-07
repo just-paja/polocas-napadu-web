@@ -25,6 +25,7 @@ const Input = ({
       <As
         {...props}
         {...input}
+        onBlur={() => input.value}
         error={!!(touched && error)}
         label={label}
         placeholder={placeholder}

@@ -17,15 +17,13 @@ const styles = theme => ({
 const Stage = ({ classes, stage }) => (
   <div className={classes.bar}>
     <Typography variant="overline">Show Stage</Typography>
-    <Typography variant="display1">{stage.stage}</Typography>
+    <Typography variant="display1">{stage}</Typography>
   </div>
 );
 
 Stage.propTypes = {
   classes: Classes.isRequired,
-  stage: PropTypes.shape({
-    stage: PropTypes.string.isRequired,
-  }),
+  stage: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(Stage);

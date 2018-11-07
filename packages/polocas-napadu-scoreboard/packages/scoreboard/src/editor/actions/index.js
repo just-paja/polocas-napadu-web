@@ -5,3 +5,8 @@ export const teamEdit = createRoutine('TEAM_EDIT', [
   'SHOW',
   'TOGGLE',
 ]);
+
+export const gameEdit = createRoutine('GAME_EDIT', [
+  'HIDE',
+  'SHOW',
+]);

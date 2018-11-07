@@ -2,11 +2,10 @@ import { connect } from 'react-redux';
 
 import GameInspiration from '../components/GameInspiration';
 
-import { getGameInspiration, getGameName } from '../../board/selectors';
+import { getCurrentGame } from '../../board/selectors';
 
 const mapStateToProps = (state) => ({
-  gameName: getGameName(state),
-  inspiration: getGameInspiration(state),
+  game: getCurrentGame(state),
 });
 
 export default connect(mapStateToProps)(GameInspiration);

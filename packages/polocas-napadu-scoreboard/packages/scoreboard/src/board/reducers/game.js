@@ -10,16 +10,13 @@ export const initialState = {
 };
 
 export default handleActions({
-  [game.EXTRA_CHANGE]: (state, action) => ({
-    ...state,
-    game: action.payload,
-  }),
   [game.GAME_CHANGE]: (state, action) => ({
     ...state,
     game: action.payload,
   }),
   [game.INSPIRATION_CHANGE]: (state, action) => ({
     ...state,
-    inspiration: action.payload,
+    inspiration: action.payload.inspiration,
+    extra: action.payload.extra,
   }),
 }, initialState);

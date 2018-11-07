@@ -7,6 +7,7 @@ import StageControls from './StageControls';
 import Stage from '../containers/Stage';
 import OpenSpectatorWindowButton from '../../spectator/containers/OpenSpectatorWindowButton';
 import TeamControls from '../containers/TeamControls';
+import GameSelection from '../containers/GameSelection';
 
 import { Classes } from '../../proptypes';
 
@@ -22,6 +23,7 @@ const MonitorView = ({ classes }) => (
   <div>
     <Stage />
     <StageControls />
+    <GameSelection />
     <TeamControls />
     <div className={classes.controls}>
       <FlipSidesButton />

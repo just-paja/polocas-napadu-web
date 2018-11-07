@@ -7,14 +7,14 @@ import { Classes } from '../../proptypes';
 const styles = {
 };
 
-const GameStage = ({ classes }) => (
+const PauseStage = ({ classes }) => (
   <div>
     Pauza
   </div>
 );
 
-GameStage.propTypes = {
+PauseStage.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(GameStage);
+export default withStyles(styles)(PauseStage);

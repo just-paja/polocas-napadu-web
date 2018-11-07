@@ -28,6 +28,7 @@ const styles = theme => ({
 });
 
 const TeamSummary = ({
+  allowEdit,
   classes,
   team,
   teamId,
@@ -46,16 +47,21 @@ const TeamSummary = ({
       <ListItem><ListItemText>Penalty points: {team.penalties}</ListItemText></ListItem>
     </List>
     <TeamScoreControls teamId={teamId} />
-    <EditTeamButton teamId={teamId} />
+    {allowEdit ? <EditTeamButton teamId={teamId} /> : null}
   </div>
 );
 
 TeamSummary.propTypes = {
+  allowEdit: PropTypes.bool,
   classes: Classes.isRequired,
   team: PropTypes.shape({
     name: PropTypes.string,
     logo: PropTypes.string,
   }).isRequired,
+};
+
+TeamSummary.defaultProps = {
+  allowEdit: false,
 };
 
 export default withStyles(styles)(TeamSummary);
