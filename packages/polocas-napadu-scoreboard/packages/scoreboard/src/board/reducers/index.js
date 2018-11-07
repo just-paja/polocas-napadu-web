@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 
+import games from './games';
 import sides from './sides';
+import stage from './stage';
 
 import { createTeamDataReducer } from '../../teams/reducers';
 
@@ -13,5 +15,7 @@ const teams = combineReducers({
 });
 
 export default combineReducers({
+  games,
+  stage,
   teams,
 });

@@ -1,10 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Score from './Score';
+import GameSetupStage from './GameSetupStage';
+import ShowSetupStage from './ShowSetupStage';
 
 import { Classes } from '../../proptypes';
+
+import { STAGE_GAME_SETUP } from '../../board/constants';
 
 const styles = {
   spectatorView: {
@@ -18,10 +22,6 @@ const styles = {
   },
   board: {
     bottom: '50%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
     left: 0,
     minHeight: 300,
     padding: '5%',
@@ -31,16 +31,24 @@ const styles = {
   },
 };
 
-const SpectatorView = ({ classes }) => (
+const getStageView = (stage) => {
+  if (stage === STAGE_GAME_SETUP) {
+    return <GameSetupStage />;
+  }
+  return <ShowSetupStage />;
+};
+
+const SpectatorView = ({ classes, stage }) => (
   <div className={classes.spectatorView}>
     <div className={classes.board}>
-      <Score />
+      {getStageView(stage)}
     </div>
   </div>
 );
 
 SpectatorView.propTypes = {
   classes: Classes.isRequired,
+  stage: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(SpectatorView);

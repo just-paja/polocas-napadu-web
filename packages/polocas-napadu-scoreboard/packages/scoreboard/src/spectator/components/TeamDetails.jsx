@@ -128,7 +128,7 @@ class TeamDetails extends Component {
   }
 
   render() {
-    const { classes, side, team } = this.props;
+    const { classes, hideScore, side, team } = this.props;
     if (!team) {
       return null;
     }
@@ -148,19 +148,21 @@ class TeamDetails extends Component {
           <span
             className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
           >{team.name}</span>
-          <AnimateOnChange
-            baseClassName="animated"
-            animationClassName={this.state.animation}
-            animate={this.state.animation}
-            onAnimationEnd={this.handleAnimationEnd}
-          >
-            <span
-              className={classes.score}
-              style={{ backgroundColor: team.color }}
+          {hideScore ? null : (
+            <AnimateOnChange
+              baseClassName="animated"
+              animationClassName={this.state.animation}
+              animate={this.state.animation}
+              onAnimationEnd={this.handleAnimationEnd}
             >
-              {team.score}
-            </span>
-          </AnimateOnChange>
+              <span
+                className={classes.score}
+                style={{ backgroundColor: team.color }}
+              >
+                {team.score}
+              </span>
+            </AnimateOnChange>
+          )}
           <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
             {generatePenalties(classes, team.penalties)}
           </span>
@@ -174,6 +176,11 @@ TeamDetails.propTypes = {
   name: PropTypes.string,
   side: PropTypes.string,
   logo: PropTypes.string,
+  hideScore: PropTypes.bool,
+};
+
+TeamDetails.defaultProps = {
+  hideScore: false,
 };
 
 export default withStyles(styles)(TeamDetails);

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -13,15 +14,20 @@ const styles = {
   },
 };
 
-const Score = ({ classes }) => (
+const Teams = ({ classes, hideScore }) => (
   <SplitView className={classes.split}>
-    <TeamDetails side="left" />
-    <TeamDetails side="right" />
+    <TeamDetails hideScore={hideScore} side="left" />
+    <TeamDetails hideScore={hideScore} side="right" />
   </SplitView>
 );
 
-Score.propTypes = {
+Teams.propTypes = {
   classes: Classes.isRequired,
+  hideScore: PropTypes.bool,
 };
 
-export default withStyles(styles)(Score);
+Teams.defaultProps = {
+  hideScore: false,
+};
+
+export default withStyles(styles)(Teams);
