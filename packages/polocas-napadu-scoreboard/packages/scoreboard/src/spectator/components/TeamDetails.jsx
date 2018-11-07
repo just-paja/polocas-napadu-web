@@ -38,6 +38,7 @@ const styles = theme => ({
   },
   score: {
     borderRadius: '5rem',
+    color: '#fff',
     display: 'block',
     flexShrink: 0,
     fontSize: '6rem',

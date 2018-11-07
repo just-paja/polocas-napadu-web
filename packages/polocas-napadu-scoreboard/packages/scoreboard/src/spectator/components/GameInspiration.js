@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   inspiration: {
     color: 'white',
-    fontSize: '3rem',
+    fontSize: '4rem',
     textAlign: 'center',
   },
   game: {

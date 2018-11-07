@@ -2,16 +2,31 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import GameInspiration from '../containers//GameInspiration';
+import Teams from './Teams';
+import GameHistory from '../containers/GameHistory';
 
 import { Classes } from '../../proptypes';
 
 const styles = {
+  text: {
+    fontSize: '3rem',
+    textAlign: 'center',
+    color: 'white',
+  },
+  center: {
+    justifyContent: 'center',
+    display: 'flex',
+  },
 };
 
 const FinaleStage = ({ classes }) => (
   <div>
-    Finale
+    <Teams />
+    <p className={classes.text}>Děkujeme, přijďte zas!</p>
+    <div className={classes.center}>
+      <GameHistory />
+    </div>
+    <p className={classes.text}>www.polocas-napadu.cz</p>
   </div>
 );
 

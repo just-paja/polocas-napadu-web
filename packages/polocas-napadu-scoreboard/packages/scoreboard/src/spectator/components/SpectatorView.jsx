@@ -3,6 +3,7 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
+import FinaleStage from './FinaleStage';
 import GameSetupStage from './GameSetupStage';
 import GameStage from './GameStage';
 import GameResultsStage from './GameResultsStage';
@@ -35,6 +36,9 @@ const styles = {
 };
 
 const getStageView = (stage) => {
+  if (stage === constants.STAGE_FINALE) {
+    return <FinaleStage />;
+  }
   if (stage === constants.STAGE_PAUSE) {
     return <PauseStage />;
   }

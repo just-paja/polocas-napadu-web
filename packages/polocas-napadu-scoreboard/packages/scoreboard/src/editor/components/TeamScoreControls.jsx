@@ -22,18 +22,18 @@ const TeamScoreControls = ({
   return (
     <div>
       <div>
-        <Button onClick={onScoreIncrease}>
+        <Button variant="outlined" onClick={onScoreIncrease}>
           +1 Score
         </Button>
-        <Button onClick={onScoreDecrease} disabled={team.score === 0}>
+        <Button variant="outlined" onClick={onScoreDecrease} disabled={team.score === 0}>
           -1 Score
         </Button>
       </div>
       <div>
-        <Button onClick={onPenaltyIncrease}>
+        <Button variant="outlined" onClick={onPenaltyIncrease}>
           +1 Penalty
         </Button>
-        <Button onClick={onPenaltyDecrease} disabled={team.penalties === 0}>
+        <Button variant="outlined" onClick={onPenaltyDecrease} disabled={team.penalties === 0}>
           -1 Penalty
         </Button>
       </div>

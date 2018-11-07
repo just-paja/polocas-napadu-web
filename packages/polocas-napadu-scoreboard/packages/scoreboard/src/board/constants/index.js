@@ -29,6 +29,9 @@ export const STAGE_FLOW = {
     STAGE_GAME_SETUP,
     STAGE_FINALE,
   ],
+  [STAGE_FINALE]: [
+    STAGE_GAME_SETUP,
+  ],
 };
 
 export const STAGES_SCORE_CHANGES = [
