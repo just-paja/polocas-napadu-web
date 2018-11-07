@@ -14,20 +14,42 @@ export const STAGE_FLOW = {
   [STAGE_SHOW_SETUP]: [
     STAGE_GAME_SETUP,
   ],
+  [STAGE_GAME_RESULTS]: [
+    STAGE_GAME_SETUP,
+    STAGE_PAUSE,
+    STAGE_FINALE,
+  ],
   [STAGE_GAME_SETUP]: [
     STAGE_GAME,
   ],
   [STAGE_GAME]: [
     STAGE_GAME_RESULTS,
-    STAGE_GAME_SETUP,
-  ],
-  [STAGE_GAME_RESULTS]: [
-    STAGE_GAME_SETUP,
-    STAGE_PAUSE,
-    STAGE_FINALE,
   ],
   [STAGE_PAUSE]: [
     STAGE_GAME_SETUP,
     STAGE_FINALE,
   ],
 };
+
+export const STAGE_FLOW_BACK = {
+  [STAGE_GAME_RESULTS]: [
+    STAGE_GAME,
+  ],
+  [STAGE_GAME_SETUP]: [
+    STAGE_SHOW_SETUP,
+  ],
+  [STAGE_GAME]: [
+    STAGE_GAME_SETUP,
+  ],
+  [STAGE_PAUSE]: [
+    STAGE_GAME_SETUP,
+  ],
+  [STAGE_FINALE]: [
+    STAGE_PAUSE,
+  ],
+};
+
+export const STAGES_SCORE_CHANGES = [
+  STAGE_GAME_RESULTS,
+  STAGE_GAME_SETUP,
+];

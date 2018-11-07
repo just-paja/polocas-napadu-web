@@ -1,9 +1,8 @@
-import { STAGE_FLOW } from '../constants';
+import { STAGE_FLOW, STAGE_FLOW_BACK, STAGES_SCORE_CHANGES } from '../constants';
 
 const listNextStages = stage => STAGE_FLOW[stage] || [];
 
-const listPrevStages = (stage) =>
-  Object.keys(STAGE_FLOW).filter(key => STAGE_FLOW[key].indexOf(stage) !== -1);
+const listPrevStages = stage => STAGE_FLOW_BACK[stage] || [];
 
 const getStageState = state => state.board.stage;
 
@@ -14,3 +13,5 @@ export const getPrevStages = state => listPrevStages(getStage(state).stage);
 
 export const getGameName = () => 'foo';
 export const getGameInspiration = () => 'inspiration';
+
+export const areScoreChangesAllowed = state => STAGES_SCORE_CHANGES.indexOf(getStage(state).stage) !== -1;
