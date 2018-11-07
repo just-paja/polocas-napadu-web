@@ -19,7 +19,7 @@ class StageChangeButton extends Component {
 
   render() {
     return (
-      <Button onClick={this.handleClick}>
+      <Button onClick={this.handleClick} variant="outlined">
         {this.getStageName()}
       </Button>
     );

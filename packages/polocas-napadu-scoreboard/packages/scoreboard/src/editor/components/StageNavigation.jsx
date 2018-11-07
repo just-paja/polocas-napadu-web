@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 import StageChangeButton from '../containers/StageChangeButton';
 
@@ -9,7 +10,7 @@ const StageNavigation = ({ availableStages, heading }) => {
   }
   return (
     <div>
-      <h2>{heading}</h2>
+      <Typography variant="overline">{heading}</Typography>
       {availableStages.map(stage => (
         <StageChangeButton stage={stage} key={stage} />
       ))}

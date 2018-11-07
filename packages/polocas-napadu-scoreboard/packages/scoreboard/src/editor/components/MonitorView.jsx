@@ -1,41 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
 import FlipSidesButton from '../containers/FlipSidesButton';
-import NextStages from '../containers/NextStages';
+import StageControls from './StageControls';
+import Stage from '../containers/Stage';
 import OpenSpectatorWindowButton from '../../spectator/containers/OpenSpectatorWindowButton';
-import PrevStages from '../containers/PrevStages';
-import Team from '../containers/Team';
+import TeamControls from '../containers/TeamControls';
 
 import { Classes } from '../../proptypes';
-import { SplitView } from '../../board/components';
 
-const styles = {
+const styles = theme => ({
   controls: {
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '2rem',
   },
-  teams: {
-  }
-};
+});
 
-const MonitorView = ({ classes, sides }) => (
+const MonitorView = ({ classes }) => (
   <div>
-    <div className={classes.teams}>
-      <SplitView>
-        <Team side="left" />
-        <Team side="right" />
-      </SplitView>
-    </div>
-    <div>
-      <SplitView>
-        <PrevStages heading="Move back" />
-        <NextStages heading="Advance" />
-      </SplitView>
-    </div>
+    <Stage />
+    <StageControls />
+    <TeamControls />
     <div className={classes.controls}>
       <FlipSidesButton />
       <OpenSpectatorWindowButton />
@@ -45,10 +32,6 @@ const MonitorView = ({ classes, sides }) => (
 
 MonitorView.propTypes = {
   classes: Classes.isRequired,
-  sides: PropTypes.shape({
-    left: PropTypes.string.isRequired,
-    right: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default withStyles(styles)(MonitorView);

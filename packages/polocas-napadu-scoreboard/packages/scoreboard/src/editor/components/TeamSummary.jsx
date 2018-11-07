@@ -1,56 +1,51 @@
-import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditTeamButton from '../containers/EditTeamButton';
+import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@material-ui/core/styles';
+
+import TeamScoreControls from '../containers/TeamScoreControls';
+
 import { Classes } from '../../proptypes';
 
 import * as constants from '../../board/constants';
 
-const styles = {
+const styles = theme => ({
   logo: {
     marginRight: '1rem',
     maxHeight: '2rem',
   },
-  team: {
+  teamName: {
+    marginTop: 0,
   },
-};
+  props: {
+    marginLeft: -3 * theme.spacing.unit,
+  },
+});
 
 const TeamSummary = ({
   classes,
-  onPenaltyDecrease,
-  onPenaltyIncrease,
-  onScoreDecrease,
-  onScoreIncrease,
   team,
   teamId,
 }) => (
   <div className={classes.team}>
-    <div>
+    <Typography variant="display1">
       <img
-        alt=""
+        alt="Team logo"
         className={classes.logo}
         src={team.logo || constants.TEAM_LOGO_DEFAULT}
       />
-      <h1>{team.name} ({team.score}, {team.penalties})</h1>
-    </div>
-    <div>
-      <Button onClick={onScoreIncrease}>
-        +1 Score
-      </Button>
-      <Button onClick={onScoreDecrease} disabled={team.score === 0}>
-        -1 Score
-      </Button>
-    </div>
-    <div>
-      <Button onClick={onPenaltyIncrease}>
-        +1 Penalty
-      </Button>
-      <Button onClick={onPenaltyDecrease} disabled={team.penalties === 0}>
-        -1 Penalty
-      </Button>
-    </div>
+      {team.name}
+    </Typography>
+    <List className={classes.props}>
+      <ListItem><ListItemText>Score: {team.score}</ListItemText></ListItem>
+      <ListItem><ListItemText>Penalty points: {team.penalties}</ListItemText></ListItem>
+    </List>
+    <TeamScoreControls teamId={teamId} />
     <EditTeamButton teamId={teamId} />
   </div>
 );
