@@ -42,7 +42,7 @@ jobs:
       - persist_to_workspace:
           root: *workspace_root
           paths:
-            - .
+            - build
 
   test:
     <<: *defaults
@@ -58,6 +58,20 @@ jobs:
           name: Publish coverage
           command: ./node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
 
+  deploy:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/python:3-stretch
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync build s3://scoreboard.polocas-napadu.cz --delete
+
 workflows:
   version: 2
   build-n-deploy:
@@ -69,6 +83,12 @@ workflows:
       - build:
           requires:
             - install
+          filters:
+            tags:
+              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - deploy:
+          requires:
+            - build
           filters:
             tags:
               only: /[0-9]+\.[0-9]+\.[0-9]+/
