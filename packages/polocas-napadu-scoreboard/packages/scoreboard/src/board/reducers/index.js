@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import games from './games';
 import sides from './sides';
 import stage from './stage';
+import topics from './topics';
 
 import { createTeamDataReducer } from '../../teams/reducers';
 
@@ -18,4 +19,5 @@ export default combineReducers({
   games,
   stage,
   teams,
+  topics,
 });

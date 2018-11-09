@@ -1,5 +1,5 @@
 import { createRoutine } from '../../actions/routines';
-import { createListRoutine } from '../../lists';
+import { LIST_IDENTIFIER, LIST_ACTIONS, createListRoutine } from '../../lists';
 
 export const flipSides = createRoutine('FLIP_SIDES', ['TRIGGER']);
 
@@ -16,3 +16,15 @@ export const stage = createRoutine('STAGE', [
   'GAME_SET',
   'CHANGE',
 ]);
+
+export const topic = createRoutine('TOPIC', [
+  'ADD',
+  'DISCARD',
+  'GENERATE',
+  'SUGGEST',
+  'USE',
+]);
+
+// Necessary to change game reducer
+topic[LIST_ACTIONS] = [topic.SUGGEST];
+topic[LIST_IDENTIFIER] = game[LIST_IDENTIFIER];

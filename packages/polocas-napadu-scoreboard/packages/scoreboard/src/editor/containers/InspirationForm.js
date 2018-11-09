@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const mergeProps = (stateProps, dispatchProps, mergeProps) => ({
+const mergeProps = (stateProps, dispatchProps) => ({
   ...stateProps,
   ...dispatchProps,
   onSubmit: values => dispatchProps.onSubmit(values, stateProps.currentGameId),

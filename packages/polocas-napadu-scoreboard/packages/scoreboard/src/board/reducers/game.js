@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { game } from '../actions';
+import { game, topic } from '../actions';
 
 export const initialState = {
   uuid: '',
@@ -19,4 +19,9 @@ export default handleActions({
     inspiration: action.payload.inspiration,
     extra: action.payload.extra,
   }),
+  [topic.SUGGEST]: (state, action) => ({
+    ...state,
+    inspiration: action.payload,
+    extra: ''
+  })
 }, initialState);

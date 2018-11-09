@@ -1,6 +1,9 @@
 import gameReducer, { initialState } from './game';
 
-import { game } from '../actions';
+import { game, topic } from '../actions';
 import { createListReducer } from '../../lists';
 
-export default createListReducer(game, gameReducer, initialState);
+export default createListReducer([
+  game,
+  topic,
+], gameReducer, initialState);

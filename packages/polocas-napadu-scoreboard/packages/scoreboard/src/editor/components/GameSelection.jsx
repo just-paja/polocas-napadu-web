@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import GameSelectForm from '../containers/GameSelectForm';
 import InspirationForm from '../containers/InspirationForm';
+import InspirationGenerator from '../containers/InspirationGenerator';
 
 import { Classes } from '../../proptypes';
 
@@ -36,6 +37,8 @@ const GameSelection = ({ classes, currentGame, isVisible }) => {
         <GameSelectForm />
         {currentGame ? (
           <div>
+            <hr />
+            <InspirationGenerator />
             <hr />
             <Typography variant="display1">Inspiration</Typography>
             <InspirationForm />

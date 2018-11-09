@@ -1,0 +1,53 @@
+import { handleActions } from 'redux-actions';
+
+import { topic } from '../actions';
+
+const initialState = {
+  available: [
+    'Topic 1',
+    'Přespříliš žluťoučký kůň',
+    'Úpel ďábelské ódy',
+  ],
+  discarded: [],
+  used: [],
+  suggestion: null,
+};
+
+const removeTopic = (arr, item) =>
+  arr.map(arrItem => arrItem === item);
+
+export default handleActions({
+  [topic.ADD]: (state, action) => {
+    if (state.available.indexOf(action.payload) !== -1) {
+      return state;
+    }
+    return {
+      ...state,
+      available: [
+        ...state.available,
+        action.payload,
+      ],
+    };
+  },
+  [topic.USE]: (state, action) => ({
+    ...state,
+    available: removeTopic(state.available, action.payload),
+    used: [
+      ...state.used,
+      action.payload,
+    ],
+  }),
+  [topic.DISCARD]: (state, action) => ({
+    ...state,
+    available: removeTopic(state.available, action.payload),
+    used: removeTopic(state.used, action.payload),
+    discarded: [
+      ...state.used,
+      action.payload,
+    ],
+  }),
+  [topic.SUGGEST]: (state, action) => ({
+    ...state,
+    suggestion: action.payload,
+  }),
+}, initialState);
