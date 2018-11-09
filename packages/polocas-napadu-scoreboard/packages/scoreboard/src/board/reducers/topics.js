@@ -4,16 +4,12 @@ import { topic, topicDownload } from '../actions';
 
 const doesInspirationExist = state => topic => {
   return state.available.indexOf(topic) === -1
-  || state.discarded.indexOf(topic) === -1
-  || state.used.indexOf(topic) === -1;
+  && state.discarded.indexOf(topic) === -1
+  && state.used.indexOf(topic) === -1;
 };
 
 const initialState = {
-  available: [
-    'Topic 1',
-    'Přespříliš žluťoučký kůň',
-    'Úpel ďábelské ódy',
-  ],
+  available: [],
   discarded: [],
   used: [],
   source: null,
@@ -21,7 +17,7 @@ const initialState = {
 };
 
 const removeTopic = (arr, item) =>
-  arr.map(arrItem => arrItem !== item);
+  arr.filter(arrItem => arrItem !== item);
 
 export default handleActions({
   [topic.ADD]: (state, action) => {
@@ -62,7 +58,9 @@ export default handleActions({
     source: action.payload,
   }),
   [topicDownload.SUCCESS]: (state, action) => {
-    const newTopics = action.payload.filter(doesInspirationExist(state));
+    const newTopics = action.payload
+      .filter(item => item)
+      .filter(doesInspirationExist(state));
     return {
       ...state,
       available: [
