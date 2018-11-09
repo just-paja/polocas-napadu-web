@@ -1,6 +1,12 @@
 import { handleActions } from 'redux-actions';
 
-import { topic } from '../actions';
+import { topic, topicDownload } from '../actions';
+
+const doesInspirationExist = state => topic => {
+  return state.available.indexOf(topic) === -1
+  || state.discarded.indexOf(topic) === -1
+  || state.used.indexOf(topic) === -1;
+};
 
 const initialState = {
   available: [
@@ -10,11 +16,12 @@ const initialState = {
   ],
   discarded: [],
   used: [],
+  source: null,
   suggestion: null,
 };
 
 const removeTopic = (arr, item) =>
-  arr.map(arrItem => arrItem === item);
+  arr.map(arrItem => arrItem !== item);
 
 export default handleActions({
   [topic.ADD]: (state, action) => {
@@ -50,4 +57,18 @@ export default handleActions({
     ...state,
     suggestion: action.payload,
   }),
+  [topic.SET_SOURCE]: (state, action) => ({
+    ...state,
+    source: action.payload,
+  }),
+  [topicDownload.SUCCESS]: (state, action) => {
+    const newTopics = action.payload.filter(doesInspirationExist(state));
+    return {
+      ...state,
+      available: [
+        ...state.available,
+        ...newTopics,
+      ],
+    };
+  },
 }, initialState);

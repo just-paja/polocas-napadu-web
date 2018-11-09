@@ -8,6 +8,7 @@ import Stage from '../containers/Stage';
 import OpenSpectatorWindowButton from '../../spectator/containers/OpenSpectatorWindowButton';
 import TeamControls from '../containers/TeamControls';
 import GameSelection from '../containers/GameSelection';
+import InspirationSource from '../containers/InspirationSource';
 
 import { Classes } from '../../proptypes';
 
@@ -25,6 +26,7 @@ const MonitorView = ({ classes }) => (
     <StageControls />
     <GameSelection />
     <TeamControls />
+    <InspirationSource />
     <div className={classes.controls}>
       <FlipSidesButton />
       <OpenSpectatorWindowButton />

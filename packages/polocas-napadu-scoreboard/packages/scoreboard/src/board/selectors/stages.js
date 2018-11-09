@@ -50,3 +50,11 @@ export const getCurrentGame = (state) => {
   const currentGameId = getCurrentGameId(state);
   return games.find(game => game.id === currentGameId);
 };
+
+export const getCurrentGameInspiration = (state) => {
+  const currentGame = getCurrentGame(state);
+  if (!currentGame) {
+    return '';
+  }
+  return currentGame.inspiration;
+};

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -26,27 +28,44 @@ const styles = theme => ({
   },
 });
 
-const GameSelection = ({ classes, currentGame, isVisible }) => {
-  if (!isVisible) {
-    return null;
+class GameSelection extends Component {
+  constructor() {
+    super();
+    this.state = { activeTab: 0 };
+    this.handleTabChange = this.handleTabChange.bind(this);
   }
-  return (
-    <div className={classes.bg}>
-      <div className={classes.form}>
-        <Typography variant="display1">Game selection</Typography>
-        <GameSelectForm />
-        {currentGame ? (
-          <div>
-            <hr />
-            <InspirationGenerator />
-            <hr />
-            <Typography variant="display1">Inspiration</Typography>
-            <InspirationForm />
-          </div>
-        ) : null}
+
+  handleTabChange(event, value) {
+    this.setState({ activeTab: value });
+  }
+
+  render() {
+    const { classes, currentGame, isVisible } = this.props;
+    const { activeTab } = this.state;
+    if (!isVisible) {
+      return null;
+    }
+    return (
+      <div className={classes.bg}>
+        <div className={classes.form}>
+          <Typography variant="display1">Game selection</Typography>
+          <GameSelectForm />
+          {currentGame ? (
+            <div>
+              <hr />
+              <Typography variant="display1">Inspiration</Typography>
+              <Tabs value={this.state.activeTab} onChange={this.handleTabChange}>
+                <Tab label="Generate" />
+                <Tab label="Manual" />
+              </Tabs>
+              {activeTab === 0 && <InspirationGenerator />}
+              {activeTab === 1 && <InspirationForm />}
+            </div>
+          ) : null}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 GameSelection.propTypes = {

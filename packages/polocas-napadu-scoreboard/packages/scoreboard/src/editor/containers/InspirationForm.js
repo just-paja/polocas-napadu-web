@@ -3,13 +3,16 @@ import { reduxForm } from 'redux-form';
 
 import InspirationForm from '../components/InspirationForm';
 
-import { getCurrentGameId } from '../../board/selectors';
+import { getCurrentGameInspiration, getCurrentGameId } from '../../board/selectors';
 import { game } from '../../board/actions';
 
 import * as constants from '../constants';
 
 const mapStateToProps = state => ({
   currentGameId: getCurrentGameId(state),
+  initialValues: {
+    inspiration: getCurrentGameInspiration(state),
+  },
 });
 
 const mapDispatchToProps = dispatch => ({

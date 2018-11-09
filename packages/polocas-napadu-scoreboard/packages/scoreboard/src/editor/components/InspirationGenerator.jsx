@@ -7,10 +7,13 @@ import { withStyles } from '@material-ui/core/styles';
 import { Classes } from '../../proptypes';
 
 const styles = {
-  inspiration: {},
+  inspiration: {
+    fontSize: '2rem',
+    padding: '1rem',
+  },
 };
 
-const InspirationGenerator = ({ classes, onGenerate, onSelect, inspiration }) => (
+const InspirationGenerator = ({ classes, onDiscard, onGenerate, onSelect, inspiration }) => (
   <div>
     <div className={classes.inspiration}>
       {inspiration || (
@@ -19,10 +22,13 @@ const InspirationGenerator = ({ classes, onGenerate, onSelect, inspiration }) =>
         </span>
       )}
     </div>
-    <Button onClick={onGenerate}>
+    <Button color="secondary" variant="contained" onClick={onDiscard}>
+      Discard this
+    </Button>
+    <Button variant="contained" onClick={onGenerate}>
       Generate new
     </Button>
-    <Button onClick={onSelect}>
+    <Button color="primary" variant="contained" onClick={onSelect}>
       Use this!
     </Button>
   </div>

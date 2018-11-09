@@ -17,10 +17,19 @@ export const stage = createRoutine('STAGE', [
   'CHANGE',
 ]);
 
+export const topicDownload = createRoutine('TOPIC_DOWNLOAD', [
+  'FAILURE',
+  'FULFILL',
+  'REQUEST',
+  'SUCCESS',
+  'TRIGGER',
+]);
+
 export const topic = createRoutine('TOPIC', [
   'ADD',
   'DISCARD',
   'GENERATE',
+  'SET_SOURCE',
   'SUGGEST',
   'USE',
 ]);
