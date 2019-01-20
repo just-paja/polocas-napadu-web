@@ -1,15 +1,6 @@
 import PropTypes from 'prop-types';
 
-import * as constants from './constants';
-
-export const Classes = PropTypes.objectOf(PropTypes.string);
-
-export const ClassName = PropTypes.oneOfType([
-  Classes,
-  PropTypes.arrayOf(Classes),
-  PropTypes.arrayOf(PropTypes.string),
-  PropTypes.string,
-]);
+import * as constants from '../constants';
 
 export const ContestantType = PropTypes.oneOf([
   constants.CONTESTANT_HOME,
@@ -20,14 +11,9 @@ export const Band = PropTypes.shape({
   name: PropTypes.isRequired,
 });
 
-export const Location = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-});
-
 export const Show = PropTypes.shape({
   name: PropTypes.isRequired,
-  location: Location.isRequired,
-  start: PropTypes.string.isRequired,
+  start: PropTypes.string,
 });
 
 export const ContestantGroup = PropTypes.shape({

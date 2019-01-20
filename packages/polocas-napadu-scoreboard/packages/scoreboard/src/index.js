@@ -1,27 +1,25 @@
+import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
-import configureStore from './store';
-import sagas from './sagas';
 
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 
-const store = configureStore({});
+const apolloClient = new ApolloClient({
+  uri: 'http://localhost:8000/graphql',
+});
 
 const render = (RootComponent) => {
   ReactDOM.render(
-    <RootComponent store={store} />,
+    <RootComponent client={apolloClient} />,
     document.getElementById('root')
   );
 };
 
-let sagaTask;
-
 const startUp = () => {
-  sagaTask = store.runSaga(sagas);
   render(App);
 };
 
@@ -38,14 +36,5 @@ if (module.hot) {
     // eslint-disable-next-line global-require
     render(require('./App').default);
     console.info(':: Hot reload root component');
-  });
-  module.hot.accept('./sagas', () => {
-    // eslint-disable-next-line global-require
-    const reloadSagas = require('./sagas').default;
-    sagaTask.cancel();
-    sagaTask.done.then(() => {
-      sagaTask = store.runSaga(reloadSagas);
-      console.info(':: Hot reload sagas');
-    });
   });
 }

@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
 
-import TeamDetails from '../containers/TeamDetails';
+import TeamDetails from './TeamDetails';
+import GraphContainer from '../../components/GraphContainer';
 
 import { SplitView } from '../../board/components';
 import { Classes } from '../../proptypes';
@@ -14,10 +16,25 @@ const styles = {
   },
 };
 
+const GET_MATCH_TEAMS = gql`
+  query Stage($matchId: Int!) {
+    match(id: $matchId) {
+      contestantGroups {
+        contestantType,
+        band {
+          name,
+        }
+      }
+    }
+  }
+`
+
+
 const Teams = ({ classes, hideScore }) => (
   <SplitView className={classes.split}>
-    <TeamDetails hideScore={hideScore} side="left" />
-    <TeamDetails hideScore={hideScore} side="right" />
+    asdf
+    // <TeamDetails hideScore={hideScore} side="left" />
+    // <TeamDetails hideScore={hideScore} side="right" />
   </SplitView>
 );
 
@@ -30,4 +47,4 @@ Teams.defaultProps = {
   hideScore: false,
 };
 
-export default withStyles(styles)(Teams);
+export default GraphContainer(withStyles(styles)(Teams), GET_MATCH_TEAMS);

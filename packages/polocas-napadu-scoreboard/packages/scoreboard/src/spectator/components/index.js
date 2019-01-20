@@ -1,9 +1,1 @@
-export { default as FinaleStage } from './FinaleStage';
-export { default as GameInspiration } from './GameInspiration';
-export { default as GamerResultsStage } from './GamerResultsStage';
-export { default as GameSetupStage } from './GameSetupStage';
-export { default as GameStage } from './GameStage';
-export { default as OpenSpectatorWindowButton } from './OpenSpectatorWindowButton';
-export { default as PauseStage } from './PauseStage';
-export { default as ShowSetupStage } from './ShowSetupStage';
-export { default as Teams } from './Teams';
+export { default as SpectatorView } from './SpectatorView';

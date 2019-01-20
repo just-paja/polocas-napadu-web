@@ -3,16 +3,9 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import FinaleStage from './FinaleStage';
-import GameSetupStage from './GameSetupStage';
-import GameStage from './GameStage';
-import GameResultsStage from './GameResultsStage';
-import PauseStage from './PauseStage';
-import ShowSetupStage from './ShowSetupStage';
+import MatchStage from './MatchStage';
 
 import { Classes } from '../../proptypes';
-
-import * as constants from '../../board/constants';
 
 const styles = {
   spectatorView: {
@@ -35,36 +28,22 @@ const styles = {
   },
 };
 
-const getStageView = (stage) => {
-  if (stage === constants.STAGE_FINALE) {
-    return <FinaleStage />;
-  }
-  if (stage === constants.STAGE_PAUSE) {
-    return <PauseStage />;
-  }
-  if (stage === constants.STAGE_GAME_RESULTS) {
-    return <GameResultsStage />;
-  }
-  if (stage === constants.STAGE_GAME) {
-    return <GameStage />;
-  }
-  if (stage === constants.STAGE_GAME_SETUP) {
-    return <GameSetupStage />;
-  }
-  return <ShowSetupStage />;
-};
 
-const SpectatorView = ({ classes, stage }) => (
+const SpectatorView = ({ classes, match, stage }) => (
   <div className={classes.spectatorView}>
     <div className={classes.board}>
-      {getStageView(stage)}
+      <MatchStage variables={{ matchId: match.params.matchId }} />
     </div>
   </div>
 );
 
 SpectatorView.propTypes = {
   classes: Classes.isRequired,
-  stage: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      matchId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default withStyles(styles)(SpectatorView);

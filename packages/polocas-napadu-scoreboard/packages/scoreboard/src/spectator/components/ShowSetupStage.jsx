@@ -3,7 +3,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import Teams from './Teams';
-import InspirationCount from '../containers/InspirationCount';
+import InspirationQr from './InspirationQr';
 
 import { Classes } from '../../proptypes';
 
@@ -18,17 +18,14 @@ const styles = {
   },
 };
 
-const ShowSetupStage = ({ classes }) => (
+
+const ShowSetupStage = ({ classes, variables }) => (
   <div>
-    <Teams hideScore />
+    <Teams hideScore variables={variables} />
     <div className={classes.inspiration}>
-      <img
-        src="/qr-inspiration.png"
-        alt="invite"
-        className={classes.qr}
-      />
+      <InspirationQr className={classes.qr} variables={variables} />
     </div>
-    <InspirationCount />
+    InspirationCount
   </div>
 );
 
