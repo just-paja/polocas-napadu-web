@@ -16,7 +16,9 @@ const styles = {
 const GET_MATCH_INSPIRATION_COUNT = gql`
   query TotalCount($matchId: Int!){
     match(id: $matchId) {
-      totalInspirations,
+      show {
+        totalInspirations,
+      }
     }
   }
 `;

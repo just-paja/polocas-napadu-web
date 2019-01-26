@@ -3,7 +3,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import Teams from './Teams';
-import GameInspiration from '../containers/GameInspiration';
+import GameInspiration from './GameInspiration';
 
 import { Classes } from '../../proptypes';
 

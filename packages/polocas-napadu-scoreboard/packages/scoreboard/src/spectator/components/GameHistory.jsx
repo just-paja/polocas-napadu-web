@@ -1,6 +1,9 @@
 import React, { Component} from 'react';
 
+import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
+
+import GraphContainer from '../../components/GraphContainer';
 
 import { Classes } from '../../proptypes';
 
@@ -15,6 +18,23 @@ const styles = {
   }
 };
 
+const GET_MATCH_GAMES = gql`
+  query Games($matchId: Int!) {
+    match(id: $matchId) {
+      show {
+        games {
+          type,
+          gameInspirations {
+            inspiration {
+              text,
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 class GameHistory extends Component {
   constructor() {
     super();
@@ -25,7 +45,7 @@ class GameHistory extends Component {
   }
 
   componentDidMount() {
-    if (this.props.games.length) {
+    if (this.games.length) {
       this.setState({ showGame: 0 });
       this.queueNextGame();
     }
@@ -33,6 +53,10 @@ class GameHistory extends Component {
 
   componentWillUnmount() {
     this.unsetTimeout();
+  }
+
+  get games() {
+    return this.props.data.match.show.games;
   }
 
   unsetTimeout() {
@@ -45,28 +69,27 @@ class GameHistory extends Component {
   }
 
   showNextGame() {
-    const { games } = this.props;
     const { showGame } = this.state;
-    const next = showGame < games.length - 1 ? showGame + 1 : 0;
+    const next = showGame < this.games.length - 1 ? showGame + 1 : 0;
     this.setState({ showGame: next });
     this.queueNextGame();
   }
 
   render() {
-    const { classes, games } = this.props;
-    const game = games[this.state.showGame];
+    const { classes } = this.props;
+    const game = this.games[this.state.showGame];
     if (!game) {
       return null;
     }
-    const inspiration = [game.inspiration, game.extra].filter(item => item);
+    const inspirations = game.gameInspirations;
     return (
       <div className={classes.bigFont}>
-        {inspiration.length > 0 ? (
+        {inspirations.length > 0 ? (
           <div className={classes.inspiration}>
-            {inspiration.join(', ')}
+            {inspirations.map(inspiration => inspiration.inspiration.text).join(', ')}
           </div>
         ) : null}
-        <div className={classes.game}>({game.game})</div>
+        <div className={classes.game}>({game.type})</div>
       </div>
     );
   }
@@ -76,4 +99,7 @@ GameHistory.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(GameHistory);
+export default GraphContainer(
+  withStyles(styles)(GameHistory),
+  GET_MATCH_GAMES
+);
