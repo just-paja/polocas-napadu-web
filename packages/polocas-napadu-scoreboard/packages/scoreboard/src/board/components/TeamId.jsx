@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { TEAM_HOME } from '../constants';
+import { CONTESTANT_HOME } from '../../constants';
 
 const TeamId = ({ teamId }) => (
   <span>
-    {teamId === TEAM_HOME ? 'Domácí' : 'Hosté'}
+    {teamId === CONTESTANT_HOME ? 'Domácí' : 'Hosté'}
   </span>
 );
 

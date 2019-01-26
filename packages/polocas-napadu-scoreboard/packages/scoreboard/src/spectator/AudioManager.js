@@ -10,7 +10,7 @@ class AudioConnector {
   }
 }
 
-class AudioManager {
+class AudioManagerObject {
   constructor() {
     this.sounds = [];
     this.play = this.play.bind(this);
@@ -75,4 +75,4 @@ class AudioManager {
   }
 }
 
-export default new AudioManager();
+export const AudioManager = new AudioManagerObject();
