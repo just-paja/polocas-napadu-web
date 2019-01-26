@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import { getNewRandomItem } from '../../shuffle';
+import { Band } from '../../proptypes';
 
 import * as constants from '../../board/constants';
 
@@ -152,7 +153,7 @@ class TeamDetails extends Component {
           <img
             className={classnames(classes.logo, classes[camelCase(`logo-${side}`)])}
             src={team.logo || constants.TEAM_LOGO_DEFAULT}
-            alt="Team logo"
+            alt="Band logo"
           />
           <span
             className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
@@ -182,9 +183,7 @@ class TeamDetails extends Component {
 }
 
 TeamDetails.propTypes = {
-  name: PropTypes.string,
-  side: PropTypes.string,
-  logo: PropTypes.string,
+  team: Band.isRequired,
   hideScore: PropTypes.bool,
 };
 

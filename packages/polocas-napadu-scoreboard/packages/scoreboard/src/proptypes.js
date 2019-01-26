@@ -38,6 +38,6 @@ export const ContestantGroup = PropTypes.shape({
 export const Match = PropTypes.shape({
   closed: PropTypes.bool,
   contestantGroups: PropTypes.arrayOf(ContestantGroup).isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   show: Show.isRequired,
 });

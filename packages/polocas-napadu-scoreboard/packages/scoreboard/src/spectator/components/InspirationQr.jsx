@@ -15,7 +15,7 @@ const GET_MATCH_INSPIRATION_QR = gql`
   }
 `
 
-const ShowSetupStage = ({ data, variables, ...props }) => (
+const ShowSetupStage = ({ data, ...props }) => (
   <img
     src={data.match.show.inspirationQrUrl}
     alt="invite"

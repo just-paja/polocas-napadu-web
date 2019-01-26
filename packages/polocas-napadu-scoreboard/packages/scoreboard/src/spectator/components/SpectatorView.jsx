@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MatchStage from './MatchStage';
 
 import { Classes } from '../../proptypes';
+import { RouterContext } from '../../context';
 
 const styles = {
   spectatorView: {
@@ -28,11 +29,12 @@ const styles = {
   },
 };
 
-
-const SpectatorView = ({ classes, match, stage }) => (
+const SpectatorView = ({ classes, match }) => (
   <div className={classes.spectatorView}>
     <div className={classes.board}>
-      <MatchStage variables={{ matchId: match.params.matchId }} />
+      <RouterContext.Provider value={match.params}>
+        <MatchStage />
+      </RouterContext.Provider>
     </div>
   </div>
 );

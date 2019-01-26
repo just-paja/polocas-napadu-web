@@ -9,6 +9,7 @@ import GraphContainer from '../../components/GraphContainer';
 
 import { SplitView } from '../../board/components';
 import { Classes } from '../../proptypes';
+import { CONTESTANT_HOME, CONTESTANT_GUEST } from '../../constants';
 
 const styles = {
   split: {
@@ -27,16 +28,18 @@ const GET_MATCH_TEAMS = gql`
       }
     }
   }
-`
+`;
 
-
-const Teams = ({ classes, hideScore }) => (
-  <SplitView className={classes.split}>
-    asdf
-    // <TeamDetails hideScore={hideScore} side="left" />
-    // <TeamDetails hideScore={hideScore} side="right" />
-  </SplitView>
-);
+const Teams = ({ classes, data, hideScore }) => {
+  const home = data.match.contestantGroups.find(group => group.contestantType === CONTESTANT_HOME);
+  const guest = data.match.contestantGroups.find(group => group.contestantType === CONTESTANT_GUEST);
+  return (
+    <SplitView className={classes.split}>
+      <TeamDetails team={home.band} hideScore={hideScore} side="left" />
+      <TeamDetails team={guest.band} hideScore={hideScore} side="left" />
+    </SplitView>
+  );
+};
 
 Teams.propTypes = {
   classes: Classes.isRequired,
@@ -47,4 +50,4 @@ Teams.defaultProps = {
   hideScore: false,
 };
 
-export default GraphContainer(withStyles(styles)(Teams), GET_MATCH_TEAMS);
+export default GraphContainer(withStyles(styles)(Teams), GET_MATCH_TEAMS, true);

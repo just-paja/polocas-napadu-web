@@ -1,7 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
+import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
+
+import GraphContainer from '../../components/GraphContainer';
 
 const styles = {
   inspiration: {
@@ -11,14 +13,25 @@ const styles = {
   },
 };
 
-const InspirationCount = ({ classes, count }) => (
+const GET_MATCH_INSPIRATION_COUNT = gql`
+  query TotalCount($matchId: Int!){
+    match(id: $matchId) {
+      totalInspirations,
+    }
+  }
+`;
+
+const InspirationCount = ({ classes, data }) => (
   <p className={classes.inspiration}>
-    Celkem témat: {count}
+    Celkem témat: {data.match.totalInspirations}
   </p>
 );
 
 InspirationCount.propTypes = {
-  count: PropTypes.number.isRequired,
 };
 
-export default withStyles(styles)(InspirationCount);
+export default GraphContainer(
+  withStyles(styles)(InspirationCount),
+  GET_MATCH_INSPIRATION_COUNT,
+  true
+);
