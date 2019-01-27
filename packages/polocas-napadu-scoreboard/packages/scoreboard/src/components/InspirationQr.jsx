@@ -3,7 +3,7 @@ import React from 'react';
 
 import { gql } from 'apollo-boost';
 
-import GraphContainer from '../../components/GraphContainer';
+import GraphContainer from './GraphContainer';
 
 const GET_MATCH_INSPIRATION_QR = gql`
   query($matchId: Int!) {

@@ -4,8 +4,9 @@ import { ApolloProvider } from 'react-apollo';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { MatchList, NotFound } from './components';
-import { SpectatorView } from './spectator/components';
+import MatchList from './components/MatchList';
+import NotFound from './components/NotFound';
+import SpectatorView from './components/SpectatorView';
 
 class App extends React.Component {
   render() {

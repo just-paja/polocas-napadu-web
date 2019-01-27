@@ -3,9 +3,9 @@ import React, { Component} from 'react';
 import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
 
-import GraphContainer from '../../components/GraphContainer';
+import GraphContainer from './GraphContainer';
 
-import { Classes } from '../../proptypes';
+import { Classes } from '../proptypes';
 
 const styles = {
   bigFont: {

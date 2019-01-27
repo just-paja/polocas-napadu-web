@@ -82,4 +82,7 @@ MatchList.propTypes = {
   }).isRequired
 };
 
-export default GraphContainer(withRouter(withStyles(styles)(MatchList)), GET_MATCHES);
+export default GraphContainer(
+  withRouter(withStyles(styles)(MatchList)),
+  GET_MATCHES
+);

@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import MatchStage from './MatchStage';
 
-import { Classes } from '../../proptypes';
-import { RouterContext } from '../../context';
+import { Classes } from '../proptypes';
+import { RouterContext } from '../context';
 
 const styles = {
   spectatorView: {

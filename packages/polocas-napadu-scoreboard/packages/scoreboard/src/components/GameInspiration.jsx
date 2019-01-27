@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { MatchContext } from '../../context';
+import { MatchContext } from '../context';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {

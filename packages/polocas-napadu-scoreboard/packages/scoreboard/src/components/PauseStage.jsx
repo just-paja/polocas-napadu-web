@@ -2,10 +2,10 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Teams from './Teams';
 import GameHistory from './GameHistory';
+import Teams from './Teams';
 
-import { Classes } from '../../proptypes';
+import { Classes } from '../proptypes';
 
 const styles = {
   text: {
@@ -19,19 +19,18 @@ const styles = {
   },
 };
 
-const FinaleStage = ({ classes }) => (
+const PauseStage = ({ classes }) => (
   <div>
     <Teams />
-    <p className={classes.text}>Děkujeme, přijďte zas!</p>
+    <p className={classes.text}>V první půlce jste viděli</p>
     <div className={classes.center}>
       <GameHistory />
     </div>
-    <p className={classes.text}>www.polocas-napadu.cz</p>
   </div>
 );
 
-FinaleStage.propTypes = {
+PauseStage.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(FinaleStage);
+export default withStyles(styles)(PauseStage);

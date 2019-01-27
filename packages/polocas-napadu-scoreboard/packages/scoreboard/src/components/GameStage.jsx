@@ -2,23 +2,21 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Teams from './Teams';
 import GameInspiration from './GameInspiration';
 
-import { Classes } from '../../proptypes';
+import { Classes } from '../proptypes';
 
 const styles = {
 };
 
-const GameSetupStage = ({ classes }) => (
+const GameStage = ({ classes }) => (
   <div>
-    <Teams />
     <GameInspiration />
   </div>
 );
 
-GameSetupStage.propTypes = {
+GameStage.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(GameSetupStage);
+export default withStyles(styles)(GameStage);

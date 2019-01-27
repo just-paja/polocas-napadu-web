@@ -6,7 +6,7 @@ import InspirationCount from './InspirationCount';
 import InspirationQr from './InspirationQr';
 import Teams from './Teams';
 
-import { Classes } from '../../proptypes';
+import { Classes } from '../proptypes';
 
 const styles = {
   inspiration: {

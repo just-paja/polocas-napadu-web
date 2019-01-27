@@ -7,9 +7,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 import TeamScore from './TeamScore';
 
-import { Band } from '../../proptypes';
+import { Band } from '../proptypes';
 
-import * as constants from '../../board/constants';
+import * as constants from '../board/constants';
 
 const styles = theme => ({
   name: {

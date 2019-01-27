@@ -5,20 +5,20 @@ import { withStyles } from '@material-ui/core/styles';
 import Teams from './Teams';
 import GameInspiration from './GameInspiration';
 
-import { Classes } from '../../proptypes';
+import { Classes } from '../proptypes';
 
 const styles = {
 };
 
-const GameResultsStage = ({ classes }) => (
+const GameSetupStage = ({ classes }) => (
   <div>
     <Teams />
     <GameInspiration />
   </div>
 );
 
-GameResultsStage.propTypes = {
+GameSetupStage.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(GameResultsStage);
+export default withStyles(styles)(GameSetupStage);
