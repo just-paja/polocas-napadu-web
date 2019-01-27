@@ -2,12 +2,31 @@ import AnimateOnChange from 'react-animate-on-change';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Howl } from 'howler';
 import { withStyles } from '@material-ui/core/styles';
+
+import { AudioManager } from '../AudioManager';
 
 import { getNewRandomItem } from '../../shuffle';
 
 import 'animate.css';
 
+const availableFanfares = [
+  '/sounds/point-8bit.wav',
+  '/sounds/point-distortion-guitar.wav',
+  '/sounds/point-halelujah.wav',
+  '/sounds/point-synth-01.wav',
+  '/sounds/point-synth-02.wav',
+  '/sounds/point-synth-baseball.wav',
+  '/sounds/point-windows.wav',
+];
+
+const fanfares = availableFanfares.map((sound) => {
+  AudioManager.store(sound, new Howl({
+    src: [sound],
+  }));
+  return sound;
+});
 
 const animations = [
   'bounce',
@@ -55,6 +74,7 @@ class TeamScore extends React.PureComponent {
   constructor() {
     super();
     this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
+    this.lastFanfare = null;
     this.state = {
       animation: false,
       lastAnimation: null,
@@ -63,6 +83,9 @@ class TeamScore extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.score !== prevProps.score) {
+      if (this.props.score > prevProps.score) {
+        this.playFanfare();
+      }
       this.setState({
         animation: getNewRandomItem(animations, this.state.lastAnimation),
       });
@@ -74,6 +97,13 @@ class TeamScore extends React.PureComponent {
       animation: false,
       lastAnimation: this.state.lastAnimation,
     });
+  }
+
+  playFanfare() {
+    const soundId = getNewRandomItem(fanfares, this.lastFanfare);
+    this.lastFanfare = soundId;
+    console.log(soundId);
+    AudioManager.play(soundId);
   }
 
   render() {
