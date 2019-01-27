@@ -30,6 +30,7 @@ const GET_MATCH_STAGE = gql`
       contestantGroups {
         contestantType,
         score,
+        color,
         band {
           name,
         }

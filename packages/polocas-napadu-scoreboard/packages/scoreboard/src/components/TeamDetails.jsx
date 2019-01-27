@@ -119,7 +119,7 @@ class TeamDetails extends Component {
           >{team.band.name}</span>
           {hideScore
             ? null
-            : <TeamScore score={team.score} background={team.color} />}
+            : <TeamScore score={team.score} backgroundColor={team.color} />}
           <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
             {generatePenalties(classes, team.penalties)}
           </span>
