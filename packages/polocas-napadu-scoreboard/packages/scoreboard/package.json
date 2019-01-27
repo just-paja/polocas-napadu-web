@@ -39,6 +39,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "apollo-link-schema": "^1.1.4",
+    "graphql-tools": "^4.0.4",
     "redux-logger": "^3.0.6"
   }
 }
