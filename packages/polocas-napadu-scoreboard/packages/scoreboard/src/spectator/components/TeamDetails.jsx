@@ -1,4 +1,3 @@
-import AnimateOnChange from 'react-animate-on-change';
 import camelCase from 'camelcase';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -6,27 +5,11 @@ import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { getNewRandomItem } from '../../shuffle';
+import TeamScore from './TeamScore';
+
 import { Band } from '../../proptypes';
 
 import * as constants from '../../board/constants';
-
-const animations = [
-  'bounce',
-  'flash',
-  'hinge',
-  'jackInTheBox',
-  'jello',
-  'pulse',
-  'rollIn',
-  'rotateIn',
-  'rubberBand',
-  'shake',
-  'swing',
-  'tada',
-  'wobble',
-  'zoomIn',
-];
 
 const styles = theme => ({
   name: {
@@ -113,30 +96,6 @@ const generatePenalties = (classes, number) => {
 };
 
 class TeamDetails extends Component {
-  constructor() {
-    super();
-    this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
-    this.state = {
-      animation: false,
-      lastAnimation: null,
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.team.score !== prevProps.team.score) {
-      this.setState({
-        animation: getNewRandomItem(animations, this.state.lastAnimation),
-      });
-    }
-  }
-
-  handleAnimationEnd() {
-    this.setState({
-      animation: false,
-      lastAnimation: this.state.lastAnimation,
-    });
-  }
-
   render() {
     const { classes, hideScore, side, team } = this.props;
     if (!team || !team.band.name) {
@@ -158,22 +117,9 @@ class TeamDetails extends Component {
           <span
             className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
           >{team.band.name}</span>
-
-          {hideScore ? null : (
-            <AnimateOnChange
-              baseClassName="animated"
-              animationClassName={this.state.animation}
-              animate={this.state.animation}
-              onAnimationEnd={this.handleAnimationEnd}
-            >
-              <span
-                className={classes.score}
-                style={{ backgroundColor: team.color }}
-              >
-                {team.score}
-              </span>
-            </AnimateOnChange>
-          )}
+          {hideScore
+            ? null
+            : <TeamScore score={team.score} background={team.color} />}
           <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
             {generatePenalties(classes, team.penalties)}
           </span>
