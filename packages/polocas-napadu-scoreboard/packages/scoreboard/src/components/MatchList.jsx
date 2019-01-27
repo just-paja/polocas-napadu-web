@@ -10,33 +10,30 @@ import GraphContainer from './GraphContainer';
 
 import { Classes, Match } from '../proptypes';
 
-const styles = theme => {
-  console.log(theme);
-  return ({
-    menu: {
-      background: theme.palette.background.default,
-      paddingLeft: theme.spacing.unit * 4,
-      paddingRight: theme.spacing.unit * 4,
-      paddingBottom: theme.spacing.unit * 4,
-    },
-    item: {
-      listStyle: 'none',
-    },
-    list: {
-      margin: 0,
-      padding: 0,
-    },
-    page: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      justifyContent: 'center',
-      position: 'fixed',
-      width: '100%',
-    }
-  });
-};
+const styles = theme => ({
+  menu: {
+    background: theme.palette.background.default,
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
+  },
+  item: {
+    listStyle: 'none',
+  },
+  list: {
+    margin: 0,
+    padding: 0,
+  },
+  page: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    justifyContent: 'center',
+    position: 'fixed',
+    width: '100%',
+  }
+});
 
 const GET_MATCHES = gql`
   query {

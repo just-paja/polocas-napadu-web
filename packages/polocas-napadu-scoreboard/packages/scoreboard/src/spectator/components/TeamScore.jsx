@@ -6,6 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { getNewRandomItem } from '../../shuffle';
 
+import 'animate.css';
+
+
 const animations = [
   'bounce',
   'flash',

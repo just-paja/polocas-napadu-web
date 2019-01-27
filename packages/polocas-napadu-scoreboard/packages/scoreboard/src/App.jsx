@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { ApolloProvider } from 'react-apollo';
 import { Switch, Route } from 'react-router';
@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { MatchList, NotFound } from './components';
 import { SpectatorView } from './spectator/components';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     const { client } = this.props;
     return (
