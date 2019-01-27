@@ -13,6 +13,7 @@ import PauseStage from './PauseStage';
 import ShowSetupStage from './ShowSetupStage';
 
 import { Classes } from '../../proptypes';
+import { MatchContext } from '../../context';
 import {
   STAGE_FINALE,
   STAGE_GAME_RESULTS,
@@ -27,8 +28,24 @@ const styles = {
 const GET_MATCH_STAGE = gql`
   query Stage($matchId: Int!) {
     match(id: $matchId) {
+      contestantGroups {
+        contestantType,
+        score,
+        band {
+          name,
+        }
+      },
       currentStage {
-        type
+        type,
+        game {
+          type,
+          inspirations {
+            text
+          }
+        }
+      },
+      show {
+        totalInspirations,
       }
     }
   }
@@ -58,7 +75,9 @@ const getStageView = (stage) => {
 
 const MatchStage = ({ classes, data }) => (
   <div>
-    {getStageView(data.match.currentStage)}
+    <MatchContext.Provider value={data}>
+      {getStageView(data.match.currentStage)}
+    </MatchContext.Provider>
   </div>
 );
 

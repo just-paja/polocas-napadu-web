@@ -139,7 +139,7 @@ class TeamDetails extends Component {
 
   render() {
     const { classes, hideScore, side, team } = this.props;
-    if (!team || !team.name) {
+    if (!team || !team.band.name) {
       return null;
     }
     return (
@@ -157,7 +157,8 @@ class TeamDetails extends Component {
           />
           <span
             className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
-          >{team.name}</span>
+          >{team.band.name}</span>
+
           {hideScore ? null : (
             <AnimateOnChange
               baseClassName="animated"

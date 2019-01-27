@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
 
 import TeamDetails from './TeamDetails';
-import GraphContainer from '../../components/GraphContainer';
 
-import { SplitView } from '../../board/components';
 import { Classes } from '../../proptypes';
 import { CONTESTANT_HOME, CONTESTANT_GUEST } from '../../constants';
+import { MatchContext } from '../../context';
+import { SplitView } from '../../board/components';
 
 const styles = {
   split: {
@@ -17,29 +16,21 @@ const styles = {
   },
 };
 
-const GET_MATCH_TEAMS = gql`
-  query Stage($matchId: Int!) {
-    match(id: $matchId) {
-      contestantGroups {
-        contestantType,
-        band {
-          name,
-        }
-      }
-    }
-  }
-`;
+class Teams extends React.Component {
+  render() {
+    const { classes, hideScore } = this.props;
+    const home = this.context.match.contestantGroups.find(group => group.contestantType === CONTESTANT_HOME);
+    const guest = this.context.match.contestantGroups.find(group => group.contestantType === CONTESTANT_GUEST);
+    return (
+      <SplitView className={classes.split}>
+        <TeamDetails team={home} hideScore={hideScore} side="left" />
+        <TeamDetails team={guest} hideScore={hideScore} side="right" />
+      </SplitView>
+    );
+  };
+}
 
-const Teams = ({ classes, data, hideScore }) => {
-  const home = data.match.contestantGroups.find(group => group.contestantType === CONTESTANT_HOME);
-  const guest = data.match.contestantGroups.find(group => group.contestantType === CONTESTANT_GUEST);
-  return (
-    <SplitView className={classes.split}>
-      <TeamDetails team={home.band} hideScore={hideScore} side="left" />
-      <TeamDetails team={guest.band} hideScore={hideScore} side="left" />
-    </SplitView>
-  );
-};
+Teams.contextType = MatchContext;
 
 Teams.propTypes = {
   classes: Classes.isRequired,
@@ -50,4 +41,4 @@ Teams.defaultProps = {
   hideScore: false,
 };
 
-export default GraphContainer(withStyles(styles)(Teams), GET_MATCH_TEAMS, true);
+export default withStyles(styles)(Teams);

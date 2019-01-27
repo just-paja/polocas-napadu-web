@@ -33,10 +33,33 @@ export const Show = PropTypes.shape({
 export const ContestantGroup = PropTypes.shape({
   band: Band.isRequired,
   contestantType: ContestantType.isRequired,
-})
+});
+
+export const Inspiration = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+});
+
+export const Game = PropTypes.shape({
+  type: PropTypes.string.isRequired,
+  inspirations: PropTypes.arrayOf(Inspiration).isRequired,
+});
+
+export const Stage = PropTypes.shape({
+  type: PropTypes.oneOf([
+    constants.STAGE_INTRO,
+    constants.STAGE_GAME_SETUP,
+    constants.STAGE_GAME,
+    constants.STAGE_VOTING,
+    constants.STAGE_GAME_RESULTS,
+    constants.STAGE_PAUSE,
+    constants.STAGE_FINALE,
+  ]),
+  game: Game,
+});
 
 export const Match = PropTypes.shape({
   closed: PropTypes.bool,
+  currentStage: Stage,
   contestantGroups: PropTypes.arrayOf(ContestantGroup).isRequired,
   id: PropTypes.string.isRequired,
   show: Show.isRequired,
