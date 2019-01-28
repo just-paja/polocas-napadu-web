@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 const apolloClient = new ApolloClient({
-  uri: 'http://localhost:8000/graphql',
+  uri: process.env.REACT_APP_API_URL || 'http://localhost:8000/graphql',
 });
 
 const render = (RootComponent) => {
