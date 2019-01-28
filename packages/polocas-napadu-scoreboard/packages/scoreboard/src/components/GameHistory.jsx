@@ -24,10 +24,8 @@ const GET_MATCH_GAMES = gql`
       show {
         games {
           type,
-          gameInspirations {
-            inspiration {
-              text,
-            }
+          inspirations {
+            text,
           }
         }
       }
@@ -81,12 +79,11 @@ class GameHistory extends Component {
     if (!game) {
       return null;
     }
-    const inspirations = game.gameInspirations;
     return (
       <div className={classes.bigFont}>
-        {inspirations.length > 0 ? (
+        {game.inspirations.length > 0 ? (
           <div className={classes.inspiration}>
-            {inspirations.map(inspiration => inspiration.inspiration.text).join(', ')}
+            {game.inspirations.map(inspiration => inspiration.text).join(', ')}
           </div>
         ) : null}
         <div className={classes.game}>({game.type})</div>
