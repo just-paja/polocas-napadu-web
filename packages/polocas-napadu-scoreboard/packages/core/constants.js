@@ -11,4 +11,17 @@ export const STAGE_GAME_RESULTS = 'A_6';
 export const STAGE_PAUSE = 'A_7';
 export const STAGE_FINALE = 'A_8';
 
+export const STAGES = [
+  STAGE_INTRO,
+  STAGE_GAME_SETUP,
+  STAGE_GAME,
+  STAGE_VOTING,
+  STAGE_GAME_RESULTS,
+  STAGE_PAUSE,
+  STAGE_FINALE,
+];
+
 export const TEAM_LOGO_DEFAULT = '/default-logo.png';
+
+export const TEAM_SIDE_LEFT = 'left';
+export const TEAM_SIDE_RIGHT = 'right';

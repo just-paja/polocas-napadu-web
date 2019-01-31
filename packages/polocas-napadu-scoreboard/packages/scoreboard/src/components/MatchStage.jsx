@@ -71,7 +71,6 @@ const getStageView = (stage) => {
   }
   return <ShowSetupStage />;
 };
-// {getStageView(stage)}
 
 const MatchStage = ({ classes, data }) => (
   <div>

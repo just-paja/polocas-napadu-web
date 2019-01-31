@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 
 import * as constants from './constants';
 
+export const Children = PropTypes.oneOfType([
+  PropTypes.node,
+  PropTypes.arrayOf(PropTypes.node),
+]);
+
 export const Classes = PropTypes.objectOf(PropTypes.string);
 
 export const ClassName = PropTypes.oneOfType([

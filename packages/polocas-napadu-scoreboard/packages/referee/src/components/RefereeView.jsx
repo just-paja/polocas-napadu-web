@@ -11,11 +11,9 @@ const styles = {
 };
 
 const RefereeView = ({ classes, match }) => (
-  <div>
-    <RouterContext.Provider value={match.params}>
-      <MatchStage />
-    </RouterContext.Provider>
-  </div>
+  <RouterContext.Provider value={match.params}>
+    <MatchStage />
+  </RouterContext.Provider>
 );
 
 RefereeView.propTypes = {
