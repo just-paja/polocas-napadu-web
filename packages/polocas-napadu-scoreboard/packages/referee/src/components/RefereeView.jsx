@@ -1,33 +1,20 @@
 import React from 'react';
 
-import { gql } from 'apollo-boost';
+import { RouterContext } from 'core/context';
 import { withStyles } from '@material-ui/core/styles';
 
 import MatchStage from './MatchStage';
-import GraphContainer from './GraphContainer';
 
 import { Classes } from 'core/proptypes';
 
 const styles = {
 };
 
-const GET_MATCH = gql`
-  query Match($id: Int!) {
-    match {
-      id,
-      show {
-        name,
-        start,
-      }
-    }
-  }
-
-`;
-
-
-const RefereeView = ({ classes, params }) => (
+const RefereeView = ({ classes, match }) => (
   <div>
-    <MatchStage variables={{ matchId: 1 }}/>
+    <RouterContext.Provider value={match.params}>
+      <MatchStage />
+    </RouterContext.Provider>
   </div>
 );
 
@@ -35,7 +22,4 @@ RefereeView.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default GraphContainer(
-  withStyles(styles)(RefereeView),
-  GET_MATCH
-);
+export default withStyles(styles)(RefereeView);

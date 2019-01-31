@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CONTESTANT_HOME } from '../../constants';
+import { CONTESTANT_HOME } from 'core/constants';
 
 const TeamId = ({ teamId }) => (
   <span>

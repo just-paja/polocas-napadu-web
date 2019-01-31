@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
 import { withStyles } from '@material-ui/core/styles';
 
 import GameInspiration from './GameInspiration';
 
-import { Classes } from '../proptypes';
 
 const styles = {
 };

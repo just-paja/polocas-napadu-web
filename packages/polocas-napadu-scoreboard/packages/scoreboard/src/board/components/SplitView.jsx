@@ -2,9 +2,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Classes, ClassName } from 'core/proptypes';
 import { withStyles } from '@material-ui/core/styles';
-
-import { Classes, ClassName } from '../../proptypes';
 
 const styles = theme => ({
   teams: {

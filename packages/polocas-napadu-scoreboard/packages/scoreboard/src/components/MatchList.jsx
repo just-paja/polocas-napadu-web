@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Classes, Match } from 'core/proptypes';
 import { gql } from 'apollo-boost';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { withStyles } from '@material-ui/core/styles';
 
 import GraphContainer from './GraphContainer';
-
-import { Classes, Match } from '../proptypes';
 
 const styles = theme => ({
   menu: {

@@ -1,18 +1,17 @@
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
 import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
 
 import GraphContainer from './GraphContainer';
 
-import { Classes } from 'core/proptypes';
-
 const styles = {
 };
 
 const GET_MATCH = gql`
-  query Match($id: Int!) {
-    match {
+  query Stage($matchId: Int!) {
+    match(id: $matchId) {
       id,
       show {
         name,
@@ -26,7 +25,7 @@ const GET_MATCH = gql`
 
 const MatchStage = ({ classes, data }) => (
   <div>
-    {data.id}
+    {data.match.id}
   </div>
 );
 

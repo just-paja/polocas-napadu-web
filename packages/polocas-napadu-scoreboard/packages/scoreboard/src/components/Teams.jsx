@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
+import { CONTESTANT_HOME, CONTESTANT_GUEST } from 'core/constants';
+import { MatchContext } from 'core/context';
 import { withStyles } from '@material-ui/core/styles';
 
 import TeamDetails from './TeamDetails';
 
-import { Classes } from '../proptypes';
-import { CONTESTANT_HOME, CONTESTANT_GUEST } from '../constants';
-import { MatchContext } from '../context';
 import { SplitView } from '../board/components';
 
 const styles = {

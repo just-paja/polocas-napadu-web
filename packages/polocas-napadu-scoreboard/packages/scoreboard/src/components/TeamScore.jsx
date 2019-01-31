@@ -6,7 +6,6 @@ import { Howl } from 'howler';
 import { withStyles } from '@material-ui/core/styles';
 
 import { AudioManager } from '../AudioManager';
-
 import { getNewRandomItem } from '../shuffle';
 
 import 'animate.css';

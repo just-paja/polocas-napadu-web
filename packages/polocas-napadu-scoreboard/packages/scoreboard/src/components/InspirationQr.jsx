@@ -15,7 +15,7 @@ const GET_MATCH_INSPIRATION_QR = gql`
   }
 `
 
-const ShowSetupStage = ({ data, ...props }) => (
+const InspirationQr = ({ data, ...props }) => (
   <img
     src={data.match.show.inspirationQrUrl}
     alt="invite"
@@ -23,7 +23,7 @@ const ShowSetupStage = ({ data, ...props }) => (
   />
 );
 
-ShowSetupStage.propTypes = {
+InspirationQr.propTypes = {
   data: PropTypes.shape({
     match: PropTypes.shape({
       show: PropTypes.shape({
@@ -33,4 +33,4 @@ ShowSetupStage.propTypes = {
   }).isRequired,
 };
 
-export default GraphContainer(ShowSetupStage, GET_MATCH_INSPIRATION_QR);
+export default GraphContainer(InspirationQr, GET_MATCH_INSPIRATION_QR);

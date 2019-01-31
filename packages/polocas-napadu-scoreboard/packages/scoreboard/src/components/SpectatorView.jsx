@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
+import { RouterContext } from 'core/context';
 import { withStyles } from '@material-ui/core/styles';
 
 import MatchStage from './MatchStage';
-
-import { Classes } from '../proptypes';
-import { RouterContext } from '../context';
 
 const styles = {
   spectatorView: {

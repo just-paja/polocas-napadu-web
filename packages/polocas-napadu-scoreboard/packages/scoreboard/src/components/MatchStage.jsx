@@ -1,6 +1,15 @@
 import React from 'react';
 
 import { gql } from 'apollo-boost';
+import { Classes } from 'core/proptypes';
+import { MatchContext } from 'core/context';
+import {
+  STAGE_FINALE,
+  STAGE_GAME_RESULTS,
+  STAGE_GAME_SETUP,
+  STAGE_GAME,
+  STAGE_PAUSE,
+} from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
 
 import FinaleStage from './FinaleStage';
@@ -10,16 +19,6 @@ import GameStage from './GameStage';
 import GraphContainer from './GraphContainer';
 import PauseStage from './PauseStage';
 import ShowSetupStage from './ShowSetupStage';
-
-import { Classes } from '../proptypes';
-import { MatchContext } from '../context';
-import {
-  STAGE_FINALE,
-  STAGE_GAME_RESULTS,
-  STAGE_GAME_SETUP,
-  STAGE_GAME,
-  STAGE_PAUSE,
-} from '../constants';
 
 const styles = {
 };

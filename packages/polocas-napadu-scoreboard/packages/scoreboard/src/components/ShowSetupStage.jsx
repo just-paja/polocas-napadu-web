@@ -1,12 +1,11 @@
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
 import { withStyles } from '@material-ui/core/styles';
 
 import InspirationCount from './InspirationCount';
 import InspirationQr from './InspirationQr';
 import Teams from './Teams';
-
-import { Classes } from '../proptypes';
 
 const styles = {
   inspiration: {
@@ -18,7 +17,6 @@ const styles = {
     width: 400,
   },
 };
-
 
 const ShowSetupStage = ({ classes }) => (
   <div>

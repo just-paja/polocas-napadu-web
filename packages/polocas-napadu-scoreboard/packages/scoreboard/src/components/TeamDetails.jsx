@@ -3,13 +3,11 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+import { Band } from 'core/proptypes';
 import { withStyles } from '@material-ui/core/styles';
+import { TEAM_LOGO_DEFAULT } from 'core/constants';
 
 import TeamScore from './TeamScore';
-
-import { Band } from '../proptypes';
-
-import * as constants from '../board/constants';
 
 const styles = theme => ({
   name: {
@@ -111,7 +109,7 @@ class TeamDetails extends Component {
         >
           <img
             className={classnames(classes.logo, classes[camelCase(`logo-${side}`)])}
-            src={team.logo || constants.TEAM_LOGO_DEFAULT}
+            src={team.logo || TEAM_LOGO_DEFAULT}
             alt="Band logo"
           />
           <span

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Query } from 'react-apollo';
-
-import { RouterContext } from '../context';
+import { RouterContext } from 'core/context';
 
 const getComponentName = (component, defaultName) => (
   component.displayName ||

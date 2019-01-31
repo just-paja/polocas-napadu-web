@@ -10,3 +10,5 @@ export const STAGE_VOTING = 'A_5';
 export const STAGE_GAME_RESULTS = 'A_6';
 export const STAGE_PAUSE = 'A_7';
 export const STAGE_FINALE = 'A_8';
+
+export const TEAM_LOGO_DEFAULT = '/default-logo.png';

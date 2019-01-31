@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
-import { MatchContext } from '../context';
+import { Game } from 'core/proptypes';
+import { MatchContext } from 'core/context';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -41,10 +41,7 @@ class GameInspiration extends React.Component {
 GameInspiration.contextType = MatchContext;
 
 GameInspiration.propTypes = {
-  game: PropTypes.shape({
-    game: PropTypes.string,
-    inspiration: PropTypes.string,
-  }),
+  game: Game,
 };
 
 export default withStyles(styles)(GameInspiration);

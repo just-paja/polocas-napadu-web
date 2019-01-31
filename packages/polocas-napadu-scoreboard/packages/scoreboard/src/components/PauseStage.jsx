@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { Classes } from 'core/proptypes';
 import { withStyles } from '@material-ui/core/styles';
 
 import GameHistory from './GameHistory';
 import Teams from './Teams';
 
-import { Classes } from '../proptypes';
 
 const styles = {
   text: {
