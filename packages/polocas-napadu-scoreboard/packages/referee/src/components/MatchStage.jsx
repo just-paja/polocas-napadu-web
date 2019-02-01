@@ -12,7 +12,7 @@ const styles = {
 };
 
 const GET_MATCH = gql`
-  query Stage($matchId: Int!) {
+  query MatchStage($matchId: Int!) {
     match(id: $matchId) {
       id,
       show {

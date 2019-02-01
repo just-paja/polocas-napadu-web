@@ -42,6 +42,7 @@ class StageButton extends React.Component {
               <Button
                 disabled={loading}
                 onClick={() => changeStage({
+                  refetchQueries: ['MatchStage'],
                   variables: {
                     matchId: this.context.match.id,
                     stage,
