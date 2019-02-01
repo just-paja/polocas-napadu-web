@@ -4,9 +4,11 @@ import { Classes } from 'core/proptypes';
 import { MatchContext } from 'core/context';
 import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
+import { STAGE_INTRO } from 'core/constants';
 
 import GraphContainer from './GraphContainer';
 import ShowSetupStage from './ShowSetupStage';
+import IntroStage from './IntroStage';
 
 const styles = {
 };
@@ -42,7 +44,11 @@ const GET_MATCH = gql`
 `;
 
 const getStageView = (stage) => {
-  // if (stage) {
+  console.log(stage);
+  if (stage) {
+    if (stage.type === STAGE_INTRO) {
+      return <IntroStage />;
+    }
   //   if (stage.type === STAGE_FINALE) {
   //     return <FinaleStage />;
   //   }
@@ -58,7 +64,7 @@ const getStageView = (stage) => {
   //   if (stage.type === STAGE_GAME_SETUP) {
   //     return <GameSetupStage />;
   //   }
-  // }
+  }
   return <ShowSetupStage />;
 };
 
