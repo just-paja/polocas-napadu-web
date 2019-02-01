@@ -8,6 +8,7 @@ import {
   STAGE_GAME_RESULTS,
   STAGE_GAME_SETUP,
   STAGE_GAME,
+  STAGE_INTRO,
   STAGE_PAUSE,
 } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,6 +18,7 @@ import GameResultsStage from './GameResultsStage';
 import GameSetupStage from './GameSetupStage';
 import GameStage from './GameStage';
 import GraphContainer from './GraphContainer';
+import IntroStage from './IntroStage';
 import PauseStage from './PauseStage';
 import ShowSetupStage from './ShowSetupStage';
 
@@ -55,6 +57,9 @@ const getStageView = (stage) => {
   if (stage) {
     if (stage.type === STAGE_FINALE) {
       return <FinaleStage />;
+    }
+    if (stage.type === STAGE_INTRO) {
+      return <IntroStage />;
     }
     if (stage.type === STAGE_PAUSE) {
       return <PauseStage />;
