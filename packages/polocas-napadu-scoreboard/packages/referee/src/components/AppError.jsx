@@ -6,7 +6,6 @@ const AppError = ({ error }) => {
   if (!error) {
     return null;
   }
-  console.log(error);
   if (error instanceof Error) {
     return (
       <span>{error.message}</span>

@@ -50,13 +50,15 @@ const GET_MATCH = gql`
             text
           }
         }
-      }
+      },
+      prevStage {
+        type
+      },
     }
   }
 `;
 
 const getStageView = (stage) => {
-  console.log(stage);
   if (stage) {
     if (stage.type === STAGE_INTRO) {
       return <IntroStage />;

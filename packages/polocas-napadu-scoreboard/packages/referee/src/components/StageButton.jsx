@@ -31,6 +31,14 @@ const CHANGE_STAGE = gql`
   }
 `;
 
+const REWIND_STAGE = gql`
+  mutation RewindStage($matchId: Int!) {
+    rewindMatchStage(matchId: $matchId) {
+      ok,
+    }
+  }
+`;
+
 const getStageLabel = (stage) => {
   const option = STAGE_OPTIONS.find(option => option.value === stage);
   return option && option.label;
@@ -38,9 +46,9 @@ const getStageLabel = (stage) => {
 
 class StageButton extends React.Component {
   render() {
-    const { classes, stage } = this.props;
+    const { back, classes, stage } = this.props;
     return (
-      <Mutation mutation={CHANGE_STAGE}>
+      <Mutation mutation={back ? REWIND_STAGE : CHANGE_STAGE}>
         {(changeStage, { error, loading }) => {
           return (
             <div className={classes.wrapper}>
@@ -69,7 +77,12 @@ class StageButton extends React.Component {
 StageButton.contextType = MatchContext;
 
 StageButton.propTypes = {
+  back: PropTypes.bool,
   stage: PropTypes.oneOf(STAGES).isRequired,
+};
+
+StageButton.defaultProps = {
+  back: false,
 };
 
 export default withStyles(styles)(StageButton);
