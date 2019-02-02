@@ -13,6 +13,7 @@ export const STAGE_PAUSE = 'A_7';
 export const STAGE_FINALE = 'A_8';
 
 export const STAGES = [
+  STAGE_SHOW_SETUP,
   STAGE_INTRO,
   STAGE_GAME_SETUP,
   STAGE_GAME,
@@ -20,6 +21,41 @@ export const STAGES = [
   STAGE_GAME_RESULTS,
   STAGE_PAUSE,
   STAGE_FINALE,
+];
+
+export const STAGE_OPTIONS = [
+  {
+    value: STAGE_SHOW_SETUP,
+    label: 'stage-show-setup',
+  },
+  {
+    value: STAGE_INTRO,
+    label: 'stage-intro',
+  },
+  {
+    value: STAGE_GAME_SETUP,
+    label: 'stage-game-setup',
+  },
+  {
+    value: STAGE_GAME,
+    label: 'stage-game',
+  },
+  {
+    value: STAGE_VOTING,
+    label: 'stage-voting',
+  },
+  {
+    value: STAGE_GAME_RESULTS,
+    label: 'stage-game-results',
+  },
+  {
+    value: STAGE_PAUSE,
+    label: 'stage-pause',
+  },
+  {
+    value: STAGE_FINALE,
+    label: 'stage-finale',
+  },
 ];
 
 export const TEAM_LOGO_DEFAULT = '/default-logo.png';

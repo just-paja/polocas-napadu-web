@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const IntroStage = ({ classes }) => (
+const PauseStage = ({ classes }) => (
   <ControlsLayout>
     <BoardLayout>
       <Team side={TEAM_SIDE_LEFT} />
@@ -28,8 +28,8 @@ const IntroStage = ({ classes }) => (
   </ControlsLayout>
 );
 
-IntroStage.propTypes = {
+PauseStage.propTypes = {
   classes: Classes.isRequired,
 };
 
-export default withStyles(styles)(IntroStage);
+export default withStyles(styles)(PauseStage);

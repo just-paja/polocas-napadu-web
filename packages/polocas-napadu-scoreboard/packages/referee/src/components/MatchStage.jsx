@@ -4,11 +4,23 @@ import { Classes } from 'core/proptypes';
 import { MatchContext } from 'core/context';
 import { gql } from 'apollo-boost';
 import { withStyles } from '@material-ui/core/styles';
-import { STAGE_INTRO } from 'core/constants';
+import {
+  STAGE_FINALE,
+  STAGE_GAME_RESULTS,
+  STAGE_GAME_SETUP,
+  STAGE_GAME,
+  STAGE_INTRO,
+  STAGE_PAUSE,
+} from 'core/constants';
 
+import FinaleStage from './FinaleStage';
+import GameResultsStage from './GameResultsStage';
+import GameSetupStage from './GameSetupStage';
+import GameStage from './GameStage';
 import GraphContainer from './GraphContainer';
-import ShowSetupStage from './ShowSetupStage';
 import IntroStage from './IntroStage';
+import PauseStage from './PauseStage';
+import ShowSetupStage from './ShowSetupStage';
 
 const styles = {
 };
@@ -49,21 +61,21 @@ const getStageView = (stage) => {
     if (stage.type === STAGE_INTRO) {
       return <IntroStage />;
     }
-  //   if (stage.type === STAGE_FINALE) {
-  //     return <FinaleStage />;
-  //   }
-  //   if (stage.type === STAGE_PAUSE) {
-  //     return <PauseStage />;
-  //   }
-  //   if (stage.type === STAGE_GAME_RESULTS) {
-  //     return <GameResultsStage />;
-  //   }
-  //   if (stage.type === STAGE_GAME) {
-  //     return <GameStage />;
-  //   }
-  //   if (stage.type === STAGE_GAME_SETUP) {
-  //     return <GameSetupStage />;
-  //   }
+    if (stage.type === STAGE_FINALE) {
+      return <FinaleStage />;
+    }
+    if (stage.type === STAGE_PAUSE) {
+      return <PauseStage />;
+    }
+    if (stage.type === STAGE_GAME_RESULTS) {
+      return <GameResultsStage />;
+    }
+    if (stage.type === STAGE_GAME) {
+      return <GameStage />;
+    }
+    if (stage.type === STAGE_GAME_SETUP) {
+      return <GameSetupStage />;
+    }
   }
   return <ShowSetupStage />;
 };

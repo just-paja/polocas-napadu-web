@@ -6,7 +6,7 @@ import React from 'react';
 import { gql } from 'apollo-boost';
 import { MatchContext } from 'core/context';
 import { Mutation } from 'react-apollo';
-import { STAGES } from 'core/constants';
+import { STAGES, STAGE_OPTIONS } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -31,6 +31,11 @@ const CHANGE_STAGE = gql`
   }
 `;
 
+const getStageLabel = (stage) => {
+  const option = STAGE_OPTIONS.find(option => option.value === stage);
+  return option && option.label;
+};
+
 class StageButton extends React.Component {
   render() {
     const { classes, stage } = this.props;
@@ -48,7 +53,7 @@ class StageButton extends React.Component {
                     stage,
                   },
                 })}
-              >{stage}</Button>
+              >{getStageLabel(stage)}</Button>
               {loading && <CircularProgress
                 size={24}
                 className={classes.buttonProgress}
