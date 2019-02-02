@@ -14,12 +14,13 @@ import {
 } from 'core/constants';
 
 import ShowProgress from './ShowProgress';
-import StageButton from './StageButton';
+import ShowStageControl from './ShowStageControl';
+import ShowStageMenu from './ShowStageMenu';
 
 const STAGE_MAP = {
   [STAGE_FINALE]: [STAGE_GAME_SETUP],
-  [STAGE_GAME_RESULTS]: [STAGE_GAME_SETUP, STAGE_PAUSE, STAGE_FINALE],
-  [STAGE_GAME_SETUP]: [STAGE_GAME, STAGE_PAUSE],
+  [STAGE_GAME_RESULTS]: [STAGE_GAME_SETUP],
+  [STAGE_GAME_SETUP]: [STAGE_GAME],
   [STAGE_GAME]: [STAGE_GAME_RESULTS],
   [STAGE_INTRO]: [STAGE_GAME_SETUP],
   [STAGE_PAUSE]: [STAGE_GAME_SETUP],
@@ -34,7 +35,7 @@ const styles = theme => ({
   },
 });
 
-const mapStageToButton = stage => <StageButton key={stage} stage={stage} />
+const mapStageToButton = stage => <ShowStageControl key={stage} stage={stage} />
 
 class ShowStageControls extends React.Component {
   getForwardButtons() {
@@ -42,7 +43,7 @@ class ShowStageControls extends React.Component {
     const forward = stage
       ? STAGE_MAP[stage.type]
       : STAGE_MAP[STAGE_SHOW_SETUP];
-    return forward ? forward.map(mapStageToButton) : [];
+    return forward || [];
   }
 
   render() {
@@ -53,12 +54,19 @@ class ShowStageControls extends React.Component {
       <div className={classes.box}>
         {currentStage ? (
           <ShowProgress side="left">
-            <StageButton back stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP} />
+            <ShowStageControl back stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP} />
           </ShowProgress>
         ) : null}
-        {forward.length
-          ? <ShowProgress side="right">{forward}</ShowProgress>
-          : null}
+        <ShowProgress side="right">
+          {forward.map(mapStageToButton)}
+          <ShowStageControl
+            component={ShowStageMenu}
+            omit={[
+              currentStage && currentStage.type,
+              ...forward,
+            ]}
+          />
+        </ShowProgress>
       </div>
     );
   }

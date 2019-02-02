@@ -23,38 +23,46 @@ export const STAGES = [
   STAGE_FINALE,
 ];
 
+export const STAGES_JUMP = [
+  STAGE_SHOW_SETUP,
+  STAGE_INTRO,
+  STAGE_GAME_SETUP,
+  STAGE_PAUSE,
+  STAGE_FINALE,
+];
+
 export const STAGE_OPTIONS = [
   {
     value: STAGE_SHOW_SETUP,
-    label: 'stage-show-setup',
+    label: 'Nastavení hry',
   },
   {
     value: STAGE_INTRO,
-    label: 'stage-intro',
+    label: 'Intro',
   },
   {
     value: STAGE_GAME_SETUP,
-    label: 'stage-game-setup',
+    label: 'Příprava kategorie',
   },
   {
     value: STAGE_GAME,
-    label: 'stage-game',
+    label: 'Hra!',
   },
   {
     value: STAGE_VOTING,
-    label: 'stage-voting',
+    label: 'Hlasování',
   },
   {
     value: STAGE_GAME_RESULTS,
-    label: 'stage-game-results',
+    label: 'Výsledky kategorie',
   },
   {
     value: STAGE_PAUSE,
-    label: 'stage-pause',
+    label: 'Přestávka',
   },
   {
     value: STAGE_FINALE,
-    label: 'stage-finale',
+    label: 'Konec zápasu',
   },
 ];
 
