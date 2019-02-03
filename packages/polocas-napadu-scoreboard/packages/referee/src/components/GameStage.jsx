@@ -1,6 +1,8 @@
+import moment from 'moment';
 import React from 'react';
 
 import { Classes } from 'core/proptypes';
+import { MatchContext } from 'core/context';
 import { withStyles } from '@material-ui/core/styles';
 import {
   TEAM_SIDE_LEFT,
@@ -9,7 +11,9 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import MainControls from './MainControls';
 import Team from './Team';
+import Timer from './Timer';
 
 const styles = {
   inspiration: {
@@ -20,12 +24,21 @@ const styles = {
 };
 
 const GameStage = ({ classes }) => (
-  <ControlsLayout>
-    <BoardLayout>
-      <Team side={TEAM_SIDE_LEFT} />
-      <Team side={TEAM_SIDE_RIGHT} />
-    </BoardLayout>
-  </ControlsLayout>
+  <MatchContext.Consumer>
+    {data => (
+      <ControlsLayout>
+        <BoardLayout>
+          <Team side={TEAM_SIDE_LEFT} />
+          <Team side={TEAM_SIDE_RIGHT} />
+        </BoardLayout>
+        <MainControls center>
+          <p>Právě probíhá kategorie</p>
+          <h1>{data.match.currentStage.game.rules.name}</h1>
+          <Timer start={moment().diff(data.match.currentStage.created, 'seconds')} />
+        </MainControls>
+      </ControlsLayout>
+    )}
+  </MatchContext.Consumer>
 );
 
 GameStage.propTypes = {

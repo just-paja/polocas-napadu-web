@@ -7,8 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   teamBubble: {
     display: 'flex',
-    margin: -1 * theme.spacing.unit,
-    padding: 2 * theme.spacing.unit,
   },
   score: {
     marginLeft: 'auto',

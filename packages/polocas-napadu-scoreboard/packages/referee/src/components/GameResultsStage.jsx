@@ -9,6 +9,8 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import MainControls from './MainControls';
+import ScoreControls from './ScoreControls';
 import Team from './Team';
 
 const styles = {
@@ -22,9 +24,17 @@ const styles = {
 const GameResultsStage = ({ classes }) => (
   <ControlsLayout>
     <BoardLayout>
-      <Team side={TEAM_SIDE_LEFT} />
-      <Team side={TEAM_SIDE_RIGHT} />
+      <Team side={TEAM_SIDE_LEFT}>
+        <ScoreControls />
+      </Team>
+      <Team side={TEAM_SIDE_RIGHT}>
+        <ScoreControls />
+      </Team>
     </BoardLayout>
+    <MainControls>
+      <h1>Hlasování</h1>
+      <p>V této fázi hry diváci hlasují o tom který tým dostane bod.</p>
+    </MainControls>
   </ControlsLayout>
 );
 

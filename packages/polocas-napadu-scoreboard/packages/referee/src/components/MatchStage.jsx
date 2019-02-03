@@ -43,6 +43,7 @@ const GET_MATCH = gql`
         }
       },
       currentStage {
+        created,
         type,
         game {
           type,
@@ -98,5 +99,6 @@ MatchStage.propTypes = {
 
 export default GraphContainer(
   withStyles(styles)(MatchStage),
-  GET_MATCH
+  GET_MATCH,
+  true
 );

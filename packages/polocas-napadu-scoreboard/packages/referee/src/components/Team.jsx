@@ -10,7 +10,7 @@ import TeamDetails from './TeamDetails';
 
 const styles = theme => ({
   team: {
-    padding: theme.spacing.unit,
+    padding: 2 * theme.spacing.unit,
   },
 });
 
@@ -20,7 +20,7 @@ class Team extends React.Component {
     const contestantType = getContestantTypeBySide(side);
     const team = this.context.match.contestantGroups.find(group => group.contestantType === contestantType);
     return (
-      <div className={classes.team}>
+      <div className={classes.team} style={{ backgroundColor: team.color }}>
         <TeamDetails team={team} />
         {children}
       </div>
