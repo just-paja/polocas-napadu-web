@@ -13,6 +13,7 @@ import {
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
 import GameSelection from './GameSelection';
+import InspirationSelection from './InspirationSelection';
 import MainControls from './MainControls';
 import Team from './Team';
 
@@ -38,10 +39,10 @@ const GameSetupStage = ({ classes }) => (
       <Team side={TEAM_SIDE_LEFT} />
       <Team side={TEAM_SIDE_RIGHT} />
     </BoardLayout>
-    <MainControls>
-      <h1>Nastavení kategorie</h1>
-      <MatchContext.Consumer>
-        {data => (
+    <MatchContext.Consumer>
+      {data => (
+        <MainControls>
+          <h1>Nastavení kategorie</h1>
           <Mutation mutation={SET_GAME}>
             {(setGame, { error, loading }) => (
               <GameSelection
@@ -56,9 +57,11 @@ const GameSetupStage = ({ classes }) => (
               />
             )}
           </Mutation>
-        )}
-      </MatchContext.Consumer>
-    </MainControls>
+          <h2>Inspirace ({data.match.preparedInspirationCount})</h2>
+          <InspirationSelection />
+        </MainControls>
+      )}
+    </MatchContext.Consumer>
   </ControlsLayout>
 );
 

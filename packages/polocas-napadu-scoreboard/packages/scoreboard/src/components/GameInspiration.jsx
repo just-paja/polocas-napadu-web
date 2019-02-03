@@ -20,17 +20,18 @@ const styles = {
 class GameInspiration extends React.Component {
   render() {
     const { classes } = this.props;
-    const { game } = this.context.match.currentStage;
+    const { game, inspirations } = this.context.match.currentStage;
     if (!game) {
       return null;
     }
+    const list = game.inspirations.length ? game.inspirations : inspirations;
     return (
       <div>
         {game.type ? <div className={classes.game}>{game.type}</div> : null}
-        {game.inspirations.length > 0
+        {list.length > 0
           ? (
             <div className={classes.inspiration}>
-              {game.inspirations.map(inspiration => inspiration.text).join(', ')}
+              {list.map(inspiration => inspiration.text).join(', ')}
             </div>
           ) : null}
       </div>

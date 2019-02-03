@@ -1,5 +1,8 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
+
+const zeroPad = number => number < 10 ? `0${number}` : `${number}`;
 
 class Timer extends React.Component {
   constructor() {
@@ -23,12 +26,11 @@ class Timer extends React.Component {
   }
 
   render() {
+    const duration = moment.duration(this.state.time + this.props.start, 'seconds');
     return (
-      <div>
-        <span>{(this.state.time + this.props.start)}</span>
-        {' '}
-        sekund
-      </div>
+      <span>
+        {zeroPad(duration.minutes())}:{zeroPad(duration.seconds())}
+      </span>
     );
   };
 }

@@ -42,8 +42,11 @@ const GET_MATCH_STAGE = gql`
         game {
           type,
           inspirations {
-            text
+            text,
           }
+        },
+        inspirations {
+          text,
         }
       },
       show {

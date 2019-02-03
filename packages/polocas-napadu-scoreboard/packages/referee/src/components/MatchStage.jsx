@@ -29,6 +29,7 @@ const GET_MATCH = gql`
   query MatchStage($matchId: Int!) {
     match(id: $matchId) {
       id,
+      preparedInspirationCount,
       show {
         name,
         start,
@@ -47,13 +48,18 @@ const GET_MATCH = gql`
         type,
         game {
           type,
+          inspirations {
+            id,
+            text,
+          },
           rules {
             id,
             name,
           },
-          inspirations {
-            text
-          }
+        },
+        inspirations {
+          id,
+          text,
         }
       },
       prevStage {

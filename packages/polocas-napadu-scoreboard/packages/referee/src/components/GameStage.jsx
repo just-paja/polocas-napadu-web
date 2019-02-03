@@ -12,6 +12,7 @@ import {
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
 import MainControls from './MainControls';
+import InspirationList from './InspirationList';
 import Team from './Team';
 import Timer from './Timer';
 
@@ -35,6 +36,10 @@ const GameStage = ({ classes }) => (
           <p>Právě probíhá kategorie</p>
           <h1>{data.match.currentStage.game.rules.name}</h1>
           <Timer start={moment().diff(data.match.currentStage.created, 'seconds')} />
+          <InspirationList
+            inspirations={data.match.currentStage.game.inspirations}
+            readOnly
+          />
         </MainControls>
       </ControlsLayout>
     )}
