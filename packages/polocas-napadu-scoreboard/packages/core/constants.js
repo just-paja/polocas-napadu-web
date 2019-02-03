@@ -34,7 +34,7 @@ export const STAGES_JUMP = [
 export const STAGE_OPTIONS = [
   {
     value: STAGE_SHOW_SETUP,
-    label: 'Nastavení hry',
+    label: 'Nastavení zápasu',
   },
   {
     value: STAGE_INTRO,

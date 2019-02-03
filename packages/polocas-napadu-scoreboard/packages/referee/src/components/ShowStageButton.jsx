@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { MatchContext } from 'core/context';
-import { STAGES, STAGE_OPTIONS } from 'core/constants';
+import { STAGES, STAGE_GAME, STAGE_OPTIONS } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -26,17 +26,23 @@ const getStageLabel = (stage) => {
   return option && option.label;
 };
 
-class ShowStageButton extends React.Component {
-  render() {
-    const { mutate, loading, classes, stage } = this.props;
-    return (
+const isStageReady = (stage, currentStage) => {
+  if (stage === STAGE_GAME) {
+    return Boolean(currentStage.game);
+  }
+  return true;
+}
+
+const ShowStageButton = ({ mutate, loading, classes, stage }) => (
+  <MatchContext.Consumer>
+    {context => (
       <div className={classes.wrapper}>
         <Button
-          disabled={loading}
+          disabled={loading || !isStageReady(stage, context.match.currentStage)}
           onClick={() => !loading && mutate({
             refetchQueries: ['MatchStage'],
             variables: {
-              matchId: this.context.match.id,
+              matchId: context.match.id,
               stage,
             },
           })}
@@ -46,11 +52,9 @@ class ShowStageButton extends React.Component {
           className={classes.buttonProgress}
         />}
       </div>
-    );
-  }
-}
-
-ShowStageButton.contextType = MatchContext;
+    )}
+  </MatchContext.Consumer>
+);
 
 ShowStageButton.propTypes = {
   back: PropTypes.bool,

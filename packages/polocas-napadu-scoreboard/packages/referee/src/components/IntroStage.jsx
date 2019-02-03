@@ -9,6 +9,7 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import MainControls from './MainControls';
 import Team from './Team';
 
 const styles = {
@@ -25,6 +26,13 @@ const IntroStage = ({ classes }) => (
       <Team side={TEAM_SIDE_LEFT} />
       <Team side={TEAM_SIDE_RIGHT} />
     </BoardLayout>
+    <MainControls>
+      <h1>Intro</h1>
+      <p>
+        Během intra sportovní komentátoři udělají prognózu zápasu a
+        poté probíhá veřejná rozcvička.
+      </p>
+    </MainControls>
   </ControlsLayout>
 );
 

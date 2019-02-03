@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { Classes } from 'core/proptypes';
+import { gql } from 'apollo-boost';
+import { MatchContext } from 'core/context';
+import { Mutation } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
 import {
   TEAM_SIDE_LEFT,
@@ -9,15 +12,25 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import GameSelection from './GameSelection';
+import MainControls from './MainControls';
 import Team from './Team';
 
-const styles = {
+const styles = theme => ({
   inspiration: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
   },
-};
+});
+
+const SET_GAME = gql`
+  mutation SetMatchGame($matchId: Int!, $gameRulesId: Int) {
+    setMatchGame(matchId: $matchId, gameRulesId: $gameRulesId) {
+      ok,
+    }
+  }
+`;
 
 const GameSetupStage = ({ classes }) => (
   <ControlsLayout>
@@ -25,6 +38,27 @@ const GameSetupStage = ({ classes }) => (
       <Team side={TEAM_SIDE_LEFT} />
       <Team side={TEAM_SIDE_RIGHT} />
     </BoardLayout>
+    <MainControls>
+      <h1>Nastavení kategorie</h1>
+      <MatchContext.Consumer>
+        {data => (
+          <Mutation mutation={SET_GAME}>
+            {(setGame, { error, loading }) => (
+              <GameSelection
+                onChange={(value) => setGame({
+                  refetchQueries: ['MatchStage'],
+                  variables: {
+                    gameRulesId: value ? value.id : null,
+                    matchId: data.match.id,
+                  },
+                })}
+                value={data.match.currentStage.game && data.match.currentStage.game.rules}
+              />
+            )}
+          </Mutation>
+        )}
+      </MatchContext.Consumer>
+    </MainControls>
   </ControlsLayout>
 );
 

@@ -46,6 +46,10 @@ const GET_MATCH = gql`
         type,
         game {
           type,
+          rules {
+            id,
+            name,
+          },
           inspirations {
             text
           }

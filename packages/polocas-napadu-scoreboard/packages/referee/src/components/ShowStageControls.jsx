@@ -29,9 +29,11 @@ const STAGE_MAP = {
 
 const styles = theme => ({
   box: {
+    background: theme.palette.grey['A100'],
     display: 'flex',
     flexWrap: 'wrap',
     padding: theme.spacing.unit * 2,
+    marginTop: 'auto',
   },
 });
 
