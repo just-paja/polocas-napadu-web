@@ -76,3 +76,8 @@ export const ErrorMessage = PropTypes.oneOfType([
     message: PropTypes.string,
   }),
 ]);
+
+export const Side = PropTypes.oneOf([
+  constants.TEAM_SIDE_LEFT,
+  constants.TEAM_SIDE_RIGHT,
+]);

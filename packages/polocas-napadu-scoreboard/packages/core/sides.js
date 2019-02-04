@@ -13,3 +13,8 @@ export const getContestantTypeBySide = (side) => {
   }
   throw new Error(`Unknown side, we support just ${TEAM_SIDE_LEFT} and ${TEAM_SIDE_RIGHT}`);
 };
+
+export const getContestantBySide = (contestants, side) => {
+  const type = getContestantTypeBySide(side);
+  return contestants.find(contestant => contestant.contestantType === type);
+};

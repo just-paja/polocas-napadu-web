@@ -35,6 +35,7 @@ const GET_MATCH = gql`
         start,
       },
       contestantGroups {
+        id,
         contestantType,
         score,
         color,
