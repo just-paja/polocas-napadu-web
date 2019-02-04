@@ -29,7 +29,7 @@ class Timer extends React.Component {
     const duration = moment.duration(this.state.time + this.props.start, 'seconds');
     return (
       <span>
-        {zeroPad(duration.minutes())}:{zeroPad(duration.seconds())}
+        {zeroPad(duration.hours())}:{zeroPad(duration.minutes())}:{zeroPad(duration.seconds())}
       </span>
     );
   };
