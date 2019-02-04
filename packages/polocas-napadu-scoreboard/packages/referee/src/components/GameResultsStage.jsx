@@ -25,10 +25,10 @@ const GameResultsStage = ({ classes }) => (
   <ControlsLayout>
     <BoardLayout>
       <Team side={TEAM_SIDE_LEFT}>
-        <ScoreControls />
+        <ScoreControls side={TEAM_SIDE_LEFT} />
       </Team>
       <Team side={TEAM_SIDE_RIGHT}>
-        <ScoreControls />
+        <ScoreControls side={TEAM_SIDE_RIGHT} />
       </Team>
     </BoardLayout>
     <MainControls>

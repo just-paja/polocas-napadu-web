@@ -4,6 +4,8 @@ import Remove from '@material-ui/icons/Remove';
 import React from 'react';
 
 import { Classes } from 'core/proptypes';
+import { gql } from 'apollo-boost';
+import { Mutation } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -14,15 +16,43 @@ const styles = theme => ({
   }
 });
 
-const ScoreControls = ({ classes }) => (
-  <div className={classes.box}>
-    <IconButton>
-      <Add />
-    </IconButton>
-    <IconButton>
-      <Remove />
-    </IconButton>
-  </div>
+const CHANGE_SCORE = gql`
+  mutation ChangeScore($contestantGroupId: Int!, $subtract: Boolean) {
+    randomPickInspiration(contestantGroupId: $contestantGroupId, subtract: $subtract) {
+      ok,
+    }
+  }
+`;
+
+const ScoreControls = ({ classes, contestantGroupId }) => (
+  <Mutation mutation={CHANGE_SCORE}>
+    {(mutate, { loading }) => (
+      <div className={classes.box}>
+        <IconButton
+          onClick={() => mutate({
+            refetchQueries: ['MatchStage'],
+            variables: {
+              contestantGroupId,
+              subtract: false,
+            },
+          })}
+        >
+          <Add />
+        </IconButton>
+        <IconButton
+          onClick={() => mutate({
+            refetchQueries: ['MatchStage'],
+            variables: {
+              contestantGroupId,
+              subtract: true,
+            },
+          })}
+        >
+          <Remove />
+        </IconButton>
+      </div>
+    )}
+  </Mutation>
 );
 
 ScoreControls.propTypes = {
