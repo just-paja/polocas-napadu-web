@@ -31,7 +31,7 @@ class TeamDetails extends Component {
         <span className={classes.score}>
           {team.score}
           /
-          {team.penalties || 0}
+          {team.penaltyPoints || 0}
         </span>
       </div>
     );

@@ -119,7 +119,7 @@ class TeamDetails extends Component {
             ? null
             : <TeamScore score={team.score} backgroundColor={team.color} />}
           <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
-            {generatePenalties(classes, team.penalties)}
+            {generatePenalties(classes, team.penaltyPoints)}
           </span>
         </div>
       </div>

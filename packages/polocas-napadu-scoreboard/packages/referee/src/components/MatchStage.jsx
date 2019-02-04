@@ -39,6 +39,7 @@ const GET_MATCH = gql`
         score,
         color,
         logo,
+        penaltyPoints,
         band {
           name,
         }
