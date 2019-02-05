@@ -43,6 +43,11 @@ const GET_MATCH = gql`
         penaltyPoints,
         band {
           name,
+        },
+        players {
+          profile {
+            name,
+          },
         }
       },
       currentStage {
@@ -107,6 +112,5 @@ MatchStage.propTypes = {
 
 export default GraphContainer(
   withStyles(styles)(MatchStage),
-  GET_MATCH,
-  true
+  GET_MATCH
 );
