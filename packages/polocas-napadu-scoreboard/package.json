@@ -1,13 +1,18 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "postinstall": "lerna bootstrap"
+  },
+  "dependencies": {
+    "lerna": "^3.10.6"
+  },
   "devDependencies": {
     "@material-ui/core": "^3.9.1",
     "@material-ui/icons": "^3.0.2",
     "apollo-boost": "^0.1.27",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
-    "lerna": "^3.10.6",
     "react": "^16.7.0",
     "react-apollo": "^2.4.1",
     "react-dom": "^16.7.0",
