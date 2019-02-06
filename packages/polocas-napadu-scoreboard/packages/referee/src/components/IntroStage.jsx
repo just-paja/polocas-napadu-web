@@ -26,7 +26,7 @@ const IntroStage = ({ classes }) => (
       <Team side={TEAM_SIDE_LEFT} />
       <Team side={TEAM_SIDE_RIGHT} />
     </BoardLayout>
-    <MainControls>
+    <MainControls center>
       <h1>Intro</h1>
       <p>
         Během intra sportovní komentátoři udělají prognózu zápasu a

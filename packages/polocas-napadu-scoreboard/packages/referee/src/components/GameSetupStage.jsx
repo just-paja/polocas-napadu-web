@@ -41,7 +41,7 @@ const GameSetupStage = ({ classes }) => (
     </BoardLayout>
     <MatchContext.Consumer>
       {data => (
-        <MainControls>
+        <MainControls center>
           <h1>Nastavení kategorie</h1>
           <Mutation mutation={SET_GAME}>
             {(setGame, { error, loading }) => (

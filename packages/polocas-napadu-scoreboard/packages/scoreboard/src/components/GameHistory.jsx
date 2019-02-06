@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 
 import { Classes } from 'core/proptypes';
 import { gql } from 'apollo-boost';
@@ -32,7 +32,7 @@ const GET_MATCH_GAMES = gql`
   }
 `;
 
-class GameHistory extends Component {
+class GameHistory extends React.Component {
   constructor() {
     super();
     this.showNextGame = this.showNextGame.bind(this);

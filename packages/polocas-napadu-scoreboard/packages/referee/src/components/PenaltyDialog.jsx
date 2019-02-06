@@ -51,7 +51,7 @@ class PenaltyDialog extends React.Component {
             </DialogTitle>
             <DialogContent class={classes.teams}>
               {data.match.contestantGroups.map(group => (
-                <List>
+                <List key={group.id}>
                   <ListItem button key={group.id} onClick={() => {}}>
                     <ListItemAvatar>
                       <Avatar>

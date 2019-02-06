@@ -9,6 +9,7 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import DecibelMeter from './DecibelMeter';
 import MainControls from './MainControls';
 import ScoreControls from './ScoreControls';
 import Team from './Team';
@@ -31,9 +32,10 @@ const GameResultsStage = ({ classes }) => (
         <ScoreControls side={TEAM_SIDE_RIGHT} />
       </Team>
     </BoardLayout>
-    <MainControls>
+    <MainControls center>
       <h1>Hlasování</h1>
       <p>V této fázi hry diváci hlasují o tom který tým dostane bod.</p>
+      <DecibelMeter />
     </MainControls>
   </ControlsLayout>
 );
