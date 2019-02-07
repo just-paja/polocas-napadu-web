@@ -45,6 +45,7 @@ const GET_MATCH = gql`
           name,
         },
         players {
+          id,
           profile {
             name,
           },

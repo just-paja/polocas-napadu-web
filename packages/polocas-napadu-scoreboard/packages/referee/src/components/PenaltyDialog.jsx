@@ -160,15 +160,32 @@ class PenaltyDialog extends React.Component {
                           contestantGroupId: group.id,
                           name: group.band.name,
                           playerId: null,
+                          players: group.players,
                         }))
-                        .map(value => (
-                          <List key={value.contestantGroupId}>
+                        .map(group => (
+                          <List key={group.contestantGroupId}>
                             <TeamPenaltyButton
                               disabled={loading}
-                              target={value}
+                              target={group}
                               onChange={this.handleActorChange}
-                              selected={this.isSelected(value)}
+                              selected={this.isSelected(group)}
                             />
+                            {group.players
+                              .map(player => ({
+                                contestantGroupId: group.contestantGroupId,
+                                playerId: player.id,
+                                name: player.profile.name,
+                              }))
+                              .map(player => (
+                                <TeamPenaltyButton
+                                  disabled={loading}
+                                  key={player.id}
+                                  onChange={this.handleActorChange}
+                                  selected={this.isSelected(player)}
+                                  target={player}
+                                />
+                              ))
+                            }
                           </List>
                         )
                       )}
