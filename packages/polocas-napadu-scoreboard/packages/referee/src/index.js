@@ -11,13 +11,15 @@ import './index.css';
 
 const params = qs.parse(document.location.search);
 
-if ('token' in params) {
+if ('apiUrl' in params || 'token' in params) {
   sessionStorage.setItem('refereeToken', params.token);
+  sessionStorage.setItem('apiUrl', params.apiUrl);
   document.location.search = '';
 } else {
   const token = sessionStorage.getItem('refereeToken');
+  const apiUrl = sessionStorage.getItem('apiUrl');
   const apolloClient = new ApolloClient({
-    uri: 'http://localhost:8000/graphql',
+    uri: apiUrl,
     request: async operation => {
       operation.setContext({
         headers: {
