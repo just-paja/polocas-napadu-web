@@ -49,7 +49,7 @@ const ScoreControls = ({ classes, side }) => (
                 <Add />
               </IconButton>
               <IconButton
-                disabled={contestantGroup.score === 0}
+                disabled={contestantGroup.scorePoints === 0}
                 onClick={() => mutate({
                   refetchQueries: ['MatchStage'],
                   variables: {
