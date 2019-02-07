@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ApolloProvider } from 'react-apollo';
 import { Switch, Route } from 'react-router';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import MatchList from './components/MatchList';
 import NotFound from './components/NotFound';
@@ -13,13 +13,13 @@ class App extends React.Component {
     const { client } = this.props;
     return (
       <ApolloProvider client={client}>
-        <Router>
+        <HashRouter>
           <Switch>
             <Route path="/" exact component={MatchList} />
             <Route path="/match/:matchId" exact component={SpectatorView} />
             <Route component={NotFound} />
           </Switch>
-        </Router>
+        </HashRouter>
       </ApolloProvider>
     );
   }
