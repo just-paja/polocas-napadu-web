@@ -22,7 +22,9 @@ jobs:
 
       - save_cache:
           paths:
-            - **/node_modules/**
+            - node_modules
+            - packages/referee/node_modules
+            - packages/scoreboard/node_modules
           key: dependencies-{{ checksum "package.json" }}
 
       - persist_to_workspace:
@@ -30,15 +32,44 @@ jobs:
           paths:
             - .
 
-  build:
+  build_referee:
     <<: *defaults
     steps:
       - attach_workspace:
           at: *workspace_root
 
       - run:
+          working_directory: packages/referee
           name: Build artifacts
           command: npm run build
+
+      - run:
+          name: Copy artifact to root build folder
+          command: |
+            mkdir build
+            cp -r packages/referee/build build/referee
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - build
+
+  build_scoreboard:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          working_directory: packages/scoreboard
+          name: Build artifacts
+          command: npm run build
+
+      - run:
+          name: Copy artifact to root build folder
+          command: |
+            mkdir build
+            cp -r packages/scoreboard/build build/scoreboard
 
       - persist_to_workspace:
           root: *workspace_root
@@ -54,10 +85,6 @@ jobs:
       - run:
           name: Run tests
           command: npm test -- --coverage
-
-      - run:
-          name: Publish coverage
-          command: ./node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
 
   deploy:
     working_directory: ~/repo
@@ -77,19 +104,21 @@ workflows:
   version: 2
   build-n-deploy:
     jobs:
-      - install:
-          filters:
-            tags:
-              only: /[0-9]+\.[0-9]+\.[0-9]+/
-      - build:
+      - install
+      - test:
           requires:
             - install
-          filters:
-            tags:
-              only: /[0-9]+\.[0-9]+\.[0-9]+/
+      - build_referee:
+          requires:
+            - install
+      - build_scoreboard:
+          requires:
+            - install
       - deploy:
           requires:
-            - build
+            - test
+            - build_referee
+            - build_scoreboard
           filters:
-            tags:
-              only: /[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              only: master
