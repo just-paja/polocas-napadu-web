@@ -6,6 +6,7 @@ import { MatchContext } from 'core/context';
 import { Mutation } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
 
+import CustomInspirationSelection from './CustomInspirationSelection';
 import InspirationList from './InspirationList';
 import InteractiveButton from './InteractiveButton';
 
@@ -62,7 +63,7 @@ const InspirationSelection = ({ classes, data, onChange, value }) => (
           disabled: data.match.preparedInspirationCount === 0,
           label: 'Vylosovat',
         })}
-        <InteractiveButton>Zadat ručně</InteractiveButton>
+        <CustomInspirationSelection />
       </div>
     )}
   </MatchContext.Consumer>
