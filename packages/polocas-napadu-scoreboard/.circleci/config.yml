@@ -76,6 +76,28 @@ jobs:
           paths:
             - build
 
+  build_inspirations:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+
+      - run:
+          working_directory: packages/inspirations
+          name: Build artifacts
+          command: npm run build
+
+      - run:
+          name: Copy artifact to root build folder
+          command: |
+            mkdir build
+            cp -r packages/inspirations/build build/inspirations
+
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - build
+
   test:
     <<: *defaults
     steps:
@@ -108,6 +130,9 @@ workflows:
       - test:
           requires:
             - install
+      - build_inspirations:
+          requires:
+            - install
       - build_referee:
           requires:
             - install
@@ -117,6 +142,7 @@ workflows:
       - deploy:
           requires:
             - test
+            - build_inspirations
             - build_referee
             - build_scoreboard
           filters:
