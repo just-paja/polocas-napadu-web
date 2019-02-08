@@ -21,13 +21,12 @@ class GameInspiration extends React.Component {
   render() {
     const { classes } = this.props;
     const { game, inspirations } = this.context.match.currentStage;
-    if (!game) {
-      return null;
-    }
-    const list = game.inspirations.length ? game.inspirations : inspirations;
+    const list = game && game.inspirations && game.inspirations.length
+      ? game.inspirations
+      : inspirations;
     return (
       <div>
-        {game.type ? <div className={classes.game}>{game.type}</div> : null}
+        {game && game.type ? <div className={classes.game}>{game.type}</div> : null}
         {list.length > 0
           ? (
             <div className={classes.inspiration}>
