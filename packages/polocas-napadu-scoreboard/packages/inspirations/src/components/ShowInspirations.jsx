@@ -27,11 +27,11 @@ const styles = theme => ({
 const GET_MATCH = gql`
   query MatchStage($matchId: Int!) {
     match(id: $matchId) {
-      preparedInspirationCount,
       show {
         id,
         name,
         start,
+        totalInspirations,
       },
       currentStage {
         created,
@@ -54,7 +54,7 @@ const ShowInspirations = ({ classes, data }) => (
       <div className={classes.layout}>
         <h1>{data.match.show.name}</h1>
         {getStageView(data.match.currentStage)}
-        <p>Celkem jste nás inspirovali {data.match.preparedInspirationCount}x</p>
+        <p>Celkem jste nás inspirovali {data.match.show.totalInspirations}x</p>
       </div>
     </div>
   </MatchContext.Provider>
