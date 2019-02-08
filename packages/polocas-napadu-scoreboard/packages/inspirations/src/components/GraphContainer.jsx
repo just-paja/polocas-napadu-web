@@ -24,7 +24,7 @@ const GraphContainer = (WrappedComponent, query, poll = false) => {
       return (
         <Query
           query={query}
-          pollInterval={poll ? 500 : null}
+          pollInterval={poll ? 5000 : null}
           variables={{
             ...variables,
             ...this.context,
