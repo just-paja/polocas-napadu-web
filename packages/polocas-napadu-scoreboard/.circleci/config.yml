@@ -111,16 +111,35 @@ jobs:
   deploy:
     working_directory: ~/repo
     docker:
-      - image: circleci/python:3-stretch
+      - image: circleci/python:3.7
     steps:
       - attach_workspace:
           at: *workspace_root
+
+      - add_ssh_keys:
+          fingerprints:
+            - "47:1c:8b:3d:98:f9:c0:1c:7c:2d:77:e9:cd:46:da:cf"
+
       - run:
-          name: Install awscli
-          command: sudo pip install awscli
+          name: Install dependencies
+          command: |
+            sudo apt-get install rsync
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install pipenv vrun
+            pipenv install --dev
+            pipenv check
+            ansible-galaxy install -r requirements-ansible.yml -p ./roles
+
       - run:
-          name: Deploy to S3
-          command: aws s3 sync build s3://scoreboard.polocas-napadu.cz --delete
+          name: Configure ansible inventory
+          command: echo -e "[web]\n${PRODUCTION_DEPLOY_HOST}" > inventory.yml
+
+      - run:
+          name: Deploy to Staging
+          command: |
+            . .venv/bin/activate
+            env NGINX_STATIC_VERSION=$CIRCLE_TAG pipenv run ansible-playbook deploy.yml -i inventory.yml
 
 workflows:
   version: 2

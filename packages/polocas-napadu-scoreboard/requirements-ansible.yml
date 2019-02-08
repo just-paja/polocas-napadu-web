@@ -1,0 +1,4 @@
+- src: practical-ansible.nginx-redirect
+  version: master
+- src: practical-ansible.nginx-static
+  version: master
