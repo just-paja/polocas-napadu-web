@@ -114,5 +114,6 @@ MatchStage.propTypes = {
 
 export default GraphContainer(
   withStyles(styles)(MatchStage),
-  GET_MATCH
+  GET_MATCH,
+  true
 );
