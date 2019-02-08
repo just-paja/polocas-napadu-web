@@ -16,16 +16,14 @@ const styles = {
 const GET_MATCH_INSPIRATION_COUNT = gql`
   query TotalCount($matchId: Int!){
     match(id: $matchId) {
-      show {
-        totalInspirations,
-      }
+      preparedInspirationCount,
     }
   }
 `;
 
 const InspirationCount = ({ classes, data }) => (
   <p className={classes.inspiration}>
-    Celkem témat: {data.match.totalInspirations}
+    Celkem témat: {data.match.preparedInspirationCount}
   </p>
 );
 
