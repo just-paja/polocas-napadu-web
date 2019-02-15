@@ -1,0 +1,25 @@
+{
+  "name": "polocas-napadu-website",
+  "version": "0.1.0",
+  "description": "Website to Prague improv group Poločas nápadu",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "apollo-boost": "^0.1.16",
+    "apollo-client": "^2.4.13",
+    "graphql": "^14.0.2",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^8.0.1",
+    "react": "^16.8.2",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.8.2"
+  }
+}
