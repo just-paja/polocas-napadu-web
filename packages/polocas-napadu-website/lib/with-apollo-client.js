@@ -1,7 +1,8 @@
 import React from 'react'
 import initApollo from './init-apollo'
 import Head from 'next/head'
-import { getDataFromTree } from 'react-apollo'
+
+import { ApolloProvider, getDataFromTree } from 'react-apollo';
 
 export default App => {
   return class Apollo extends React.Component {
@@ -11,7 +12,7 @@ export default App => {
 
       let appProps = {}
       if (App.getInitialProps) {
-        appProps = await App.getInitialProps(ctx)
+        appProps = await App.getInitialProps(ctx);
       }
 
       // Run all GraphQL queries in the component tree
@@ -21,12 +22,13 @@ export default App => {
         try {
           // Run all GraphQL queries
           await getDataFromTree(
-            <App
-              {...appProps}
-              Component={Component}
-              router={router}
-              apolloClient={apollo}
-            />
+            <ApolloProvider client={apollo}>
+              <App
+                {...appProps}
+                Component={Component}
+                router={router}
+              />
+            </ApolloProvider>
           )
         } catch (error) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
@@ -55,7 +57,11 @@ export default App => {
     }
 
     render () {
-      return <App {...this.props} apolloClient={this.apolloClient} />
+      return (
+        <ApolloProvider client={this.apolloClient}>
+          <App {...this.props} />
+        </ApolloProvider>
+      );
     }
   }
 }
