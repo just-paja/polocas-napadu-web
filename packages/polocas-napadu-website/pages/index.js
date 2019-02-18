@@ -2,7 +2,6 @@ import React from 'react';
 import gql from 'graphql-tag';
 
 import { Query } from 'react-apollo';
-import { translate } from 'react-i18next'
 
 import { withNamespaces } from '../lib/i18n';
 
@@ -43,4 +42,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default translate(['common'])(HomePage);
+export default withNamespaces(['common'])(HomePage);

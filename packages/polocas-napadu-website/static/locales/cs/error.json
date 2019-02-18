@@ -1,0 +1,10 @@
+{
+  "error-not-found": "Mimo rámec!",
+  "error-not-found-explanation-text": "Dopustil ses klasické chyby \"Mimo rámec\" a proto ti nemůžeme zobrazit obsah této stránky. Mohlo se to stát jednou z následujících cest:",
+  "error-not-found-help-text": [
+    "špatně jsi opsal adresu",
+    "přišel jsi přeš zastaralý odkaz z výsledků vyhledávače",
+    "použil jsi dočasný odkaz, jemuž vypršela platnost",
+    "to co hledáš je smazané, přejmenované a nebo přesunuté"
+  ]
+}
