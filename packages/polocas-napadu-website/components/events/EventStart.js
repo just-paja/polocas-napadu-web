@@ -27,6 +27,8 @@ export const EventStartInner = ({ allDay, end, start, t }) => {
 
 export const EventStart = withNamespaces(['events'])(EventStartInner);
 
+EventStart.displayName = 'EventStart';
+
 EventStart.propTypes = {
   allDay: PropTypes.bool,
   end: PropTypes.string,

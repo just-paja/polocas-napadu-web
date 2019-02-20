@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "next start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Pavel Žák <pavel@zak.global>",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express": "^4.16.4",
     "graphql": "^14.0.2",
     "isomorphic-unfetch": "^3.0.0",
+    "moment": "^2.24.0",
     "next": "^8.0.1",
     "next-i18next": "^0.32.0",
     "react": "^16.8.2",
@@ -24,7 +25,15 @@
     "react-dom": "^16.8.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
-    "@babel/plugin-proposal-decorators": "^7.3.0"
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "babel-jest": "^24.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "jest": "^24.1.0",
+    "jest-date-mock": "^1.0.7",
+    "jest-enzyme": "^7.0.1",
+    "waait": "^1.0.4"
   }
 }

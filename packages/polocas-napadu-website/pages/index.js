@@ -1,18 +1,7 @@
 import React from 'react';
-import gql from 'graphql-tag';
-
-import { Query } from 'react-apollo';
 
 import { withNamespaces } from '../lib/i18n';
-
-export const queryTest = gql`
-  query {
-    showList {
-      id,
-      name
-    }
-  }
-`;
+import { ShowList } from '../components/shows';
 
 class HomePage extends React.Component {
   static getInitialProps() {
@@ -21,23 +10,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <Query query={queryTest}>
-        {({ data, error, loading }) => {
-          if (error) {
-            return <div>error</div>;
-          }
-          if (loading) {
-            return <div>loading</div>;
-          }
-          return (
-            <ul>
-              {data.showList.map(show => (
-                <li key={show.id}>{show.name}</li>
-              ))}
-            </ul>
-          );
-        }}
-      </Query>
+      <ShowList />
     );
   }
 }
