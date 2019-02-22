@@ -7,24 +7,23 @@ import { ShowListItem } from './ShowListItem';
 import { Show } from '../proptypes';
 import { withQuery } from '../graphql';
 
-const QUERY_SHOW_LIST = gql`
-  query GetShowList {
-    showList {
+const QUERY_SHOW = gql`
+  query GetShow($showId: Int!) {
+    show(id: $showId) {
       id,
       location {
         name
       },
       name,
       start,
-      slug,
     }
   }
 `;
 
-const ShowListInner = ({ data }) => (
-  data.showList.map(show => (
-    <ShowListItem key={show.id} show={show} />
-  ))
+const ShowDetailInner = ({ data }) => (
+  <div>
+    show
+  </div>
 );
 
-export const ShowList = withQuery(ShowListInner, QUERY_SHOW_LIST);
+export const ShowDetail = withQuery(ShowDetailInner, QUERY_SHOW);

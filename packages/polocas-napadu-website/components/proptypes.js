@@ -20,7 +20,8 @@ export const Location = PropTypes.shape({
 
 export const Show = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   location: Location.isRequired,
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string,
   start: PropTypes.string.isRequired,
 });

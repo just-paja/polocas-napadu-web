@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { Link } from '../../routes';
 import { Show } from '../proptypes';
 import { EventLocation, EventStart } from '../events';
 
 export const ShowListItem = ({ show }) => (
   <div>
-    <a href="">{show.name}</a>
+    <Link as={`/show/${show.slug}`} href="/show-detail">
+      <a>{show.name}</a>
+    </Link>
     <br />
     <EventStart
       allDay={show.allDay}

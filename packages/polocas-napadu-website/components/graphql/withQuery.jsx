@@ -6,7 +6,7 @@ import { QueryLoader } from './QueryLoader';
 import { QueryFailure } from './QueryFailure';
 
 export const withQuery = (Component, query) => (props) => (
-  <Query query={query}>
+  <Query query={query} variables={props.variables}>
     {({ data, loading, error }) => {
       if (loading) {
         return <QueryLoader />;
