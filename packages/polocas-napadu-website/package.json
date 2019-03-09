@@ -13,27 +13,28 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "apollo-boost": "^0.1.16",
+    "apollo-boost": "^0.3.1",
     "express": "^4.16.4",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.1",
     "isomorphic-unfetch": "^3.0.0",
     "moment": "^2.24.0",
-    "next": "^8.0.1",
-    "next-i18next": "^0.32.0",
-    "react": "^16.8.2",
-    "react-apollo": "^2.3.0",
-    "react-dom": "^16.8.2"
+    "next": "^8.0.3",
+    "next-i18next": "^0.36.1",
+    "next-routes-with-locale": "^1.4.4",
+    "react": "^16.8.4",
+    "react-apollo": "^2.5.2",
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-proposal-decorators": "^7.3.0",
-    "babel-jest": "^24.1.0",
+    "babel-jest": "^24.3.1",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.9.1",
-    "jest": "^24.1.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "jest": "^24.3.1",
     "jest-date-mock": "^1.0.7",
-    "jest-enzyme": "^7.0.1",
+    "jest-enzyme": "^7.0.2",
     "waait": "^1.0.4"
   }
 }
