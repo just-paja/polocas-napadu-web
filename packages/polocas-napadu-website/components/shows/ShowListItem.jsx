@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from '../../routes';
-import { Show } from '../proptypes';
-import { EventLocation, EventStart } from '../events';
+import { Link } from '../../lib/i18n'
+import { Show } from '../proptypes'
+import { EventLocation, EventStart } from '../events'
 
 export const ShowListItem = ({ show }) => (
   <div>
-    <Link as={`/show/${show.slug}`} href="/show-detail">
+    <Link as={`/show/${show.slug}`} href='/show-detail'>
       <a>{show.name}</a>
     </Link>
     <br />
@@ -18,8 +18,8 @@ export const ShowListItem = ({ show }) => (
     <br />
     {show.location && <EventLocation location={show.location} />}
   </div>
-);
+)
 
 ShowListItem.propTypes = {
-  show: Show.isRequired,
-};
+  show: Show.isRequired
+}
