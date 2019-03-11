@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Link } from '../../lib/i18n'
+import { Link } from '../../routes'
 import { Show } from '../proptypes'
 import { EventLocation, EventStart } from '../events'
 
 export const ShowListItem = ({ show }) => (
   <div>
-    <Link as={`/show/${show.slug}`} href='/show-detail'>
+    <Link route='showDetail' params={{ slug: show.slug }}>
       <a>{show.name}</a>
     </Link>
     <br />

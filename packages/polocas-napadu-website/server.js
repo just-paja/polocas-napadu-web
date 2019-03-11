@@ -1,11 +1,12 @@
 const express = require('express')
 const next = require('next')
 const nextI18NextMiddleware = require('next-i18next/middleware')
+const routes = require('./routes')
 
 const nextI18next = require('./lib/i18n')
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
-const handle = app.getRequestHandler();
+const handle = routes.getRequestHandler(app);
 
 (async () => {
   await app.prepare()

@@ -1,11 +1,11 @@
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost'
 
-import { ShowListItem } from './ShowListItem';
-import { Show } from '../proptypes';
-import { withQuery } from '../graphql';
+import { ShowListItem } from './ShowListItem'
+import { Show } from '../proptypes'
+import { withQuery } from '../graphql'
 
 const QUERY_SHOW_LIST = gql`
   query GetShowList {
@@ -19,12 +19,18 @@ const QUERY_SHOW_LIST = gql`
       slug,
     }
   }
-`;
+`
 
 const ShowListInner = ({ data }) => (
   data.showList.map(show => (
     <ShowListItem key={show.id} show={show} />
   ))
-);
+)
 
-export const ShowList = withQuery(ShowListInner, QUERY_SHOW_LIST);
+ShowListInner.propTypes = {
+  data: PropTypes.shape({
+    showList: PropTypes.arrayOf(Show)
+  })
+}
+
+export const ShowList = withQuery(ShowListInner, QUERY_SHOW_LIST)

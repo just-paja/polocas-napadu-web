@@ -1,15 +1,14 @@
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost'
 
-import { ShowListItem } from './ShowListItem';
-import { Show } from '../proptypes';
-import { withQuery } from '../graphql';
+import { Show } from '../proptypes'
+import { withQuery } from '../graphql'
 
 const QUERY_SHOW = gql`
-  query GetShow($showId: Int!) {
-    show(id: $showId) {
+  query GetShow($slug: String!) {
+    show(slug: $slug) {
       id,
       location {
         name
@@ -18,12 +17,18 @@ const QUERY_SHOW = gql`
       start,
     }
   }
-`;
+`
 
 const ShowDetailInner = ({ data }) => (
   <div>
-    show
+    {data.show.name}
   </div>
-);
+)
 
-export const ShowDetail = withQuery(ShowDetailInner, QUERY_SHOW);
+ShowDetailInner.propTypes = {
+  data: PropTypes.shape({
+    show: Show.isRequired
+  })
+}
+
+export const ShowDetail = withQuery(ShowDetailInner, QUERY_SHOW)

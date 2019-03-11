@@ -1,23 +1,34 @@
-import App, { Container } from 'next/app';
-import React from 'react';
+import App, { Container } from 'next/app'
+import React from 'react'
 
-import { I18nextProvider } from 'react-i18next';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo'
 
-import { appWithTranslation } from '../lib/i18n';
-import withApolloClient from '../lib/with-apollo-client';
+import { appWithTranslation } from '../lib/i18n'
+import { AppError } from '../components/app'
+import withApolloClient from '../lib/with-apollo-client'
 
 class MyApp extends App {
+  state = {
+    error: null
+  }
+
+  componentDidCatch (error) {
+    this.setState({ error })
+  }
+
   render () {
-    const { Component, pageProps, apolloClient, ...other } = this.props;
+    const { Component, pageProps, apolloClient } = this.props
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
+          {this.state.error
+            ? <AppError />
+            : <Component {...pageProps} />
+          }
         </ApolloProvider>
       </Container>
-    );
+    )
   }
 }
 
-export default withApolloClient(appWithTranslation(MyApp));
+export default withApolloClient(appWithTranslation(MyApp))

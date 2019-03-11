@@ -1,24 +1,27 @@
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { withNamespaces } from '../lib/i18n';
-import { ShowDetail } from '../components/shows';
+import { withNamespaces } from '../lib/i18n'
+import { ShowDetail } from '../components/shows'
 
 class ShowDetailPage extends React.Component {
-  static getInitialProps({ query }) {
-    console.log(query);
+  static getInitialProps (context) {
     return {
       namespacesRequired: ['common'],
-      showId: query.showId,
-    };
+      slug: context.query.slug
+    }
   }
 
-  render() {
-    const { showId } = this.props;
-    console.log(this.props);
+  render () {
+    const { slug } = this.props
     return (
-      <ShowDetail variables={{ showId }} />
-    );
+      <ShowDetail variables={{ slug }} />
+    )
   }
 }
 
-export default withNamespaces(['common'])(ShowDetailPage);
+ShowDetailPage.propTypes = {
+  slug: PropTypes.string.isRequired
+}
+
+export default withNamespaces(['common'])(ShowDetailPage)

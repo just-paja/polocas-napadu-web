@@ -1,0 +1,10 @@
+{
+  "error-not-found": "Out of scope!",
+  "error-not-found-explanation-text": "The page you are looking for does not exist:",
+  "error-not-found-help-text": [
+    "the address was written incorrectly",
+    "you arrived via a deprecated link from some search enging",
+    "you used temporary link which is no longer valid",
+    "the thing you are looking for is either deleted or moved"
+  ]
+}

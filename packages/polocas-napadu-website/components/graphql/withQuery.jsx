@@ -1,20 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-import { Query } from 'react-apollo';
+import { Query } from 'react-apollo'
 
-import { QueryLoader } from './QueryLoader';
-import { QueryFailure } from './QueryFailure';
+import { QueryLoader } from './QueryLoader'
 
-export const withQuery = (Component, query) => (props) => (
+export const withQuery = (Component, query, optional = false) => (props) => (
   <Query query={query} variables={props.variables}>
     {({ data, loading, error }) => {
       if (loading) {
-        return <QueryLoader />;
+        return <QueryLoader />
       }
       if (error) {
-        return <QueryFailure />;
+        throw error
       }
-      return <Component data={data} {...props} />;
+      if (!optional && Object.keys(data).some(key => !data[key])) {
+        const error = new Error('Not Found!')
+        error.statusCode = 404
+        error.code = 'ENOENT'
+        throw error
+      }
+      return <Component data={data} {...props} />
     }}
   </Query>
-);
+)

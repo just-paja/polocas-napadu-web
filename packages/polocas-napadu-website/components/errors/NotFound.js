@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { withNamespaces } from '../../lib/i18n';
+import { withNamespaces } from '../../lib/i18n'
 
 export const NotFound = withNamespaces('error')(
   ({ t }) => (
@@ -8,7 +8,7 @@ export const NotFound = withNamespaces('error')(
       <h1>{t('error-not-found')}</h1>
       <p>{t('error-not-found-explanation-text')}</p>
       <ul>
-        {t('error-not-found-help-text', { returnObjects: true }).map(text => (
+        {(t('error-not-found-help-text', { returnObjects: true }) || []).map(text => (
           <li key={text}>
             {text}
           </li>
@@ -16,4 +16,4 @@ export const NotFound = withNamespaces('error')(
       </ul>
     </div>
   )
-);
+)
