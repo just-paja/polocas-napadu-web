@@ -6,7 +6,7 @@ import { withNamespaces } from '../../lib/i18n'
 
 const renderSingleDate = (date, format) => <span>{date.format(format)}</span>
 
-export const EventStartInner = ({ allDay, end, start, t }) => {
+const EventStartInner = ({ allDay, end, start, t }) => {
   if (!start) {
     return t('event-start-indeterminate')
   }
@@ -29,12 +29,12 @@ export const EventStart = withNamespaces(['events'])(EventStartInner)
 
 EventStart.displayName = 'EventStart'
 
-EventStart.propTypes = {
+EventStartInner.propTypes = {
   allDay: PropTypes.bool,
   end: PropTypes.string,
-  start: PropTypes.string,
+  start: PropTypes.string
 }
 
-EventStart.defaultProps = {
-  allDay: false,
+EventStartInner.defaultProps = {
+  allDay: false
 }
