@@ -4,30 +4,31 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
 
 import { Link } from '../bindings'
+import { withNamespaces } from '../../lib/i18n'
 import { withStyles } from '@material-ui/core/styles'
+import { ContentContainer } from './ContentContainer'
 
 const styles = (theme) => ({
-  container: {
-    margin: 'auto',
-    maxWidth: 1024,
-    width: '100%'
-  },
   menuItem: {
     fontSize: theme.typography.fontSize * 1.5
   }
 })
 
-export const MainMenu = withStyles(styles)(({ classes }) => (
+const MainMenuInner = ({ classes, t }) => (
   <AppBar position='static'>
-    <Toolbar className={classes.container}>
-      <Grid container spacing={24}>
-        <Grid className={classes.menuItem} item>
-          <Link route='home'>Home</Link>
+    <Toolbar>
+      <ContentContainer>
+        <Grid container spacing={24}>
+          <Grid className={classes.menuItem} item>
+            <Link route='home'><a>{t('projectName')}</a></Link>
+          </Grid>
+          <Grid className={classes.menuItem} item>
+            <Link route='showList'><a>{t('shows')}</a></Link>
+          </Grid>
         </Grid>
-        <Grid className={classes.menuItem} item>
-          <Link route='showList'>Představení</Link>
-        </Grid>
-      </Grid>
+      </ContentContainer>
     </Toolbar>
   </AppBar>
-))
+)
+
+export const MainMenu = withNamespaces(['navigation'])(withStyles(styles)(MainMenuInner))

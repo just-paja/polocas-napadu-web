@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CommonLayout } from '../components/layout'
+import { CommonLayout, ContentContainer } from '../components/layout'
 import { ShowList } from '../components/shows'
 import { withNamespaces } from '../lib/i18n'
 
@@ -15,14 +14,12 @@ class ShowListPage extends React.Component {
   render () {
     return (
       <CommonLayout>
-        <ShowList />
+        <ContentContainer>
+          <ShowList />
+        </ContentContainer>
       </CommonLayout>
     )
   }
-}
-
-ShowListPage.propTypes = {
-  slug: PropTypes.string.isRequired
 }
 
 export default withNamespaces(['common'])(ShowListPage)

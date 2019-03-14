@@ -1,27 +1,31 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core/styles'
+import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import { MainMenu } from './MainMenu'
+import { siteTheme } from './mui'
 
-const styles = {
+const styles = theme => ({
   '@global': {
     body: {
+      fontFamily: theme.typography.fontFamily,
       padding: 0,
       margin: 0
     }
   },
   main: {
   }
-}
+})
 
 export const CommonLayout = withStyles(styles)(({
   children,
   classes
 }) => (
-  <div className={classes.main}>
-    <MainMenu />
-    <div>
-      {children}
+  <MuiThemeProvider theme={siteTheme}>
+    <div className={classes.main}>
+      <MainMenu />
+      <div>
+        {children}
+      </div>
     </div>
-  </div>
+  </MuiThemeProvider>
 ))
