@@ -6,17 +6,19 @@ import { CommonLayout } from '../components/layout'
 
 class HomePage extends React.Component {
   static getInitialProps () {
-    return { namespacesRequired: ['common'] }
+    return { namespacesRequired: ['navigation'] }
   }
 
   render () {
+    const { t } = this.props;
     return (
       <CommonLayout>
-        Home
+        <title>{`${t('projectName')} - ${t('projectNameAppendix')}`}</title>
+        {t('hello')}
         <ShowList />
       </CommonLayout>
     )
   }
 }
 
-export default withNamespaces(['common'])(HomePage)
+export default withNamespaces(['navigation'])(HomePage)
