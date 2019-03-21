@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { CommonLayout, ContentContainer } from '../components/layout'
 import { withNamespaces } from '../lib/i18n'
 import { ShowDetail } from '../components/shows'
 
@@ -15,7 +16,11 @@ class ShowDetailPage extends React.Component {
   render () {
     const { slug } = this.props
     return (
-      <ShowDetail variables={{ slug }} />
+      <CommonLayout>
+        <ContentContainer>
+          <ShowDetail variables={{ slug }} />
+        </ContentContainer>
+      </CommonLayout>
     )
   }
 }

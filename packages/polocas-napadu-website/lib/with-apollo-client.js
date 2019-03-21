@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import { getDataFromTree } from 'react-apollo'
 
-export default App => {
+export function withApolloClient (App) {
   return class Apollo extends React.Component {
     static displayName = 'withApollo(App)'
     static async getInitialProps (ctx) {
