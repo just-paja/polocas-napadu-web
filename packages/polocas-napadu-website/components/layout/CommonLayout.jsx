@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core/styles'
+import { Footer } from './Footer'
 import { MainMenu } from './MainMenu'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   '@global': {
@@ -24,5 +25,6 @@ export const CommonLayout = withStyles(styles)(({
     <div>
       {children}
     </div>
+    <Footer />
   </div>
 ))

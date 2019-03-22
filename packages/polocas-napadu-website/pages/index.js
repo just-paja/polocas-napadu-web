@@ -11,6 +11,7 @@ class HomePage extends React.Component {
 
   render () {
     const { t } = this.props;
+
     return (
       <CommonLayout>
         <title>{`${t('projectName')} - ${t('projectNameAppendix')}`}</title>
