@@ -1,14 +1,17 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core/styles'
+import { ContentContainer } from './ContentContainer';
 import { LanguageSwitcher } from '../i18n';
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
 })
 
 export const Footer = withStyles(styles)(({ classes }) => (
   <footer>
-    <LanguageSwitcher />
-    The footer
+    <ContentContainer>
+      <LanguageSwitcher />
+      The footer
+    </ContentContainer>
   </footer>
 ))
