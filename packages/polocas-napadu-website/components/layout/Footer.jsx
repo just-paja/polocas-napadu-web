@@ -5,10 +5,13 @@ import { LanguageSwitcher } from '../i18n';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
+  footer: {
+    width: '100%'
+  }
 })
 
 export const Footer = withStyles(styles)(({ classes }) => (
-  <footer>
+  <footer class={classes.footer}>
     <ContentContainer>
       <LanguageSwitcher />
       The footer
