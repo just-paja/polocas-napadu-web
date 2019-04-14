@@ -1,8 +1,29 @@
 module.exports = {
-  setupFiles: [
-    '<rootDir>/jest.setup.js',
-    'jest-date-mock',
+  projects: [
+    {
+      displayName: 'linter',
+      runner: 'jest-runner-standard',
+      testMatch: [
+        '<rootDir>/**/*.{js,jsx}'
+      ],
+      testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
+    },
+    {
+      displayName: 'website',
+      setupFiles: [
+        '<rootDir>/jest.setup.js',
+        'jest-date-mock'
+      ],
+      setupFilesAfterEnv: ['jest-enzyme/lib/index.js'],
+      testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
+    }
   ],
-  setupFilesAfterEnv: ['jest-enzyme/lib/index.js'],
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
-};
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}'
+  ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/locales/',
+    '/constants/'
+  ]
+}

@@ -1,5 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-export const QueryFailure = ({ error }) => (
+import { ErrorType } from '../proptypes'
+
+export const QueryFailure = () => (
   <div>Error!</div>
-);
+)
+
+QueryFailure.propTypes = {
+  error: ErrorType
+}

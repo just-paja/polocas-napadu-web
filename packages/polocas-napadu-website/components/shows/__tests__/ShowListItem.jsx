@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme'
 
-import { ShowListItem } from '..';
+import { ShowListItem } from '..'
 
 describe('ShowListItem component', () => {
   it('renders event with start date', () => {
@@ -13,11 +13,11 @@ describe('ShowListItem component', () => {
           name: 'Dvouhodinový motel',
           start: '2019-03-08T19:30:00',
           location: {
-            name: 'Divadlo Bez Hranic',
-          },
+            name: 'Divadlo Bez Hranic'
+          }
         }}
       />
-    );
-    expect(comp.find('EventStart')).toHaveProp('start', '2019-03-08T19:30:00');
+    )
+    expect(comp.find('EventStart')).toHaveProp('start', '2019-03-08T19:30:00')
   })
-});
+})

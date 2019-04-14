@@ -1,2 +1,2 @@
-export * from './EventStart';
-export * from './EventLocation';
+export * from './EventStart'
+export * from './EventLocation'

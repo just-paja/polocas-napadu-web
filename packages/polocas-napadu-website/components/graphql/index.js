@@ -1,1 +1,1 @@
-export * from './withQuery';
+export * from './withQuery'

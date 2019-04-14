@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { LanguageSwitcher } from '..';
-import { renderWithI18n } from '../../../mock';
+import { LanguageSwitcher } from '..'
+import { renderWithI18n } from '../../../mock'
 
 describe('LanguageSwitcher component', () => {
   it('renders labels of all available languages', async () => {
     const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+      otherLanguages: ['en']
+    })
     expect(comp).toIncludeText('Česky')
     expect(comp).toIncludeText('English')
   })
@@ -16,16 +16,16 @@ describe('LanguageSwitcher component', () => {
   it.skip('renders current language as span', async () => {
     const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+      otherLanguages: ['en']
+    })
     expect(comp.find('[children="Česky"]').name()).toBe('span')
   })
 
   it('renders available language as link', async () => {
     const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+      otherLanguages: ['en']
+    })
     expect(comp.find('[children="English"]').name()).toBe('a')
   })
 
@@ -34,9 +34,10 @@ describe('LanguageSwitcher component', () => {
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {
-      defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+        defaultLanguage: 'cs',
+        otherLanguages: ['en']
+      }
+    )
     expect(comp.find('[children="English"]')).toHaveProp(
       'href',
       '/en'
@@ -48,9 +49,10 @@ describe('LanguageSwitcher component', () => {
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {
-      defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+        defaultLanguage: 'cs',
+        otherLanguages: ['en']
+      }
+    )
     expect(comp.find('[children="English"]')).toHaveProp(
       'href',
       '/en/predstaveni/ostrov-ktery-jsem-prehlid'
@@ -62,9 +64,10 @@ describe('LanguageSwitcher component', () => {
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {
-      defaultLanguage: 'cs',
-      otherLanguages: ['en'],
-    });
+        defaultLanguage: 'cs',
+        otherLanguages: ['en']
+      }
+    )
     expect(comp.find('[children="Česky"]')).toHaveProp(
       'href',
       '/cs/predstaveni/ostrov-ktery-jsem-prehlid'

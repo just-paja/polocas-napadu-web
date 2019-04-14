@@ -1,2 +1,2 @@
-export * from './NotFound';
-export * from './UnknownError';
+export * from './NotFound'
+export * from './UnknownError'

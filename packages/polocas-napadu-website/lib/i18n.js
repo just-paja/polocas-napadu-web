@@ -5,7 +5,7 @@ const defaultSettings = {
   fallbackLng: 'en',
   localeSubpaths: 'foreign',
   otherLanguages: ['en']
-};
+}
 
-module.exports = new NextI18Next(defaultSettings);
+module.exports = new NextI18Next(defaultSettings)
 module.exports.defaultSettings = defaultSettings

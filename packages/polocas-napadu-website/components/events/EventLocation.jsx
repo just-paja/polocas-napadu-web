@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Location } from '../proptypes';
+import { Location } from '../proptypes'
 
 export const EventLocation = ({ location }) => (
   <span>{location.name}</span>
-);
+)
 
 EventLocation.propTypes = {
-  location: Location.isRequired,
-};
+  location: Location.isRequired
+}

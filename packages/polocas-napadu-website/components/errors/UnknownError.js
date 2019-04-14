@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { withNamespaces } from '../../lib/i18n';
+import { withNamespaces } from '../../lib/i18n'
 
 export const UnknownError = withNamespaces(['error'])(
   ({ t }) => (
@@ -11,4 +11,4 @@ export const UnknownError = withNamespaces(['error'])(
       </p>
     </div>
   )
-);
+)

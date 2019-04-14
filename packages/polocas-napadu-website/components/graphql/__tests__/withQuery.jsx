@@ -2,7 +2,7 @@ import React from 'react'
 import waait from 'waait'
 
 import { gql } from 'apollo-boost'
-import { mount, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
 import { MockedProvider } from 'react-apollo/test-utils'
 
 import { withQuery } from '..'
