@@ -7,20 +7,20 @@
     "postinstall": "lerna bootstrap"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.1",
+    "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "apollo-boost": "^0.1.27",
-    "graphql-tag": "^2.10.1",
+    "apollo-boost": "^0.3.1",
     "graphql": "^14.1.1",
-    "lerna": "^3.10.6",
-    "react-apollo": "^2.4.1",
-    "react-dom": "^16.7.0",
-    "react-router-dom": "^4.3.1",
-    "react-router": "^4.3.1",
-    "react": "^16.7.0"
+    "graphql-tag": "^2.10.1",
+    "lerna": "^3.13.2",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.4",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
-    "apollo-link-schema": "^1.1.4",
+    "apollo-link-schema": "^1.2.2",
     "graphql-tools": "^4.0.4"
   }
 }
