@@ -34,6 +34,7 @@ const GET_MATCH = gql`
         name,
         start,
       },
+      closed,
       contestantGroups {
         id,
         contestantType,

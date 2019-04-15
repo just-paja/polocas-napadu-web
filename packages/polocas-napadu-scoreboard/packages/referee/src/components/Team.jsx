@@ -19,6 +19,11 @@ class Team extends React.Component {
     const { children, classes, side } = this.props;
     const contestantType = getContestantTypeBySide(side);
     const team = this.context.match.contestantGroups.find(group => group.contestantType === contestantType);
+
+    if (!team) {
+      return null;
+    }
+
     return (
       <div className={classes.team} style={{ backgroundColor: team.color }}>
         <TeamDetails team={team} />

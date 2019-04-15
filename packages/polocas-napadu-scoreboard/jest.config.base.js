@@ -1,11 +1,16 @@
 module.exports = {
   roots: [
-    '<rootDir>/src',
-    '<rootDir>/tests',
+    '<rootDir>/src'
   ],
-  testRegex: '(/tests/.*.(test|spec)).(jsx?)$',
+  testRegex: '(/__tests__/.*.(jsx?))$',
   moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-  collectCoverage: true,
-  coveragePathIgnorePatterns: ['(tests/.*.mock).(jsx?)$'],
-  verbose: true,
-};
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}'
+  ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/locales/',
+    '/constants/'
+  ],
+  verbose: true
+}

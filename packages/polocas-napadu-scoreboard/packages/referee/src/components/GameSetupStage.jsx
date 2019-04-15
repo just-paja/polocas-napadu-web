@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { Classes } from 'core/proptypes';
 import { gql } from 'apollo-boost';
 import { MatchContext } from 'core/context';
 import { Mutation } from 'react-apollo';
-import { withStyles } from '@material-ui/core/styles';
 import {
   TEAM_SIDE_LEFT,
   TEAM_SIDE_RIGHT,
@@ -17,14 +15,6 @@ import InspirationSelection from './InspirationSelection';
 import MainControls from './MainControls';
 import Team from './Team';
 
-const styles = theme => ({
-  inspiration: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-});
-
 const SET_GAME = gql`
   mutation SetMatchGame($matchId: Int!, $gameRulesId: Int) {
     setMatchGame(matchId: $matchId, gameRulesId: $gameRulesId) {
@@ -33,40 +23,46 @@ const SET_GAME = gql`
   }
 `;
 
-const GameSetupStage = ({ classes }) => (
-  <ControlsLayout>
-    <BoardLayout>
-      <Team side={TEAM_SIDE_LEFT} />
-      <Team side={TEAM_SIDE_RIGHT} />
-    </BoardLayout>
-    <MatchContext.Consumer>
-      {data => (
+class GameSetupStage extends React.Component {
+  render() {
+    return (
+      <ControlsLayout>
+        <BoardLayout>
+          <Team side={TEAM_SIDE_LEFT} />
+          <Team side={TEAM_SIDE_RIGHT} />
+        </BoardLayout>
         <MainControls center>
           <h1>Nastavení kategorie</h1>
-          <Mutation mutation={SET_GAME}>
-            {(setGame, { error, loading }) => (
-              <GameSelection
-                onChange={(value) => setGame({
-                  refetchQueries: ['MatchStage'],
-                  variables: {
-                    gameRulesId: value ? value.id : null,
-                    matchId: data.match.id,
-                  },
-                })}
-                value={data.match.currentStage.game && data.match.currentStage.game.rules}
-              />
-            )}
-          </Mutation>
-          <h2>Inspirace ({data.match.preparedInspirationCount})</h2>
-          <InspirationSelection />
+          <p>Rozhodčí určuje jaká kategorie se bude hrát a vybírá téma</p>
+          {this.context.match.closed
+            ? null
+            : (
+              <React.Fragment>
+                <Mutation mutation={SET_GAME}>
+                  {(setGame, { error, loading }) => (
+                    <GameSelection
+                      onChange={(value) => setGame({
+                        refetchQueries: ['MatchStage'],
+                        variables: {
+                          gameRulesId: value ? value.id : null,
+                          matchId: this.context.match.id,
+                        },
+                      })}
+                      value={this.context.match.currentStage.game && this.context.match.currentStage.game.rules}
+                    />
+                  )}
+                </Mutation>
+                <h2>Inspirace ({this.context.match.preparedInspirationCount})</h2>
+                <InspirationSelection />
+              </React.Fragment>
+            )
+          }
         </MainControls>
-      )}
-    </MatchContext.Consumer>
-  </ControlsLayout>
-);
+      </ControlsLayout>
+    );
+  }
+}
 
-GameSetupStage.propTypes = {
-  classes: Classes.isRequired,
-};
+GameSetupStage.contextType = MatchContext
 
-export default withStyles(styles)(GameSetupStage);
+export default GameSetupStage;

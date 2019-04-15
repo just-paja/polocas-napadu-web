@@ -9,6 +9,7 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
+import MainControls from './MainControls';
 import Team from './Team';
 
 const styles = {
@@ -25,6 +26,9 @@ const PauseStage = ({ classes }) => (
       <Team side={TEAM_SIDE_LEFT} />
       <Team side={TEAM_SIDE_RIGHT} />
     </BoardLayout>
+    <MainControls center>
+      <h1>Přestávka</h1>
+    </MainControls>
   </ControlsLayout>
 );
 

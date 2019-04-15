@@ -35,6 +35,11 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     marginTop: 'auto',
   },
+  closed: {
+    color: theme.palette.error.main,
+    textAlign: 'center',
+    width: '100%'
+  }
 });
 
 const mapStageToButton = stage => <ShowStageControl key={stage} stage={stage} />
@@ -48,12 +53,11 @@ class ShowStageControls extends React.Component {
     return forward || [];
   }
 
-  render() {
-    const { classes } = this.props;
+  renderControls() {
     const { currentStage, prevStage } = this.context.match;
     const forward = this.getForwardButtons();
     return (
-      <div className={classes.box}>
+      <React.Fragment>
         {currentStage ? (
           <ShowProgress side="left">
             <ShowStageControl back stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP} />
@@ -69,6 +73,20 @@ class ShowStageControls extends React.Component {
             ]}
           />
         </ShowProgress>
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { closed } = this.context.match;
+
+    return (
+      <div className={classes.box}>
+        {closed
+          ? <p className={classes.closed}>Zápas je uzavřen</p>
+          : this.renderControls()
+        }
       </div>
     );
   }
