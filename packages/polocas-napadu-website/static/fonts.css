@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "HK Blocker Heavy";
+  src: url("fonts/hk-blocker-heavy.eot");
+  src:
+    url("fonts/hk-blocker-heavy.woff") format("woff"),
+    url("fonts/hk-blocker-heavy.woff2") format("woff2"),
+    url("fonts/hk-blocker-heavy.otf") format("opentype");
+}

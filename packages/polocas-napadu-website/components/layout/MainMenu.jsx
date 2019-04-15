@@ -10,7 +10,13 @@ import { ContentContainer } from './ContentContainer'
 
 const styles = (theme) => ({
   menuItem: {
-    fontSize: theme.typography.fontSize * 1.5
+    textTransform: 'uppercase',
+    '@global': {
+      a: {
+        color: theme.palette.primary.contrastText,
+        textDecoration: 'none'
+      }
+    }
   }
 })
 

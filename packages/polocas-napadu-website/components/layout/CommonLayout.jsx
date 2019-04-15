@@ -15,18 +15,33 @@ const flexInner = {
 
 const styles = theme => ({
   '@global': {
+    '@font-face': {
+      fontFamily: 'HK Blocker Heavy',
+      src: [
+        'url("/static/fonts/hk-blocker-heavy.woff") format("woff")',
+        'url("/static/fonts/hk-blocker-heavy.woff2") format("woff2")',
+        'url("/static/fonts/hk-blocker-heavy.otf") format("opentype")'
+      ]
+    },
     body: {
       ...flexWrap,
       ...flexInner,
       fontFamily: theme.typography.fontFamily,
       margin: 0,
-      padding: 0
+      padding: 0,
+      color: theme.palette.text.primary
     },
     html: {
       ...flexWrap,
       minHeight: '100%',
       display: 'flex',
       flexDirection: 'column'
+    },
+    a: {
+      color: theme.palette.primary.main,
+      '&:hover': {
+        color: theme.palette.primary.light
+      }
     },
     '#__next': {
       ...flexWrap,

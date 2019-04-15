@@ -1,4 +1,5 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
 
 import { withNamespaces } from '../lib/i18n'
 import { ShowList } from '../components/shows'
@@ -16,6 +17,7 @@ class HomePage extends React.Component {
       <CommonLayout>
         <title>{`${t('projectName')} - ${t('projectNameAppendix')}`}</title>
         <ContentContainer>
+          <Typography variant='h1'>Home page</Typography>
           <ShowList />
         </ContentContainer>
       </CommonLayout>
