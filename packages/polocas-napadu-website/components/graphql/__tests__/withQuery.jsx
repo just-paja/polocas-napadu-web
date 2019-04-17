@@ -2,7 +2,7 @@ import React from 'react'
 import waait from 'waait'
 
 import { gql } from 'apollo-boost'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { MockedProvider } from 'react-apollo/test-utils'
 
 import { withQuery } from '..'
@@ -21,11 +21,11 @@ const TestComponentWrapped = withQuery(TestComponent, TEST_QUERY)
 
 describe('withQuery HOC', () => {
   it('given query is loading, it renders loader', () => {
-    const comp = shallow(
+    const comp = mount(
       <MockedProvider mocks={[]}>
         <TestComponentWrapped />
       </MockedProvider>
-    ).dive().dive().dive()
+    )
     expect(comp.find('QueryLoader')).toHaveLength(1)
   })
 
@@ -37,12 +37,13 @@ describe('withQuery HOC', () => {
       },
       error
     }
-    const comp = shallow(
+    const comp = mount(
       <MockedProvider mocks={[testQueryMock]} addTypename={false}>
         <TestComponentWrapped />
       </MockedProvider>
-    ).dive().dive().dive()
+    )
     await waait(3)
+    comp.update()
     expect(comp.find('QueryFailure')).toHaveLength(1)
   })
 
@@ -61,12 +62,13 @@ describe('withQuery HOC', () => {
         }
       }
     }
-    const comp = shallow(
+    const comp = mount(
       <MockedProvider mocks={[testQueryMock]} addTypename={false}>
         <TestComponentWrapped />
       </MockedProvider>
-    ).dive().dive().dive()
+    )
     await waait(3)
+    comp.update()
     expect(comp.find('TestComponent')).toHaveLength(1)
   })
 
@@ -85,12 +87,13 @@ describe('withQuery HOC', () => {
         }
       }
     }
-    const comp = shallow(
+    const comp = mount(
       <MockedProvider mocks={[testQueryMock]} addTypename={false}>
         <TestComponentWrapped testProp='foo' />
       </MockedProvider>
-    ).dive().dive().dive()
-    await waait(3)
+    )
+    await waait(0)
+    comp.update()
     expect(comp.find('TestComponent')).toHaveProp('testProp', 'foo')
   })
 
@@ -109,12 +112,13 @@ describe('withQuery HOC', () => {
         }
       }
     }
-    const comp = shallow(
+    const comp = mount(
       <MockedProvider mocks={[testQueryMock]} addTypename={false}>
         <TestComponentWrapped testProp='foo' />
       </MockedProvider>
-    ).dive().dive().dive()
-    await waait(3)
+    )
+    await waait(0)
+    comp.update()
     expect(comp.find('TestComponent')).toHaveProp('data', {
       showList: [
         {
