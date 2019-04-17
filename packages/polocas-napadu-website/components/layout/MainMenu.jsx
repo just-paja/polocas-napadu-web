@@ -32,6 +32,9 @@ const MainMenuComponent = ({ classes, t }) => (
           <Grid className={classes.menuItem} item>
             <Link route='showList'><a>{t('shows')}</a></Link>
           </Grid>
+          <Grid className={classes.menuItem} item>
+            <Link route='about'><a>{t('about')}</a></Link>
+          </Grid>
         </Grid>
       </ContentContainer>
     </Toolbar>
