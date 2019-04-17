@@ -56,18 +56,18 @@ export const siteTheme = createMuiTheme({
     fontSize: baseFontSize,
     h1: {
       ...heading,
-      fontSize: baseFontSize * 4,
-      marginTop: baseLine * 2
+      fontSize: baseFontSize * 3,
+      marginTop: baseLine * 3
     },
     h2: {
       ...heading,
-      fontSize: baseFontSize * 3,
-      marginTop: baseLine * 1.5
+      fontSize: baseFontSize * 2,
+      marginTop: baseLine * 2
     },
     h3: {
       ...heading,
-      fontSize: baseFontSize * 2,
-      marginTop: baseLine
+      fontSize: baseFontSize * 1.5,
+      marginTop: baseLine * 1.5
     }
   }
 })
