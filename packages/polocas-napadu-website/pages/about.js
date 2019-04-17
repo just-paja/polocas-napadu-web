@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
 import { withNamespaces } from '../lib/i18n'
@@ -9,7 +8,7 @@ import {
   GroupDescription
 } from '../components'
 
-class ShowDetailPage extends React.Component {
+class AboutPage extends React.Component {
   render () {
     return (
       <CommonLayout>
@@ -21,8 +20,4 @@ class ShowDetailPage extends React.Component {
   }
 }
 
-ShowDetailPage.propTypes = {
-  slug: PropTypes.string.isRequired
-}
-
-export default withNamespaces(['common'])(ShowDetailPage)
+export default withNamespaces(['common'])(AboutPage)
