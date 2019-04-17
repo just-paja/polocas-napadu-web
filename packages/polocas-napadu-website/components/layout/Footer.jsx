@@ -2,6 +2,9 @@ import React from 'react'
 
 import { ContentContainer } from './ContentContainer'
 import { LanguageSwitcher } from '../i18n'
+import { propsStyled, propsTranslated } from '../proptypes'
+import { SocialNetworks } from '../social'
+import { withNamespaces } from '../../lib/i18n'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -11,14 +14,27 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 4,
     paddingBottom: theme.spacing.unit * 4,
     width: '100%'
+  },
+  copyrightNotice: {
+    color: theme.palette.grey.A700,
+    textAlign: 'center',
+    fontWeight: theme.typography.fontWeightLight
   }
 })
 
-export const Footer = withStyles(styles)(({ classes }) => (
+const FooterComponent = ({ classes, t }) => (
   <footer className={classes.footer}>
     <ContentContainer>
       <LanguageSwitcher />
-      The footer
+      <SocialNetworks />
+      <p className={classes.copyrightNotice}>{t('copyright-notice')}</p>
     </ContentContainer>
   </footer>
-))
+)
+
+FooterComponent.propTypes = {
+  ...propsStyled,
+  ...propsTranslated
+}
+
+export const Footer = withNamespaces(['navigation'])(withStyles(styles)(FooterComponent))

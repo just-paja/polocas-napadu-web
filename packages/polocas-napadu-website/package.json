@@ -33,6 +33,7 @@
     "react": "^16.8.4",
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.4",
+    "react-icons": "^3.6.1",
     "react-jss": "^8.6.1",
     "react-markdown": "^4.0.8"
   },

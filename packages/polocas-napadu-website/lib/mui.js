@@ -4,6 +4,11 @@ const baseFontSize = 14
 const baseLineHeight = 1.2
 const baseLine = baseFontSize * baseLineHeight
 
+const funGreen = '#007120'
+const coconutCream = '#fcfaed'
+const blackOlive = '#253017'
+const riptide = '#87e1d1'
+
 const heading = {
   fontFamily: 'HK Blocker Heavy',
   textTransform: 'uppercase'
@@ -12,15 +17,19 @@ const heading = {
 export const siteTheme = createMuiTheme({
   palette: {
     background: {
-      default: '#fcfaed',
-      secondary: '#253017'
+      default: coconutCream,
+      inverse: riptide,
+      secondary: blackOlive
     },
     primary: {
-      500: '#007120'
+      500: funGreen
+    },
+    secondary: {
+      main: riptide
     },
     text: {
-      primary: '#253017',
-      inverse: '#fcfaed'
+      primary: blackOlive,
+      inverse: coconutCream
     }
   },
   typography: {
