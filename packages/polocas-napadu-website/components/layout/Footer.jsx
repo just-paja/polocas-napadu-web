@@ -16,7 +16,7 @@ const styles = theme => ({
     width: '100%'
   },
   copyrightNotice: {
-    color: theme.palette.grey.A700,
+    color: theme.palette.grey[400],
     textAlign: 'center',
     fontWeight: theme.typography.fontWeightLight
   }

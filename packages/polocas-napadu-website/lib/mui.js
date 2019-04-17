@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
+import { darken } from '@material-ui/core/styles/colorManipulator'
 
 const baseFontSize = 14
 const baseLineHeight = 1.2
@@ -14,6 +15,20 @@ const heading = {
   textTransform: 'uppercase'
 }
 
+const tonalOffset = 0.2
+
+function calculateGrey (base) {
+  const color = {
+    50: base
+  }
+  let prevColor = base
+  for (let i = 1; i <= 9; i++) {
+    color[i * 100] = darken(prevColor, tonalOffset)
+    prevColor = color[i * 100]
+  }
+  return color
+}
+
 export const siteTheme = createMuiTheme({
   palette: {
     background: {
@@ -27,6 +42,7 @@ export const siteTheme = createMuiTheme({
     secondary: {
       main: riptide
     },
+    grey: calculateGrey(coconutCream),
     text: {
       primary: blackOlive,
       inverse: coconutCream
