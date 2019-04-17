@@ -63,7 +63,7 @@ MyDocument.getInitialProps = ctx => {
     }
 
     WrappedComponent.propTypes = {
-      pageContext: PropTypes.object.isRequired
+      pageContext: PropTypes.object
     }
 
     return WrappedComponent
