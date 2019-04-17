@@ -16,6 +16,7 @@ export const mountWithI18n = (component, i18next) => {
   const comp = mount(withI18n(component, i18next.i18n))
   comp.i18next = i18next
   comp.i18n = i18next.i18n
+  jest.spyOn(i18next.i18n.translator, 'translate').mockImplementation(key => key)
   return comp
 }
 

@@ -30,3 +30,26 @@ export const Show = PropTypes.shape({
   slug: PropTypes.string,
   start: PropTypes.string.isRequired
 })
+
+export const I18n = PropTypes.shape({
+  options: PropTypes.shape({
+    allLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    defaultLanguage: PropTypes.string
+  })
+})
+
+export const Router = PropTypes.shape({
+  pathname: PropTypes.string
+})
+
+export const propsStyled = {
+  classes: Classes.isRequired
+}
+
+export const propsTranslated = {
+  t: PropTypes.func.isRequired
+}
+
+export const propsWithRouter = {
+  router: Router.isRequired
+}

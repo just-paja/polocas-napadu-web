@@ -3,10 +3,11 @@ import React from 'react'
 import Toolbar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
 
+import { ContentContainer } from './ContentContainer'
 import { Link } from '../bindings'
+import { propsStyled, propsTranslated } from '../proptypes'
 import { withNamespaces } from '../../lib/i18n'
 import { withStyles } from '@material-ui/core/styles'
-import { ContentContainer } from './ContentContainer'
 
 const styles = (theme) => ({
   menuItem: {
@@ -20,7 +21,7 @@ const styles = (theme) => ({
   }
 })
 
-const MainMenuInner = ({ classes, t }) => (
+const MainMenuComponent = ({ classes, t }) => (
   <AppBar position='static'>
     <Toolbar>
       <ContentContainer>
@@ -37,4 +38,9 @@ const MainMenuInner = ({ classes, t }) => (
   </AppBar>
 )
 
-export const MainMenu = withNamespaces(['navigation'])(withStyles(styles)(MainMenuInner))
+MainMenuComponent.propTypes = {
+  ...propsStyled,
+  ...propsTranslated
+}
+
+export const MainMenu = withNamespaces(['navigation'])(withStyles(styles)(MainMenuComponent))

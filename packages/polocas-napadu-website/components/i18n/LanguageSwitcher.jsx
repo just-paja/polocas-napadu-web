@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
+import { I18n, propsTranslated, propsWithRouter } from '../proptypes'
 import { withNamespaces } from '../../lib/i18n'
 import { withRouter } from 'next/router'
 
@@ -22,22 +24,36 @@ const renderLink = (t, url, lngCurrent, lngChoice, lngDefault) => {
   )
 }
 
-export const LanguageSwitcher = withRouter(withNamespaces(['navigation'])(({
+const LanguageSwitcherComponent = ({
   i18n,
   t,
   lng,
   router,
   ...other
-}) => {
-  return (
-    <div>
-      {i18n.options.allLanguages.map(lngChoice => renderLink(
-        t,
-        router.pathname,
-        lng,
-        lngChoice,
-        i18n.options.defaultLanguage
-      ))}
-    </div>
-  )
-}))
+}) => (
+  <div>
+    {i18n.options.allLanguages.map(lngChoice => renderLink(
+      t,
+      router.pathname,
+      lng,
+      lngChoice,
+      i18n.options.defaultLanguage
+    ))}
+  </div>
+)
+
+LanguageSwitcherComponent.propTypes = {
+  ...propsTranslated,
+  ...propsWithRouter,
+  i18n: I18n.isRequired,
+  lng: PropTypes.string,
+  router: PropTypes.shape({
+    pathname: PropTypes.string
+  }).isRequired
+}
+
+LanguageSwitcherComponent.defaultProps = {
+  lng: null
+}
+
+export const LanguageSwitcher = withRouter(withNamespaces(['navigation'])(LanguageSwitcherComponent))

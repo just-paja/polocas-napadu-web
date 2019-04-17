@@ -9,8 +9,8 @@ describe('LanguageSwitcher component', () => {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
-    expect(comp).toIncludeText('Česky')
-    expect(comp).toIncludeText('English')
+    expect(comp).toIncludeText('language-cs')
+    expect(comp).toIncludeText('language-en')
   })
 
   it.skip('renders current language as span', async () => {
@@ -18,7 +18,7 @@ describe('LanguageSwitcher component', () => {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
-    expect(comp.find('[children="Česky"]').name()).toBe('span')
+    expect(comp.find('[children="language-cs"]').name()).toBe('span')
   })
 
   it('renders available language as link', async () => {
@@ -26,7 +26,7 @@ describe('LanguageSwitcher component', () => {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
-    expect(comp.find('[children="English"]').name()).toBe('a')
+    expect(comp.find('[children="language-en"]').name()).toBe('a')
   })
 
   it.skip('renders available language url as a home url', async () => {
