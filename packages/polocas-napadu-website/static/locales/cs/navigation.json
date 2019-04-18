@@ -1,5 +1,6 @@
 {
   "about": "O nás",
+  "contact": "Kontakt",
   "copyright-notice": "© 2019 Poločas nápadu. Všechna práva vyhrazena",
   "language-cs": "Česky",
   "language-en": "English",
@@ -9,5 +10,6 @@
   "on-youtube": "Poločas nápadu na YouTube",
   "projectName": "Poločas nápadu",
   "projectNameAppendix": "Divadelní improvizace",
-  "shows": "Představení"
+  "shows": "Představení",
+  "usualPlaces": "Kde nás najdete"
 }

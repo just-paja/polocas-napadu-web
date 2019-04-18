@@ -15,7 +15,8 @@ const styles = theme => ({
     width: theme.typography.fontSize * 2
   },
   inverse: {
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.background.default
   },
   regular: {
     backgroundColor: theme.palette.background.inverse

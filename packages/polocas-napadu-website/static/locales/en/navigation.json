@@ -1,5 +1,6 @@
 {
   "about": "About",
+  "contact": "Contact",
   "copyright-notice": "© 2019 Poločas nápadu. All rights reserved",
   "language-cs": "Česky",
   "language-en": "English",
@@ -9,5 +10,6 @@
   "on-youtube": "Poločas nápadu on YouTube",
   "projectName": "Poločas nápadu",
   "projectNameAppendix": "Theater improvisation",
-  "shows": "Shows"
+  "shows": "Shows",
+  "usualPlaces": "Locations"
 }

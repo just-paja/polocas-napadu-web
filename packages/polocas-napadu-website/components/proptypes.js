@@ -19,13 +19,13 @@ export const ErrorType = PropTypes.shape({
   name: PropTypes.string.isRequired
 })
 
-export const Location = PropTypes.shape({
+export const LocationProp = PropTypes.shape({
   name: PropTypes.string.isRequired
 })
 
 export const Show = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  location: Location.isRequired,
+  location: LocationProp.isRequired,
   name: PropTypes.string.isRequired,
   slug: PropTypes.string,
   start: PropTypes.string.isRequired
@@ -40,6 +40,13 @@ export const I18n = PropTypes.shape({
 
 export const Router = PropTypes.shape({
   pathname: PropTypes.string
+})
+
+export const UsualPlaceProp = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  location: LocationProp.isRequired
 })
 
 export const propsStyled = {

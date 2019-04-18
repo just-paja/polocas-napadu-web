@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-
 import { ShowListItem } from './ShowListItem'
 import { Show } from '../proptypes'
 import { withQuery } from '../graphql'
@@ -12,7 +11,8 @@ const QUERY_SHOW_LIST = gql`
     showList {
       id,
       location {
-        name
+        address,
+        name,
       },
       name,
       start,
