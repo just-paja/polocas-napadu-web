@@ -17,6 +17,8 @@ const styles = theme => ({
   },
   copyrightNotice: {
     color: theme.palette.grey[400],
+    marginLeft: 'auto',
+    marginRight: 'auto',
     textAlign: 'center',
     fontWeight: theme.typography.fontWeightLight
   }

@@ -1,4 +1,9 @@
 {
+  "bankAccountCz": "Bankovní účet",
   "group-description-heading": "O Poločasu nápadu",
-  "group-description-perex": "Jsme pražská skupina mladých lidí, kteří se věnují divadelní improvizaci."
+  "group-description-perex": "Jsme pražská skupina mladých lidí, kteří se věnují divadelní improvizaci.",
+  "iban": "IBAN",
+  "identificationNumberCz": "IČO",
+  "ngoContactText": "Poločas nápadu, z. s. je spolek zapsaný u městského soudu v Praze pod spisovou značkou 67721 L vytvořený za účelem podpory kultury improvizačního divadla.",
+  "swift": "BIC/SWIFT"
 }

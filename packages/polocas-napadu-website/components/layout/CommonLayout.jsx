@@ -43,6 +43,9 @@ const styles = theme => ({
         color: theme.palette.primary.light
       }
     },
+    p: {
+      maxWidth: '38rem'
+    },
     '#__next': {
       ...flexWrap,
       ...flexInner

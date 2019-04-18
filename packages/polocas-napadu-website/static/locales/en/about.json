@@ -1,4 +1,9 @@
 {
   "group-description-heading": "About Poločas nápadu",
-  "group-description-perex": "We are group of theatre improvisators from Prague."
+  "group-description-perex": "We are group of theatre improvisators from Prague.",
+  "identificationNumberCz": "CZ Organization Identification Number",
+  "bankAccountCz": "CZ Bank Account",
+  "iban": "IBAN",
+  "ngoContactText": "Poločas nápadu, z. s. is a non profit organization under 501(c)(3) created to support the culture of improvised theatre.",
+  "swift": "BIC/SWIFT"
 }
