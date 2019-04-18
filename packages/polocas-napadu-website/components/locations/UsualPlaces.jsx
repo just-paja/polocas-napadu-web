@@ -20,9 +20,15 @@ const QUERY_USUAL_PLACES = gql`
 `
 
 const UsualPlacesComponent = ({ data }) => (
-  <Grid container>
+  <Grid container justify='center' spacing={32}>
     {data.usualPlaceList.map(place => (
-      <Grid item key={place.id} xs={12} sm={6} md={4}>
+      <Grid
+        item
+        key={place.id}
+        md='auto'
+        sm={4}
+        xs={12}
+      >
         <UsualPlace place={place} />
       </Grid>
     ))}

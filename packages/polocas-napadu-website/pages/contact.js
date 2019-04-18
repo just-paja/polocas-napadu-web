@@ -6,11 +6,22 @@ import { withNamespaces } from '../lib/i18n'
 
 import {
   CommonLayout,
+  ContactUs,
   ContentContainer,
   NgoContact,
-  SocialNetworks,
   UsualPlaces
 } from '../components'
+
+const gridIt = children => (
+  <Grid
+    alignItems='center'
+    component='section'
+    container
+    direction='column'
+  >
+    {children}
+  </Grid>
+)
 
 class ContactPage extends React.Component {
   render () {
@@ -18,23 +29,24 @@ class ContactPage extends React.Component {
     return (
       <CommonLayout>
         <ContentContainer>
-          <Typography variant='h1'>{t('contact')}</Typography>
-          <SocialNetworks inverse />
-          <section>
-            <Typography variant='h2'>{t('usualPlaces')}</Typography>
-            <UsualPlaces />
-          </section>
-          <section>
-            <Grid
-              alignItems='center'
-              container
-              direction='column'
-              justify='center'
-            >
+          {gridIt(
+            <React.Fragment>
+              <Typography variant='h1'>{t('contact')}</Typography>
+              <ContactUs />
+            </React.Fragment>
+          )}
+          {gridIt(
+            <React.Fragment>
+              <Typography variant='h2'>{t('usualPlaces')}</Typography>
+              <UsualPlaces />
+            </React.Fragment>
+          )}
+          {gridIt(
+            <React.Fragment>
               <Typography variant='h2'>{t('ngoContact')}</Typography>
               <NgoContact />
-            </Grid>
-          </section>
+            </React.Fragment>
+          )}
         </ContentContainer>
       </CommonLayout>
     )

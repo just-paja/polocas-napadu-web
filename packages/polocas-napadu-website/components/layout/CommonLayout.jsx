@@ -44,7 +44,8 @@ const styles = theme => ({
       }
     },
     p: {
-      maxWidth: '38rem'
+      maxWidth: '38rem',
+      textAlign: 'justify'
     },
     '#__next': {
       ...flexWrap,

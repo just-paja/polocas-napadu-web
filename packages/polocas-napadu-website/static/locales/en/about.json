@@ -1,9 +1,10 @@
 {
+  "bankAccountCz": "CZ Bank Account",
+  "contactText": "Write us for example \"hello\" to [hello@polocas-napadu.cz](mailto:hello@polocas-napadu.cz) or find us on social networks.",
   "group-description-heading": "About Poločas nápadu",
   "group-description-perex": "We are group of theatre improvisators from Prague.",
-  "identificationNumberCz": "CZ Organization Identification Number",
-  "bankAccountCz": "CZ Bank Account",
   "iban": "IBAN",
+  "identificationNumberCz": "CZ Organization Identification Number",
   "ngoContactText": "Poločas nápadu, z. s. is a non profit organization under 501(c)(3) created to support the culture of improvised theatre.",
   "swift": "BIC/SWIFT"
 }
