@@ -1,2 +1,8 @@
-node_modules
+cc-test-reporter
+coverage
 .next
+node_modules
+__pycache__
+*.retry
+/roles
+/*.tgz

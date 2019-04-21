@@ -15,15 +15,15 @@ module.exports = {
         'jest-date-mock'
       ],
       setupFilesAfterEnv: ['jest-enzyme/lib/index.js'],
-      testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
+      testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+      collectCoverageFrom: [
+        'src/**/*.{js,jsx}'
+      ],
+      coveragePathIgnorePatterns: [
+        '/node_modules/',
+        '/locales/',
+        '/constants/'
+      ]
     }
-  ],
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx}'
-  ],
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-    '/locales/',
-    '/constants/'
   ]
 }

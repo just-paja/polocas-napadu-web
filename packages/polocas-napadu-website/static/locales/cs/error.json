@@ -1,4 +1,13 @@
 {
+  "error-unknown": "Hrubá chyba!",
+  "error-unknown-explanation-text": "A jéje. Teď si pro nás rozhodčí určitě přijde. Co se s tím dá dělat?",
+  "error-unknown-help-text": [
+    "trénuj si 5 minut hlas na nějakém jazykolamu a pak to zkus aktualizovat",
+    "mrkni se na jinou z našich stránek a zkus najít informaci tam",
+    "počkej si, až za tebou přijde rozhodčí (možná to chvíli potrvá)",
+    "zakřič nahlas \"Já to nebudu dělat! To je past vedle pasti!\" a odejdi",
+    "napiš nám to mailem na lakatos@polocas-napadu.cz"
+  ],
   "error-not-found": "Mimo rámec!",
   "error-not-found-explanation-text": "Dopustil ses klasické chyby \"Mimo rámec\" a proto ti nemůžeme zobrazit obsah této stránky. Mohlo se to stát jednou z následujících cest:",
   "error-not-found-help-text": [

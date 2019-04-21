@@ -2,8 +2,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { withNamespaces } from '../lib/i18n'
-
-import { NotFound, UnknownError } from '../components/errors'
+import {
+  CommonLayout,
+  ContentContainer,
+  NotFound,
+  UnknownError
+} from '../components'
 
 class Error extends React.Component {
   static propTypes = {
@@ -29,12 +33,22 @@ class Error extends React.Component {
     }
   }
 
-  render () {
+  renderErrorContent () {
     const { statusCode } = this.props
     if (statusCode === 404) {
       return <NotFound />
     }
     return <UnknownError />
+  }
+
+  render () {
+    return (
+      <CommonLayout>
+        <ContentContainer>
+          {this.renderErrorContent()}
+        </ContentContainer>
+      </CommonLayout>
+    )
   }
 }
 

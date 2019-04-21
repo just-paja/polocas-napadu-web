@@ -1,21 +1,24 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
+import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
-import { ShowList } from '../components/shows'
-import { CommonLayout, ContentContainer } from '../components/layout'
+import {
+  CommonLayout,
+  ContentContainer,
+  ShowList,
+  Title
+} from '../components'
 
-class HomePage extends React.Component {
-  static getInitialProps () {
-    return { namespacesRequired: ['navigation'] }
-  }
-
+class HomePage extends TranslatedPage {
   render () {
     const { t } = this.props
-
     return (
       <CommonLayout>
-        <title>{`${t('projectName')} - ${t('projectNameAppendix')}`}</title>
+        <Title
+          text={`${t('projectName')} - ${t('projectNameAppendix')}`}
+          pure
+        />
         <ContentContainer>
           <Typography variant='h1'>Home page</Typography>
           <ShowList />
@@ -25,4 +28,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default withNamespaces(['navigation'])(HomePage)
+export default withNamespaces('navigation')(HomePage)

@@ -1,0 +1,117 @@
+workspace_root: &workspace_root
+  ~/repo
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:10
+
+version: 2
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          key: dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+      - run:
+          name: Compile artifacts
+          command: npm run build
+      - run:
+          name: Package artifact
+          command: npm pack
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+      - run:
+          name: Install code climate reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Run test reporter
+          command: ./cc-test-reporter before-build
+      - run:
+          name: Run jest
+          command: npm test -- --coverage
+      - run:
+          name: Publish coverage
+          command: ./cc-test-reporter after-build
+
+  deploy-to-staging:
+    <<: *defaults
+    docker:
+      - image: circleci/python:3
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+      - add_ssh_keys:
+          fingerprints:
+            - "47:1c:8b:3d:98:f9:c0:1c:7c:2d:77:e9:cd:46:da:cf"
+      - run:
+          name: Install python requirements
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install ansible vrun
+      - run:
+          name: Install ansible requirements
+          command: ./.venv/bin/vrun ansible-galaxy install -r requirements.yml
+      - run:
+          name: Configure ansible inventory
+          command: echo -e "[web]\n${STAGING_DEPLOY_HOST}" > inventory.yml
+      - run:
+          name: Deploy to Staging
+          command: >
+            env
+            NODE_ENV="production"
+            NODE_PORT="$STAGING_NODE_PORT"
+            NODE_SERVER_NAME="$STAGING_NODE_SERVER_NAME"
+            NODE_PROJECT_VERSION=$(python -c 'import version; print(version.PACKAGE_VERSION)')
+            NODE_PROJECT_ENVIRONMENT="staging"
+            NODE_ENV_CONFIG="$STAGING_NODE_ENV_CONFIG"
+            ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml
+
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
+      - deploy-to-staging:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master

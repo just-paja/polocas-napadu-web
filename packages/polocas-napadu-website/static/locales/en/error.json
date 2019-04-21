@@ -1,4 +1,13 @@
 {
+  "error-unknown": "Serious error!",
+  "error-unknown-explanation-text": "Oh no. We've done something bad and referee is coming our way. How can you help this?",
+  "error-unknown-help-text": [
+    "train your voice for 5 minutes on some tongue twister and then try refreshing the page",
+    "check some other page and try to find the information there",
+    "wait for the referee to come to you (might take a while)",
+    "yell loudly \"I will not do it! It's a trap next to another trap!\" and leave",
+    "napiš nám to mailem na lakatos@polocas-napadu.cz"
+  ],
   "error-not-found": "Out of scope!",
   "error-not-found-explanation-text": "The page you are looking for does not exist:",
   "error-not-found-help-text": [

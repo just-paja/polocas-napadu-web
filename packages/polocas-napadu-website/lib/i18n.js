@@ -1,10 +1,8 @@
-const NextI18Next = require('next-i18next').default
+const NextI18Next = require('next-i18next/dist/commonjs')
 
 const defaultSettings = {
-  defaultLanguage: 'cs',
-  fallbackLng: 'en',
   localeSubpaths: 'foreign',
-  otherLanguages: ['en']
+  otherLanguages: ['cs']
 }
 
 module.exports = new NextI18Next(defaultSettings)

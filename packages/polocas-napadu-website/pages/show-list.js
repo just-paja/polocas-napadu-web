@@ -1,19 +1,20 @@
 import React from 'react'
 
-import { CommonLayout, ContentContainer } from '../components/layout'
-import { ShowList } from '../components/shows'
+import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
+import {
+  CommonLayout,
+  ContentContainer,
+  ShowList,
+  Title
+} from '../components'
 
-class ShowListPage extends React.Component {
-  static getInitialProps (context) {
-    return {
-      namespacesRequired: ['common']
-    }
-  }
-
+class ShowListPage extends TranslatedPage {
   render () {
+    const { t } = this.props
     return (
       <CommonLayout>
+        <Title text={t('shows')} />
         <ContentContainer>
           <ShowList />
         </ContentContainer>
@@ -22,4 +23,4 @@ class ShowListPage extends React.Component {
   }
 }
 
-export default withNamespaces(['common'])(ShowListPage)
+export default withNamespaces('navigation')(ShowListPage)

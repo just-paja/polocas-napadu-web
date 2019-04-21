@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CommonLayout, ContentContainer } from '../components/layout'
+import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
-import { ShowDetail } from '../components/shows'
+import {
+  CommonLayout,
+  ContentContainer,
+  ShowDetail
+} from '../components'
 
-class ShowDetailPage extends React.Component {
+class ShowDetailPage extends TranslatedPage {
   static getInitialProps (context) {
+    const initialProps = super.getInitialProps(context)
     return {
-      namespacesRequired: ['common'],
+      ...initialProps,
       slug: context.query.slug
     }
   }
@@ -29,4 +34,4 @@ ShowDetailPage.propTypes = {
   slug: PropTypes.string.isRequired
 }
 
-export default withNamespaces(['common'])(ShowDetailPage)
+export default withNamespaces('common')(ShowDetailPage)

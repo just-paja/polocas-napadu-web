@@ -2,13 +2,14 @@ import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
+import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
-
 import {
   CommonLayout,
   ContactUs,
   ContentContainer,
   NgoContact,
+  Title,
   UsualPlaces
 } from '../components'
 
@@ -23,11 +24,12 @@ const gridIt = children => (
   </Grid>
 )
 
-class ContactPage extends React.Component {
+class ContactPage extends TranslatedPage {
   render () {
     const { t } = this.props
     return (
       <CommonLayout>
+        <Title text={t('contact')} />
         <ContentContainer>
           {gridIt(
             <React.Fragment>
@@ -53,4 +55,4 @@ class ContactPage extends React.Component {
   }
 }
 
-export default withNamespaces(['navigation'])(ContactPage)
+export default withNamespaces('navigation')(ContactPage)
