@@ -1,5 +1,4 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
 
 import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
@@ -20,7 +19,7 @@ class HomePage extends TranslatedPage {
           pure
         />
         <ContentContainer>
-          <Typography variant='h1'>Home page</Typography>
+          <h1>Home page</h1>
           <ShowList />
         </ContentContainer>
       </CommonLayout>

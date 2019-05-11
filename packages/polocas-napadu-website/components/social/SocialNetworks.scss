@@ -1,0 +1,12 @@
+@import 'theme';
+
+:local .flex {
+  display: flex;
+  justify-content: center;
+  margin-top: $baseline;
+
+  & > * {
+    margin-left: $baseline / 2;
+    margin-right: $baseline / 2;
+  }
+}

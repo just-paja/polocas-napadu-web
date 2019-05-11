@@ -1,52 +1,38 @@
-import AppBar from '@material-ui/core/AppBar'
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 import React from 'react'
-import Toolbar from '@material-ui/core/Toolbar'
-import Grid from '@material-ui/core/Grid'
 
-import { ContentContainer } from './ContentContainer'
 import { Link } from '../bindings'
-import { propsStyled, propsTranslated } from '../proptypes'
+import { propsTranslated } from '../proptypes'
 import { withNamespaces } from '../../lib/i18n'
-import { withStyles } from '@material-ui/core/styles'
 
-const styles = (theme) => ({
-  menuItem: {
-    textTransform: 'uppercase',
-    '@global': {
-      a: {
-        color: theme.palette.primary.contrastText,
-        textDecoration: 'none'
-      }
-    }
-  }
-})
-
-const MainMenuComponent = ({ classes, t }) => (
-  <AppBar position='static'>
-    <Toolbar>
-      <ContentContainer>
-        <Grid container spacing={24}>
-          <Grid className={classes.menuItem} item>
-            <Link route='home'><a>{t('projectName')}</a></Link>
-          </Grid>
-          <Grid className={classes.menuItem} item>
-            <Link route='showList'><a>{t('shows')}</a></Link>
-          </Grid>
-          <Grid className={classes.menuItem} item>
-            <Link route='about'><a>{t('about')}</a></Link>
-          </Grid>
-          <Grid className={classes.menuItem} item>
-            <Link route='contact'><a>{t('contact')}</a></Link>
-          </Grid>
-        </Grid>
-      </ContentContainer>
-    </Toolbar>
-  </AppBar>
+const MainMenuComponent = ({ t }) => (
+  <Navbar
+    collapseOnSelect
+    bg='primary'
+    sticky='top'
+    expand='lg'
+    variant='dark'
+  >
+    <Container>
+      <Link passHref route='home'>
+        <Navbar.Brand>{t('projectName')}</Navbar.Brand>
+      </Link>
+      <Navbar.Toggle aria-controls='app-menu' />
+      <Navbar.Collapse id='app-menu'>
+        <Nav className='mr-auto'>
+          <Link passHref route='showList'><Nav.Link>{t('shows')}</Nav.Link></Link>
+          <Link passHref route='about'><Nav.Link>{t('about')}</Nav.Link></Link>
+          <Link passHref route='contact'><Nav.Link>{t('contact')}</Nav.Link></Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
 )
 
 MainMenuComponent.propTypes = {
-  ...propsStyled,
   ...propsTranslated
 }
 
-export const MainMenu = withNamespaces(['navigation'])(withStyles(styles)(MainMenuComponent))
+export const MainMenu = withNamespaces(['navigation'])(MainMenuComponent)

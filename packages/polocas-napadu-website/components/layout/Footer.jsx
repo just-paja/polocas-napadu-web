@@ -1,42 +1,26 @@
 import React from 'react'
+import styles from './Footer.scss'
 
 import { ContentContainer } from './ContentContainer'
 import { LanguageSwitcher } from '../i18n'
-import { propsStyled, propsTranslated } from '../proptypes'
+import { propsTranslated } from '../proptypes'
 import { SocialNetworks } from '../social'
 import { withNamespaces } from '../../lib/i18n'
-import { withStyles } from '@material-ui/core/styles'
 
-const styles = theme => ({
-  footer: {
-    color: theme.palette.text.inverse,
-    background: theme.palette.background.secondary,
-    paddingTop: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 4,
-    width: '100%'
-  },
-  copyrightNotice: {
-    color: theme.palette.grey[400],
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-    fontWeight: theme.typography.fontWeightLight
-  }
-})
-
-const FooterComponent = ({ classes, t }) => (
-  <footer className={classes.footer}>
+const FooterComponent = ({ t }) => (
+  <footer className={styles.footer}>
     <ContentContainer>
-      <LanguageSwitcher />
-      <SocialNetworks />
-      <p className={classes.copyrightNotice}>{t('copyright-notice')}</p>
+      <div className='text-center'>
+        <LanguageSwitcher />
+      </div>
+      <SocialNetworks className={styles.social} inverse />
+      <p className={styles.copyrightNotice}>{t('copyright-notice')}</p>
     </ContentContainer>
   </footer>
 )
 
 FooterComponent.propTypes = {
-  ...propsStyled,
   ...propsTranslated
 }
 
-export const Footer = withNamespaces(['navigation'])(withStyles(styles)(FooterComponent))
+export const Footer = withNamespaces(['navigation'])(FooterComponent)

@@ -1,5 +1,6 @@
-import Grid from '@material-ui/core/Grid'
+import Col from 'react-bootstrap/Col'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 
 import { gql } from 'apollo-boost'
 import { UsualPlace } from './UsualPlace'
@@ -20,19 +21,18 @@ const QUERY_USUAL_PLACES = gql`
 `
 
 const UsualPlacesComponent = ({ data }) => (
-  <Grid container justify='center' spacing={32}>
+  <Row className='justify-content-center'>
     {data.usualPlaceList.map(place => (
-      <Grid
-        item
+      <Col
         key={place.id}
         md='auto'
         sm={4}
         xs={12}
       >
         <UsualPlace place={place} />
-      </Grid>
+      </Col>
     ))}
-  </Grid>
+  </Row>
 )
 
 export const UsualPlaces = withQuery(

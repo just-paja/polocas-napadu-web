@@ -8,7 +8,7 @@ import { withNamespaces } from '../../lib/i18n'
 export const ContactUsComponent = ({ t }) => (
   <React.Fragment>
     <Markdown source={t('contactText')} />
-    <SocialNetworks inverse />
+    <SocialNetworks />
   </React.Fragment>
 )
 

@@ -1,10 +1,11 @@
 import React from 'react'
+import styles from './Location.scss'
 
 import { LocationProp } from '../proptypes'
 import { Address } from './Address'
 
 export const Location = ({ location }) => (
-  <div>
+  <div className={styles.location}>
     <strong>{location.name}</strong>
     <Address address={location.address} />
   </div>

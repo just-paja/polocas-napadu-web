@@ -1,27 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { propsStyled } from '../proptypes'
-import { withStyles } from '@material-ui/core/styles'
-
-const styles = theme => ({
-  circle: {
-    alignItems: 'center',
-    borderRadius: '50%',
-    display: 'flex',
-    height: theme.typography.fontSize * 2,
-    justifyContent: 'center',
-    width: theme.typography.fontSize * 2
-  },
-  inverse: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.background.default
-  },
-  regular: {
-    backgroundColor: theme.palette.background.inverse
-  }
-})
+import styles from './SocialNetworkLink.scss'
 
 function openInNewWindow (event) {
   const href = event.currentTarget.href
@@ -31,8 +11,7 @@ function openInNewWindow (event) {
   }
 }
 
-const SocialNetworkLinkComponent = ({
-  classes,
+export const SocialNetworkLink = ({
   href,
   icon: Icon,
   inverse,
@@ -40,10 +19,10 @@ const SocialNetworkLinkComponent = ({
 }) => (
   <a
     className={classnames(
-      classes.circle,
+      styles.circle,
       inverse
-        ? classes.inverse
-        : classes.regular
+        ? styles.inverse
+        : styles.regular
     )}
     href={href}
     onClick={openInNewWindow}
@@ -53,17 +32,12 @@ const SocialNetworkLinkComponent = ({
   </a>
 )
 
-SocialNetworkLinkComponent.displayName = 'SocialNetworkLink'
-
-SocialNetworkLinkComponent.propTypes = {
-  ...propsStyled,
+SocialNetworkLink.propTypes = {
   href: PropTypes.string.isRequired,
   icon: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired
 }
 
-SocialNetworkLinkComponent.defaultProps = {
+SocialNetworkLink.defaultProps = {
   inverse: false
 }
-
-export const SocialNetworkLink = withStyles(styles)(SocialNetworkLinkComponent)

@@ -1,0 +1,19 @@
+$color-fun-green: #007120;
+$color-coconut-cream: #fcfaed;
+$color-black-olive: #253017;
+$color-riptide: #87e1d1;
+
+$primary: $color-fun-green;
+$secondary: $color-riptide;
+$dark: $color-black-olive;
+
+$body-bg: $color-coconut-cream;
+$body-color: $color-black-olive;
+
+$link-color: $primary;
+
+$color-text-base: $color-black-olive;
+$color-text-inverted: $color-coconut-cream;
+
+$color-footer: lighten($color-black-olive, 75%);
+$color-footer-secondary: lighten($color-black-olive, 25%);

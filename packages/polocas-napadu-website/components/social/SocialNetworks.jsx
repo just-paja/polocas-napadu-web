@@ -1,10 +1,11 @@
-import React from 'react'
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './SocialNetworks.scss'
 
 import { SocialNetworkLink } from './SocialNetworkLink'
-import { propsStyled, propsTranslated } from '../proptypes'
+import { ClassName, propsTranslated } from '../proptypes'
 import { withNamespaces } from '../../lib/i18n'
-import { withStyles } from '@material-ui/core/styles'
 import {
   FaEnvelopeOpenText,
   FaFacebookF,
@@ -12,20 +13,8 @@ import {
   FaYoutube
 } from 'react-icons/fa'
 
-const styles = theme => ({
-  flex: {
-    justifyContent: 'center',
-    display: 'flex',
-    marginTop: theme.spacing.unit * 2,
-    '& > *': {
-      marginLeft: theme.spacing.unit / 2,
-      marginRight: theme.spacing.unit / 2
-    }
-  }
-})
-
-const SocialNetworksComponent = ({ classes, inverse, t }) => (
-  <div className={classes.flex}>
+const SocialNetworksComponent = ({ className, inverse, t }) => (
+  <div className={classnames(styles.flex, className)}>
     <SocialNetworkLink
       href='mailto:ahoj@polocas-napadu.cz'
       icon={FaEnvelopeOpenText}
@@ -55,15 +44,15 @@ const SocialNetworksComponent = ({ classes, inverse, t }) => (
 
 SocialNetworksComponent.displayName = 'SocialNetworks'
 SocialNetworksComponent.propTypes = {
-  ...propsStyled,
   ...propsTranslated,
-  inverse: PropTypes.bool
+  inverse: PropTypes.bool,
+  className: ClassName
 }
 
 SocialNetworksComponent.defaultProps = {
   inverse: false
 }
 
-export const SocialNetworks = withNamespaces(['navigation'])(
-  withStyles(styles)(SocialNetworksComponent)
-)
+export const SocialNetworks = withNamespaces([
+  'navigation'
+])(SocialNetworksComponent)

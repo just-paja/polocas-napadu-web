@@ -1,0 +1,21 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './grid.scss';
+
+$paragraph-margin-bottom: 0;
+$headings-margin-bottom: 0;
+
+$baseline: $font-size-base;
+
+$button-base-background: $color-black-olive;
+$button-base-color: $primary;
+
+$button-primary-background: $primary;
+$button-primary-color: $color-text-inverted;
+
+$button-secondary-background: $color-text-base;
+$button-secondary-color: $color-riptide;
+
+@import 'node_modules/bootstrap/scss/_functions.scss';
+@import 'node_modules/bootstrap/scss/_mixins.scss';
+@import 'node_modules/bootstrap/scss/_variables.scss';

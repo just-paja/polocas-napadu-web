@@ -1,13 +1,12 @@
 import Markdown from 'react-markdown'
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
 
 import { Location } from './Location'
 import { UsualPlaceProp } from '../proptypes'
 
 const UsualPlaceComponent = ({ place }) => (
   <div>
-    <Typography variant='h3'>{place.name}</Typography>
+    <h3>{place.name}</h3>
     <Markdown source={place.description} />
     <Location location={place.location} />
   </div>

@@ -1,0 +1,31 @@
+@import 'theme';
+
+:local .circle {
+  align-items: center;
+  background-color: $primary;
+  border-radius: 50%;
+  color: $color-text-inverted;
+  display: flex;
+  font-size: $baseline * 1.5;
+  height: $baseline * 3;
+  justify-content: center;
+  width: $baseline * 3;
+
+  &:hover {
+    background-color: $link-hover-color;
+    color: $color-text-inverted;
+  }
+}
+
+:local .inverse {
+  background: transparent;
+  color: $color-footer;
+  font-size: $font-size-base * 1.5;
+  height: $baseline * 1.5;
+  width: $baseline * 1.5;
+
+  &:hover {
+    background-color: transparent;
+    color: lighten($color-footer, 15%);
+  }
+}
