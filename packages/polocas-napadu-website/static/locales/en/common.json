@@ -1,3 +1,26 @@
 {
-  "hello": "Hello"
+  "about": "About",
+  "actors": "Actors",
+  "bankAccountCz": "CZ Bank Account",
+  "contact": "Contact",
+  "contactText": "Write us for example \"hello\" to [hello@polocas-napadu.cz](mailto:hello@polocas-napadu.cz) or find us on social networks.",
+  "copyright-notice": "© 2019 Poločas nápadu. All rights reserved",
+  "group-description-heading": "About Poločas nápadu",
+  "group-description-perex": "We are group of theatre improvisators from Prague.",
+  "hello": "Hello",
+  "iban": "IBAN",
+  "identificationNumberCz": "CZ Organization Identification Number",
+  "language-cs": "Česky",
+  "language-en": "English",
+  "ngoContact": "Non-profit",
+  "ngoContactText": "Poločas nápadu, z. s. is a non profit organization under 501(c)(3) created to support the culture of improvised theatre.",
+  "on-email": "Write us an e-mail",
+  "on-facebook": "Poločas nápadu on Facebook",
+  "on-twitter": "Poločas nápadu on Twitter",
+  "on-youtube": "Poločas nápadu on YouTube",
+  "projectName": "Poločas nápadu",
+  "projectNameAppendix": "Theater improvisation",
+  "shows": "Shows",
+  "swift": "BIC/SWIFT",
+  "usualPlaces": "Locations"
 }

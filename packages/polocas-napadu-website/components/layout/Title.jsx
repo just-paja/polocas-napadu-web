@@ -1,11 +1,14 @@
 import React from 'react'
+import Head from 'next/head'
 import PropTypes from 'prop-types'
 
 import { propsTranslated } from '../proptypes'
 import { withNamespaces } from '../../lib/i18n'
 
 const TitleComponent = ({ pure, t, text }) => (
-  <title>{pure ? text : `${text} - ${t('projectName')}`}</title>
+  <Head>
+    <title>{pure ? text : `${text} - ${t('projectName')}`}</title>
+  </Head>
 )
 
 TitleComponent.propTypes = {
@@ -18,4 +21,4 @@ TitleComponent.defaultProps = {
   pure: false
 }
 
-export const Title = withNamespaces('navigation')(TitleComponent)
+export const Title = withNamespaces('common')(TitleComponent)

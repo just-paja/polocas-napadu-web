@@ -56,4 +56,4 @@ LanguageSwitcherComponent.defaultProps = {
   lng: null
 }
 
-export const LanguageSwitcher = withRouter(withNamespaces(['navigation'])(LanguageSwitcherComponent))
+export const LanguageSwitcher = withRouter(withNamespaces(['common'])(LanguageSwitcherComponent))

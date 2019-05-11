@@ -19,4 +19,4 @@ export const NgoContactComponent = ({ t }) => (
 NgoContactComponent.propTypes = propsTranslated
 NgoContactComponent.displayName = 'NgoContact'
 
-export const NgoContact = withNamespaces(['about'])(NgoContactComponent)
+export const NgoContact = withNamespaces(['common'])(NgoContactComponent)

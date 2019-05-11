@@ -1,6 +1,4 @@
-import Col from 'react-bootstrap/Col'
 import React from 'react'
-import Row from 'react-bootstrap/Row'
 
 import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
@@ -22,8 +20,10 @@ class ContactPage extends TranslatedPage {
         <ContentContainer>
           <h1>{t('contact')}</h1>
           <ContactUs />
+
           <h2>{t('usualPlaces')}</h2>
           <UsualPlaces />
+
           <h2>{t('ngoContact')}</h2>
           <NgoContact />
         </ContentContainer>
@@ -32,4 +32,4 @@ class ContactPage extends TranslatedPage {
   }
 }
 
-export default withNamespaces('navigation')(ContactPage)
+export default withNamespaces('common')(ContactPage)

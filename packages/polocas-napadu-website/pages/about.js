@@ -23,4 +23,4 @@ class AboutPage extends TranslatedPage {
   }
 }
 
-export default withNamespaces('navigation')(AboutPage)
+export default withNamespaces('common')(AboutPage)

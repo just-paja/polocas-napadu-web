@@ -5,22 +5,20 @@ import { withNamespaces } from '../lib/i18n'
 import {
   CommonLayout,
   ContentContainer,
-  ShowList,
   Title
 } from '../components'
 
-class ShowListPage extends TranslatedPage {
+class ActorsPage extends TranslatedPage {
   render () {
     const { t } = this.props
     return (
       <CommonLayout>
-        <Title text={t('shows')} />
         <ContentContainer>
-          <ShowList />
+          <Title text={t('actors')} />
         </ContentContainer>
       </CommonLayout>
     )
   }
 }
 
-export default withNamespaces('common')(ShowListPage)
+export default withNamespaces('common')(ActorsPage)

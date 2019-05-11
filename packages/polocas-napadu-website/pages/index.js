@@ -27,4 +27,4 @@ class HomePage extends TranslatedPage {
   }
 }
 
-export default withNamespaces('navigation')(HomePage)
+export default withNamespaces('common')(HomePage)

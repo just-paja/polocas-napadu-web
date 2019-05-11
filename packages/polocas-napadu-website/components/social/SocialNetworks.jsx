@@ -54,5 +54,5 @@ SocialNetworksComponent.defaultProps = {
 }
 
 export const SocialNetworks = withNamespaces([
-  'navigation'
+  'common'
 ])(SocialNetworksComponent)

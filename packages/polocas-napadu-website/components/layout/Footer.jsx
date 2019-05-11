@@ -23,4 +23,4 @@ FooterComponent.propTypes = {
   ...propsTranslated
 }
 
-export const Footer = withNamespaces(['navigation'])(FooterComponent)
+export const Footer = withNamespaces(['common'])(FooterComponent)

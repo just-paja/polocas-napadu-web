@@ -1,3 +1,26 @@
 {
-  "hello": "Ahoj"
+  "about": "O nás",
+  "actors": "Herci",
+  "bankAccountCz": "Bankovní účet",
+  "contact": "Kontakt",
+  "contactText": "Napište nám třeba jenom ahoj na adresu [ahoj@polocas-napadu.cz](mailto:ahoj@polocas-napadu.cz) a nebo nás kontaktujte na sociálních sítích.",
+  "copyright-notice": "© 2019 Poločas nápadu. Všechna práva vyhrazena",
+  "group-description-heading": "O Poločasu nápadu",
+  "group-description-perex": "Jsme pražská skupina mladých lidí, kteří se věnují divadelní improvizaci.",
+  "hello": "Ahoj",
+  "iban": "IBAN",
+  "identificationNumberCz": "IČO",
+  "language-cs": "Česky",
+  "language-en": "English",
+  "ngoContact": "Spolek",
+  "ngoContactText": "Poločas nápadu, z. s. je spolek zapsaný u městského soudu v Praze pod spisovou značkou 67721 L vytvořený za účelem podpory kultury improvizačního divadla.",
+  "on-email": "Napište nám e-mail",
+  "on-facebook": "Poločas nápadu na Facebooku",
+  "on-twitter": "Poločas nápadu na Twitteru",
+  "on-youtube": "Poločas nápadu na YouTube",
+  "projectName": "Poločas nápadu",
+  "projectNameAppendix": "Divadelní improvizace",
+  "shows": "Představení",
+  "swift": "BIC/SWIFT",
+  "usualPlaces": "Kde nás najdete"
 }

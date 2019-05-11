@@ -13,4 +13,4 @@ const GroupDescriptionComponent = ({ t }) => (
 
 GroupDescriptionComponent.propTypes = propsTranslated
 
-export const GroupDescription = withNamespaces(['about'])(GroupDescriptionComponent)
+export const GroupDescription = withNamespaces(['common'])(GroupDescriptionComponent)

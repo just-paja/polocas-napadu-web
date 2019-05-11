@@ -15,4 +15,4 @@ export const ContactUsComponent = ({ t }) => (
 ContactUsComponent.propTypes = propsTranslated
 ContactUsComponent.displayName = 'ContactUs'
 
-export const ContactUs = withNamespaces(['about'])(ContactUsComponent)
+export const ContactUs = withNamespaces(['common'])(ContactUsComponent)
