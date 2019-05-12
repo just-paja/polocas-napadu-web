@@ -92,7 +92,6 @@ jobs:
             NODE_ENV="production"
             NODE_PORT="$STAGING_NODE_PORT"
             NODE_SERVER_NAME="$STAGING_NODE_SERVER_NAME"
-            NODE_PROJECT_VERSION=$(python -c 'import version; print(version.PACKAGE_VERSION)')
             NODE_PROJECT_ENVIRONMENT="staging"
             NODE_ENV_CONFIG="$STAGING_NODE_ENV_CONFIG"
             ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml

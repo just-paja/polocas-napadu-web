@@ -1,11 +1,9 @@
 ---
-- name: Setup all my servers on AWS
+- name: Deploy to AWS
   hosts: web
   vars:
-    node_archive: polocas-napadu-website-{{ lookup("env", "NODE_PROJECT_VERSION") }}.tgz
-    node_project_name: 'cz-polocas-napadu-web'
+    node_project_id: 'cz-polocas-napadu-web'
     node_project_environment: '{{ lookup("env", "NODE_PROJECT_ENVIRONMENT") }}'
-    node_wsgi_file: api/wsgi.py
 
   roles:
     - role: practical-ansible.nginx_node
