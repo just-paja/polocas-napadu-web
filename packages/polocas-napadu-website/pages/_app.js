@@ -2,9 +2,8 @@ import App, { Container } from 'next/app'
 import React from 'react'
 
 import { ApolloProvider } from 'react-apollo'
-import { AppError } from '../components/app'
+import { AppError, Favicon } from '../components'
 import { appWithTranslation } from '../lib/i18n'
-import { Favicon } from '../components/layout'
 import { withApolloClient } from '../lib/with-apollo-client'
 
 import './_app.scss'
