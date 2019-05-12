@@ -18,15 +18,15 @@ describe('EventStart component', () => {
     moment.locale(systemLocale)
   })
 
-  it('given no start date, renders start indeterminate message', async () => {
-    const comp = await renderWithI18n(<EventStart />)
+  it('given no start date, renders start indeterminate message', () => {
+    const comp = renderWithI18n(<EventStart />)
     expect(comp).toIncludeText('event-start-indeterminate')
   })
 
   it.todo('given start datetime, renders fuzzy start datetime (in n hours)')
 
-  it('given start datetime, renders exact start datetime', async () => {
-    const comp = await renderWithI18n(
+  it('given start datetime, renders exact start datetime', () => {
+    const comp = renderWithI18n(
       <EventStart start='2019-02-19T09:00:00' />
     )
     expect(comp).toIncludeText('19. únor 2019 9:00')
@@ -34,8 +34,8 @@ describe('EventStart component', () => {
 
   it.todo('given start all day date, renders fuzzy start date (in n days)')
 
-  it('given start all day date, renders exact start date', async () => {
-    const comp = await renderWithI18n(
+  it('given start all day date, renders exact start date', () => {
+    const comp = renderWithI18n(
       <EventStart
         allDay
         start='2019-02-19T09:00:00'
@@ -46,8 +46,8 @@ describe('EventStart component', () => {
 
   it.todo('given start and end, renders fuzzy start datetime (in n hours)')
 
-  it('given start and end, renders exact start datetime', async () => {
-    const comp = await renderWithI18n(
+  it('given start and end, renders exact start datetime', () => {
+    const comp = renderWithI18n(
       <EventStart
         start='2019-02-19T09:00:00'
         end='2019-02-19T12:00:00'
@@ -56,8 +56,8 @@ describe('EventStart component', () => {
     expect(comp).toIncludeText('19. únor 2019 9:00')
   })
 
-  it('given start and end on same day, renders end hours', async () => {
-    const comp = await renderWithI18n(
+  it('given start and end on same day, renders end hours', () => {
+    const comp = renderWithI18n(
       <EventStart
         start='2019-02-19T09:00:00'
         end='2019-02-19T12:00:00'
@@ -66,8 +66,8 @@ describe('EventStart component', () => {
     expect(comp).toIncludeText('19. únor 2019 9:00 - 12:00')
   })
 
-  it('given allDay, start and end on same day, renders only events date', async () => {
-    const comp = await renderWithI18n(
+  it('given allDay, start and end on same day, renders only events date', () => {
+    const comp = renderWithI18n(
       <EventStart
         allDay
         start='2019-02-19T00:00:00'
@@ -77,8 +77,8 @@ describe('EventStart component', () => {
     expect(comp).toIncludeText('19. únor 2019')
   })
 
-  it('given allDay, start and end on same day, renders events start and end date', async () => {
-    const comp = await renderWithI18n(
+  it('given allDay, start and end on same day, renders events start and end date', () => {
+    const comp = renderWithI18n(
       <EventStart
         allDay
         start='2019-02-19T00:00:00'
@@ -88,8 +88,8 @@ describe('EventStart component', () => {
     expect(comp).toIncludeText('19. únor 2019 - 20. březen 2019')
   })
 
-  it('given start and end on same day, renders events start and end date time', async () => {
-    const comp = await renderWithI18n(
+  it('given start and end on same day, renders events start and end date time', () => {
+    const comp = renderWithI18n(
       <EventStart
         start='2019-02-19T10:00:00'
         end='2019-03-20T15:00:00'

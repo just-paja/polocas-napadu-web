@@ -23,7 +23,11 @@ module.exports = {
         '/node_modules/',
         '/locales/',
         '/constants/'
-      ]
+      ],
+      transform: {
+        '^.+\\.(js|jsx)$': 'babel-jest',
+        '.+\\.scss$': 'jest-css-modules-transform'
+      }
     }
   ]
 }

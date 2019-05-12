@@ -10,10 +10,10 @@ import { withNamespaces } from '../../lib/i18n'
 
 const MainMenuComponent = ({ t }) => (
   <Navbar
-    collapseOnSelect
     bg='primary'
-    sticky='top'
+    collapseOnSelect
     expand='lg'
+    sticky='top'
     variant='dark'
   >
     <Container>
