@@ -4,8 +4,8 @@ import { LanguageSwitcher } from '..'
 import { renderWithI18n } from '../../../mock'
 
 describe('LanguageSwitcher component', () => {
-  it('renders labels of all available languages', () => {
-    const comp = renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
+  it('renders labels of all available languages', async () => {
+    const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
@@ -13,24 +13,24 @@ describe('LanguageSwitcher component', () => {
     expect(comp).toIncludeText('language-en')
   })
 
-  it.skip('renders current language as span', () => {
-    const comp = renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
+  it.skip('renders current language as span', async () => {
+    const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
     expect(comp.find('[children="language-cs"]').name()).toBe('span')
   })
 
-  it('renders available language as link', () => {
-    const comp = renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
+  it('renders available language as link', async () => {
+    const comp = await renderWithI18n(<LanguageSwitcher router={{ pathname: '/' }} />, {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
     expect(comp.find('[children="language-en"]').name()).toBe('a')
   })
 
-  it.skip('renders available language url as a home url', () => {
-    const comp = renderWithI18n(
+  it.skip('renders available language url as a home url', async () => {
+    const comp = await renderWithI18n(
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {
@@ -44,8 +44,8 @@ describe('LanguageSwitcher component', () => {
     )
   })
 
-  it.skip('renders available language url as a replacement of current default language', () => {
-    const comp = renderWithI18n(
+  it.skip('renders available language url as a replacement of current default language', async () => {
+    const comp = await renderWithI18n(
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {
@@ -59,8 +59,8 @@ describe('LanguageSwitcher component', () => {
     )
   })
 
-  it.skip('renders available language url as a replacement of current non-default language', () => {
-    const comp = renderWithI18n(
+  it.skip('renders available language url as a replacement of current non-default language', async () => {
+    const comp = await renderWithI18n(
       <LanguageSwitcher
         router={{ pathname: '/predstaveni/ostrov-ktery-jsem-prehlid' }}
       />, {

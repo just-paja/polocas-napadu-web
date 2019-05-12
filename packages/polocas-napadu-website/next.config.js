@@ -6,5 +6,6 @@ module.exports = withSass({
   },
   sassLoaderOptions: {
     includePaths: ['lib/styles']
-  }
+  },
+  cssModules: 'global'
 })

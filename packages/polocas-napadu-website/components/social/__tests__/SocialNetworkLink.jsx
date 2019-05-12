@@ -14,8 +14,8 @@ describe('SocialNetworkLink component', () => {
     jest.restoreAllMocks()
   })
 
-  it('renders as anchor element', () => {
-    const comp = renderWithI18n(
+  it('renders as anchor element', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='https://www.facebook.com/polocas.napadu/'
@@ -25,8 +25,8 @@ describe('SocialNetworkLink component', () => {
     expect(comp.find('a')).toHaveLength(1)
   })
 
-  it('renders with passed link', () => {
-    const comp = renderWithI18n(
+  it('renders with passed link', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='https://www.facebook.com/polocas.napadu/'
@@ -37,8 +37,8 @@ describe('SocialNetworkLink component', () => {
       .toHaveLength(1)
   })
 
-  it('renders with passed title', () => {
-    const comp = renderWithI18n(
+  it('renders with passed title', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='https://www.facebook.com/polocas.napadu/'
@@ -49,8 +49,8 @@ describe('SocialNetworkLink component', () => {
       .toHaveLength(1)
   })
 
-  it('renders with passed icon', () => {
-    const comp = renderWithI18n(
+  it('renders with passed icon', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='https://www.facebook.com/polocas.napadu/'
@@ -60,8 +60,8 @@ describe('SocialNetworkLink component', () => {
     expect(comp.find('TestIcon')).toHaveLength(1)
   })
 
-  it('given the link points to https, when clicked, then it opens new window', () => {
-    const comp = renderWithI18n(
+  it('given the link points to https, when clicked, then it opens new window', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='https://www.facebook.com/polocas.napadu/'
@@ -73,8 +73,8 @@ describe('SocialNetworkLink component', () => {
     expect(window.open).toHaveBeenCalledTimes(1)
   })
 
-  it('given the link points to mail, when clicked, then it does not open new window', () => {
-    const comp = renderWithI18n(
+  it('given the link points to mail, when clicked, then it does not open new window', async () => {
+    const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
         href='mailto:ahoj@polocas-napadu.cz'

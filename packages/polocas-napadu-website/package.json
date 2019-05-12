@@ -28,7 +28,7 @@
     "static"
   ],
   "dependencies": {
-    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-sass": "^1.0.2-canary.2",
     "apollo-boost": "0.3.1",
     "bootstrap": "^4.3.1",
     "core-js": "^3.0.1",
