@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { TranslatedPage } from './TranslatedPage'
 import { withNamespaces } from '../lib/i18n'
 import {
   CommonLayout,
@@ -8,6 +7,7 @@ import {
   ContentContainer,
   NgoContact,
   Title,
+  TranslatedPage,
   UsualPlaces
 } from '../components'
 
