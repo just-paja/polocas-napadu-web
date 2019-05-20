@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { VolumeScrapeChart } from './VolumeScrapeChart';
 import { withVolumeScrape } from './withVolumeScrape';
 

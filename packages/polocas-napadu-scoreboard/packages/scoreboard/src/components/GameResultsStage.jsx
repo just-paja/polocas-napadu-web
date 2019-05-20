@@ -4,7 +4,7 @@ import Teams from './Teams';
 
 import { Stage } from './Stage';
 
-class GameResultsStage extends Stage {
+class GameResultsStage extends React.Component {
   render() {
     return (
       <div>

@@ -48,7 +48,7 @@ export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
 
     getActiveVoting() {
       const { poll } = this.props;
-      if (this.poll) {
+      if (poll) {
         return poll.votings.find(voting => !voting.closed);
       }
       return null;
@@ -70,26 +70,31 @@ export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
       this.setState({ scrapes });
     }
 
-    render() {
-      const activeVoting = this.getActiveVoting();
-      const content = (
+    renderContent() {
+      return (
         <WrappedComponent
           votings={this.state.scrapes}
           {...this.props}
         />
       );
-      if (!activeVoting) {
-        return content;
-      }
+    }
+
+    render() {
+      const activeVoting = this.getActiveVoting();
       return (
-        <Query
-          query={GET_ACTIVE_VOLUME_SCRAPE}
-          pollInterval={VOLUME_SCRAPE_RATE}
-          variables={{ livePollVotingId: activeVoting.id }}
-          onCompleted={this.handleLoad}
-        >
-          {() => content}
-        </Query>
+        <React.Fragment>
+          {activeVoting ? (
+            <Query
+              query={GET_ACTIVE_VOLUME_SCRAPE}
+              pollInterval={VOLUME_SCRAPE_RATE}
+              variables={{ livePollVotingId: activeVoting.id }}
+              onCompleted={this.handleLoad}
+            >
+              {() => null}
+            </Query>
+          ) : null}
+          {this.renderContent()}
+        </React.Fragment>
       );
     }
   }

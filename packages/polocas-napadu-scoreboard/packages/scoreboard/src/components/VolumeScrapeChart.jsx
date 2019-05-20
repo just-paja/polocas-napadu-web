@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { VOLUME_SCRAPE_DURATION } from 'core/constants';
+import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_TIMEOUT } from 'core/constants';
 import { ResponsiveLine } from '@nivo/line';
+import { withStyles } from '@material-ui/core/styles';
 
 function getAvg(values) {
   return values.length === 0
@@ -32,7 +33,41 @@ function getAvgLine(maxX, xScale, yScale, height) {
   };
 }
 
-export class VolumeScrapeChart extends React.Component {
+function hasNewVoting(prevProps, props) {
+  return props.poll.votings.some(voting => {
+    const prevInstance = prevProps.poll.votings.find(prevVoting => prevVoting.id === voting.id);
+    return !voting.closed && (!prevInstance || prevInstance.closed);
+  });
+}
+
+const styles = theme => ({
+  chart: {
+    position: 'relative',
+  },
+  countdown: {
+    alignItems: 'center',
+    color: '#fff',
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'center',
+    position: 'absolute',
+    textAlign: 'center',
+    width: '100%',
+    zIndex: 100,
+  },
+  countdownNumber: {
+    background: 'rgba(255,255,255,0.15)',
+    fontSize: theme.typography.fontSize * 17,
+    width: theme.typography.fontSize * 17 * 1.75,
+    height: theme.typography.fontSize * 17 * 1.75,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    borderRadius: '100%',
+  }
+})
+
+class VolumeScrapeChartInner extends React.Component {
   static propTypes = {
     duration: PropTypes.number.isRequired,
     poll: PropTypes.object,
@@ -43,8 +78,44 @@ export class VolumeScrapeChart extends React.Component {
     duration: VOLUME_SCRAPE_DURATION,
   }
 
+  state = {
+    countdown: 0,
+  }
+
+  componentDidMount() {
+    if (this.props.poll.votings.length === 1 && !this.props.poll.votings[0].closed) {
+      this.startCountdown();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (hasNewVoting(prevProps, this.props)) {
+      this.startCountdown();
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.countdownTimeout);
+  }
+
+  startCountdown() {
+    this.setState({ countdown: (VOLUME_SCRAPE_TIMEOUT / 1000) - 1 });
+    this.countdownTimeout = setTimeout(() => {
+      this.decrementCountdown();
+    }, 1000);
+  }
+
+  decrementCountdown() {
+    const { countdown } = this.state;
+    clearTimeout(this.countdownTimeout);
+    if (countdown > 0) {
+      this.setState({ countdown: countdown - 1 });
+      this.countdownTimeout = setTimeout(() => this.decrementCountdown(), 1000);
+    }
+  }
+
   getMaxX() {
-    return this.props.duration + 250;
+    return this.props.duration + 1000;
   }
 
   getRefsComponent() {
@@ -60,13 +131,25 @@ export class VolumeScrapeChart extends React.Component {
     );
   }
 
-  render() {
-    const { votings } = this.props;
-    if (votings.length === 0) {
+  renderTimeout() {
+    const { classes } = this.props;
+    if (!this.state.countdown) {
       return null;
     }
     return (
-      <div style={{ height: 400 }}>
+      <div className={classes.countdown}>
+        <span className={classes.countdownNumber}>
+          {this.state.countdown}
+        </span>
+      </div>
+    )
+  }
+
+  render() {
+    const { classes, votings } = this.props;
+    return (
+      <div className={classes.chart} style={{ height: 400 }}>
+        {this.renderTimeout()}
         <ResponsiveLine
           colors={line => line.color}
           curve="step"
@@ -101,3 +184,5 @@ export class VolumeScrapeChart extends React.Component {
     )
   };
 }
+
+export const VolumeScrapeChart = withStyles(styles)(VolumeScrapeChartInner);
