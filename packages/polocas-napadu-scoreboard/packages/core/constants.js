@@ -70,3 +70,5 @@ export const TEAM_LOGO_DEFAULT = '/default-logo.png';
 
 export const TEAM_SIDE_LEFT = 'left';
 export const TEAM_SIDE_RIGHT = 'right';
+
+export const VOLUME_SCRAPE_DURATION = 5000;
