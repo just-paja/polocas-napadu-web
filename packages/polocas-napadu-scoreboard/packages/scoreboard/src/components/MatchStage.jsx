@@ -101,11 +101,9 @@ const getStageView = (stage) => {
 };
 
 const MatchStage = ({ classes, data }) => (
-  <div>
-    <MatchContext.Provider value={data}>
-      {getStageView(data.match.currentStage)}
-    </MatchContext.Provider>
-  </div>
+  <MatchContext.Provider value={data}>
+    {getStageView(data.match.currentStage)}
+  </MatchContext.Provider>
 );
 
 MatchStage.propTypes = {

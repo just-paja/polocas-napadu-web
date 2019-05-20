@@ -23,13 +23,13 @@ class ShowSetupStage extends Stage {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Teams hideScore />
         <div className={classes.inspiration}>
           <InspirationQr className={classes.qr} />
         </div>
         <InspirationCount />
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -7,10 +7,10 @@ import { Stage } from './Stage';
 class GameSetupStage extends Stage {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Teams />
         <GameInspiration />
-      </div>
+      </React.Fragment>
     );
   }
 }

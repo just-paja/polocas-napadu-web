@@ -5,9 +5,7 @@ import { Stage } from './Stage';
 
 class GameStage extends Stage {
   render() {
-    return (
-      <GameInspiration />
-    );
+    return <GameInspiration />;
   }
 }
 

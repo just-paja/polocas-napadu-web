@@ -23,13 +23,13 @@ class PauseStage extends Stage {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Teams />
         <p className={classes.text}>V první půlce jste viděli</p>
         <div className={classes.center}>
           <GameHistory />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

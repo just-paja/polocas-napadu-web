@@ -42,13 +42,15 @@ function hasNewVoting(prevProps, props) {
 
 const styles = theme => ({
   chart: {
-    position: 'relative',
+    height: '100%',
+    display: 'flex',
   },
   countdown: {
     alignItems: 'center',
-    color: '#fff',
+    color: '#000',
     display: 'flex',
-    height: '100%',
+    top: 0,
+    bottom: 0,
     justifyContent: 'center',
     position: 'absolute',
     textAlign: 'center',
@@ -56,7 +58,7 @@ const styles = theme => ({
     zIndex: 100,
   },
   countdownNumber: {
-    background: 'rgba(255,255,255,0.15)',
+    background: 'rgba(255,255,255,0.9)',
     fontSize: theme.typography.fontSize * 17,
     width: theme.typography.fontSize * 17 * 1.75,
     height: theme.typography.fontSize * 17 * 1.75,
@@ -148,7 +150,7 @@ class VolumeScrapeChartInner extends React.Component {
   render() {
     const { classes, votings } = this.props;
     return (
-      <div className={classes.chart} style={{ height: 400 }}>
+      <div className={classes.chart}>
         {this.renderTimeout()}
         <ResponsiveLine
           colors={line => line.color}

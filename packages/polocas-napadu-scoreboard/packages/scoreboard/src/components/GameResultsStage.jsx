@@ -2,15 +2,13 @@ import GameVote from './GameVote';
 import React from 'react';
 import Teams from './Teams';
 
-import { Stage } from './Stage';
-
 class GameResultsStage extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Teams />
         <GameVote />
-      </div>
+      </React.Fragment>
     );
   }
 }
