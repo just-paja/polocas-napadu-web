@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-export const RouterContext = React.createContext({});
+export const RouterContext = React.createContext({})
 
-export const MatchContext = React.createContext(null);
+export const MatchContext = React.createContext(null)
