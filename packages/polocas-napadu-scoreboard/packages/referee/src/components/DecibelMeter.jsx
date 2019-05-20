@@ -27,6 +27,7 @@ class DecibelMeter extends React.Component {
     this.state = {
       lastResult: 0,
       micReady: false,
+      stopped: false,
       volume: 0,
     };
     this.meter = new Meter(METER_IDENT);
@@ -58,7 +59,8 @@ class DecibelMeter extends React.Component {
 
   propagateSoundFrame(bels, ...args) {
     const { group, onScrape, recording } = this.props;
-    if (recording) {
+    const { stopped } = this.state;
+    if (recording && !stopped) {
       const volume = bels - ZERO;
       this.setState({ volume });
       onScrape(group.id, volume);
@@ -82,6 +84,7 @@ class DecibelMeter extends React.Component {
   recordingStart() {
     const { group, onRecordingStart, recording } = this.props;
     if (!recording) {
+      this.setState({ stopped: false });
       onRecordingStart(group.id);
     }
   }
@@ -89,6 +92,7 @@ class DecibelMeter extends React.Component {
   recordingStop() {
     const { group, onRecordingStop, recording } = this.props;
     if (recording) {
+      this.setState({ stopped: true });
       onRecordingStop(group.id);
     }
     clearTimeout(this.stopTimeout);
@@ -123,7 +127,7 @@ class DecibelMeter extends React.Component {
           className={classes.control}
           color={micReady && recording ? 'secondary' : 'primary'}
           disabled={disabled && !recording}
-          onClick={this.recordingStart}
+          onClick={micReady && recording ? this.recordingStop : this.recordingStart}
           variant="contained"
         >
           {this.getButtonLabel()}

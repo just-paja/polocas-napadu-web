@@ -72,9 +72,6 @@ const withMutation = (propName, mutation) => Component => props => (
 class ScorePointPoll extends React.Component {
   constructor() {
     super();
-    this.state = {
-      votingFor: null,
-    };
     this.handleRecordingStart = this.handleRecordingStart.bind(this);
     this.handleRecordingStop = this.handleRecordingStop.bind(this);
     this.handleScrape = this.handleScrape.bind(this);
@@ -107,6 +104,14 @@ class ScorePointPoll extends React.Component {
       refetchQueries: ['ScorePointPoll'],
       variables: {
         livePollVotingId: id,
+      },
+      optimisticResponse: {
+        __typename: "Mutation",
+        livePollVoting: {
+          __typename: "LivePollVoting",
+          id,
+          closed: true,
+        }
       }
     });
   }
