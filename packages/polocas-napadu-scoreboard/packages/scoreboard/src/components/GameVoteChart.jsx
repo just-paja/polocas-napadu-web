@@ -27,7 +27,7 @@ const convertScrapesToLine = (scrapes) => {
   })).sort((a, b) => a.created - b.created);
 }
 
-const withVolumeScrape = WrappedComponent => {
+const withScorePointScrape = WrappedComponent => {
   class VolumeScraper extends React.Component {
     constructor(props) {
       super();
@@ -110,61 +110,56 @@ const withVolumeScrape = WrappedComponent => {
   return VolumeScraper;
 };
 
+function getAvg(values) {
+  return values.length === 0
+    ? 0
+    : (values.reduce((aggr, value) => aggr + value) / values.length);
+}
+
+function getVotingAvg(voting) {
+  return getAvg(voting.data.map(point => point.y).filter(item => !isNaN(item)));
+}
+
+function getAvgLine(maxX, xScale, yScale) {
+  return function(voting) {
+    const avg = getVotingAvg(voting);
+    return (
+      <line
+        key={voting.id}
+        stroke={voting.color}
+        strokeWidth="4"
+        x1={xScale(0)}
+        x2={xScale(maxX)}
+        y1={yScale(avg)}
+        y2={yScale(avg)}
+      />
+    );
+  };
+}
+
 class GameVoteChart extends Stage {
-  getHorizontalConstraints() {
-    const { poll, duration } = this.props;
-    const start = moment(poll.created);
-    const end = start.clone().add(duration, 'ms');
-    return [
-      start.valueOf(),
-      end.valueOf(),
-    ];
-  }
-
-  getVerticalConstraints() {
-    return [0, 50];
-  }
-
-  getAvg(voting) {
-    const filtered = voting.data
-      .map(point => point.y)
-      .filter(item => !isNaN(item));
-    if (filtered.length === 0) {
-      return 0;
-    }
-    const sum = filtered.reduce((aggr, value) => aggr + value);
-    return sum/filtered.length;
-  }
-
   getMaxX() {
     return this.props.duration + 250;
   }
 
+  getRefsComponent() {
+    return props => (
+      <g>
+        {this.props.votings.map(getAvgLine(
+          this.getMaxX(),
+          props.xScale,
+          props.yScale
+        ))}
+      </g>
+    );
+  }
+
   render() {
     const { votings } = this.props;
-    console.log(votings);
     if (votings.length === 0) {
       return null;
     }
-    const refsLayer = props => (
-      <g>
-        {votings.map(voting => {
-          const avg = this.getAvg(voting);
-          return (
-            <line
-              x1={props.xScale(0)}
-              x2={props.xScale(this.getMaxX())}
-              y1={props.yScale(avg)}
-              y2={props.yScale(avg)}
-              stroke={voting.color}
-              strokeWidth="4"
-              key={voting.id}
-            />
-          );
-        })}
-      </g>
-    );
-    // colors={poll.votings.map(voting => voting.contestantGroup.color)}
+
     return (
       <div style={{ height: 400 }}>
         <ResponsiveLine
@@ -179,15 +174,16 @@ class GameVoteChart extends Stage {
           isInteractive={false}
           enablePoints={false}
           layers={[
-            "grid",
-            "markers",
-            "axes",
+            // Micro optimization: Hide unused layers
+            // "grid",
+            // "markers",
+            // "axes",
             "areas",
             "lines",
-            refsLayer,
-            "slices",
-            "dots",
-            "legends"
+            this.getRefsComponent(),
+            // "slices",
+            // "dots",
+            // "legends"
           ]}
           xScale={{
             type: 'linear',
@@ -202,13 +198,13 @@ class GameVoteChart extends Stage {
 }
 
 GameVoteChart.propTypes = {
-  votings: PropTypes.array,
-  poll: PropTypes.object,
   duration: PropTypes.number.isRequired,
+  poll: PropTypes.object,
+  votings: PropTypes.array,
 };
 
 GameVoteChart.defaultProps = {
   duration: 5000,
 };
 
-export default withVolumeScrape(GameVoteChart);
+export default withScorePointScrape(GameVoteChart);
