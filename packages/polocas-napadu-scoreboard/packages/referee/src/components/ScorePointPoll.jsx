@@ -4,64 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { gql } from 'apollo-boost';
 import { MatchContext } from 'core/context';
 import { Mutation } from 'react-apollo';
 import { withStage } from '../context';
 
-const QUERY_POLL = gql`
-  query ScorePointPoll($matchStageId: Int!) {
-    scorePointPoll(matchStageId: $matchStageId) {
-      votings {
-        id,
-        closed,
-        contestantGroup {
-          id
-        }
-      },
-      winner {
-        contestantGroup {
-          id
-        }
-      }
-    }
-  }
-`
-
-const SCRAPE_VOLUME_SAVE = gql`
-  mutation ScrapeStageVolume($livePollVotingId: Int!, $volume: Float!) {
-    scrapeStageVolume(livePollVotingId: $livePollVotingId, volume: $volume) {
-      volumeScrape {
-        id,
-        created,
-      }
-    }
-  }
-`;
-
-const VOTING_START = gql`
-  mutation StartScorePointVoting($contestantGroupId: Int!) {
-    startScorePointVoting(contestantGroupId: $contestantGroupId) {
-      voting {
-        id,
-        poll {
-          id
-        }
-      }
-    }
-  }
-`;
-
-const VOTING_END = gql`
-  mutation StartScorePointVoting($livePollVotingId: Int!) {
-    closeLivePollVoting(livePollVotingId: $livePollVotingId) {
-      livePollVoting {
-        id,
-        closed
-      }
-    }
-  }
-`;
+import * as queries from '../queries';
 
 const withMutation = (propName, mutation) => Component => props => (
   <Mutation mutation={mutation}>
@@ -188,10 +135,10 @@ ScorePointPoll.defaultProps = {
 };
 
 export default withStage(GraphContainer(
-  withMutation('onVotingStart', VOTING_START)(
-    withMutation('onVotingEnd', VOTING_END)(
-      withMutation('onVolumeScrape', SCRAPE_VOLUME_SAVE)(ScorePointPoll)
+  withMutation('onVotingStart', queries.startScorePointVoting)(
+    withMutation('onVotingEnd', queries.closeLivePollVoting)(
+      withMutation('onVolumeScrape', queries.saveVolumeScrape)(ScorePointPoll)
     )
   ),
-  QUERY_POLL
+  queries.getScorePointPoll
 ));
