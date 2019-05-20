@@ -1,19 +1,18 @@
+import GameVote from './GameVote';
 import React from 'react';
-
-import { Classes } from 'core/proptypes';
-
 import Teams from './Teams';
-import GameInspiration from './GameInspiration';
 
-const GameResultsStage = ({ classes }) => (
-  <div>
-    <Teams />
-    <GameInspiration />
-  </div>
-);
+import { Stage } from './Stage';
 
-GameResultsStage.propTypes = {
-  classes: Classes.isRequired,
-};
+class GameResultsStage extends Stage {
+  render() {
+    return (
+      <div>
+        <Teams />
+        <GameVote />
+      </div>
+    );
+  }
+}
 
 export default GameResultsStage;

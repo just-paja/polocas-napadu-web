@@ -46,6 +46,25 @@ const GET_MATCH_STAGE = gql`
             text,
           }
         },
+        scorePointPoll {
+          id,
+          closed,
+          votings {
+            id,
+            closed,
+            contestantGroup {
+              id,
+              color,
+              band {
+                name,
+              }
+            },
+            volumeScrapes {
+              created,
+              volume,
+            }
+          }
+        },
         inspirations {
           text,
         }

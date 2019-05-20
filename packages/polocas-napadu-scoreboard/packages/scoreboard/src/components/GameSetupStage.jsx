@@ -1,24 +1,18 @@
-import React from 'react';
-
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-
-import Teams from './Teams';
 import GameInspiration from './GameInspiration';
+import React from 'react';
+import Teams from './Teams';
 
+import { Stage } from './Stage';
 
-const styles = {
-};
+class GameSetupStage extends Stage {
+  render() {
+    return (
+      <div>
+        <Teams />
+        <GameInspiration />
+      </div>
+    );
+  }
+}
 
-const GameSetupStage = ({ classes }) => (
-  <div>
-    <Teams />
-    <GameInspiration />
-  </div>
-);
-
-GameSetupStage.propTypes = {
-  classes: Classes.isRequired,
-};
-
-export default withStyles(styles)(GameSetupStage);
+export default GameSetupStage;

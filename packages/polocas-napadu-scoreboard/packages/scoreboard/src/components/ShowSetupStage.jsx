@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Classes } from 'core/proptypes';
+import { Stage } from './Stage';
 import { withStyles } from '@material-ui/core/styles';
 
 import InspirationCount from './InspirationCount';
@@ -18,15 +19,20 @@ const styles = {
   },
 };
 
-const ShowSetupStage = ({ classes }) => (
-  <div>
-    <Teams hideScore />
-    <div className={classes.inspiration}>
-      <InspirationQr className={classes.qr} />
-    </div>
-    <InspirationCount />
-  </div>
-);
+class ShowSetupStage extends Stage {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <Teams hideScore />
+        <div className={classes.inspiration}>
+          <InspirationQr className={classes.qr} />
+        </div>
+        <InspirationCount />
+      </div>
+    );
+  }
+}
 
 ShowSetupStage.propTypes = {
   classes: Classes.isRequired,

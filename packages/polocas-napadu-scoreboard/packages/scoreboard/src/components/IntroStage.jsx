@@ -1,25 +1,11 @@
 import React from 'react';
 
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
+import { Stage } from './Stage';
 
-const styles = {
-  inspiration: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  qr: {
-    width: 400,
-  },
-};
+class IntroStage extends Stage {
+  render() {
+    return <div />
+  }
+}
 
-const ShowSetupStage = ({ classes }) => (
-  <div />
-);
-
-ShowSetupStage.propTypes = {
-  classes: Classes.isRequired,
-};
-
-export default withStyles(styles)(ShowSetupStage);
+export default IntroStage;

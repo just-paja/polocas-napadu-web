@@ -5,9 +5,12 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "howler": "^2.1.1",
+    "moment": "^2.24.0",
     "query-string": "^6.4.2",
     "react-animate-on-change": "^2.1.1",
-    "react-scripts": "^2.1.8"
+    "react-fast-compare": "^2.0.4",
+    "react-scripts": "^2.1.8",
+    "recharts": "^1.6.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

@@ -17,12 +17,19 @@ const GraphContainer = (WrappedComponent, query, poll = false) => {
 
   const wrappedName = getComponentName(WrappedComponent, 'Component')
   class GraphContainerNamed extends React.Component {
+    getPollInterval() {
+      if (poll) {
+        return 500;
+      }
+      return this.props.pollInterval || null;
+    }
+
     render() {
       const { variables, ...props } = this.props;
       return (
         <Query
           query={query}
-          pollInterval={poll ? 500 : null}
+          pollInterval={this.getPollInterval()}
           variables={{
             ...variables,
             ...this.context,

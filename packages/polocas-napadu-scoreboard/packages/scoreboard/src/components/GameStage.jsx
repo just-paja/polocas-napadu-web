@@ -1,22 +1,14 @@
+import GameInspiration from './GameInspiration';
 import React from 'react';
 
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
+import { Stage } from './Stage';
 
-import GameInspiration from './GameInspiration';
+class GameStage extends Stage {
+  render() {
+    return (
+      <GameInspiration />
+    );
+  }
+}
 
-
-const styles = {
-};
-
-const GameStage = ({ classes }) => (
-  <div>
-    <GameInspiration />
-  </div>
-);
-
-GameStage.propTypes = {
-  classes: Classes.isRequired,
-};
-
-export default withStyles(styles)(GameStage);
+export default GameStage;
