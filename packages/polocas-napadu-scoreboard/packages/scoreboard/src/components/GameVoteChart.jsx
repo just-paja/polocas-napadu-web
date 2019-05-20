@@ -29,16 +29,21 @@ function convertScrapesToLine(scrapes) {
   })).sort((a, b) => a.created - b.created);
 }
 
-const withScorePointScrape = WrappedComponent => {
+
+const withScorePointScrape = ({ getLineColor }) => WrappedComponent => {
+  function getVotingCurve(voting, volumeScrapes) {
+    return {
+      color: getLineColor && getLineColor(voting),
+      data: convertScrapesToLine(voting.volumeScrapes || volumeScrapes),
+      id: voting.id,
+    };
+  }
+
   class VolumeScraper extends React.Component {
     constructor(props) {
       super();
       this.state = {
-        scrapes: props.poll.votings.map(voting => ({
-          id: voting.id,
-          color: voting.contestantGroup.color,
-          data: convertScrapesToLine(voting.volumeScrapes),
-        }))
+        scrapes: props.poll.votings.map(getVotingCurve)
       };
       this.handleLoad = this.handleLoad.bind(this);
     }
@@ -51,17 +56,13 @@ const withScorePointScrape = WrappedComponent => {
       const voting = this.getActiveVoting();
       const nextState = [...this.state.scrapes];
       const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id);
-      const lineData = convertScrapesToLine(data.volumeScrapeList);
+      const { volumeScrapeList } = data;
       if (targetIndex === -1) {
-        nextState.push({
-          id: voting.id,
-          color: voting.contestantGroup.color,
-          data: lineData,
-        });
+        nextState.push(getVotingCurve(voting, volumeScrapeList));
       } else {
         nextState[targetIndex] = {
           ...nextState[targetIndex],
-          data: lineData,
+          data: convertScrapesToLine(volumeScrapeList),
         };
       }
       this.setState({
@@ -96,4 +97,6 @@ const withScorePointScrape = WrappedComponent => {
   return VolumeScraper;
 };
 
-export default withScorePointScrape(VolumeScrapeChart);
+export default withScorePointScrape({
+  getLineColor: line => line.contestantGroup.color,
+})(VolumeScrapeChart);
