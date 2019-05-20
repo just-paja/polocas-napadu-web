@@ -5,17 +5,24 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import { ContestantGroup } from 'core/proptypes';
-import { DecibelLevel } from './DecibelLevel';
+import { DecibelMeterValues } from './DecibelMeterValues';
 import { throttle } from 'throttle-debounce';
 import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_RATE } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   meter: {
-    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    textAlign: 'left',
+  },
+  controls: {
+    marginTop: theme.spacing.unit,
+    display: 'flex',
   },
   control: {
-    marginTop: theme.spacing.unit,
+    marginRight: theme.spacing.unit * 2
   }
 });
 
@@ -41,6 +48,9 @@ class DecibelMeter extends React.Component {
   componentDidMount() {
     this.meter.on('connect', this.setMicReady);
     this.listen();
+    if (this.props.recording) {
+      this.scheduleStop();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -99,13 +109,27 @@ class DecibelMeter extends React.Component {
     clearTimeout(this.stopTimeout);
   }
 
+  getButtonColor() {
+    const { micReady, recording, result } = this.props;
+    if (micReady && recording) {
+      return 'secondary';
+    }
+    if (result) {
+      return 'default'
+    }
+    return 'primary';
+  }
+
   getButtonLabel() {
     const { micReady } = this.state;
-    const { recording } = this.props;
+    const { recording, result } = this.props;
     if (recording) {
       return micReady
         ? 'Zastavit'
         : 'Čekám na mikrofon';
+    }
+    if (result) {
+      return 'Opakovat';
     }
     return 'Začít měřit';
   }
@@ -116,23 +140,25 @@ class DecibelMeter extends React.Component {
   }
 
   render() {
-    const { classes, disabled, group, recording } = this.props;
-    const { micReady, volume } = this.state;
+    const { classes, disabled, group, recording, result } = this.props;
+    const { micReady, stopped, volume } = this.state;
     return (
       <div className={classes.meter}>
         <Typography variant="h3">
           {group.band.name}
         </Typography>
-        <DecibelLevel value={volume} />
-        <Button
-          className={classes.control}
-          color={micReady && recording ? 'secondary' : 'primary'}
-          disabled={disabled && !recording}
-          onClick={micReady && recording ? this.recordingStop : this.recordingStart}
-          variant="contained"
-        >
-          {this.getButtonLabel()}
-        </Button>
+        <div className={classes.controls}>
+          <Button
+            className={classes.control}
+            color={this.getButtonColor()}
+            disabled={(disabled && !recording) || (recording && stopped)}
+            onClick={micReady && recording ? this.recordingStop : this.recordingStart}
+            variant="contained"
+          >
+            {this.getButtonLabel()}
+          </Button>
+          <DecibelMeterValues current={volume} result={result} />
+        </div>
       </div>
     );
   }
@@ -146,6 +172,7 @@ DecibelMeter.propTypes = {
   onRecordingStop: PropTypes.func.isRequired,
   onScrape: PropTypes.func.isRequired,
   rate: PropTypes.number,
+  result: PropTypes.number,
   recording: PropTypes.bool,
 };
 

@@ -53,11 +53,13 @@ class ScorePointPoll extends React.Component {
         livePollVotingId: id,
       },
       optimisticResponse: {
-        __typename: "Mutation",
-        livePollVoting: {
-          __typename: "LivePollVoting",
-          id,
-          closed: true,
+        closeLivePollVoting: {
+          __typename: "Mutation",
+          livePollVoting: {
+            __typename: "LivePollVoting",
+            id,
+            closed: true,
+          }
         }
       }
     });
@@ -74,23 +76,38 @@ class ScorePointPoll extends React.Component {
     })
   }
 
-  isVoting(groupId) {
+  getGroupVoting(contestantGroupId) {
     const { scorePointPoll } = this.props.data;
     if (scorePointPoll) {
-      return scorePointPoll.votings.some(
+      return scorePointPoll.votings.find(
         voting =>
           voting.contestantGroup
-          && voting.contestantGroup.id === groupId
-          && !voting.closed
+          && voting.contestantGroup.id === contestantGroupId
       );
     }
+    return null;
   }
 
-  disableNewVoting() {
+  isAnyVoteOpen() {
     if (this.props.data.scorePointPoll) {
       return this.props.data.scorePointPoll.votings.some(voting => !voting.closed);
     }
     return false;
+  }
+
+  renderGroupMeter(group) {
+    const voting = this.getGroupVoting(group.id);
+    return (
+      <DecibelMeter
+        disabled={this.isAnyVoteOpen()}
+        group={group}
+        result={voting && voting.avgVolume}
+        onRecordingStart={this.handleRecordingStart}
+        onRecordingStop={this.handleRecordingStop}
+        onScrape={this.handleScrape}
+        recording={voting && !voting.closed}
+      />
+    )
   }
 
   render() {
@@ -104,14 +121,7 @@ class ScorePointPoll extends React.Component {
             md={6}
             xs={12}
           >
-            <DecibelMeter
-              disabled={this.disableNewVoting()}
-              group={group}
-              onRecordingStart={this.handleRecordingStart}
-              onRecordingStop={this.handleRecordingStop}
-              onScrape={this.handleScrape}
-              recording={this.isVoting(group.id)}
-            />
+            {this.renderGroupMeter(group)}
           </Grid>
         ))}
       </Grid>
@@ -140,5 +150,6 @@ export default withStage(GraphContainer(
       withMutation('onVolumeScrape', queries.saveVolumeScrape)(ScorePointPoll)
     )
   ),
-  queries.getScorePointPoll
+  queries.getScorePointPoll,
+  true
 ));

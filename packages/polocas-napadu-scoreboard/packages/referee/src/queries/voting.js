@@ -6,6 +6,7 @@ export const getScorePointPoll = gql`
       votings {
         id,
         closed,
+        avgVolume,
         contestantGroup {
           id
         }

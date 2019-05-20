@@ -4,22 +4,25 @@ import Typography from '@material-ui/core/Typography';
 
 const formatter = new Intl.NumberFormat();
 
-export const DecibelLevel = ({ classes, maximum, result, value }) => (
+export const DecibelLevel = ({ label, maximum, result, value }) => (
   <Typography
     color="secondary"
-    variant="subtitle1"
+    variant="body1"
   >
-    {formatter.format(value)} dB
+    {label}:{' '}
+    {value ? formatter.format(value) : 0} dB
   </Typography>
 );
 
 DecibelLevel.propTypes = {
+  label: PropTypes.string.isRequired,
   maximum: PropTypes.bool,
   result: PropTypes.bool,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
 };
 
 DecibelLevel.defaultProps = {
   maximum: false,
   result: false,
+  value: 0,
 };
