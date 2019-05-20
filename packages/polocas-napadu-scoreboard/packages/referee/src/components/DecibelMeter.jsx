@@ -7,8 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import { ContestantGroup } from 'core/proptypes';
 import { DecibelMeterValues } from './DecibelMeterValues';
 import { throttle } from 'throttle-debounce';
-import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_RATE } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
+import {
+  VOLUME_SCRAPE_DURATION,
+  VOLUME_SCRAPE_RATE,
+  VOLUME_SCRAPE_TIMEOUT,
+} from 'core/constants';
 
 const styles = theme => ({
   meter: {
@@ -35,7 +39,8 @@ class DecibelMeter extends React.Component {
     this.state = {
       lastResult: 0,
       micReady: false,
-      stopped: false,
+      stopped: true,
+      timeout: 0,
       volume: 0,
     };
     this.meter = new Meter(METER_IDENT);
@@ -49,18 +54,42 @@ class DecibelMeter extends React.Component {
     this.meter.on('connect', this.setMicReady);
     this.listen();
     if (this.props.recording) {
-      this.scheduleStop();
+      this.enablePassTrough();
     }
   }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.recording && this.props.recording) {
-      this.scheduleStop();
+      this.countdownPassTrough()
     }
   }
 
   componentWillUnmount() {
     this.meter.disconnect();
+    clearTimeout(this.passTroughTimeout);
+  }
+
+  countdownPassTrough() {
+    this.setState({ timeout: VOLUME_SCRAPE_TIMEOUT / 1000 });
+    this.enablePassTrough();
+  }
+
+  enablePassTrough() {
+    this.passTroughTimeout = setTimeout(() => {
+      if (this.state.timeout <= 0) {
+        this.scheduleStop();
+        this.setState({
+          stopped: false,
+          timeout: 0
+        });
+      } else {
+        this.setState({
+          stopped: false,
+          timeout: this.state.timeout - 1,
+        });
+        this.enablePassTrough();
+      }
+    }, 1000);
   }
 
   getReasonableDevices(sources) {
@@ -70,8 +99,8 @@ class DecibelMeter extends React.Component {
 
   propagateSoundFrame(bels, ...args) {
     const { group, onScrape, recording } = this.props;
-    const { stopped } = this.state;
-    if (recording && !stopped) {
+    const { stopped, timeout } = this.state;
+    if (recording && !stopped && !timeout) {
       const volume = bels - ZERO;
       this.setState({ volume });
       onScrape(group.id, volume);
@@ -95,13 +124,17 @@ class DecibelMeter extends React.Component {
   recordingStart() {
     const { group, onRecordingStart, recording } = this.props;
     if (!recording) {
-      this.setState({ stopped: false });
       onRecordingStart(group.id);
     }
   }
 
   recordingStop() {
     const { group, onRecordingStop, recording } = this.props;
+    const { timeout } = this.state;
+    if (timeout) {
+      clearTimeout(this.passTroughTimeout);
+      this.setState({ timeout: 0 });
+    }
     if (recording) {
       this.setState({ stopped: true });
       onRecordingStop(group.id);
@@ -121,8 +154,11 @@ class DecibelMeter extends React.Component {
   }
 
   getButtonLabel() {
-    const { micReady } = this.state;
+    const { micReady, timeout } = this.state;
     const { recording, result } = this.props;
+    if (timeout > 0) {
+      return timeout;
+    }
     if (recording) {
       return micReady
         ? 'Zastavit'
@@ -141,7 +177,7 @@ class DecibelMeter extends React.Component {
 
   render() {
     const { classes, disabled, group, recording, result } = this.props;
-    const { micReady, stopped, volume } = this.state;
+    const { micReady, stopped, timeout, volume } = this.state;
     return (
       <div className={classes.meter}>
         <Typography variant="h3">
@@ -151,8 +187,8 @@ class DecibelMeter extends React.Component {
           <Button
             className={classes.control}
             color={this.getButtonColor()}
-            disabled={(disabled && !recording) || (recording && stopped)}
-            onClick={micReady && recording ? this.recordingStop : this.recordingStart}
+            disabled={!timeout && ((disabled && !recording) || (recording && stopped))}
+            onClick={timeout || (micReady && recording) ? this.recordingStop : this.recordingStart}
             variant="contained"
           >
             {this.getButtonLabel()}

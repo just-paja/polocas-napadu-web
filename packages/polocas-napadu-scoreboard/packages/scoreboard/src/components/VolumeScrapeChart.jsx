@@ -14,9 +14,10 @@ function getVotingAvg(voting) {
   return getAvg(voting.data.map(point => point.y).filter(item => !isNaN(item)));
 }
 
-function getAvgLine(maxX, xScale, yScale) {
+function getAvgLine(maxX, xScale, yScale, height) {
   return function(voting) {
     const avg = getVotingAvg(voting);
+    const yPos = avg === 0 ? height : yScale(avg);
     return (
       <line
         key={voting.id}
@@ -24,8 +25,8 @@ function getAvgLine(maxX, xScale, yScale) {
         strokeWidth="4"
         x1={xScale(0)}
         x2={xScale(maxX)}
-        y1={yScale(avg)}
-        y2={yScale(avg)}
+        y1={yPos}
+        y2={yPos}
       />
     );
   };
@@ -52,7 +53,8 @@ export class VolumeScrapeChart extends React.Component {
         {this.props.votings.map(getAvgLine(
           this.getMaxX(),
           props.xScale,
-          props.yScale
+          props.yScale,
+          props.height
         ))}
       </g>
     );

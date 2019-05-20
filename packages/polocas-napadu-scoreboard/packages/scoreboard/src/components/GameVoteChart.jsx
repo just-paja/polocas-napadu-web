@@ -92,10 +92,11 @@ const withScorePointScrape = WrappedComponent => {
           {...this.props}
         />
       );
+      console.log(activeVoting);
       return (
         <Query
           query={GET_ACTIVE_VOLUME_SCRAPE}
-          pollInterval={activeVoting ? VOLUME_SCRAPE_RATE : null}
+          pollInterval={activeVoting ? VOLUME_SCRAPE_RATE : undefined}
           variables={{ livePollVotingId: lastVoting ? lastVoting.id : undefined }}
           onCompleted={this.handleLoad}
         >

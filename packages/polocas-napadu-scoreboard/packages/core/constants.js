@@ -73,3 +73,4 @@ export const TEAM_SIDE_RIGHT = 'right';
 
 export const VOLUME_SCRAPE_DURATION = 6000;
 export const VOLUME_SCRAPE_RATE = 50;
+export const VOLUME_SCRAPE_TIMEOUT = 3000;
