@@ -54,20 +54,18 @@ const withScorePointScrape = ({ getLineColor }) => WrappedComponent => {
 
     handleLoad(data) {
       const voting = this.getActiveVoting();
-      const nextState = [...this.state.scrapes];
+      const scrapes = [...this.state.scrapes];
       const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id);
       const { volumeScrapeList } = data;
       if (targetIndex === -1) {
-        nextState.push(getVotingCurve(voting, volumeScrapeList));
+        scrapes.push(getVotingCurve(voting, volumeScrapeList));
       } else {
-        nextState[targetIndex] = {
-          ...nextState[targetIndex],
+        scrapes[targetIndex] = {
+          ...scrapes[targetIndex],
           data: convertScrapesToLine(volumeScrapeList),
         };
       }
-      this.setState({
-        scrapes: nextState,
-      });
+      this.setState({ scrapes });
     }
 
     render() {
