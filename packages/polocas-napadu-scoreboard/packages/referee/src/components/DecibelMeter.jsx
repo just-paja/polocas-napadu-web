@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
+import { ContestantGroup } from 'core/proptypes';
+import { DecibelLevel } from './DecibelLevel';
 import { throttle } from 'throttle-debounce';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -16,112 +18,137 @@ const styles = theme => ({
   }
 });
 
+const METER_IDENT = 'DECIBEL_METER';
 const ZERO = -100;
 
 class DecibelMeter extends React.Component {
   constructor() {
     super();
     this.state = {
-      maxValue: 0,
       lastResult: 0,
-      listening: false,
+      micReady: false,
       volume: 0,
     };
-    this.toggleMeasure = this.toggleMeasure.bind(this);
-    this.formatter = new Intl.NumberFormat();
-    this.meter = new Meter('xx');
+    this.meter = new Meter(METER_IDENT);
+    this.propagateSoundFrame = this.propagateSoundFrame.bind(this);
+    this.recordingStart = this.recordingStart.bind(this);
+    this.recordingStop = this.recordingStop.bind(this);
+    this.setMicReady = this.setMicReady.bind(this);
   }
 
   componentDidMount() {
-    this.meter.on('connect', () => {
-      this.setState({ listening: true });
-    });
+    this.meter.on('connect', this.setMicReady);
+    this.listen();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.recording && this.props.recording) {
+      this.scheduleStop();
+    }
   }
 
   componentWillUnmount() {
-    if (this.state.listening) {
-      this.meter.disconnect();
+    this.meter.disconnect();
+  }
+
+  getReasonableDevices(sources) {
+    const hasDefault = sources.some(source => source.deviceId === 'default');
+    return hasDefault ? ['default'] : sources.map(source => source.deviceId);
+  }
+
+  propagateSoundFrame(bels, ...args) {
+    const { group, onScrape, recording } = this.props;
+    if (recording) {
+      const volume = bels - ZERO;
+      this.setState({ volume });
+      onScrape(group.id, volume);
     }
   }
 
+  setMicReady() {
+    this.setState({ micReady: true });
+  }
+
   listen() {
+    const { rate } = this.props;
     this.meter.sources.then((sources) => {
-      const hasDefault = sources.some(source => source.deviceId === 'default');
-      const devices = hasDefault ? ['default'] : sources.map(source => source.deviceId);
-      devices.forEach(deviceId => {
-        this.setState({ maxValue: 0, volume: 0 });
-        this.meter.listenTo(deviceId, throttle(100, (bels, ...args) => {
-          const volume = bels - ZERO;
-          this.setState({
-            maxValue: Math.max(this.state.maxValue, volume),
-            volume
-          });
-        }));
+      this.getReasonableDevices(sources).forEach(deviceId => {
+        this.setState({ volume: 0 });
+        this.meter.listenTo(deviceId, throttle(rate, this.propagateSoundFrame));
       });
     });
   }
 
-  toggleMeasure() {
-    if (this.state.listening) {
-      this.setState({
-        listening: false,
-        volume: 0,
-      });
-      this.meter.disconnect();
-    } else {
-      this.setState({
-        maxValue: 0,
-        lastResult: this.state.maxValue,
-      })
-      this.listen();
+  recordingStart() {
+    const { group, onRecordingStart, recording } = this.props;
+    if (!recording) {
+      onRecordingStart(group.id);
     }
   }
 
+  recordingStop() {
+    const { group, onRecordingStop, recording } = this.props;
+    if (recording) {
+      onRecordingStop(group.id);
+    }
+    clearTimeout(this.stopTimeout);
+  }
+
+  getButtonLabel() {
+    const { micReady } = this.state;
+    const { recording } = this.props;
+    if (recording) {
+      return micReady
+        ? 'Zastavit'
+        : 'Čekám na mikrofon';
+    }
+    return 'Začít měřit';
+  }
+
+  scheduleStop() {
+    clearTimeout(this.stopTimeout);
+    this.stopTimeout = setTimeout(this.recordingStop, this.props.duration);
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, disabled, group, recording } = this.props;
+    const { micReady, volume } = this.state;
     return (
       <div className={classes.meter}>
-        <Typography
-          variant="h2"
-          color={this.state.maxValue > this.state.lastResult ? 'primary' : 'secondary'}
-        >
-          {this.formatter.format(this.state.maxValue)} dB
+        <Typography variant="h3">
+          {group.band.name}
         </Typography>
-        {this.state.lastResult > 0 ? (
-          <Typography
-            variant="h2"
-            color={this.state.maxValue < this.state.lastResult ? 'primary' : 'secondary'}
-          >
-            {this.formatter.format(this.state.lastResult)} dB
-          </Typography>
-        ) : null}
-        <Typography variant="subtitle1">
-          {this.formatter.format(this.state.volume)} dB
-        </Typography>
+        <DecibelLevel value={volume} />
         <Button
           className={classes.control}
-          color={this.state.listening ? 'secondary' : 'primary'}
-          onClick={this.toggleMeasure}
+          color={micReady && recording ? 'secondary' : 'primary'}
+          disabled={disabled && !recording}
+          onClick={this.recordingStart}
           variant="contained"
         >
-          {this.state.listening ? 'Zastavit' : 'Začít měřit'}
+          {this.getButtonLabel()}
         </Button>
-        <p>
-          Decibel [dB], je bezrozměrná jednotka která dává smysl pouze
-          v kontextu jednoho zařízení. Neobsahuje akustický tlak a proto
-          každé zařízení naměří jinou hodnotu.
-        </p>
       </div>
     );
   }
 }
 
 DecibelMeter.propTypes = {
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  disabled: PropTypes.bool,
+  duration: PropTypes.number,
+  group: ContestantGroup.isRequired,
+  onRecordingStart: PropTypes.func.isRequired,
+  onRecordingStop: PropTypes.func.isRequired,
+  onScrape: PropTypes.func.isRequired,
+  rate: PropTypes.number,
+  recording: PropTypes.bool,
 };
 
 DecibelMeter.defaultProps = {
-  layout: 'horizontal',
+  disabled: false,
+  duration: 5000,
+  rate: 50,
+  recording: false,
 };
 
 export default withStyles(styles)(DecibelMeter);

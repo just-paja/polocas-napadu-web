@@ -54,6 +54,7 @@ const GET_MATCH = gql`
         }
       },
       currentStage {
+        id,
         created,
         type,
         game {

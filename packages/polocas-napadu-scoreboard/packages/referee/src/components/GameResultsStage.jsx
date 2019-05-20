@@ -9,9 +9,9 @@ import {
 
 import BoardLayout from './BoardLayout';
 import ControlsLayout from './ControlsLayout';
-import DecibelMeter from './DecibelMeter';
 import MainControls from './MainControls';
 import ScoreControls from './ScoreControls';
+import ScorePointPoll from './ScorePointPoll';
 import Team from './Team';
 
 const styles = {
@@ -35,7 +35,7 @@ const GameResultsStage = ({ classes }) => (
     <MainControls center>
       <h1>Hlasování</h1>
       <p>V této fázi hry diváci hlasují o tom který tým dostane bod.</p>
-      <DecibelMeter />
+      <ScorePointPoll />
     </MainControls>
   </ControlsLayout>
 );
