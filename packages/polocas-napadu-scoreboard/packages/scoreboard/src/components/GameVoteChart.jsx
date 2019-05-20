@@ -168,6 +168,7 @@ class GameVoteChart extends Stage {
     return (
       <div style={{ height: 400 }}>
         <ResponsiveLine
+          colors={line => line.color}
           curve="step"
           data={votings}
           enableGridX={false}
