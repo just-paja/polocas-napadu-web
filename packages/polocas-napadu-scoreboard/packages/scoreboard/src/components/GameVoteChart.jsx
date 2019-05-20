@@ -4,14 +4,7 @@ import React from 'react';
 
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import {
-  Area,
-  AreaChart,
-  ReferenceLine,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from 'recharts';
+import { ResponsiveLine } from '@nivo/line';
 
 import { Stage } from './Stage';
 
@@ -24,13 +17,26 @@ const GET_ACTIVE_VOLUME_SCRAPE = gql`
   }
 `;
 
+const convertScrapesToLine = (scrapes) => {
+  const start = scrapes[0]
+    ? moment(scrapes[0].created).valueOf()
+    : 0;
+  return scrapes.map(scrape => ({
+    x: moment(scrape.created).valueOf() - start,
+    y: scrape.volume,
+  })).sort((a, b) => a.created - b.created);
+}
+
 const withVolumeScrape = WrappedComponent => {
   class VolumeScraper extends React.Component {
     constructor(props) {
       super();
       this.state = {
-        scrapes: this.regroupChartData(props.poll.votings
-          .reduce((aggr, voting) => this.getGrouppedScrapes(voting, voting.volumeScrapes, aggr), [])),
+        scrapes: props.poll.votings.map(voting => ({
+          id: voting.id,
+          color: voting.contestantGroup.color,
+          data: convertScrapesToLine(voting.volumeScrapes),
+        }))
       };
       this.handleLoad = this.handleLoad.bind(this);
     }
@@ -54,32 +60,25 @@ const withVolumeScrape = WrappedComponent => {
       return this.getActiveVoting() ? 500 : null;
     }
 
-    getGrouppedScrapes(voting, scrapes, aggr) {
-      const startTime = this.getStartTime(scrapes[0]);
-      const compat = aggr || this.state.scrapes;
-      return scrapes.reduce((aggr, value) => {
-        const created = moment(value.created).valueOf() - startTime;
-        let target = compat.find(item => item.created === created);
-        if (target) {
-          target[voting.contestantGroup.id] = value.volume;
-        } else {
-          aggr.push({
-            created: created,
-            [voting.contestantGroup.id]: value.volume,
-          });
-        }
-        return aggr;
-      }, compat);
-    }
-
-    regroupChartData(groupped) {
-      return groupped.sort((a, b) => a.created - b.created);
-    }
-
     handleLoad(data) {
       const voting = this.getLastVoting();
+      const nextState = [...this.state.scrapes];
+      const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id);
+      const lineData = convertScrapesToLine(data.volumeScrapeList);
+      if (targetIndex === -1) {
+        nextState.push({
+          id: voting.id,
+          color: voting.contestantGroup.color,
+          data: lineData,
+        });
+      } else {
+        nextState[targetIndex] = {
+          ...nextState[targetIndex],
+          data: lineData,
+        };
+      }
       this.setState({
-        scrapes: this.regroupChartData(this.getGrouppedScrapes(voting, data.volumeScrapeList)),
+        scrapes: nextState,
       });
     }
 
@@ -126,68 +125,76 @@ class GameVoteChart extends Stage {
     return [0, 50];
   }
 
-  getAvg(groupId) {
-    const filtered = this.props.votings
-      .map(voting => voting[groupId])
+  getAvg(voting) {
+    const filtered = voting.data
+      .map(point => point.y)
       .filter(item => !isNaN(item));
     if (filtered.length === 0) {
       return 0;
     }
-    return filtered.reduce((aggr, value) => ((aggr + value) / 2));
+    const sum = filtered.reduce((aggr, value) => aggr + value);
+    return sum/filtered.length;
   }
 
-  renderVotingData(voting) {
-    return [
-      <ReferenceLine
-        key={voting.id}
-        stroke={voting.contestantGroup.color}
-        y={this.getAvg(voting.contestantGroup.id)}
-      />,
-      <Area
-        dataKey={voting.contestantGroup.id}
-        fill={voting.contestantGroup.color}
-        key={voting.contestantGroup.id}
-        stackId={voting.contestantGroup.id}
-        stroke={voting.contestantGroup.color}
-        type="step"
-        isAnimationActive={false}
-      />,
-    ];
+  getMaxX() {
+    return this.props.duration + 250;
   }
 
   render() {
-    const { duration, poll, votings } = this.props;
+    const { votings } = this.props;
     console.log(votings);
     if (votings.length === 0) {
       return null;
     }
+    const refsLayer = props => (
+      <g>
+        {votings.map(voting => {
+          const avg = this.getAvg(voting);
+          return (
+            <line
+              x1={props.xScale(0)}
+              x2={props.xScale(this.getMaxX())}
+              y1={props.yScale(avg)}
+              y2={props.yScale(avg)}
+              stroke={voting.color}
+              strokeWidth="4"
+              key={voting.id}
+            />
+          );
+        })}
+      </g>
+    );
+    // colors={poll.votings.map(voting => voting.contestantGroup.color)}
     return (
       <div style={{ height: 400 }}>
-        <ResponsiveContainer>
-          <AreaChart
-            barGap={0}
-            barCategoryGap={0}
-            barSize={50}
-            data={votings.map(voting => ({
-              ...voting,
-              created: moment(voting.created).valueOf(),
-            }))}
-          >
-            <XAxis
-              dataKey="created"
-              domain={[0, duration]}
-              interval="preserveStartEnd"
-              type="number"
-            />
-            <YAxis
-              type="number"
-              domain={[0, '50']}
-            />
-            {poll.votings
-              .map(voting => this.renderVotingData(voting))
-              .flat()}
-          </AreaChart>
-        </ResponsiveContainer>
+        <ResponsiveLine
+          curve="step"
+          data={votings}
+          enableGridX={false}
+          enableArea
+          lineWidth={1}
+          areaBlendMode="difference"
+          enableGridY={false}
+          isInteractive={false}
+          enablePoints={false}
+          layers={[
+            "grid",
+            "markers",
+            "axes",
+            "areas",
+            "lines",
+            refsLayer,
+            "slices",
+            "dots",
+            "legends"
+          ]}
+          xScale={{
+            type: 'linear',
+            stacked: false,
+            min: -250,
+            max: this.getMaxX(),
+          }}
+        />
       </div>
     )
   };

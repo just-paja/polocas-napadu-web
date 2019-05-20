@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@nivo/line": "^0.58.0",
     "animate.css": "^3.7.0",
     "howler": "^2.1.1",
     "moment": "^2.24.0",
     "query-string": "^6.4.2",
     "react-animate-on-change": "^2.1.1",
     "react-fast-compare": "^2.0.4",
-    "react-scripts": "^2.1.8",
-    "recharts": "^1.6.0"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
