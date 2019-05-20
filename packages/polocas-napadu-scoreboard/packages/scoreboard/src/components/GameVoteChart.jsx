@@ -15,10 +15,14 @@ const GET_ACTIVE_VOLUME_SCRAPE = gql`
   }
 `;
 
-const convertScrapesToLine = (scrapes) => {
-  const start = scrapes[0]
+function getZeroTime(scrapes) {
+  return scrapes[0]
     ? moment(scrapes[0].created).valueOf()
     : 0;
+}
+
+function convertScrapesToLine(scrapes) {
+  const start = getZeroTime(scrapes);
   return scrapes.map(scrape => ({
     x: moment(scrape.created).valueOf() - start,
     y: scrape.volume,
@@ -39,27 +43,12 @@ const withScorePointScrape = WrappedComponent => {
       this.handleLoad = this.handleLoad.bind(this);
     }
 
-    getStartTime(zeroData) {
-      if (zeroData) {
-        return moment(zeroData.created).valueOf();
-      }
-      return 0;
-    }
-
     getActiveVoting() {
       return this.props.poll.votings.find(voting => !voting.closed);
     }
 
-    getLastVoting() {
-      return this.props.poll.votings[this.props.poll.votings.length - 1];
-    }
-
-    getPollInterval() {
-      return this.getActiveVoting() ? 500 : null;
-    }
-
     handleLoad(data) {
-      const voting = this.getLastVoting();
+      const voting = this.getActiveVoting();
       const nextState = [...this.state.scrapes];
       const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id);
       const lineData = convertScrapesToLine(data.volumeScrapeList);
@@ -80,24 +69,22 @@ const withScorePointScrape = WrappedComponent => {
       });
     }
 
-    handleLoadAll() {
-    }
-
     render() {
       const activeVoting = this.getActiveVoting();
-      const lastVoting = this.getLastVoting()
       const content = (
         <WrappedComponent
           votings={this.state.scrapes}
           {...this.props}
         />
       );
-      console.log(activeVoting);
+      if (!activeVoting) {
+        return content;
+      }
       return (
         <Query
           query={GET_ACTIVE_VOLUME_SCRAPE}
-          pollInterval={activeVoting ? VOLUME_SCRAPE_RATE : undefined}
-          variables={{ livePollVotingId: lastVoting ? lastVoting.id : undefined }}
+          pollInterval={VOLUME_SCRAPE_RATE}
+          variables={{ livePollVotingId: activeVoting.id }}
           onCompleted={this.handleLoad}
         >
           {() => content}
