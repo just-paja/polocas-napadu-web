@@ -3,6 +3,7 @@ import React from 'react';
 
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { VOLUME_SCRAPE_RATE } from 'core/constants';
 import { VolumeScrapeChart } from './VolumeScrapeChart';
 
 const GET_ACTIVE_VOLUME_SCRAPE = gql`
@@ -94,7 +95,7 @@ const withScorePointScrape = WrappedComponent => {
       return (
         <Query
           query={GET_ACTIVE_VOLUME_SCRAPE}
-          pollInterval={activeVoting ? 100 : null}
+          pollInterval={activeVoting ? VOLUME_SCRAPE_RATE : null}
           variables={{ livePollVotingId: lastVoting ? lastVoting.id : undefined }}
           onCompleted={this.handleLoad}
         >

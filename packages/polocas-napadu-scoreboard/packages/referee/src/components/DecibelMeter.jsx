@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { ContestantGroup } from 'core/proptypes';
 import { DecibelLevel } from './DecibelLevel';
 import { throttle } from 'throttle-debounce';
+import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_RATE } from 'core/constants';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -150,8 +151,8 @@ DecibelMeter.propTypes = {
 
 DecibelMeter.defaultProps = {
   disabled: false,
-  duration: 5000,
-  rate: 50,
+  duration: VOLUME_SCRAPE_DURATION,
+  rate: VOLUME_SCRAPE_RATE,
   recording: false,
 };
 
