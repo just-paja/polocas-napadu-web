@@ -17,28 +17,54 @@ const styles = {
 };
 
 class Teams extends React.Component {
+  static contextType = MatchContext
+
+  static propTypes = {
+    classes: Classes.isRequired,
+    hideScore: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    hideScore: false,
+  }
+
+  dimmTeam(contestantGroupId) {
+    const { scorePointPoll } = this.context.match.currentStage;
+    if (scorePointPoll) {
+      return scorePointPoll.votings.some(voting => (
+        voting.contestantGroup
+        && voting.contestantGroup.id !== contestantGroupId
+        && !voting.closed
+      ));
+    }
+    return false;
+  }
+
+  getGroup(type) {
+    return this.context.match.contestantGroups.find(group => group.contestantType === type);
+  }
+
   render() {
     const { classes, hideScore } = this.props;
-    const home = this.context.match.contestantGroups.find(group => group.contestantType === CONTESTANT_HOME);
-    const guest = this.context.match.contestantGroups.find(group => group.contestantType === CONTESTANT_GUEST);
+    const home = this.getGroup(CONTESTANT_HOME);
+    const guest = this.getGroup(CONTESTANT_GUEST);
     return (
       <SplitView className={classes.split}>
-        <TeamDetails team={home} hideScore={hideScore} side="left" />
-        <TeamDetails team={guest} hideScore={hideScore} side="right" />
+        <TeamDetails
+          dimm={this.dimmTeam(home.id)}
+          hideScore={hideScore}
+          side="left"
+          team={home}
+        />
+        <TeamDetails
+          dimm={this.dimmTeam(guest.id)}
+          hideScore={hideScore}
+          side="right"
+          team={guest}
+        />
       </SplitView>
     );
   };
 }
-
-Teams.contextType = MatchContext;
-
-Teams.propTypes = {
-  classes: Classes.isRequired,
-  hideScore: PropTypes.bool,
-};
-
-Teams.defaultProps = {
-  hideScore: false,
-};
 
 export default withStyles(styles)(Teams);

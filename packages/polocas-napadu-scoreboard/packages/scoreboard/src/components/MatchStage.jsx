@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { gql } from 'apollo-boost';
-import { Classes } from 'core/proptypes';
 import { MatchContext } from 'core/context';
 import {
   STAGE_FINALE,
@@ -11,7 +10,6 @@ import {
   STAGE_INTRO,
   STAGE_PAUSE,
 } from 'core/constants';
-import { withStyles } from '@material-ui/core/styles';
 
 import FinaleStage from './FinaleStage';
 import GameResultsStage from './GameResultsStage';
@@ -22,13 +20,11 @@ import IntroStage from './IntroStage';
 import PauseStage from './PauseStage';
 import ShowSetupStage from './ShowSetupStage';
 
-const styles = {
-};
-
 const GET_MATCH_STAGE = gql`
   query Stage($matchId: Int!) {
     match(id: $matchId) {
       contestantGroups {
+        id,
         contestantType,
         score,
         color,
@@ -100,18 +96,14 @@ const getStageView = (stage) => {
   return <ShowSetupStage />;
 };
 
-const MatchStage = ({ classes, data }) => (
+const MatchStage = ({ data }) => (
   <MatchContext.Provider value={data}>
     {getStageView(data.match.currentStage)}
   </MatchContext.Provider>
 );
 
-MatchStage.propTypes = {
-  classes: Classes.isRequired,
-};
-
 export default GraphContainer(
-  withStyles(styles)(MatchStage),
+  MatchStage,
   GET_MATCH_STAGE,
   true,
 );

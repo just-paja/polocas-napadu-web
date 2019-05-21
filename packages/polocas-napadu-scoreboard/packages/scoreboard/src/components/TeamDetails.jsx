@@ -82,6 +82,10 @@ const styles = theme => ({
     marginBottom: '5rem',
     padding: '1rem',
     position: 'relative',
+    transition: 'opacity .5s',
+  },
+  dimm: {
+    opacity: 0.2,
   }
 });
 
@@ -94,13 +98,28 @@ const generatePenalties = (classes, number) => {
 };
 
 class TeamDetails extends Component {
+  static propTypes = {
+    dimm: PropTypes.bool,
+    team: Band.isRequired,
+    hideScore: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    dimm: false,
+    hideScore: false,
+  }
+
   render() {
-    const { classes, hideScore, side, team } = this.props;
+    const { classes, dimm, hideScore, side, team } = this.props;
     if (!team || !team.band.name) {
       return null;
     }
     return (
-      <div className={classes.teamBubble}>
+      <div
+        className={classnames(classes.teamBubble, {
+          [classes.dimm]: dimm,
+        })}
+      >
         <div
           className={classnames(
             classes.nameBar,
@@ -126,14 +145,5 @@ class TeamDetails extends Component {
     );
   }
 }
-
-TeamDetails.propTypes = {
-  team: Band.isRequired,
-  hideScore: PropTypes.bool,
-};
-
-TeamDetails.defaultProps = {
-  hideScore: false,
-};
 
 export default withStyles(styles)(TeamDetails);
