@@ -15,9 +15,13 @@ const GET_ACTIVE_VOLUME_SCRAPE = gql`
 `;
 
 function getZeroTime(scrapes) {
-  return scrapes[0]
-    ? moment(scrapes[0].created).valueOf()
-    : 0;
+  if (scrapes.length === 0) {
+    return 0;
+  }
+  return scrapes.reduce((min, scrape) => {
+    const val = moment(scrapes[0].created).valueOf();
+    return val < min ? val : min
+  }, Infinity);
 }
 
 function convertScrapesToLine(scrapes) {
