@@ -8,8 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { AudioManager } from '../AudioManager';
 import { getNewRandomItem } from '../shuffle';
 
-import 'animate.css';
-
 const availableFanfares = [
   '/sounds/point-8bit.wav',
   '/sounds/point-distortion-guitar.wav',
@@ -27,24 +25,23 @@ const fanfares = availableFanfares.map((sound) => {
   return sound;
 });
 
-const animations = [
-  'bounce',
-  'flash',
-  'hinge',
-  'jackInTheBox',
-  'jello',
-  'pulse',
-  'rollIn',
-  'rotateIn',
-  'rubberBand',
-  'shake',
-  'swing',
-  'tada',
-  'wobble',
-  'zoomIn',
-];
-
 const styles = theme => ({
+  '@keyframes highlightScore' : {
+    '0%': {
+      opacity: 0,
+      transform: 'scale(3) translate(-50%, 100%)',
+    },
+    '20%': {
+      opacity: 1,
+    },
+    '80%': {
+      transform: 'scale(3.5) translate(-50%, 100%)',
+    },
+    '100%': {
+      transform: 'scale(1) translate(0, 0)',
+      opacity: 1,
+    }
+  },
   name: {
     display: 'flex',
     margin: '0 4rem 0 auto',
@@ -52,6 +49,13 @@ const styles = theme => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
+  },
+  animate: {
+    animationDuration: '3s',
+  },
+  appear: {
+    animationName: 'highlightScore',
+    zIndex: 10000,
   },
   score: {
     borderRadius: '5rem',
@@ -76,7 +80,6 @@ class TeamScore extends React.PureComponent {
     this.lastFanfare = null;
     this.state = {
       animation: false,
-      lastAnimation: null,
     };
   }
 
@@ -86,7 +89,7 @@ class TeamScore extends React.PureComponent {
         this.playFanfare();
       }
       this.setState({
-        animation: getNewRandomItem(animations, this.state.lastAnimation),
+        animation: true,
       });
     }
   }
@@ -94,7 +97,6 @@ class TeamScore extends React.PureComponent {
   handleAnimationEnd() {
     this.setState({
       animation: false,
-      lastAnimation: this.state.lastAnimation,
     });
   }
 
@@ -109,8 +111,8 @@ class TeamScore extends React.PureComponent {
     const { classes, backgroundColor, score } = this.props;
     return (
       <AnimateOnChange
-        baseClassName="animated"
-        animationClassName={this.state.animation}
+        baseClassName={classes.animate}
+        animationClassName={classes.appear}
         animate={Boolean(this.state.animation)}
         onAnimationEnd={this.handleAnimationEnd}
       >
