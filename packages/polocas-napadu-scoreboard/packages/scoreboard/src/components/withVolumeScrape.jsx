@@ -25,7 +25,7 @@ function convertScrapesToLine(scrapes) {
   return scrapes.map(scrape => ({
     x: moment(scrape.created).valueOf() - start,
     y: scrape.volume,
-  })).sort((a, b) => a.created - b.created);
+  })).sort((a, b) => a.x - b.x);
 }
 
 export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
