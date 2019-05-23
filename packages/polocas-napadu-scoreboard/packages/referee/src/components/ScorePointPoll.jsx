@@ -5,16 +5,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { MatchContext } from 'core/context';
-import { Mutation } from 'react-apollo';
 import { withStage } from '../context';
+import { withMutation } from './withMutation';
 
 import * as queries from '../queries';
-
-const withMutation = (propName, mutation) => Component => props => (
-  <Mutation mutation={mutation}>
-    {mutation => <Component {...{ [propName]: mutation }} {...props} />}
-  </Mutation>
-);
 
 class ScorePointPoll extends React.Component {
   constructor() {
