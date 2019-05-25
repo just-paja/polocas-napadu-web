@@ -25,7 +25,7 @@ const EventStartInner = ({ allDay, end, start, t }) => {
   return (<span>{startDate.format(format)} - {endDate.format(format)}</span>)
 }
 
-export const EventStart = withNamespaces(['events'])(EventStartInner)
+export const EventStart = withNamespaces(['common'])(EventStartInner)
 
 EventStart.displayName = 'EventStart'
 
