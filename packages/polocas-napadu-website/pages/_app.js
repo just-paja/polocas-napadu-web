@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app'
+import moment from 'moment'
 import React from 'react'
 
 import { ApolloProvider } from 'react-apollo'
@@ -11,6 +12,14 @@ import './_app.scss'
 class MyApp extends App {
   state = {
     error: null
+  }
+
+  static async getInitialProps (ctx) {
+    const props = super.getInitialProps ? super.getInitialProps(ctx) : ctx
+    if (ctx.req && ctx.req.locale) {
+      moment.setLocale(ctx.req.locale)
+    }
+    return props
   }
 
   componentDidCatch (error) {
