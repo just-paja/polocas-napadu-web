@@ -5,7 +5,7 @@ import styles from './SocialNetworks.scss'
 
 import { SocialNetworkLink } from './SocialNetworkLink'
 import { ClassName, propsTranslated } from '../proptypes'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 import {
   FaEnvelopeOpenText,
   FaFacebookF,
@@ -53,6 +53,6 @@ SocialNetworksComponent.defaultProps = {
   inverse: false
 }
 
-export const SocialNetworks = withNamespaces([
+export const SocialNetworks = withTranslation([
   'common'
 ])(SocialNetworksComponent)

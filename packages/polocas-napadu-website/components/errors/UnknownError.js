@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { ArrayList } from '../text'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
-export const UnknownError = withNamespaces(['error'])(
+export const UnknownError = withTranslation(['error'])(
   ({ t }) => (
     <div>
       <h1>{t('error-unknown')}</h1>

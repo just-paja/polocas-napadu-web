@@ -6,7 +6,7 @@ import React from 'react'
 
 import { Link } from '../bindings'
 import { propsTranslated } from '../proptypes'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 const MainMenuComponent = ({ t }) => (
   <Navbar
@@ -42,4 +42,4 @@ MainMenuComponent.propTypes = {
   ...propsTranslated
 }
 
-export const MainMenu = withNamespaces(['common'])(MainMenuComponent)
+export const MainMenu = withTranslation(['common'])(MainMenuComponent)

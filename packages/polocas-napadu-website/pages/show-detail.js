@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { withNamespaces } from '../lib/i18n'
+import { withTranslation } from '../lib/i18n'
 import {
   CommonLayout,
   ContentContainer,
@@ -34,4 +34,4 @@ ShowDetailPage.propTypes = {
   slug: PropTypes.string.isRequired
 }
 
-export default withNamespaces('common')(ShowDetailPage)
+export default withTranslation('common')(ShowDetailPage)

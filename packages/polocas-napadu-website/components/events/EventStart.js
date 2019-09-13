@@ -2,7 +2,7 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 const renderSingleDate = (date, format) => <span>{date.format(format)}</span>
 
@@ -25,7 +25,7 @@ const EventStartInner = ({ allDay, end, start, t }) => {
   return (<span>{startDate.format(format)} - {endDate.format(format)}</span>)
 }
 
-export const EventStart = withNamespaces(['common'])(EventStartInner)
+export const EventStart = withTranslation(['common'])(EventStartInner)
 
 EventStart.displayName = 'EventStart'
 

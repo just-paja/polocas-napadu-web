@@ -3,7 +3,7 @@ import Markdown from 'react-markdown'
 
 import { propsTranslated } from '../proptypes'
 import { SocialNetworks } from '../social'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 export const ContactUsComponent = ({ t }) => (
   <React.Fragment>
@@ -15,4 +15,4 @@ export const ContactUsComponent = ({ t }) => (
 ContactUsComponent.propTypes = propsTranslated
 ContactUsComponent.displayName = 'ContactUs'
 
-export const ContactUs = withNamespaces(['common'])(ContactUsComponent)
+export const ContactUs = withTranslation(['common'])(ContactUsComponent)

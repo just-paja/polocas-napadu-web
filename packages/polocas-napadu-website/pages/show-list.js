@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withNamespaces } from '../lib/i18n'
+import { withTranslation } from '../lib/i18n'
 import {
   CommonLayout,
   ContentContainer,
@@ -23,4 +23,4 @@ class ShowListPage extends TranslatedPage {
   }
 }
 
-export default withNamespaces('common')(ShowListPage)
+export default withTranslation('common')(ShowListPage)

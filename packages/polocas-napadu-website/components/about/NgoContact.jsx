@@ -2,7 +2,7 @@ import React from 'react'
 import Markdown from 'react-markdown'
 
 import { propsTranslated } from '../proptypes'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 export const NgoContactComponent = ({ t }) => (
   <React.Fragment>
@@ -19,4 +19,4 @@ export const NgoContactComponent = ({ t }) => (
 NgoContactComponent.propTypes = propsTranslated
 NgoContactComponent.displayName = 'NgoContact'
 
-export const NgoContact = withNamespaces(['common'])(NgoContactComponent)
+export const NgoContact = withTranslation(['common'])(NgoContactComponent)

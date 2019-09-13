@@ -5,7 +5,7 @@ import { ContentContainer } from './ContentContainer'
 import { LanguageSwitcher } from '../i18n'
 import { propsTranslated } from '../proptypes'
 import { SocialNetworks } from '../social'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 const FooterComponent = ({ t }) => (
   <footer className={styles.footer}>
@@ -23,4 +23,4 @@ FooterComponent.propTypes = {
   ...propsTranslated
 }
 
-export const Footer = withNamespaces(['common'])(FooterComponent)
+export const Footer = withTranslation(['common'])(FooterComponent)

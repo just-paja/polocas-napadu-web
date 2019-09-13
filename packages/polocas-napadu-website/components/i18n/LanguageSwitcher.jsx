@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { I18n, propsTranslated, propsWithRouter } from '../proptypes'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 import { withRouter } from 'next/router'
 
 const createLink = (lngChoice) => {
@@ -56,4 +56,4 @@ LanguageSwitcherComponent.defaultProps = {
   lng: null
 }
 
-export const LanguageSwitcher = withRouter(withNamespaces(['common'])(LanguageSwitcherComponent))
+export const LanguageSwitcher = withRouter(withTranslation(['common'])(LanguageSwitcherComponent))

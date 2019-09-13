@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { withNamespaces } from '../lib/i18n'
+import { withTranslation } from '../lib/i18n'
 import {
   CommonLayout,
   ContentContainer,
@@ -52,4 +52,4 @@ class Error extends React.Component {
   }
 }
 
-export default withNamespaces('error')(Error)
+export default withTranslation('error')(Error)

@@ -2,7 +2,7 @@ import React from 'react'
 import Markdown from 'react-markdown'
 
 import { propsTranslated } from '../proptypes'
-import { withNamespaces } from '../../lib/i18n'
+import { withTranslation } from '../../lib/i18n'
 
 const GroupDescriptionComponent = ({ t }) => (
   <section>
@@ -13,4 +13,4 @@ const GroupDescriptionComponent = ({ t }) => (
 
 GroupDescriptionComponent.propTypes = propsTranslated
 
-export const GroupDescription = withNamespaces(['common'])(GroupDescriptionComponent)
+export const GroupDescription = withTranslation(['common'])(GroupDescriptionComponent)
