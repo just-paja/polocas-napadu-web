@@ -9,13 +9,13 @@ export const ShowListItem = ({ show }) => (
     <Link route='showDetail' params={{ slug: show.slug }}>
       <a>{show.name}</a>
     </Link>
-    <br />
+    {' | '}
     <EventStart
       allDay={show.allDay}
       start={show.start}
       end={show.end}
     />
-    <br />
+    {' | '}
     {show.location && <EventLocation location={show.location} />}
   </div>
 )
