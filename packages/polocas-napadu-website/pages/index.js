@@ -2,27 +2,30 @@ import React from 'react'
 
 import { withTranslation } from '../lib/i18n'
 import {
-  CommonLayout,
   ContentContainer,
   ShowList,
   Title,
   TranslatedPage
 } from '../components'
+import { Footer } from '../components/layout'
+import { HomeBanner } from '../components/about'
 
 class HomePage extends TranslatedPage {
   render () {
     const { t } = this.props
     return (
-      <CommonLayout>
+      <>
         <Title
           text={`${t('projectName')} - ${t('projectNameAppendix')}`}
           pure
         />
+        <HomeBanner />
         <ContentContainer>
-          <h1>Home page</h1>
+          <h2>Home page</h2>
           <ShowList />
         </ContentContainer>
-      </CommonLayout>
+        <Footer />
+      </>
     )
   }
 }

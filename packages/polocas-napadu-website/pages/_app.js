@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import moment from 'moment'
 import React from 'react'
 
@@ -29,15 +29,14 @@ class MyApp extends App {
   render () {
     const { Component, pageProps, apolloClient } = this.props
     return (
-      <Container>
+      <>
         <Favicon />
         <ApolloProvider client={apolloClient}>
           {this.state.error
             ? <AppError />
-            : <Component {...pageProps} />
-          }
+            : <Component {...pageProps} />}
         </ApolloProvider>
-      </Container>
+      </>
     )
   }
 }
