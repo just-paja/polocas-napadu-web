@@ -1,14 +1,10 @@
 import React from 'react'
+import styles from './index.scss'
 
-import { withTranslation } from '../lib/i18n'
-import {
-  ContentContainer,
-  ShowList,
-  Title,
-  TranslatedPage
-} from '../components'
-import { Footer } from '../components/layout'
+import { ContentContainer, Footer, MainMenu, Title, TranslatedPage } from '../components/layout'
 import { HomeBanner } from '../components/about'
+import { FutureShowList } from '../components/shows'
+import { withTranslation } from '../lib/i18n'
 
 class HomePage extends TranslatedPage {
   render () {
@@ -19,10 +15,11 @@ class HomePage extends TranslatedPage {
           text={`${t('projectName')} - ${t('projectNameAppendix')}`}
           pure
         />
+        <MainMenu />
         <HomeBanner />
-        <ContentContainer>
+        <ContentContainer className={styles.content}>
           <h2>Home page</h2>
-          <ShowList />
+          <FutureShowList />
         </ContentContainer>
         <Footer />
       </>

@@ -1,13 +1,8 @@
 import React from 'react'
 
+import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
+import { FutureShowList } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContentContainer,
-  ShowList,
-  Title,
-  TranslatedPage
-} from '../components'
 
 class ShowListPage extends TranslatedPage {
   render () {
@@ -16,7 +11,7 @@ class ShowListPage extends TranslatedPage {
       <CommonLayout>
         <Title text={t('shows')} />
         <ContentContainer>
-          <ShowList />
+          <FutureShowList />
         </ContentContainer>
       </CommonLayout>
     )

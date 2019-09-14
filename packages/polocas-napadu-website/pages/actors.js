@@ -1,12 +1,7 @@
 import React from 'react'
 
+import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContentContainer,
-  Title,
-  TranslatedPage
-} from '../components'
 
 class ActorsPage extends TranslatedPage {
   render () {

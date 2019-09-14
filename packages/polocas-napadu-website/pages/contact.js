@@ -1,15 +1,9 @@
 import React from 'react'
 
+import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
+import { ContactUs, NgoContact } from '../components/about'
+import { UsualPlaces } from '../components/locations'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContactUs,
-  ContentContainer,
-  NgoContact,
-  Title,
-  TranslatedPage,
-  UsualPlaces
-} from '../components'
 
 class ContactPage extends TranslatedPage {
   render () {

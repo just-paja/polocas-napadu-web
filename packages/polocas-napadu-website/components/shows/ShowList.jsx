@@ -7,8 +7,8 @@ import { Show } from '../proptypes'
 import { withQuery } from '../graphql'
 
 const QUERY_SHOW_LIST = gql`
-  query GetShowList {
-    showList {
+  query GetShowList($future: Boolean!) {
+    showList(future: $future) {
       id,
       location {
         address,
@@ -21,11 +21,14 @@ const QUERY_SHOW_LIST = gql`
   }
 `
 
-const ShowListInner = ({ data }) => (
-  data.showList.map(show => (
+const ShowListInner = ({ data }) => {
+  if (!data.length) {
+    return <p>No shows</p>
+  }
+  return data.showList.map(show => (
     <ShowListItem key={show.id} show={show} />
   ))
-)
+}
 
 ShowListInner.propTypes = {
   data: PropTypes.shape({

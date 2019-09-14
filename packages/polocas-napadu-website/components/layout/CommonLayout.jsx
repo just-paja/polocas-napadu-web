@@ -6,11 +6,11 @@ import { MainMenu } from './MainMenu'
 import styles from './CommonLayout.scss'
 
 export const CommonLayout = ({ children }) => (
-  <React.Fragment>
+  <>
     <MainMenu />
     <div className={styles.content}>
       {children}
     </div>
     <Footer />
-  </React.Fragment>
+  </>
 )

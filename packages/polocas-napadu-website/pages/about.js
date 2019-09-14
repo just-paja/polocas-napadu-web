@@ -1,13 +1,8 @@
 import React from 'react'
 
+import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
+import { GroupDescription } from '../components/about'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContentContainer,
-  GroupDescription,
-  Title,
-  TranslatedPage
-} from '../components'
 
 class AboutPage extends TranslatedPage {
   render () {

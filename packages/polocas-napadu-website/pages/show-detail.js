@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { CommonLayout, ContentContainer, ShowDetail, TranslatedPage } from '../components'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContentContainer,
-  ShowDetail,
-  TranslatedPage
-} from '../components'
 
 class ShowDetailPage extends TranslatedPage {
   static getInitialProps (context) {

@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { CommonLayout, ContentContainer } from '../components/layout'
+import { NotFound, UnknownError } from '../components/errors'
 import { withTranslation } from '../lib/i18n'
-import {
-  CommonLayout,
-  ContentContainer,
-  NotFound,
-  UnknownError
-} from '../components'
 
 class Error extends React.Component {
   static propTypes = {
