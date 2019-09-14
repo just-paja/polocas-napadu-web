@@ -1,5 +1,4 @@
 import Container from 'react-bootstrap/Container'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import React from 'react'
@@ -24,13 +23,7 @@ const MainMenuComponent = ({ t }) => (
       <Navbar.Collapse id='app-menu'>
         <Nav className='mr-auto'>
           <Link passHref route='showList'><Nav.Link>{t('shows')}</Nav.Link></Link>
-          <NavDropdown
-            title={t('about')}
-            id='about-dropdown'
-          >
-            <Link passHref route='about'><NavDropdown.Item>{t('about')}</NavDropdown.Item></Link>
-            <Link passHref route='actors'><NavDropdown.Item>{t('actors')}</NavDropdown.Item></Link>
-          </NavDropdown>
+          <Link passHref route='about'><Nav.Link>{t('about')}</Nav.Link></Link>
           <Link passHref route='contact'><Nav.Link>{t('contact')}</Nav.Link></Link>
         </Nav>
       </Navbar.Collapse>

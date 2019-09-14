@@ -22,7 +22,7 @@ export const withQuery = ({
   optional = false,
   variables
 }) => Component => (props) => (
-  <Query query={query} variables={{ ...props.variables, ...variables }}>
+  <Query query={query} variables={{ ...variables, ...props.variables }}>
     {({ data, loading, error }) => {
       if (loading) {
         return <QueryLoader />

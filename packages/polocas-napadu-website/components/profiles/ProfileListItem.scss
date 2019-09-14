@@ -1,0 +1,39 @@
+@import 'theme.scss';
+
+:local .circle {
+  align-items: center;
+  background-color: $secondary;
+  border-radius: 100%;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: $baseline * 7;
+  justify-content: center;
+  margin: $baseline / 4;
+  overflow: hidden;
+  padding: $baseline;
+  width: $baseline * 7;
+}
+
+:local .bulb {
+  height: 100%;
+  width: 100%;
+}
+
+:local .dark {
+  background-color: $dark;
+}
+
+:local .withProfile {
+  background-blend-mode: screen, luminosity;
+  background-color: $body-bg;
+  background-image: linear-gradient($primary, $primary), url('/static/pixmaps/holly.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+
+  .bulb {
+    opacity: .1
+  }
+}

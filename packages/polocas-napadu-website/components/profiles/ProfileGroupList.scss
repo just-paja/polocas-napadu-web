@@ -1,0 +1,23 @@
+@import 'theme.scss';
+
+:local .block {
+  background: $primary;
+}
+
+:local .container {
+  padding: 1px 0 $baseline * 2;
+}
+
+:local .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -$baseline;
+  padding: $baseline * 2 0;
+}
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  :local .list {
+    margin: 0;
+  }
+}

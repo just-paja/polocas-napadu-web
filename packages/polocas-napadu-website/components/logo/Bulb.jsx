@@ -34,13 +34,13 @@ function BulbRay ({ style, rotate, x, y }) {
   )
 }
 
-export function Bulb ({ color }) {
+export function Bulb ({ className, color }) {
   const style = {
     fill: colors[color]
   }
 
   return (
-    <svg viewBox='260 150 480 660'>
+    <svg className={className} viewBox='260 150 480 660'>
       <path
         d={[
           'm 408.88,365.37',
