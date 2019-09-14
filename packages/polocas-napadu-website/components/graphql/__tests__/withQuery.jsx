@@ -17,7 +17,7 @@ const TEST_QUERY = gql`
   }
 `
 
-const TestComponentWrapped = withQuery(TestComponent, TEST_QUERY)
+const TestComponentWrapped = withQuery({ query: TEST_QUERY })(TestComponent)
 
 describe('withQuery HOC', () => {
   it('given query is loading, it renders loader', () => {

@@ -35,7 +35,4 @@ const UsualPlacesComponent = ({ data }) => (
   </Row>
 )
 
-export const UsualPlaces = withQuery(
-  UsualPlacesComponent,
-  QUERY_USUAL_PLACES
-)
+export const UsualPlaces = withQuery({ query: QUERY_USUAL_PLACES })(UsualPlacesComponent)

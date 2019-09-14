@@ -43,10 +43,11 @@ export const Router = PropTypes.shape({
 })
 
 export const UsualPlaceProp = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  location: LocationProp.isRequired
+  id: PropTypes.string.isRequired,
+  location: LocationProp.isRequired,
+  name: PropTypes.string.isRequired,
+  placeType: PropTypes.number.isRequired
 })
 
 export const propsStyled = {

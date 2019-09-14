@@ -5,7 +5,7 @@ import { propsTranslated } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 export const NgoContactComponent = ({ t }) => (
-  <React.Fragment>
+  <>
     <Markdown source={t('ngoContactText')} />
     <ul>
       <li>{t('identificationNumberCz')}: 5758661</li>
@@ -13,7 +13,7 @@ export const NgoContactComponent = ({ t }) => (
       <li>{t('iban')}: CZ0920100000002501561542</li>
       <li>{t('swift')}: FIOBCZPPXXX</li>
     </ul>
-  </React.Fragment>
+  </>
 )
 
 NgoContactComponent.propTypes = propsTranslated

@@ -31,4 +31,4 @@ ShowDetailInner.propTypes = {
   })
 }
 
-export const ShowDetail = withQuery(ShowDetailInner, QUERY_SHOW)
+export const ShowDetail = withQuery({ query: QUERY_SHOW })(ShowDetailInner)

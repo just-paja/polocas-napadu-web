@@ -16,8 +16,7 @@ const renderLink = (t, url, lngCurrent, lngChoice, lngDefault) => {
       key={lngChoice}
       href={lngChoice === lngCurrent
         ? undefined
-        : createLink(lngChoice)
-      }
+        : createLink(lngChoice)}
     >
       {t(`language-${lngChoice}`)}
     </Comp>

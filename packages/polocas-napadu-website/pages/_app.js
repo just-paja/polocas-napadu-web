@@ -4,7 +4,7 @@ import React from 'react'
 
 import { ApolloProvider } from 'react-apollo'
 import { AppError } from '../components/app'
-import { appWithTranslation } from '../lib/i18n'
+import { appWithTranslation, i18n } from '../lib/i18n'
 import { Favicon } from '../components/layout'
 import { withApolloClient } from '../lib/with-apollo-client'
 
@@ -16,10 +16,8 @@ class MyApp extends App {
   }
 
   static async getInitialProps (ctx) {
-    const props = super.getInitialProps ? super.getInitialProps(ctx) : ctx
-    if (ctx.req && ctx.req.locale) {
-      moment.setLocale(ctx.req.locale)
-    }
+    const props = super.getInitialProps ? await super.getInitialProps(ctx) : ctx
+    moment.locale(ctx.req ? ctx.req.language : i18n.language)
     return props
   }
 

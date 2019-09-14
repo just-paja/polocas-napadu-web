@@ -14,6 +14,8 @@
   "language-en": "English",
   "ngoContact": "Spolek",
   "ngoContactText": "Poločas nápadu, z. s. je spolek zapsaný u městského soudu v Praze pod spisovou značkou 67721 L vytvořený za účelem podpory kultury improvizačního divadla.",
+  "noShowsPlanned": "V tuto chvíli nemáme naplánované žádné představení.",
+  "recentShows": "Nedávná představení",
   "on-email": "Napište nám e-mail",
   "on-facebook": "Poločas nápadu na Facebooku",
   "on-twitter": "Poločas nápadu na Twitteru",
@@ -22,5 +24,7 @@
   "projectNameAppendix": "Divadelně improvizační skupina",
   "shows": "Představení",
   "swift": "BIC/SWIFT",
+  "upcomingShows": "Představení",
+  "usualHomeStages": "Pravidelná představení pořádáme každý měsíc v {{places}}",
   "usualPlaces": "Kde nás najdete"
 }

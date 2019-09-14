@@ -7,7 +7,7 @@ import { Show } from '../proptypes'
 import { ShowListItem } from './ShowListItem'
 import { withShowList } from './withShowList'
 
-const FutureShowListComponent = ({ data, t }) => {
+const BriefFutureShowListComponent = ({ data }) => {
   return (
     <List>
       {data.showList.length
@@ -19,10 +19,10 @@ const FutureShowListComponent = ({ data, t }) => {
   )
 }
 
-FutureShowListComponent.propTypes = {
+BriefFutureShowListComponent.propTypes = {
   data: PropTypes.shape({
-    showList: PropTypes.arrayOf(Show).isRequired
+    showList: PropTypes.arrayOf(Show)
   })
 }
 
-export const FutureShowList = withShowList({ future: true })(FutureShowListComponent)
+export const BriefFutureShowList = withShowList({ future: true })(BriefFutureShowListComponent)

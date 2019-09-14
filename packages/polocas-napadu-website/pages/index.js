@@ -1,9 +1,11 @@
+import Col from 'react-bootstrap/Col'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 import styles from './index.scss'
 
+import { BriefFutureShowList } from '../components/shows'
 import { ContentContainer, Footer, MainMenu, Title, TranslatedPage } from '../components/layout'
 import { HomeBanner } from '../components/about'
-import { FutureShowList } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
 class HomePage extends TranslatedPage {
@@ -18,8 +20,15 @@ class HomePage extends TranslatedPage {
         <MainMenu />
         <HomeBanner />
         <ContentContainer className={styles.content}>
-          <h2>Home page</h2>
-          <FutureShowList />
+          <Row>
+            <Col>
+              <h2>{t('upcomingShows')}</h2>
+              <BriefFutureShowList />
+            </Col>
+            <Col>
+              <h2>WTF</h2>
+            </Col>
+          </Row>
         </ContentContainer>
         <Footer />
       </>

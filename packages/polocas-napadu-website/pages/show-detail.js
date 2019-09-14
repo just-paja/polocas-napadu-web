@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CommonLayout, ContentContainer, ShowDetail, TranslatedPage } from '../components'
+import { CommonLayout, ContentContainer, TranslatedPage } from '../components/layout'
+import { ShowDetail } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
 class ShowDetailPage extends TranslatedPage {

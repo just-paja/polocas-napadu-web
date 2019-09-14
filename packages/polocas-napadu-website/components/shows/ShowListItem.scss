@@ -1,0 +1,14 @@
+@import 'theme.scss';
+
+:local .host {
+  display: block;
+  margin-top: $baseline;
+}
+
+:local .item {
+  display: flex;
+}
+
+:local .date {
+  width: 16rem;
+}

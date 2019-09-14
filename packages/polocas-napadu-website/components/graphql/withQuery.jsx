@@ -17,8 +17,12 @@ function getNotFoundError (data) {
   return error
 }
 
-export const withQuery = (Component, query, optional = false) => (props) => (
-  <Query query={query} variables={props.variables}>
+export const withQuery = ({
+  query,
+  optional = false,
+  variables
+}) => Component => (props) => (
+  <Query query={query} variables={{ ...props.variables, ...variables }}>
     {({ data, loading, error }) => {
       if (loading) {
         return <QueryLoader />

@@ -4,25 +4,27 @@ import React from 'react'
 
 import { withTranslation } from '../../lib/i18n'
 
-const renderSingleDate = (date, format) => <span>{date.format(format)}</span>
+function renderSingleDate (date, format, className) {
+  return <span className={className}>{date.format(format)}</span>
+}
 
-const EventStartInner = ({ allDay, end, start, t }) => {
+const EventStartInner = ({ allDay, className, end, start, t }) => {
   if (!start) {
     return t('event-start-indeterminate')
   }
   const startDate = moment(start)
   if (!end) {
-    return renderSingleDate(startDate, allDay ? 'LL' : 'LLL')
+    return renderSingleDate(startDate, allDay ? 'LL' : 'LLL', className)
   }
   const endDate = moment(end)
   if (startDate.isSame(end, 'day')) {
     if (allDay) {
-      return renderSingleDate(startDate, 'LL')
+      return renderSingleDate(startDate, 'LL', className)
     }
-    return (<span>{startDate.format('LLL')} - {endDate.format('LT')}</span>)
+    return (<span className={className}>{startDate.format('LLL')} - {endDate.format('LT')}</span>)
   }
   const format = allDay ? 'LL' : 'LLL'
-  return (<span>{startDate.format(format)} - {endDate.format(format)}</span>)
+  return (<span className={className}>{startDate.format(format)} - {endDate.format(format)}</span>)
 }
 
 export const EventStart = withTranslation(['common'])(EventStartInner)
