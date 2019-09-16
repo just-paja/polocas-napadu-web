@@ -14,7 +14,8 @@ describe('UsualPlace component', () => {
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
             name: 'Neobyčejná klubovna'
-          }
+          },
+          placeType: 1
         }}
       />
     )
@@ -31,7 +32,8 @@ describe('UsualPlace component', () => {
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
             name: 'Neobyčejná klubovna'
-          }
+          },
+          placeType: 1
         }}
       />
     )
@@ -51,7 +53,8 @@ describe('UsualPlace component', () => {
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
             name: 'Neobyčejná klubovna'
-          }
+          },
+          placeType: 1
         }}
       />
     )

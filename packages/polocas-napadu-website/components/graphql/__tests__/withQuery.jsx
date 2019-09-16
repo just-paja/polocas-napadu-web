@@ -1,13 +1,15 @@
 import React from 'react'
 import waait from 'waait'
 
+import { act } from 'react-dom/test-utils'
 import { gql } from 'apollo-boost'
+import { MockedProvider } from '@apollo/react-testing'
 import { mount } from 'enzyme'
-import { MockedProvider } from 'react-apollo/test-utils'
-
 import { withQuery } from '..'
 
 const TestComponent = () => <span>Success</span>
+
+TestComponent.displayName = 'TestComponent'
 
 const TEST_QUERY = gql`
   query TestQuery {
@@ -20,13 +22,16 @@ const TEST_QUERY = gql`
 const TestComponentWrapped = withQuery({ query: TEST_QUERY })(TestComponent)
 
 describe('withQuery HOC', () => {
-  it('given query is loading, it renders loader', () => {
+  it('given query is loading, it renders loader', async () => {
     const comp = mount(
       <MockedProvider mocks={[]}>
         <TestComponentWrapped />
       </MockedProvider>
     )
     expect(comp.find('QueryLoader')).toHaveLength(1)
+    await act(async () => {
+      await waait(10)
+    })
   })
 
   it('given query fails, it renders error component', async () => {
@@ -42,7 +47,9 @@ describe('withQuery HOC', () => {
         <TestComponentWrapped />
       </MockedProvider>
     )
-    await waait(3)
+    await act(async () => {
+      await waait(10)
+    })
     comp.update()
     expect(comp.find('QueryFailure')).toHaveLength(1)
   })
@@ -67,7 +74,9 @@ describe('withQuery HOC', () => {
         <TestComponentWrapped />
       </MockedProvider>
     )
-    await waait(3)
+    await act(async () => {
+      await waait(10)
+    })
     comp.update()
     expect(comp.find('TestComponent')).toHaveLength(1)
   })
@@ -92,7 +101,9 @@ describe('withQuery HOC', () => {
         <TestComponentWrapped testProp='foo' />
       </MockedProvider>
     )
-    await waait(0)
+    await act(async () => {
+      await waait(10)
+    })
     comp.update()
     expect(comp.find('TestComponent')).toHaveProp('testProp', 'foo')
   })
@@ -117,7 +128,9 @@ describe('withQuery HOC', () => {
         <TestComponentWrapped testProp='foo' />
       </MockedProvider>
     )
-    await waait(0)
+    await act(async () => {
+      await waait(10)
+    })
     comp.update()
     expect(comp.find('TestComponent')).toHaveProp('data', {
       showList: [

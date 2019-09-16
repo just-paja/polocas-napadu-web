@@ -17,18 +17,6 @@ const mountWithI18n = (component) => {
   return comp
 }
 
-let i18nReady = false
-
 export const renderWithI18n = (component, settings = {}) => {
-  return new Promise((resolve, reject) => {
-    const comp = mountWithI18n(component, i18next)
-    if (i18nReady) {
-      resolve(comp)
-    } else {
-      i18next.i18n.on('initialized', () => {
-        i18nReady = true
-        resolve(mountWithI18n(component, i18next))
-      })
-    }
-  })
+  return new Promise(resolve => resolve(mountWithI18n(component, i18next)))
 }

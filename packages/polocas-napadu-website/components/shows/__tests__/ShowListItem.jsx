@@ -14,6 +14,9 @@ describe('ShowListItem component', () => {
           start: '2019-03-08T19:30:00',
           location: {
             name: 'Divadlo Bez Hranic'
+          },
+          showType: {
+            name: 'Improvizační zápas'
           }
         }}
       />
