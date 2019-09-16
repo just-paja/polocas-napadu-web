@@ -11,7 +11,6 @@ const dummySequences = {
 function renderCircles (profiles) {
   return profiles.reduce((acc, profile, index) => {
     const rotate = Math.sin((index + 2) * 1.77 * Math.PI) * (index % 2 ? -1 : 1)
-    console.log(Math.PI)
     const item = (
       <ProfileListItem
         key={profile.id}
