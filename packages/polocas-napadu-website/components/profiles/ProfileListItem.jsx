@@ -2,12 +2,9 @@ import classnames from 'classnames'
 import React from 'react'
 import styles from './ProfileListItem.scss'
 
-import { Link } from '../bindings'
 import { Bulb } from '../logo'
-
-function formatName (profile) {
-  return profile.alias ? `${profile.alias} (${profile.name})` : profile.name
-}
+import { formatName } from './names'
+import { Link } from '../bindings'
 
 function Circle ({ profile, children, className, rotate }) {
   const props = {
