@@ -5,6 +5,7 @@ import styles from './ProfileListItem.scss'
 
 import { ContentContainer, Title } from '../layout'
 import { formatName } from './names'
+import { Gallery } from '../photos'
 import { gql } from 'apollo-boost'
 import { withQuery } from '../graphql'
 
@@ -14,6 +15,13 @@ const QUERY_PROFILE = gql`
       about,
       id,
       name,
+      photos {
+        id,
+        description,
+        height,
+        image,
+        width,
+      }
     }
   }
 `
@@ -25,6 +33,7 @@ function ProfileComponent ({ data }) {
       <Title text={formatName(profile)} />
       <h1>{formatName(profile)}</h1>
       <Markdown source={profile.about} />
+      <Gallery photos={profile.photos} />
     </ContentContainer>
   )
 }
