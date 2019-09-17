@@ -17,7 +17,7 @@ const QUERY_PROFILE_GROUPS = gql`
 `
 
 const ProfileGroupListComponent = ({ data }) => (
-  <div className={styles.block}>
+  <section className={styles.block}>
     <ContentContainer className={styles.container}>
       <h2>Členové</h2>
       <div className={styles.list}>
@@ -29,7 +29,7 @@ const ProfileGroupListComponent = ({ data }) => (
         ))}
       </div>
     </ContentContainer>
-  </div>
+  </section>
 )
 
 export const ProfileGroupList = withQuery({ query: QUERY_PROFILE_GROUPS })(ProfileGroupListComponent)
