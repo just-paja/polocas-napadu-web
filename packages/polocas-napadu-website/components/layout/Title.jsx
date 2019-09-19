@@ -8,6 +8,8 @@ import { withTranslation } from '../../lib/i18n'
 const TitleComponent = ({ pure, t, text }) => (
   <Head>
     <title>{pure ? text : `${text} - ${t('projectName')}`}</title>
+    <meta property='og:title' content={text} />
+    <meta property='og:site_name' content={t('projectName')} />
   </Head>
 )
 

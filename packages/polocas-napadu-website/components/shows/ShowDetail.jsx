@@ -1,4 +1,5 @@
 import Col from 'react-bootstrap/Col'
+import Head from 'next/head'
 import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -7,7 +8,7 @@ import Row from 'react-bootstrap/Row'
 import { EventLocation, EventStart } from '../events'
 import { FaFacebookF, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
-import { List } from '../layout'
+import { List, Title } from '../layout'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
 import { withQuery } from '../graphql'
@@ -25,9 +26,9 @@ const QUERY_SHOW = gql`
         name,
       },
       showType {
-        description,
         id,
         name,
+        shortDescription,
       },
       name,
       start,
@@ -67,6 +68,13 @@ function ShowDetailInner ({ data, t }) {
   const { show } = data
   return (
     <>
+      <Title text={show.name} />
+      <Head>
+        <meta property='event:end_date' content={show.end} />
+        <meta property='event:start_date' content={show.start} />
+        <meta property='og:description' content={show.description} />
+        <meta property='og:type' content='event' />
+      </Head>
       <h1>{show.name}</h1>
       <Row>
         <Col lg={6}>
@@ -82,7 +90,7 @@ function ShowDetailInner ({ data, t }) {
           <Markdown source={show.description} />
           <div>
             <h2>{show.showType.name}</h2>
-            <Markdown source={show.showType.description} />
+            <Markdown source={show.showType.shortDescription} />
           </div>
         </Col>
         <Col lg={6}>
