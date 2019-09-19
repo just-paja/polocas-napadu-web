@@ -1,7 +1,5 @@
-import classnames from 'classnames'
 import Markdown from 'react-markdown'
 import React from 'react'
-import styles from './ProfileListItem.scss'
 
 import { ContentContainer, Title } from '../layout'
 import { formatName } from './names'

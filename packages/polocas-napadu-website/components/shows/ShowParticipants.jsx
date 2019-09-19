@@ -4,7 +4,6 @@ import React from 'react'
 import { OptionalLink } from '../bindings'
 import { List } from '../layout'
 import { formatName } from '../profiles/names'
-import { gql } from 'apollo-boost'
 import { ShowParticipant } from '../proptypes'
 
 function ShowParticipantsMap ({ participants }) {
@@ -16,7 +15,7 @@ function ShowParticipantsMap ({ participants }) {
     .map(participant => (
       <li key={participant.id}>
         <OptionalLink
-          route="profile"
+          route='profile'
           params={{ slug: participant.profile.slug }}
           isLink={Boolean(participant.profile.group)}
         >

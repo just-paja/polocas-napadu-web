@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { renderWithI18n } from '../../../mock'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { Title } from '..'
 
 describe('Title component', () => {
@@ -12,19 +12,18 @@ describe('Title component', () => {
 
   it('renders title in head component', async () => {
     const comp = await renderWithI18n(<Title text='foo' />)
-    const head = shallow(comp.find('Head').prop('children'))
-    expect(head).toIncludeText('foo')
+    const head = mount(<div>{comp.find('Head').prop('children')}</div>)
+    expect(head.find('title')).toIncludeText('foo')
   })
 
   it('renders site appendix', async () => {
     const comp = await renderWithI18n(<Title text='foo' />)
-    const head = shallow(comp.find('Head').prop('children'))
-    expect(head).toIncludeText('projectName')
+    const head = mount(<div>{comp.find('Head').prop('children')}</div>)
+    expect(head.find('title')).toIncludeText('projectName')
   })
 
   it('given text is pure, then it renders text without appendix', async () => {
     const comp = await renderWithI18n(<Title text='foo' pure />)
-    const head = shallow(comp.find('Head').prop('children'))
-    expect(head).not.toIncludeText('projectName')
+    expect(comp.find('title')).not.toIncludeText('projectName')
   })
 })

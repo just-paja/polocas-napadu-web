@@ -3,22 +3,22 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { lngFromReq } from 'next-i18next/dist/commonjs/utils'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps (ctx) {
     const initialProps = await Document.getInitialProps(ctx)
     const lng = lngFromReq(ctx.req)
-    return {  ...initialProps, lng }
+    return { ...initialProps, lng }
   }
 
-  render() {
+  render () {
     const { lng } = this.props
     return (
-      <html lang={lng}>
+      <Html lang={lng}>
         <Head />
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

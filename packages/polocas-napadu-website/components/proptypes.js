@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const Ident = PropTypes.string;
+export const Ident = PropTypes.string
 
 export const Children = PropTypes.oneOfType([
   PropTypes.node,
@@ -33,13 +33,13 @@ export const Profile = PropTypes.shape({
 
 export const Role = PropTypes.shape({
   id: Ident.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 })
 
 export const ShowParticipant = PropTypes.shape({
   id: Ident.isRequired,
   profile: Profile.isRequired,
-  role: Role.isRequired,
+  role: Role.isRequired
 })
 
 export const Show = PropTypes.shape({

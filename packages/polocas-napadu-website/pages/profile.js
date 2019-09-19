@@ -14,7 +14,7 @@ class ProfilePage extends TranslatedPage {
   }
 
   render () {
-    const { slug, t } = this.props
+    const { slug } = this.props
     return (
       <CommonLayout>
         <Profile variables={{ slug }} />
