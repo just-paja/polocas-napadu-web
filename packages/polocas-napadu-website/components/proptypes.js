@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+export const Ident = PropTypes.string;
+
 export const Children = PropTypes.oneOfType([
   PropTypes.node,
   PropTypes.arrayOf(PropTypes.node)
@@ -23,10 +25,28 @@ export const LocationProp = PropTypes.shape({
   name: PropTypes.string.isRequired
 })
 
+export const Profile = PropTypes.shape({
+  alias: PropTypes.string,
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired
+})
+
+export const Role = PropTypes.shape({
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired,
+})
+
+export const ShowParticipant = PropTypes.shape({
+  id: Ident.isRequired,
+  profile: Profile.isRequired,
+  role: Role.isRequired,
+})
+
 export const Show = PropTypes.shape({
-  id: PropTypes.string.isRequired,
+  id: Ident.isRequired,
   location: LocationProp.isRequired,
   name: PropTypes.string.isRequired,
+  showsParticipants: PropTypes.arrayOf(ShowParticipant),
   slug: PropTypes.string,
   start: PropTypes.string.isRequired
 })
@@ -44,7 +64,7 @@ export const Router = PropTypes.shape({
 
 export const UsualPlaceProp = PropTypes.shape({
   description: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: Ident.isRequired,
   location: LocationProp.isRequired,
   name: PropTypes.string.isRequired,
   placeType: PropTypes.number.isRequired
