@@ -42,6 +42,14 @@ export const ShowParticipant = PropTypes.shape({
   role: Role.isRequired
 })
 
+export const ShowType = PropTypes.shape({
+  description: PropTypes.string,
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired,
+  shortDescription: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired
+})
+
 export const Show = PropTypes.shape({
   id: Ident.isRequired,
   location: LocationProp.isRequired,
