@@ -23,6 +23,7 @@ const MainMenuComponent = ({ t }) => (
       <Navbar.Collapse id='app-menu'>
         <Nav className='mr-auto'>
           <Link passHref route='showList'><Nav.Link>{t('shows')}</Nav.Link></Link>
+          <Link passHref route='repertoir'><Nav.Link>{t('repertoir')}</Nav.Link></Link>
           <Link passHref route='about'><Nav.Link>{t('about')}</Nav.Link></Link>
           <Link passHref route='contact'><Nav.Link>{t('contact')}</Nav.Link></Link>
         </Nav>
