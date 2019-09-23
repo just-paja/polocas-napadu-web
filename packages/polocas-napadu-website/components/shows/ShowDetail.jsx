@@ -8,9 +8,10 @@ import Row from 'react-bootstrap/Row'
 import { EventLocation, EventStart } from '../events'
 import { FaFacebookF, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
-import { Title } from '../layout'
+import { Link } from '../bindings'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
+import { Title } from '../layout'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
@@ -30,6 +31,7 @@ const QUERY_SHOW = gql`
         id,
         name,
         shortDescription,
+        slug,
       },
       name,
       start,
@@ -92,6 +94,9 @@ function ShowDetailInner ({ data, t }) {
           <div>
             <h2>{show.showType.name}</h2>
             <Markdown source={show.showType.shortDescription} />
+            <Link route='showFormatDetail' params={{ slug: show.showType.slug }}>
+              <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
+            </Link>
           </div>
         </Col>
         <Col lg={6}>
