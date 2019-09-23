@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 
 import { ContentContainer, List, Title } from '../layout'
 import { gql } from 'apollo-boost'
-import { ShowListItem } from './ShowListItem'
+import { BriefShowListItem } from './BriefShowListItem'
 import { ShowType } from '../proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
@@ -48,7 +48,7 @@ function ShowFormatDetailInner ({ data, t }) {
         <Col lg={4}>
           <List>
             {showList.map(show => (
-              <ShowListItem key={show.id} show={show} />
+              <BriefShowListItem key={show.id} show={show} />
             ))}
           </List>
         </Col>
