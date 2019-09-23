@@ -11,11 +11,11 @@ describe('GroupDescription component', () => {
 
   it('renders heading', async () => {
     const comp = await renderWithI18n(<GroupDescription />)
-    expect(comp.find('h1')).toHaveProp('children', 'group-description-heading')
+    expect(comp.find('h1')).toHaveProp('children', 'groupDescriptionHeading')
   })
 
   it('renders perex', async () => {
     const comp = await renderWithI18n(<GroupDescription />)
-    expect(comp.find('ReactMarkdown')).toHaveProp('source', 'group-description-perex')
+    expect(comp.find('ReactMarkdown')).toHaveProp('source', 'groupDescriptionPerex')
   })
 })

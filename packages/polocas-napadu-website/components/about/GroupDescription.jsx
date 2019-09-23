@@ -6,8 +6,8 @@ import { withTranslation } from '../../lib/i18n'
 
 const GroupDescriptionComponent = ({ t }) => (
   <section>
-    <h1>{t('group-description-heading')}</h1>
-    <Markdown source={t('group-description-perex')} />
+    <h1>{t('groupDescriptionHeading')}</h1>
+    <Markdown source={t('groupDescriptionPerex')} />
   </section>
 )
 

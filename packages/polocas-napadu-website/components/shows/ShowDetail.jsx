@@ -84,9 +84,9 @@ function ShowDetailInner ({ data, t }) {
             <EventLocation location={show.location} />
           </p>
           <div>
-            {renderLink(show.linkReservations, t('reserve-seats'), FaTicketAlt)}
-            {renderLink(show.linkTickets, t('buy-tickets'), FaTicketAlt)}
-            {renderLink(show.linkFacebook, t('event-on-facebook'), FaFacebookF)}
+            {renderLink(show.linkReservations, t('reserveSeats'), FaTicketAlt)}
+            {renderLink(show.linkTickets, t('buyTickets'), FaTicketAlt)}
+            {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookF)}
           </div>
           <Markdown source={show.description} />
           <div>
@@ -95,7 +95,7 @@ function ShowDetailInner ({ data, t }) {
           </div>
         </Col>
         <Col lg={6}>
-          <h2>Účinkující</h2>
+          <h2>{t('showParticipants')}</h2>
           <ShowParticipants participants={show.showsParticipants} />
         </Col>
       </Row>

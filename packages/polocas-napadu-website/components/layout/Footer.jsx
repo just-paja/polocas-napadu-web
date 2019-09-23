@@ -14,7 +14,7 @@ const FooterComponent = ({ t }) => (
         <LanguageSwitcher />
       </div>
       <SocialNetworks className={styles.social} inverse />
-      <p className={styles.copyrightNotice}>{t('copyright-notice')}</p>
+      <p className={styles.copyrightNotice}>{t('copyrightNotice')}</p>
     </ContentContainer>
   </footer>
 )
