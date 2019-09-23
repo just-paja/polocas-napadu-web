@@ -25,7 +25,7 @@ export const ShowListItem = ({ show }) => (
         {show.location && <EventLocation location={show.location} />}
       </span>
       {' '}
-      {show.showType.name}
+      {show.showType && show.showType.name}
     </div>
   </div>
 )
