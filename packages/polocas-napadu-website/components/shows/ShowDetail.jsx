@@ -23,6 +23,7 @@ const QUERY_SHOW = gql`
       linkReservations,
       linkTickets,
       location {
+        id,
         name,
       },
       showType {

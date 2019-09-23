@@ -36,7 +36,6 @@ const QUERY_SHOW = gql`
 
 function ShowFormatDetailInner ({ data, t }) {
   const { showList, showType } = data
-  console.log(data)
   return (
     <ContentContainer>
       <Title text={showType.name} />
