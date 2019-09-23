@@ -21,7 +21,7 @@ class ShowListPage extends TranslatedPage {
               <RecentShowList />
             </Col>
             <Col as='aside' lg={4} xl={5}>
-              <h2>Co hrajeme</h2>
+              <h2>{t('whatDoWePlay')}</h2>
             </Col>
           </Row>
         </ContentContainer>

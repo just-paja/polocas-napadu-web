@@ -33,5 +33,6 @@
   "swift": "BIC/SWIFT",
   "upcomingShows": "Upcoming shows",
   "usualHomeStages": "Our shows usually take place on {{places}}",
-  "usualPlaces": "Locations"
+  "usualPlaces": "Locations",
+  "whatDoWePlay": "Our improvised plays"
 }
