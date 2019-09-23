@@ -26,6 +26,7 @@ export const LocationProp = PropTypes.shape({
 })
 
 export const Profile = PropTypes.shape({
+  avatar: PropTypes.string,
   alias: PropTypes.string,
   id: Ident.isRequired,
   name: PropTypes.string.isRequired

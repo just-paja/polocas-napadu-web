@@ -4,16 +4,11 @@ import { withQuery } from '../graphql'
 const QUERY_PEOPLE = gql`
   query GetProfileList($group: Int) {
     profileList(group: $group) {
+      alias,
+      avatar,
       id,
       name,
-      alias,
       slug,
-      photos {
-        height,
-        id,
-        image,
-        width,
-      }
     }
   }
 `
