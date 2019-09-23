@@ -1,0 +1,6 @@
+@import 'theme.scss';
+
+:local .counter {
+  max-width: $baseline * 45;
+  margin: $baseline auto;
+}

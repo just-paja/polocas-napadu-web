@@ -1,0 +1,16 @@
+@import 'theme.scss';
+
+:local .item {
+  background: $secondary;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  margin: $baseline / 2 auto;
+  padding: $baseline * 2 $baseline;
+  text-align: center;
+  max-width: $baseline * 15;
+}
+
+:local .count {
+  font-size: $h2-font-size;
+}
