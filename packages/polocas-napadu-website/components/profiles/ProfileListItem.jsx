@@ -24,7 +24,7 @@ function Circle ({ profile, children, className, rotate }) {
         <a {...props} title={name}>
           {children}
           {profile.avatar && (
-            <div
+            <span
               className={styles.profileOverlay}
               style={{ backgroundImage: `url(${profile.avatar})` }}
             />
