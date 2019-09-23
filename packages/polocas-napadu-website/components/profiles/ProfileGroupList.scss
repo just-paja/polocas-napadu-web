@@ -1,5 +1,9 @@
 @import 'theme.scss';
 
+:local .heading {
+  color: $body-bg;
+}
+
 :local .block {
   background: $primary;
   margin-top: $baseline * 2;
