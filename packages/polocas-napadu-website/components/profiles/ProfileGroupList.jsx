@@ -5,6 +5,7 @@ import { ContentContainer } from '../layout'
 import { gql } from 'apollo-boost'
 import { ProfileGroupListItem } from './ProfileGroupListItem'
 import { withQuery } from '../graphql'
+import { withTranslation } from '../../lib/i18n'
 
 const QUERY_PROFILE_GROUPS = gql`
   query GetProfileGroupList {
@@ -16,10 +17,10 @@ const QUERY_PROFILE_GROUPS = gql`
   }
 `
 
-const ProfileGroupListComponent = ({ data }) => (
+const ProfileGroupListComponent = ({ data, t }) => (
   <section className={styles.block}>
     <ContentContainer className={styles.container}>
-      <h2>Členové</h2>
+      <h2>{t('members')}</h2>
       <div className={styles.list}>
         {data.profileGroupList.map(group => (
           <ProfileGroupListItem
@@ -32,4 +33,6 @@ const ProfileGroupListComponent = ({ data }) => (
   </section>
 )
 
-export const ProfileGroupList = withQuery({ query: QUERY_PROFILE_GROUPS })(ProfileGroupListComponent)
+export const ProfileGroupList = withQuery({ query: QUERY_PROFILE_GROUPS })(
+  withTranslation(['common'])(ProfileGroupListComponent)
+)
