@@ -1,6 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './LanguageSwitcher.scss'
 
+import { OptionalLink } from '../bindings'
 import { I18n, propsTranslated, propsWithRouter } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 import { withRouter } from 'next/router'
@@ -10,36 +12,47 @@ const createLink = (lngChoice) => {
 }
 
 const renderLink = (t, url, lngCurrent, lngChoice, lngDefault) => {
-  const Comp = lngChoice === lngCurrent ? 'span' : 'a'
   return (
-    <Comp
+    <OptionalLink
+      className={styles.link}
+      fallbackComponent='span'
+      isLink={lngChoice === lngCurrent ? 'span' : 'a'}
       key={lngChoice}
-      href={lngChoice === lngCurrent
-        ? undefined
-        : createLink(lngChoice)}
+      route={createLink(lngChoice)}
     >
       {t(`language-${lngChoice}`)}
-    </Comp>
+    </OptionalLink>
   )
 }
 
-const LanguageSwitcherComponent = ({
+function LanguageSwitcherComponent ({
   i18n,
   t,
   lng,
   router,
   ...other
-}) => (
-  <div>
-    {i18n.options.allLanguages.map(lngChoice => renderLink(
-      t,
-      router.pathname,
-      lng,
-      lngChoice,
-      i18n.options.defaultLanguage
-    ))}
-  </div>
-)
+}) {
+  return (
+    <div>
+      {i18n.options.allLanguages.reduce((acc, lngChoice, index, src) => {
+        const next = [
+          ...acc,
+          renderLink(
+            t,
+            router.pathname,
+            lng,
+            lngChoice,
+            i18n.options.defaultLanguage
+          )
+        ]
+        if (index < src.length - 1) {
+          next.push(' | ')
+        }
+        return next
+      }, [])}
+    </div>
+  )
+}
 
 LanguageSwitcherComponent.propTypes = {
   ...propsTranslated,

@@ -18,7 +18,7 @@ describe('LanguageSwitcher component', () => {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
-    expect(comp.find('[children="language-cs"]').name()).toBe('span')
+    expect(comp.find('[children="language-cs"]').last().name()).toBe('span')
   })
 
   it('renders available language as link', async () => {
@@ -26,7 +26,7 @@ describe('LanguageSwitcher component', () => {
       defaultLanguage: 'cs',
       otherLanguages: ['en']
     })
-    expect(comp.find('[children="language-en"]').name()).toBe('a')
+    expect(comp.find('[children="language-en"]').last().name()).toBe('a')
   })
 
   it.skip('renders available language url as a home url', async () => {

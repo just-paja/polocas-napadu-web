@@ -11,7 +11,7 @@ class RepertoirPage extends TranslatedPage {
       <CommonLayout>
         <ContentContainer>
           <Title text={t('repertoir')} />
-          <h2>{t('repertoir')}</h2>
+          <h1>{t('repertoir')}</h1>
           <ShowFormatGallery />
         </ContentContainer>
       </CommonLayout>
