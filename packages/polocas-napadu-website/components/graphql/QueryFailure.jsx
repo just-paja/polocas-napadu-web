@@ -2,9 +2,10 @@ import React from 'react'
 
 import { ErrorType } from '../proptypes'
 
-export const QueryFailure = () => (
-  <div>Error!</div>
-)
+export function QueryFailure ({ error }) {
+  console.error(error)
+  return <div>Error!</div>
+}
 
 QueryFailure.propTypes = {
   error: ErrorType
