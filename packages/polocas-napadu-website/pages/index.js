@@ -25,9 +25,6 @@ class HomePage extends TranslatedPage {
               <h2>{t('upcomingShows')}</h2>
               <BriefFutureShowList />
             </Col>
-            <Col>
-              <h2>WTF</h2>
-            </Col>
           </Row>
         </ContentContainer>
         <Footer />
