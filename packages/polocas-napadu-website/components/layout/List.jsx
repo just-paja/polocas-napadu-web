@@ -1,16 +1,22 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './List.scss'
 
 import { Children } from '../proptypes'
 
-export function List ({ children }) {
+export function List ({ as: Component, children }) {
   return (
-    <div className={styles.list}>
+    <Component className={styles.list}>
       {children}
-    </div>
+    </Component>
   )
 }
 
 List.propTypes = {
+  as: PropTypes.string,
   children: Children
+}
+
+List.defaultProps = {
+  as: 'div'
 }

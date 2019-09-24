@@ -3,7 +3,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 
 import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
-import { FutureShowList, HomeStageNotice, RecentShowList } from '../components/shows'
+import { FutureShowList, HomeStageNotice, RecentShowList, ShowFormatList } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
 class ShowListPage extends TranslatedPage {
@@ -22,6 +22,7 @@ class ShowListPage extends TranslatedPage {
             </Col>
             <Col as='aside' lg={4} xl={5}>
               <h2>{t('whatDoWePlay')}</h2>
+              <ShowFormatList />
             </Col>
           </Row>
         </ContentContainer>
