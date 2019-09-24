@@ -16,6 +16,7 @@
   "identificationNumberCz": "CZ Organization Identification Number",
   "language-cs": "Česky",
   "language-en": "English",
+  "loading": "Crunching data",
   "members": "Members",
   "moreAboutFormat": "More about {{formatName}}",
   "ngoContact": "Non-profit",
