@@ -39,10 +39,8 @@ class Error extends React.Component {
 
   render () {
     return (
-      <CommonLayout>
-        <ContentContainer>
-          {this.renderErrorContent()}
-        </ContentContainer>
+      <CommonLayout center flex>
+        {this.renderErrorContent()}
       </CommonLayout>
     )
   }

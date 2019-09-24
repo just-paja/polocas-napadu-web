@@ -1,3 +1,13 @@
 :local .content {
   flex-grow: 1;
 }
+
+:local .flex {
+  display: flex;
+}
+
+:local .center {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
