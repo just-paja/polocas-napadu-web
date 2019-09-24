@@ -11,4 +11,6 @@ function QueryLoaderComponent ({ t }) {
   )
 }
 
+QueryLoaderComponent.displayName = 'QueryLoader'
+
 export const QueryLoader = withTranslation(['common'])(QueryLoaderComponent)

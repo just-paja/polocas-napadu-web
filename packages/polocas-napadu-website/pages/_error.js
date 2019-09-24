@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CommonLayout, ContentContainer } from '../components/layout'
+import { CommonLayout } from '../components/layout'
 import { NotFound, UnknownError } from '../components/errors'
 import { withTranslation } from '../lib/i18n'
 
