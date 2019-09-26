@@ -1,11 +1,19 @@
 @import 'theme.scss';
 
-:local .host {
-  color: $body-color;
-  display: block;
+:local .col {
   margin-top: $baseline;
+}
+
+:local .host {
+  border-radius: $baseline/4;
+  display: block;
+  padding: $baseline;
+  background: $primary;
+  color: $color-text-inverted;
 
   &:hover {
+    background: $primary-hover;
+    color: $color-text-inverted;
     text-decoration: none;
   }
 }
@@ -19,5 +27,9 @@
 }
 
 :local .date {
-  width: 16rem;
+  // width: $baseline * 14;
+}
+
+:local .name {
+  font-size: $h3-font-size;
 }

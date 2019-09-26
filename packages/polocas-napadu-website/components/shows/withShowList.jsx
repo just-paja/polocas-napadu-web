@@ -17,6 +17,7 @@ const QUERY_SHOW_LIST = gql`
       id,
       location {
         id,
+        city,
         address,
         name,
       },

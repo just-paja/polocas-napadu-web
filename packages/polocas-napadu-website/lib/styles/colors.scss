@@ -17,3 +17,8 @@ $color-text-inverted: $color-coconut-cream;
 
 $color-footer: lighten($color-black-olive, 75%);
 $color-footer-secondary: lighten($color-black-olive, 25%);
+
+$color-borders: lighten($color-black-olive, 25%);
+
+$primary-hover: darken($primary, 4%);
+$color-hover-text: $color-coconut-cream;

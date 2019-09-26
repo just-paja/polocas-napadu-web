@@ -1,5 +1,6 @@
 export * from './ContactUs'
 export * from './GroupDescription'
 export * from './GroupHistory'
+export * from './GroupHistoryBanner'
 export * from './HomeBanner'
 export * from './NgoContact'

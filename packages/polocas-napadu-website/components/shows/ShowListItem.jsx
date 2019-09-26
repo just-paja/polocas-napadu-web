@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import Col from 'react-bootstrap/Col'
 import React from 'react'
 import styles from './ShowListItem.scss'
 
@@ -9,30 +10,19 @@ import { EventLocation, EventStart } from '../events'
 export function ShowListItem ({ show }) {
   const isFuture = false
   return (
-    <Link
-      route='showDetail'
-      params={{ slug: show.slug }}
-    >
-      <a className={classnames(styles.host, { [styles.future]: isFuture })}>
-        <div className={classnames('lead', styles.item, styles.topLine)}>
-          <EventStart
-            allDay={show.allDay}
-            className={styles.date}
-            end={show.end}
-            start={show.start}
-          />
-          {' '}
-          <span>{show.name}</span>
-        </div>
-        <div className={styles.item}>
-          <span className={styles.date}>
-            {show.location && <EventLocation location={show.location} />}
-          </span>
-          {' '}
-          {show.showType && show.showType.name}
-        </div>
-      </a>
-    </Link>
+    <Col md={6} lg={3} className={styles.col}>
+      <Link
+        route='showDetail'
+        params={{ slug: show.slug }}
+      >
+        <a className={classnames(styles.host, { [styles.future]: isFuture })}>
+          <div className={styles.name}>{show.name}</div>
+          <div>{show.showType && show.showType.name}</div>
+          <div><EventStart start={show.start} /></div>
+          <div>{show.location && <EventLocation location={show.location} />}</div>
+        </a>
+      </Link>
+    </Col>
   )
 }
 

@@ -1,21 +1,25 @@
 import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styles from './ShowFormatGalleryItem.scss'
 
+import { ContentContainer } from '../layout'
 import { Link } from '../bindings'
 import { ShowType } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function ShowFormatGalleryItemComponent ({ showFormat, t }) {
   return (
-    <>
-      <h2>
-        <Link route='showFormatDetail' params={{ slug: showFormat.slug }}>
-          <a>{showFormat.name}</a>
-        </Link>
-      </h2>
-      <Markdown source={showFormat.shortDescription} />
-    </>
+    <section className={styles.format}>
+      <ContentContainer>
+        <h2>
+          <Link route='showFormatDetail' params={{ slug: showFormat.slug }}>
+            <a>{showFormat.name}</a>
+          </Link>
+        </h2>
+        <Markdown source={showFormat.shortDescription} />
+      </ContentContainer>
+    </section>
   )
 }
 

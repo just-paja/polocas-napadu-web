@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 
 import { List } from '../layout'
 import { NoFutureShows } from './NoFutureShows'
@@ -9,7 +10,7 @@ import { withShowList } from './withShowList'
 
 const BriefFutureShowListComponent = ({ data }) => {
   return (
-    <List>
+    <List as={Row}>
       {data.showList.length
         ? data.showList.map(show => (
           <ShowListItem key={show.id} show={show} />

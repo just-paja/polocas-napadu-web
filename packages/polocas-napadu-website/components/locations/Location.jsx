@@ -6,7 +6,7 @@ import { Address } from './Address'
 
 export const Location = ({ location }) => (
   <div className={styles.location}>
-    <strong>{location.name}</strong>
+    <strong>{[location.city, location.name].join(', ')}</strong>
     <Address address={location.address} />
   </div>
 )

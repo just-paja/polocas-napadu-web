@@ -1,0 +1,30 @@
+@import 'theme.scss';
+
+:local .heading {
+  background: $primary;
+}
+
+:local .center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+:local .headingContainer {
+  color: $color-text-inverted;
+  padding: $baseline;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+:local a.bubble {
+  height: 5 * $baseline;
+  margin-right: $baseline;
+  width: 5 * $baseline;
+}
+
+:local .column {
+  flex-direction: column;
+}

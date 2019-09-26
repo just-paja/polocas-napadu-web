@@ -37,13 +37,13 @@ function Circle ({ profile, children, className, rotate }) {
   return <div {...props}>{children}</div>
 }
 
-export function ProfileListItem ({ dark, profile, rotate }) {
+export function ProfileListItem ({ dark, profile, className, rotate }) {
   return (
     <Circle
       className={classnames(styles.circle, {
         [styles.dark]: dark,
         [styles.withProfile]: Boolean(profile)
-      })}
+      }, className)}
       profile={profile}
       rotate={rotate}
     >

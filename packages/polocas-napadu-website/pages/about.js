@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
-import { GroupDescription, GroupHistory } from '../components/about'
+import { GroupDescription, GroupHistoryBanner } from '../components/about'
 import { ProfileGroupList } from '../components/profiles'
 import { ShowsCounter } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
@@ -18,8 +18,8 @@ class AboutPage extends TranslatedPage {
         <ProfileGroupList />
         <ContentContainer>
           <ShowsCounter />
-          <GroupHistory />
         </ContentContainer>
+        <GroupHistoryBanner />
       </CommonLayout>
     )
   }

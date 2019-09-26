@@ -1,12 +1,13 @@
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './List.scss'
 
 import { Children } from '../proptypes'
 
-export function List ({ as: Component, children }) {
+export function List ({ as: Component, className, children }) {
   return (
-    <Component className={styles.list}>
+    <Component className={classnames(styles.list, className)}>
       {children}
     </Component>
   )
