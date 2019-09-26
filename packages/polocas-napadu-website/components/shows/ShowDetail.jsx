@@ -92,7 +92,7 @@ function ShowDetailInner ({ data, t }) {
           </div>
           <Markdown source={show.description} />
           <div>
-            <h2>{show.showType.name}</h2>
+            <h2>{t('aboutShow')}</h2>
             <Markdown source={show.showType.shortDescription} />
             <Link route='showFormatDetail' params={{ slug: show.showType.slug }}>
               <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
