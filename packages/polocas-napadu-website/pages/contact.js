@@ -14,8 +14,6 @@ class ContactPage extends TranslatedPage {
         <ContentContainer>
           <h1>{t('contact')}</h1>
           <ContactUs />
-
-          <h2>{t('usualPlaces')}</h2>
           <UsualPlaces />
 
           <h2>{t('ngoContact')}</h2>

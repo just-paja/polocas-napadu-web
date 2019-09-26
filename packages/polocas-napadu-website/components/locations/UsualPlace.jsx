@@ -6,7 +6,7 @@ import { UsualPlaceProp } from '../proptypes'
 
 const UsualPlaceComponent = ({ place }) => (
   <div>
-    <h3>{place.name}</h3>
+    <h2>{place.name}</h2>
     <Markdown source={place.description} />
     <Location location={place.location} />
   </div>

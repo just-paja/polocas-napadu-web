@@ -26,7 +26,8 @@ const UsualPlacesComponent = ({ data }) => (
       <Col
         key={place.id}
         md='auto'
-        sm={4}
+        md={5}
+        sm={6}
         xs={12}
       >
         <UsualPlace place={place} />
