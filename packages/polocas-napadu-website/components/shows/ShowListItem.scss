@@ -1,12 +1,21 @@
 @import 'theme.scss';
 
 :local .host {
+  color: $body-color;
   display: block;
   margin-top: $baseline;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 :local .item {
   display: flex;
+}
+
+:local .topLine {
+  color: $primary;
 }
 
 :local .date {
