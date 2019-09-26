@@ -42,7 +42,7 @@ function ShowFormatDetailInner ({ data, t }) {
       <h1>{showType.name}</h1>
       <Row>
         <Col lg={8}>
-          <Markdown source={showType.shortDescription} />
+          <Markdown className='lead' source={showType.shortDescription} />
           <Markdown source={showType.description} />
         </Col>
         <Col lg={4}>
