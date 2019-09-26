@@ -25,7 +25,6 @@ const UsualPlacesComponent = ({ data }) => (
     {data.usualPlaceList.map(place => (
       <Col
         key={place.id}
-        md='auto'
         md={5}
         sm={6}
         xs={12}
