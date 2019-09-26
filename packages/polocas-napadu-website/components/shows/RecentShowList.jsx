@@ -3,7 +3,7 @@ import React from 'react'
 
 import { List } from '../layout'
 import { Show } from '../proptypes'
-import { ShowListItem } from './ShowListItem'
+import { BriefShowListItem } from './BriefShowListItem'
 import { withShowList } from './withShowList'
 import { withTranslation } from '../../lib/i18n'
 
@@ -16,7 +16,7 @@ const RecentShowListComponent = ({ data, t }) => {
       <h2>{t('recentShows')}</h2>
       <List>
         {data.showList.map(show => (
-          <ShowListItem key={show.id} show={show} />
+          <BriefShowListItem key={show.id} show={show} />
         ))}
       </List>
     </>
