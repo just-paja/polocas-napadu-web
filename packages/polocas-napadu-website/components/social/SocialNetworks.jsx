@@ -9,12 +9,19 @@ import { withTranslation } from '../../lib/i18n'
 import {
   FaEnvelopeOpenText,
   FaFacebookF,
+  FaPhone,
   FaTwitter,
   FaYoutube
 } from 'react-icons/fa'
 
 const SocialNetworksComponent = ({ className, inverse, t }) => (
   <div className={classnames(styles.flex, className)}>
+    <SocialNetworkLink
+      href='tel:+420 608 212 242'
+      icon={FaPhone}
+      inverse={inverse}
+      title={t('on-phone')}
+    />
     <SocialNetworkLink
       href='mailto:ahoj@polocas-napadu.cz'
       icon={FaEnvelopeOpenText}
