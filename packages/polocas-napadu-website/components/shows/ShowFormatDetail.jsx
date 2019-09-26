@@ -20,7 +20,7 @@ const QUERY_SHOW = gql`
       shortDescription,
       slug,
     }
-    showList(showTypeSlug: $slug, limit: 5) {
+    showList(showTypeSlug: $slug, limit: 5, orderBy: "-start") {
       id,
       name,
       start,

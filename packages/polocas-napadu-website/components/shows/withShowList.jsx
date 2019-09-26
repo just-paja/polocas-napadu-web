@@ -5,12 +5,14 @@ const QUERY_SHOW_LIST = gql`
   query GetShowList(
     $future: Boolean = false,
     $past: Boolean = false,
-    $limit: Int
+    $limit: Int,
+    $orderBy: String,
   ) {
     showList(
       future: $future,
       limit: $limit,
       past: $past,
+      orderBy: $orderBy,
     ) {
       id,
       location {
@@ -29,7 +31,15 @@ const QUERY_SHOW_LIST = gql`
   }
 `
 
-export const withShowList = ({ future, limit, past }) => withQuery({
-  query: QUERY_SHOW_LIST,
-  variables: { future, limit, past }
-})
+export function withShowList ({
+  future,
+  limit,
+  orderBy,
+  past
+}) {
+  const order = orderBy || future ? 'start' : '-start'
+  return withQuery({
+    query: QUERY_SHOW_LIST,
+    variables: { future, limit, orderBy: order, past }
+  })
+}
