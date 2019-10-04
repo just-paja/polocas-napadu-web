@@ -2,6 +2,7 @@ const routes = require('next-routes')
 const router = routes()
 
 router.add('about', '/o-nas', 'about')
+router.add('article', '/clanek/:slug', 'article')
 router.add('contact', '/kontakt', 'contact')
 router.add('home', '/', 'index')
 router.add('profile', '/clen/:slug', 'profile')

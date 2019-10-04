@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
-import { GroupDescription, GroupHistoryBanner } from '../components/about'
+import { GroupDescription } from '../components/about'
+import { AnchoredArticle } from '../components/text'
 import { ProfileGroupList } from '../components/profiles'
 import { ShowsCounter } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
@@ -19,7 +20,7 @@ class AboutPage extends TranslatedPage {
         <ContentContainer>
           <ShowsCounter />
         </ContentContainer>
-        <GroupHistoryBanner />
+        <AnchoredArticle variables={{ siteAnchor: 'history' }} />
       </CommonLayout>
     )
   }
