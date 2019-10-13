@@ -96,17 +96,59 @@ jobs:
             NODE_ENV_CONFIG="$STAGING_NODE_ENV_CONFIG"
             ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml
 
+  deploy-to-production:
+    <<: *defaults
+    docker:
+      - image: circleci/python:3
+    steps:
+      - attach_workspace:
+          at: *workspace_root
+      - add_ssh_keys:
+          fingerprints:
+            - "47:1c:8b:3d:98:f9:c0:1c:7c:2d:77:e9:cd:46:da:cf"
+      - run:
+          name: Install python requirements
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install ansible vrun
+      - run:
+          name: Install ansible requirements
+          command: ./.venv/bin/vrun ansible-galaxy install -r requirements.yml
+      - run:
+          name: Configure ansible inventory
+          command: echo -e "[web]\n${PRODUCTION_DEPLOY_HOST}" > inventory.yml
+      - run:
+          name: Deploy to Production
+          command: >
+            env
+            NODE_ENV="production"
+            NODE_PORT="$PRODUCTION_NODE_PORT"
+            NODE_SERVER_NAME="$PRODUCTION_NODE_SERVER_NAME"
+            NODE_PROJECT_ENVIRONMENT="production"
+            NODE_ENV_CONFIG="$PRODUCTION_NODE_ENV_CONFIG"
+            ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml
+
 workflows:
   version: 2
   build-n-deploy:
     jobs:
-      - install
+      - install:
+          filters:
+            tags:
+              only: /v[0-9]+\.[0-9]+\.[0-9]+/
       - build:
           requires:
             - install
+          filters:
+            tags:
+              only: /v[0-9]+\.[0-9]+\.[0-9]+/
       - test:
           requires:
             - install
+          filters:
+            tags:
+              only: /v[0-9]+\.[0-9]+\.[0-9]+/
       - deploy-to-staging:
           requires:
             - build
@@ -114,3 +156,12 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy-to-production:
+          requires:
+            - build
+            - test
+          filters:
+            tags:
+              only: /v[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              ignore: /.*/
