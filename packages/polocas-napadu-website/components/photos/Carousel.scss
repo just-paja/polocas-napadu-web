@@ -1,0 +1,72 @@
+@import 'theme.scss';
+
+:local .carousel {
+  align-items: flex-end;
+  display: flex;
+  height: 16 * $baseline;
+  overflow: hidden;
+  justify-content: center;
+
+  img {
+    min-height: 16 * $baseline;
+    flex-shrink: 1;
+    min-width: 100%;
+  }
+
+  :global .image-gallery-content {
+    align-content: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+  }
+
+  :global .image-gallery-image {
+    display: flex;
+  }
+
+  :global .image-gallery-slide {
+    width: 100%;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "sm")) {
+  $size: 24 * $baseline
+  :local .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "md")) {
+  $size: 32 * $baseline
+  :local .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "lg")) {
+  $size: 36 * $baseline
+  :local .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "xl")) {
+  $size: 48 * $baseline
+  :local .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}

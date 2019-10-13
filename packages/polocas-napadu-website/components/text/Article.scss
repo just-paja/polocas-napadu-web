@@ -1,13 +1,5 @@
 @import 'theme.scss';
 
-:local .carousel {
-  align-items: flex-end;
-  display: flex;
-  min-height: 8 * $baseline;
-  max-height: 48 * $baseline;
-  overflow: hidden;
-}
-
 :local .chapter {
   margin-top: 3 * $baseline;
 }

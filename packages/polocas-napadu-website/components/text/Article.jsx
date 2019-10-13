@@ -39,7 +39,6 @@ function ArticleComponent ({ data }) {
       {article.chapters.map(chapter => (
         <section className={styles.chapter} key={chapter.slug}>
           <Carousel
-            className={styles.carousel}
             dynamicHeight
             photos={chapter.photos}
             showIndicators={false}
