@@ -59,6 +59,16 @@
   }
 }
 
+:local .withoutProfile {
+  display: none;
+}
+
 :local .seoName {
   display: none;
+}
+
+@media (min-width: map-get($grid-breakpoints, "md")) {
+  :local .withoutProfile {
+    display: block;
+  }
 }

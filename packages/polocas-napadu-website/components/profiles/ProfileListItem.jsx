@@ -42,7 +42,8 @@ export function ProfileListItem ({ dark, profile, className, rotate }) {
     <Circle
       className={classnames(styles.circle, {
         [styles.dark]: dark,
-        [styles.withProfile]: Boolean(profile)
+        [styles.withProfile]: Boolean(profile),
+        [styles.withoutProfile]: !profile
       }, className)}
       profile={profile}
       rotate={rotate}
