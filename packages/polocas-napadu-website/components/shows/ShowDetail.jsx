@@ -32,6 +32,7 @@ const QUERY_SHOW = gql`
         name,
         shortDescription,
         slug,
+        visibility
       },
       name,
       start,
@@ -94,9 +95,14 @@ function ShowDetailInner ({ data, t }) {
           <div>
             <h2>{t('aboutShow')}</h2>
             <Markdown source={show.showType.shortDescription} />
-            <Link route='showFormatDetail' params={{ slug: show.showType.slug }}>
-              <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
-            </Link>
+            {show.showType.visibility === 2 ? (
+              <Link
+                route='showFormatDetail'
+                params={{ slug: show.showType.slug }}
+              >
+                <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
+              </Link>
+            ) : null}
           </div>
         </Col>
         <Col lg={6}>
