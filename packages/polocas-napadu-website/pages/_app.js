@@ -17,7 +17,8 @@ class MyApp extends App {
 
   static async getInitialProps (ctx) {
     const props = super.getInitialProps ? await super.getInitialProps(ctx) : ctx
-    moment.locale(ctx.req ? ctx.req.language : i18n.language)
+    const req = ctx && ctx.ctx && ctx.ctx.req
+    moment.locale(req.language || i18n.language)
     return props
   }
 
