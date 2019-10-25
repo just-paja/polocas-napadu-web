@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 import React from 'react'
 
 import { advanceTo, clear } from 'jest-date-mock'

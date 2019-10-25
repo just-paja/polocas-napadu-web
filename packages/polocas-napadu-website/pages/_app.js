@@ -1,5 +1,5 @@
 import App from 'next/app'
-import moment from 'moment'
+import moment from 'moment-timezone'
 import React from 'react'
 
 import { ApolloProvider } from 'react-apollo'
@@ -18,7 +18,9 @@ class MyApp extends App {
   static async getInitialProps (ctx) {
     const props = super.getInitialProps ? await super.getInitialProps(ctx) : ctx
     const req = ctx && ctx.ctx && ctx.ctx.req
-    moment.locale(req.language || i18n.language)
+    console.log(req && req.language, i18n.language)
+    moment.locale((req && req.language) || i18n.language)
+    moment.tz.setDefault('Europe/Prague')
     return props
   }
 
@@ -28,6 +30,9 @@ class MyApp extends App {
 
   render () {
     const { Component, pageProps, apolloClient } = this.props
+    moment.locale(i18n.language)
+    moment.tz.setDefault('Europe/Prague')
+
     return (
       <>
         <Favicon />
