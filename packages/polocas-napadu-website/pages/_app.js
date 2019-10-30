@@ -18,7 +18,6 @@ class MyApp extends App {
   static async getInitialProps (ctx) {
     const props = super.getInitialProps ? await super.getInitialProps(ctx) : ctx
     const req = ctx && ctx.ctx && ctx.ctx.req
-    console.log(req && req.language, i18n.language)
     moment.locale((req && req.language) || i18n.language)
     moment.tz.setDefault('Europe/Prague')
     return props
