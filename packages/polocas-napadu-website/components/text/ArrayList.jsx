@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-export const ArrayList = ({ text }) => (
+export const ArrayList = ({ text }) => text && (
   <ul>
     {text.map(text => (
       <li key={text}>
@@ -12,5 +12,5 @@ export const ArrayList = ({ text }) => (
 )
 
 ArrayList.propTypes = {
-  text: PropTypes.arrayOf(PropTypes.node).isRequired
+  text: PropTypes.arrayOf(PropTypes.node)
 }
