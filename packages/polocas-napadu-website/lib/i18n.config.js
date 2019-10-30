@@ -3,5 +3,6 @@ module.exports = {
     en: 'en',
     cs: 'cs'
   },
+  languages: ['cs', 'en'],
   otherLanguages: ['cs']
 }
