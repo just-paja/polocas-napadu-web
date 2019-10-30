@@ -16,7 +16,7 @@ export function List ({ as: Component, className, children }) {
 List.propTypes = {
   as: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   children: Children
 }
