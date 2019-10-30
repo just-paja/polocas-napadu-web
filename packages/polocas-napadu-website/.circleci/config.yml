@@ -93,7 +93,7 @@ jobs:
             NODE_PORT="$STAGING_NODE_PORT"
             NODE_SERVER_NAME="$STAGING_NODE_SERVER_NAME"
             NODE_PROJECT_ENVIRONMENT="staging"
-            NODE_ENV_CONFIG="$STAGING_NODE_ENV_CONFIG"
+            NODE_ENV_CONFIG="NODE_GA_CODE=$STAGING_NODE_GA_CODE $STAGING_NODE_ENV_CONFIG"
             ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml
 
   deploy-to-production:
@@ -126,7 +126,7 @@ jobs:
             NODE_PORT="$PRODUCTION_NODE_PORT"
             NODE_SERVER_NAME="$PRODUCTION_NODE_SERVER_NAME"
             NODE_PROJECT_ENVIRONMENT="production"
-            NODE_ENV_CONFIG="$PRODUCTION_NODE_ENV_CONFIG"
+            NODE_ENV_CONFIG="NODE_GA_CODE=$PRODUCTION_NODE_GA_CODE $PRODUCTION_NODE_ENV_CONFIG"
             ./.venv/bin/vrun ansible-playbook deploy.yml -i inventory.yml
 
 workflows:
