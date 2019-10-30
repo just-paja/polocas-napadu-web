@@ -39,6 +39,7 @@
     "moment-timezone": "^0.5.27",
     "next": "9.0.5",
     "next-compose-plugins": "^2.2.0",
+    "next-ga": "^2.3.4",
     "next-i18next": "^1.2.0",
     "next-routes": "1.4.2",
     "node-sass": "^4.12.0",

@@ -1,6 +1,9 @@
 import App from 'next/app'
+import getConfig from 'next/config'
 import moment from 'moment-timezone'
 import React from 'react'
+import Router from '../routes'
+import withGa from 'next-ga'
 
 import { ApolloProvider } from 'react-apollo'
 import { AppError } from '../components/app'
@@ -9,6 +12,9 @@ import { Favicon } from '../components/layout'
 import { withApolloClient } from '../lib/with-apollo-client'
 
 import './_app.scss'
+
+const { publicRuntimeConfig } = getConfig()
+const { GA_CODE } = publicRuntimeConfig
 
 class MyApp extends App {
   state = {
@@ -45,4 +51,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(appWithTranslation(MyApp))
+export default withApolloClient(appWithTranslation(withGa(GA_CODE, Router)(MyApp)))
