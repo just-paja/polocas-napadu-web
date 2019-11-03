@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './show-list.scss'
+import styles from './showList.scss'
 
 import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
 import { FutureShowList, HomeStageNotice, RecentShowList } from '../components/shows'

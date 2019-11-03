@@ -10,6 +10,7 @@ import { AppError } from '../components/app'
 import { appWithTranslation, i18n } from '../lib/i18n'
 import { Favicon } from '../components/layout'
 import { withApolloClient } from '../lib/with-apollo-client'
+import { withRouter } from 'next/router'
 
 import './_app.scss'
 
@@ -33,6 +34,17 @@ class MyApp extends App {
     this.setState({ error })
   }
 
+  componentDidUpdate () {
+    if (this.props.router) {
+      if (this.props.router.asPath.indexOf(`/${i18n.language}`) !== 0) {
+        const nextLang = this.props.router.asPath.split('/')[1]
+        if (nextLang && nextLang !== i18n.language) {
+          i18n.changeLanguage(nextLang)
+        }
+      }
+    }
+  }
+
   render () {
     const { Component, pageProps, apolloClient } = this.props
     moment.locale(i18n.language)
@@ -51,4 +63,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(appWithTranslation(withGa(GA_CODE, Router)(MyApp)))
+export default withApolloClient(withRouter(appWithTranslation(withGa(GA_CODE, Router)(MyApp))))

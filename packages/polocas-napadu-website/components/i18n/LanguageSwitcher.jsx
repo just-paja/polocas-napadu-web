@@ -6,10 +6,6 @@ import { OptionalLink } from '../bindings'
 import { I18n, propsTranslated } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 
-const createLink = (lngChoice) => {
-  return `/${lngChoice}`
-}
-
 const renderLink = (t, lngCurrent, lngChoice, lngDefault) => {
   return (
     <OptionalLink
@@ -17,7 +13,8 @@ const renderLink = (t, lngCurrent, lngChoice, lngDefault) => {
       fallbackComponent='span'
       isLink={lngChoice === lngCurrent ? 'span' : 'a'}
       key={lngChoice}
-      route={createLink(lngChoice)}
+      language={lngChoice}
+      route='home'
     >
       {t(`language-${lngChoice}`)}
     </OptionalLink>

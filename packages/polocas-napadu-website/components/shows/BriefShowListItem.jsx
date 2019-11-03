@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from '../../routes'
+import { Link } from '../bindings'
 import { Show } from '../proptypes'
 import { EventStart } from '../events'
 

@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col'
 import React from 'react'
 import styles from './ShowListItem.scss'
 
-import { Link } from '../../routes'
+import { Link } from '../bindings'
 import { Show } from '../proptypes'
 import { EventLocation, EventStart } from '../events'
 

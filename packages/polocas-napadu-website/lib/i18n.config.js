@@ -1,8 +1,5 @@
 module.exports = {
-  localeSubpaths: {
-    en: 'en',
-    cs: 'cs'
-  },
+  localeSubpaths: ['cs', 'en'],
   languages: ['cs', 'en'],
   otherLanguages: ['cs']
 }
