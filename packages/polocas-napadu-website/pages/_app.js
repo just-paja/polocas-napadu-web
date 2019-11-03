@@ -5,7 +5,7 @@ import React from 'react'
 import Router from '../routes'
 import withGa from 'next-ga'
 
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from '@apollo/react-components'
 import { AppError } from '../components/app'
 import { appWithTranslation, i18n } from '../lib/i18n'
 import { Favicon } from '../components/layout'

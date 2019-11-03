@@ -76,7 +76,7 @@ export const UsualPlaceProp = PropTypes.shape({
   id: Ident.isRequired,
   location: LocationProp.isRequired,
   name: PropTypes.string.isRequired,
-  placeType: PropTypes.number.isRequired
+  placeType: PropTypes.number
 })
 
 export const propsStyled = {

@@ -2,7 +2,7 @@ import React from 'react'
 import initApollo from './init-apollo'
 import Head from 'next/head'
 
-import { getDataFromTree } from 'react-apollo'
+import { getDataFromTree } from '@apollo/react-ssr'
 
 export function withApolloClient (App) {
   return class Apollo extends React.Component {
@@ -45,7 +45,6 @@ export function withApolloClient (App) {
             throw error
           }
         }
-
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
         Head.rewind()
