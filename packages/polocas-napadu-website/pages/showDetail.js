@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { CommonLayout, ContentContainer, TranslatedPage } from '../components/layout'
+import { CommonLayout, TranslatedPage } from '../components/layout'
 import { ShowDetail } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
@@ -18,9 +18,7 @@ class ShowDetailPage extends TranslatedPage {
     const { slug } = this.props
     return (
       <CommonLayout>
-        <ContentContainer>
-          <ShowDetail variables={{ slug }} />
-        </ContentContainer>
+        <ShowDetail variables={{ slug }} />
       </CommonLayout>
     )
   }

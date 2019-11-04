@@ -5,13 +5,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 
+import { ContentContainer, PageHeading, Title } from '../layout'
 import { EventLocation, EventStart } from '../events'
 import { FaFacebookF, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
-import { Title } from '../layout'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
@@ -72,44 +72,48 @@ function ShowDetailInner ({ data, t }) {
   const { show } = data
   return (
     <>
-      <Title text={show.name} />
-      <Head>
-        <meta property='event:end_date' content={show.end} />
-        <meta property='event:start_date' content={show.start} />
-        <meta property='og:description' content={show.description} />
-        <meta property='og:type' content='event' />
-      </Head>
-      <h1>{show.name}</h1>
-      <Row>
-        <Col lg={6}>
-          <p>
-            <EventStart end={show.end} start={show.start} /><br />
-            <EventLocation location={show.location} />
-          </p>
-          <div>
-            {renderLink(show.linkReservations, t('reserveSeats'), FaTicketAlt)}
-            {renderLink(show.linkTickets, t('buyTickets'), FaTicketAlt)}
-            {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookF)}
-          </div>
-          <Markdown source={show.description} />
-          <div>
-            <h2>{t('aboutShow')}</h2>
-            <Markdown source={show.showType.shortDescription} />
-            {show.showType.visibility === 2 ? (
-              <Link
-                route='showFormatDetail'
-                params={{ slug: show.showType.slug }}
-              >
-                <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
-              </Link>
-            ) : null}
-          </div>
-        </Col>
-        <Col lg={6}>
-          <h2>{t('showParticipants')}</h2>
-          <ShowParticipants participants={show.showsParticipants} />
-        </Col>
-      </Row>
+      <PageHeading>
+        <h1>{show.name}</h1>
+        <Title text={show.name} />
+        <Head>
+          <meta property='event:end_date' content={show.end} />
+          <meta property='event:start_date' content={show.start} />
+          <meta property='og:description' content={show.description} />
+          <meta property='og:type' content='event' />
+        </Head>
+      </PageHeading>
+      <ContentContainer>
+        <Row>
+          <Col lg={6}>
+            <p>
+              <EventStart end={show.end} start={show.start} /><br />
+              <EventLocation location={show.location} />
+            </p>
+            <div>
+              {renderLink(show.linkReservations, t('reserveSeats'), FaTicketAlt)}
+              {renderLink(show.linkTickets, t('buyTickets'), FaTicketAlt)}
+              {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookF)}
+            </div>
+            <Markdown source={show.description} />
+            <div>
+              <h2>{t('aboutShow')}</h2>
+              <Markdown source={show.showType.shortDescription} />
+              {show.showType.visibility === 2 ? (
+                <Link
+                  route='showFormatDetail'
+                  params={{ slug: show.showType.slug }}
+                >
+                  <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
+                </Link>
+              ) : null}
+            </div>
+          </Col>
+          <Col lg={6}>
+            <h2>{t('showParticipants')}</h2>
+            <ShowParticipants participants={show.showsParticipants} />
+          </Col>
+        </Row>
+      </ContentContainer>
     </>
   )
 }
