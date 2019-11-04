@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './Profile.scss'
 
 import { ProfileListItem } from './ProfileListItem'
-import { ContentContainer, Title } from '../layout'
+import { ContentContainer, PageHeading, Title } from '../layout'
 import { formatName } from './names'
 import { Gallery } from '../photos'
 import { gql } from 'apollo-boost'
@@ -34,13 +34,11 @@ function ProfileComponent ({ data }) {
   const profileName = formatName(profile)
   return (
     <>
-      <div className={styles.heading}>
-        <ContentContainer className={classnames(styles.center, styles.headingContainer)}>
-          <ProfileListItem className={styles.bubble} dark profile={profile} />
-          <h1>{profileName}</h1>
-          <Title text={profileName} />
-        </ContentContainer>
-      </div>
+      <PageHeading>
+        <ProfileListItem className={styles.bubble} dark profile={profile} />
+        <h1 className={styles.heading}>{profileName}</h1>
+        <Title text={profileName} />
+      </PageHeading>
       <ContentContainer className={classnames(styles.center, styles.column)}>
         <Markdown source={profile.about} />
         <Gallery photos={profile.photos} />
