@@ -1,6 +1,7 @@
 import Alert from 'react-bootstrap/Alert'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styles from './ShowParticipants.scss'
 
 import { OptionalLink } from '../bindings'
 import { List } from '../layout'
@@ -34,7 +35,7 @@ function ShowParticipantsComponent ({ participants, t }) {
     <List>
       {participants.length > 0
         ? (
-          <ul>
+          <ul className={styles.list}>
             <ShowParticipantsMap participants={participants} />
           </ul>
         ) : (
