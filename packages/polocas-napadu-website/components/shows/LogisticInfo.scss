@@ -1,0 +1,26 @@
+@import 'theme.scss';
+
+:local .box {
+  border: 1px solid $color-borders;
+  border-radius: $baseline / 4;
+
+  summary {
+    align-items: center;
+    cursor: default;
+    display: flex;
+    font-size: $h3-font-size;
+    line-height: 1.5;
+    list-style: none;
+    padding: $baseline;
+    vertical-align: middle;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
+
+:local .icon {
+  margin-right: $baseline / 2;
+  height: $h3-font-size;
+}

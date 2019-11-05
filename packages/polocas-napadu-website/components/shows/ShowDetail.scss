@@ -1,0 +1,16 @@
+@import 'theme.scss';
+
+:local .logistics {
+  justify-content: center;
+
+  .logisticsItem {
+    margin-top: $baseline;
+  }
+}
+
+:local .description {
+  margin: $baseline auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

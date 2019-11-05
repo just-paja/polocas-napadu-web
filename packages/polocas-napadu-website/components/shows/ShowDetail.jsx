@@ -4,12 +4,14 @@ import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
+import styles from './ShowDetail.scss'
 
 import { ContentContainer, PageHeading, Title } from '../layout'
 import { EventLocation, EventStart } from '../events'
-import { FaFacebookF, FaTicketAlt } from 'react-icons/fa'
+import { FaCalendarDay, FaFacebookF, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
+import { LogisticInfo } from './LogisticInfo'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
 import { withQuery } from '../graphql'
@@ -25,6 +27,7 @@ const QUERY_SHOW = gql`
       linkTickets,
       location {
         id,
+        city,
         name,
       },
       showType {
@@ -71,7 +74,7 @@ function renderLink (link, children, Icon) {
 function ShowDetailInner ({ data, t }) {
   const { show } = data
   return (
-    <>
+    <article>
       <PageHeading>
         <h1>{show.name}</h1>
         <Title text={show.name} />
@@ -83,38 +86,43 @@ function ShowDetailInner ({ data, t }) {
         </Head>
       </PageHeading>
       <ContentContainer>
-        <Row>
-          <Col lg={6}>
-            <p>
-              <EventStart end={show.end} start={show.start} /><br />
-              <EventLocation location={show.location} />
-            </p>
+        <Row className={styles.logistics}>
+          <Col className={styles.logisticsItem} md={6} lg={4}>
+            <LogisticInfo
+              icon={FaCalendarDay}
+              summary={<EventStart end={show.end} start={show.start} />}
+            />
+          </Col>
+          <Col className={styles.logisticsItem} md={6} lg={4}>
+            <LogisticInfo
+              icon={FaMapMarkerAlt}
+              summary={<EventLocation location={show.location} />}
+            />
+          </Col>
+        </Row>
+        <div className={styles.description}>
+          <div>
             <div>
               {renderLink(show.linkReservations, t('reserveSeats'), FaTicketAlt)}
               {renderLink(show.linkTickets, t('buyTickets'), FaTicketAlt)}
               {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookF)}
             </div>
-            <Markdown source={show.description} />
-            <div>
-              <h2>{t('aboutShow')}</h2>
-              <Markdown source={show.showType.shortDescription} />
-              {show.showType.visibility === 2 ? (
-                <Link
-                  route='showFormatDetail'
-                  params={{ slug: show.showType.slug }}
-                >
-                  <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
-                </Link>
-              ) : null}
-            </div>
-          </Col>
-          <Col lg={6}>
+            <Markdown className='lead' source={show.description} />
+            <Markdown source={show.showType.shortDescription} />
+            {show.showType.visibility === 2 ? (
+              <Link
+                route='showFormatDetail'
+                params={{ slug: show.showType.slug }}
+              >
+                <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
+              </Link>
+            ) : null}
             <h2>{t('showParticipants')}</h2>
             <ShowParticipants participants={show.showsParticipants} />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </ContentContainer>
-    </>
+    </article>
   )
 }
 
