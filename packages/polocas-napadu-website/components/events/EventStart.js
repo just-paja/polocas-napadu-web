@@ -5,7 +5,7 @@ import React from 'react'
 import { withTranslation } from '../../lib/i18n'
 
 function renderSingleDate (date, format, className) {
-  return <span className={className}>{date.format(format)}</span>
+  return <time dateTime={date.format()} className={className}>{date.format(format)}</time>
 }
 
 const EventStartInner = ({ allDay, className, end, start, t }) => {
