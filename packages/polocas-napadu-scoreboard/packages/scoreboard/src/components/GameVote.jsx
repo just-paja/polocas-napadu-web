@@ -8,7 +8,7 @@ import GameVoteChart from './GameVoteChart';
 
 class GameVote extends React.Component {
   getPoll() {
-    return this.props.stage.scorePointPoll;
+    return this.props.stage && this.props.stage.scorePointPoll;
   }
 
   render() {

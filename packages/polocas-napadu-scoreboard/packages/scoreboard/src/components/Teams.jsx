@@ -29,9 +29,9 @@ class Teams extends React.Component {
   }
 
   dimmTeam(contestantGroupId) {
-    const { scorePointPoll } = this.context.match.currentStage;
-    if (scorePointPoll) {
-      return scorePointPoll.votings.some(voting => (
+    const { currentStage } = this.context.match;
+    if (currentStage && currentStage.scorePointPoll) {
+      return currentStage.scorePointPoll.votings.some(voting => (
         voting.contestantGroup
         && voting.contestantGroup.id !== contestantGroupId
         && !voting.closed
