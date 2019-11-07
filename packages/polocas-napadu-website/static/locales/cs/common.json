@@ -2,6 +2,7 @@
   "about": "O nás",
   "aboutShow": "O představení",
   "actors": "Herci",
+  "addToCalendar": "Přidat do kalendáře",
   "bankAccountCz": "Bankovní účet",
   "buyTickets": "Koupit vstupenky",
   "contact": "Kontakt",
@@ -9,13 +10,16 @@
   "continueReading": "Pokračovat ve čtení",
   "copyrightNotice": "© 2019 Poločas nápadu. Všechna práva vyhrazena",
   "eventOnFacebook": "Událost na Facebooku",
+  "googleCalendar": "Google kalendář",
   "groupDescriptionHeading": "O Poločasu nápadu",
   "groupDescriptionPerex": "Jsme pražská skupina mladých lidí, kteří se věnují divadelní improvizaci.",
   "groupHistoryHeading": "Jak to všechno začalo?",
   "hello": "Ahoj",
+  "howDoIGetThere": "Kde to je?",
   "howMuchDidWePlay": "Kolik jsme toho odehráli?",
   "howMuchDidWePlayPerex": "Kolik zábavy jsme si za ty roky stihli společně užít? Tohle je počítadlo všech našich představení od začátku skupiny. No... možná až na pár privátních a utajených.",
   "iban": "IBAN",
+  "iCalFile": "iCal soubor",
   "identificationNumberCz": "IČO",
   "language-cs": "Česky",
   "language-en": "English",
@@ -40,5 +44,6 @@
   "swift": "BIC/SWIFT",
   "upcomingShows": "Představení",
   "usualHomeStages": "Pravidelná představení pořádáme každý měsíc v {{places}}",
-  "whatDoWePlay": "Co tak jako hrajeme"
+  "whatDoWePlay": "Co tak jako hrajeme",
+  "yahooCalendar": "Yahoo kalendář"
 }

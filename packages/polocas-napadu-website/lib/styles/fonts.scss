@@ -1,6 +1,7 @@
 $font-family-base: 'Roboto';
 $font-family-heading: 'HK Blocker Heavy';
-$font-size-base: 16px;
+$grid-base: 8px;
+$font-size-base: 2 * $grid-base;
 
 $line-height-base: 1.5;
 $baseline: $font-size-base;
@@ -8,7 +9,7 @@ $baseline: $font-size-base;
 $h1-font-size: $font-size-base * 2.5;
 $h2-font-size: $font-size-base * 2;
 $h3-font-size: $font-size-base * 1.5;
-$h4-font-size: $font-size-base * 1;
+$h4-font-size: $font-size-base * 1.25;
 $h5-font-size: $font-size-base * 1;
 $h6-font-size: $font-size-base * 1;
 

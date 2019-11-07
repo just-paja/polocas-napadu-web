@@ -46,6 +46,7 @@
     "next-i18next": "^2.0.0",
     "next-routes": "1.4.2",
     "node-sass": "^4.13.0",
+    "query-string-manipulator": "^1.2.0",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",

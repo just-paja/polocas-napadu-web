@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-function addressToHtml (address) {
-  return address.split(',')
+function nonEmpty (item) {
+  return Boolean(item)
+}
+
+function addressToHtml (...args) {
+  return args.join(',').split(',')
     .map(row => row.trim())
+    .filter(nonEmpty)
     .reduce((aggr, addressRow, index, array) => {
       const row = <React.Fragment key={index}>{addressRow}</React.Fragment>
       return (
@@ -14,10 +19,11 @@ function addressToHtml (address) {
     }, [])
 }
 
-export const Address = ({ address }) => (
-  <address>{addressToHtml(address)}</address>
+export const Address = ({ address, city }) => (
+  <address>{addressToHtml(address, city)}</address>
 )
 
 Address.propTypes = {
-  address: PropTypes.string.isRequired
+  address: PropTypes.string.isRequired,
+  city: PropTypes.string
 }

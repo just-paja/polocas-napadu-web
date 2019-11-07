@@ -3,24 +3,49 @@
 :local .box {
   border: 1px solid $color-borders;
   border-radius: $baseline / 4;
+  color: $color-text-dimm;
+  padding: $baseline;
 
   summary {
-    align-items: center;
+    align-items: flex-start;
     cursor: default;
     display: flex;
-    font-size: $h3-font-size;
+    font-size: $h4-font-size;
     line-height: 1.5;
     list-style: none;
-    padding: $baseline;
     vertical-align: middle;
 
     &::-webkit-details-marker {
       display: none;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
 :local .icon {
-  margin-right: $baseline / 2;
-  height: $h3-font-size;
+  flex-shrink: 0;
+  height: $h4-font-size * 1.5;
+  margin-right: $font-size-base * 0.75;
+  user-select: none;
+  width: $h4-font-size;
+}
+
+:local .details {
+  display: none;
+  padding: 0 0 0 $h4-font-size + $font-size-base * 0.75;
+}
+
+:local .box.open {
+  .details {
+    display: block;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'lg')) {
+  :local .details {
+    display: block;
+  }
 }

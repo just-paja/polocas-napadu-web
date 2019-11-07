@@ -6,8 +6,9 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './ShowDetail.scss'
 
+import { Address } from '../locations'
 import { ContentContainer, PageHeading, Title } from '../layout'
-import { EventLocation, EventStart } from '../events'
+import { AddToCalendar, EventLocation, EventStart } from '../events'
 import { FaCalendarDay, FaFacebookF, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
@@ -26,8 +27,9 @@ const QUERY_SHOW = gql`
       linkReservations,
       linkTickets,
       location {
-        id,
+        address,
         city,
+        id,
         name,
       },
       showType {
@@ -63,7 +65,7 @@ function renderLink (link, children, Icon) {
   return link
     ? (
       <div>
-        <a href={link}>
+        <a href={link} rel='external'>
           {Icon && <><Icon />{' '}</>}
           {children}
         </a>
@@ -91,13 +93,23 @@ function ShowDetailInner ({ data, t }) {
             <LogisticInfo
               icon={FaCalendarDay}
               summary={<EventStart end={show.end} start={show.start} />}
-            />
+            >
+              <AddToCalendar className={styles.addToCalendar} event={show} />
+            </LogisticInfo>
           </Col>
           <Col className={styles.logisticsItem} md={6} lg={4}>
             <LogisticInfo
               icon={FaMapMarkerAlt}
               summary={<EventLocation location={show.location} />}
-            />
+            >
+              <Address address={show.location.address} city={show.location.city} />
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${show.location.address}`}
+                rel='external nofollow'
+              >
+                {t('howDoIGetThere')}
+              </a>
+            </LogisticInfo>
           </Col>
         </Row>
         <div className={styles.description}>

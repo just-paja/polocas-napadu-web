@@ -1,18 +1,25 @@
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './LogisticInfo.scss'
 
 import { Children } from '../proptypes'
 
+function ignore (e) {
+  e.preventDefault()
+}
+
 export function LogisticInfo ({ icon: Icon, summary, children }) {
+  const [open, setOpen] = useState(false)
   return (
-    <details className={styles.box}>
-      <summary>
+    <details className={classnames(styles.box, { [styles.open]: open })} open onClick={ignore}>
+      <summary onClick={() => setOpen(true)}>
         <Icon className={styles.icon} />
-        &nbsp;
         {summary}
       </summary>
-      {children}
+      <div className={styles.details}>
+        {children}
+      </div>
     </details>
   )
 }

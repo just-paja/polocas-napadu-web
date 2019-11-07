@@ -6,7 +6,7 @@ import { Address } from './Address'
 
 export const Location = ({ location }) => (
   <div className={styles.location}>
-    <strong>{[location.city, location.name].filter(item => item).join(', ')}</strong>
+    <strong>{location.name}</strong>
     <Address address={location.address} />
   </div>
 )
