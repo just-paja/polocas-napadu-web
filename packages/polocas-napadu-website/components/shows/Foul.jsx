@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { formatName } from '../profiles/names'
+
 function getActorName (foul) {
   if (foul.player && foul.player.profile) {
-    return foul.player.profile.name
+    return formatName(foul.player.profile)
   }
   if (foul.contestantGroup && foul.contestantGroup.band) {
     return foul.contestantGroup.band.name

@@ -36,6 +36,7 @@ const QUERY_SHOW = gql`
           },
           player {
             profile {
+              alias,
               name,
             },
           },
