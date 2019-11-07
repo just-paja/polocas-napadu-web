@@ -51,8 +51,8 @@ module.exports = function (nexti18next) {
         subpathIsPresent(req.url, subpathFromLng(config, l)))
 
       if (!lngFromCurrentSubpath) {
-        return redirectWithoutCache(res, `/${currentLng}`)
-      } else {
+        return redirectWithoutCache(res, `/${currentLng}${req.url}`)
+      } else if (currentLng !== lngFromCurrentSubpath) {
         /*
           If a user has hit a subpath which does not
           match their language, give preference to
