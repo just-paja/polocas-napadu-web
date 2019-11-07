@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Head from 'next/head'
 import Markdown from 'react-markdown'
@@ -9,7 +10,7 @@ import styles from './ShowDetail.scss'
 import { Address } from '../locations'
 import { ContentContainer, PageHeading, Title } from '../layout'
 import { AddToCalendar, EventLocation, EventStart } from '../events'
-import { FaCalendarDay, FaFacebookF, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa'
+import { FaCalendarDay, FaFacebookSquare, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { LogisticInfo } from './LogisticInfo'
@@ -75,6 +76,14 @@ function renderLink (link, children, Icon) {
 
 function ShowDetailInner ({ data, t }) {
   const { show } = data
+  const ticketsLink = show.linkTickets || show.linkReservations
+  const ticketsLabel = show.linkTickets ? 'buyTickets' : 'reserveSeats'
+  const ticketsButton = ticketsLink ? (
+    <Button className={styles.ticketsButton} href={ticketsLink} rel='external' variant='primary'>
+      <FaTicketAlt />
+      {t(ticketsLabel)}
+    </Button>
+  ) : null
   return (
     <article>
       <PageHeading>
@@ -94,6 +103,7 @@ function ShowDetailInner ({ data, t }) {
               icon={FaCalendarDay}
               summary={<EventStart end={show.end} start={show.start} />}
             >
+              {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookSquare)}
               <AddToCalendar className={styles.addToCalendar} event={show} />
             </LogisticInfo>
           </Col>
@@ -112,13 +122,15 @@ function ShowDetailInner ({ data, t }) {
             </LogisticInfo>
           </Col>
         </Row>
+        {ticketsButton ? (
+          <Row className={styles.logistics}>
+            <Col md={6} lg={4}>
+              {ticketsButton}
+            </Col>
+          </Row>
+        ) : null}
         <div className={styles.description}>
           <div>
-            <div>
-              {renderLink(show.linkReservations, t('reserveSeats'), FaTicketAlt)}
-              {renderLink(show.linkTickets, t('buyTickets'), FaTicketAlt)}
-              {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookF)}
-            </div>
             <Markdown className='lead' source={show.description} />
             <Markdown source={show.showType.shortDescription} />
             {show.showType.visibility === 2 ? (

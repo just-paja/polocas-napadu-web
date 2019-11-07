@@ -1,4 +1,5 @@
-@import 'theme';
+@import 'theme.scss';
+@import 'node_modules/bootstrap/scss/mixins/_buttons.scss';
 
 // stylelint-disable selector-no-qualifying-type
 
@@ -55,19 +56,14 @@
   }
 }
 
-
-//
-// Alternate buttons
-//
-
 @each $color, $value in $theme-colors {
-  .btn-#{$color} {
+  :global(.btn-#{$color}) {
     @include button-variant($value, $value);
   }
 }
 
 @each $color, $value in $theme-colors {
-  .btn-outline-#{$color} {
+  :global(.btn-outline-#{$color}) {
     @include button-outline-variant($value);
   }
 }
