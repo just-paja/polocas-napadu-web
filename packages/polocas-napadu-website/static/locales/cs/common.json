@@ -24,6 +24,7 @@
   "language-cs": "Česky",
   "language-en": "English",
   "loading": "Čekám na druhou půlku nápadu...",
+  "matchHasNotStartedYet": "Sledování zápasu ještě nezačalo",
   "matchProgress": "Průběh zápasu",
   "members": "Členové",
   "moreAboutFormat": "Více o formátu {{formatName}}",

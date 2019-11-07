@@ -174,7 +174,7 @@ function renderScore (match) {
     ))
 }
 
-export function MatchProgressComponent ({ data }) {
+export function MatchProgressComponent ({ data, t }) {
   const { match } = data
   if (!match) {
     return null
@@ -185,6 +185,13 @@ export function MatchProgressComponent ({ data }) {
     ...match.stages
   ].sort(sortByDate)
   const start = log.find(event => event.type === STAGE_INTRO)
+  if (!start) {
+    return (
+      <div className={styles.log}>
+        {t('matchHasNotStartedYet')}
+      </div>
+    )
+  }
   return (
     <div className={styles.log}>
       {renderScore(match)}
