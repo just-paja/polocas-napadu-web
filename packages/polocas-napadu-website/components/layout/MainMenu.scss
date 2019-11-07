@@ -1,0 +1,13 @@
+@import 'theme.scss';
+
+@media (min-width: map-get($grid-breakpoints, 'lg')) {
+  :global .navbar {
+    & > :local(div.menu) {
+      justify-content: center;
+    }
+
+    .navbar-collapse {
+      flex-grow: 0;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import React from 'react'
+import styles from './MainMenu.scss'
 
 import { Link } from '../bindings'
 import { propsTranslated } from '../proptypes'
@@ -15,13 +16,13 @@ const MainMenuComponent = ({ t }) => (
     sticky='top'
     variant='dark'
   >
-    <Container>
+    <Container className={styles.menu}>
       <Link passHref route='home'>
         <Navbar.Brand>{t('projectName')}</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls='app-menu' />
       <Navbar.Collapse id='app-menu'>
-        <Nav className='mr-auto'>
+        <Nav>
           <Link passHref route='showList'><Nav.Link>{t('shows')}</Nav.Link></Link>
           <Link passHref route='repertoir'><Nav.Link>{t('repertoir')}</Nav.Link></Link>
           <Link passHref route='about'><Nav.Link>{t('about')}</Nav.Link></Link>
