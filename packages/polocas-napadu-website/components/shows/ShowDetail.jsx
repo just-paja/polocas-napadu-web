@@ -146,23 +146,19 @@ function ShowDetailInner ({ data, t }) {
                 <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
               </Link>
             ) : null}
-          </div>
-        </div>
-        <Row>
-          {show.match ? (
-            <Col lg={8}>
-              <h2>{t('matchProgress')}</h2>
-              <MatchProgress
-                closed={show.match.closed}
-                variables={{ id: show.match.id }}
-              />
-            </Col>
-          ) : null}
-          <Col lg={show.match ? 4 : 6}>
+            {show.match ? (
+              <div>
+                <h2>{t('matchProgress')}</h2>
+                <MatchProgress
+                  closed={show.match.closed}
+                  variables={{ id: show.match.id }}
+                />
+              </div>
+            ) : null}
             <h2>{t('showParticipants')}</h2>
             <ShowParticipants participants={show.showsParticipants} />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </ContentContainer>
     </article>
   )
