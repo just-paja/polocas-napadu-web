@@ -14,6 +14,7 @@ $link-color: $primary;
 
 $color-text-base: $color-black-olive;
 $color-text-dimm: lighten($color-text-base, 15%);
+$color-text-light: lighten($color-text-base, 25%);
 $color-text-inverted: $color-coconut-cream;
 
 $color-footer: lighten($color-black-olive, 75%);

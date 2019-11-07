@@ -14,6 +14,7 @@ import { FaCalendarDay, FaFacebookSquare, FaMapMarkerAlt, FaTicketAlt } from 're
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { LogisticInfo } from './LogisticInfo'
+import { MatchProgress } from './MatchProgress'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
 import { withQuery } from '../graphql'
@@ -39,6 +40,10 @@ const QUERY_SHOW = gql`
         shortDescription,
         slug,
         visibility
+      },
+      match {
+        closed,
+        id,
       },
       name,
       start,
@@ -141,10 +146,23 @@ function ShowDetailInner ({ data, t }) {
                 <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
               </Link>
             ) : null}
-            <h2>{t('showParticipants')}</h2>
-            <ShowParticipants participants={show.showsParticipants} />
           </div>
         </div>
+        <Row>
+          {show.match ? (
+            <Col lg={8}>
+              <h2>{t('matchProgress')}</h2>
+              <MatchProgress
+                closed={show.match.closed}
+                variables={{ id: show.match.id }}
+              />
+            </Col>
+          ) : null}
+          <Col lg={show.match ? 4 : 6}>
+            <h2>{t('showParticipants')}</h2>
+            <ShowParticipants participants={show.showsParticipants} />
+          </Col>
+        </Row>
       </ContentContainer>
     </article>
   )
