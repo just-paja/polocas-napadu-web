@@ -7,6 +7,7 @@
 :local .block {
   background: $primary;
   margin-top: $baseline * 2;
+  overflow: hidden;
 }
 
 :local .container {
