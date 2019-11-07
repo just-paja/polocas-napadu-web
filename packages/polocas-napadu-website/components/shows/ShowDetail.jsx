@@ -1,3 +1,4 @@
+import moment from 'moment'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Head from 'next/head'
@@ -83,7 +84,7 @@ function ShowDetailInner ({ data, t }) {
   const { show } = data
   const ticketsLink = show.linkTickets || show.linkReservations
   const ticketsLabel = show.linkTickets ? 'buyTickets' : 'reserveSeats'
-  const ticketsButton = ticketsLink ? (
+  const ticketsButton = ticketsLink && moment().isBefore(show.start) ? (
     <Button className={styles.ticketsButton} href={ticketsLink} rel='external' variant='primary'>
       <FaTicketAlt />
       {t(ticketsLabel)}
