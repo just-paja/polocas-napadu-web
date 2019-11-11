@@ -22,7 +22,15 @@ const styles = theme => ({
   },
 });
 
-const InteractiveButton = ({ children, disabled, icon, loading, onClick, classes }) => {
+const InteractiveButton = ({
+  classes,
+  disabled,
+  children,
+  icon,
+  loading,
+  onClick,
+  ...props,
+}) => {
   const Component = icon ? IconButton : Button;
   return (
     <MatchContext.Consumer>
@@ -31,6 +39,7 @@ const InteractiveButton = ({ children, disabled, icon, loading, onClick, classes
           <Component
             disabled={loading || disabled}
             onClick={onClick}
+            {...props}
           >{children}</Component>
           {loading && <CircularProgress
             size={24}
