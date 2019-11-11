@@ -50,18 +50,20 @@ class Teams extends React.Component {
     const guest = this.getGroup(CONTESTANT_GUEST);
     return (
       <SplitView className={classes.split}>
-        <TeamDetails
-          dimm={this.dimmTeam(home.id)}
-          hideScore={hideScore}
-          side="left"
-          team={home}
-        />
-        <TeamDetails
-          dimm={this.dimmTeam(guest.id)}
-          hideScore={hideScore}
-          side="right"
-          team={guest}
-        />
+        {home && (
+          <TeamDetails
+            dimm={this.dimmTeam(home.id)}
+            hideScore={hideScore}
+            side="left"
+            team={home}
+          />)}
+        {guest && (
+          <TeamDetails
+            dimm={this.dimmTeam(guest.id)}
+            hideScore={hideScore}
+            side="right"
+            team={guest}
+          />)}
       </SplitView>
     );
   };
