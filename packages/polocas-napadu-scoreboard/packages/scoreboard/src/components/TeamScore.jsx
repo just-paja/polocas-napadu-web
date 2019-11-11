@@ -8,14 +8,22 @@ import { withStyles } from '@material-ui/core/styles';
 import { AudioManager } from '../AudioManager';
 import { getNewRandomItem } from '../shuffle';
 
+import point8bit from '../sounds/point-8bit.wav';
+import pointDistortionGuitar from '../sounds/point-distortion-guitar.wav';
+import pointHalelujah from '../sounds/point-halelujah.wav';
+import pointSynth01 from '../sounds/point-synth-01.wav';
+import pointSynth02 from '../sounds/point-synth-02.wav';
+import pointSynthBaseball from '../sounds/point-synth-baseball.wav';
+import pointWindows from '../sounds/point-windows.wav';
+
 const availableFanfares = [
-  '/sounds/point-8bit.wav',
-  '/sounds/point-distortion-guitar.wav',
-  '/sounds/point-halelujah.wav',
-  '/sounds/point-synth-01.wav',
-  '/sounds/point-synth-02.wav',
-  '/sounds/point-synth-baseball.wav',
-  '/sounds/point-windows.wav',
+  point8bit,
+  pointDistortionGuitar,
+  pointHalelujah,
+  pointSynth01,
+  pointSynth02,
+  pointSynthBaseball,
+  pointWindows,
 ];
 
 const fanfares = availableFanfares.map((sound) => {
