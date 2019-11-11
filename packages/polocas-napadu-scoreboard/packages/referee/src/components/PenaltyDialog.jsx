@@ -143,7 +143,7 @@ class PenaltyDialog extends React.Component {
               onCompleted={this.handleClose}
             >
               {(mutate, { loading }) => (
-                <div>
+                <React.Fragment>
                   {this.renderHeader(mutate)}
                   <DialogContent>
                     <h3>Jaký faul?</h3>
@@ -191,7 +191,7 @@ class PenaltyDialog extends React.Component {
                       )}
                     </div>
                   </DialogContent>
-                </div>
+                </React.Fragment>
               )}
             </Mutation>
           </Dialog>
