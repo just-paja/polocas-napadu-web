@@ -37,26 +37,18 @@ const styles = theme => ({
   '@keyframes highlightScore' : {
     '0%': {
       opacity: 0,
-      transform: 'scale(3) translate(-50%, 100%)',
+      transform: 'scale(3) translate(0, 100%)',
     },
     '20%': {
       opacity: 1,
     },
     '80%': {
-      transform: 'scale(3.5) translate(-50%, 100%)',
+      transform: 'scale(3.5) translate(0, 100%)',
     },
     '100%': {
       transform: 'scale(1) translate(0, 0)',
       opacity: 1,
     }
-  },
-  name: {
-    display: 'flex',
-    margin: '0 4rem 0 auto',
-    minWidth: 0,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
   },
   animate: {
     animationDuration: '3s',
@@ -66,16 +58,14 @@ const styles = theme => ({
     zIndex: 10000,
   },
   score: {
-    borderRadius: '5rem',
-    color: '#fff',
     display: 'block',
+    borderRadius: 4*12,
     flexShrink: 0,
-    fontSize: '6rem',
+    fontSize: '3rem',
     fontWeight: 'bold',
-    margin: '-3rem',
-    height: '10rem',
-    lineHeight: '10rem',
-    width: '10rem',
+    height: 8 * 12,
+    lineHeight: '6rem',
+    width: 8 * 12,
     textAlign: 'center',
     justifyContent: 'center',
   },

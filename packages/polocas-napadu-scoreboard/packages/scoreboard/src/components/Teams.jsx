@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 import TeamDetails from './TeamDetails';
 
-import { SplitView } from '../board/components';
-
 const styles = {
   split: {
+    display: 'flex',
+    justifyContent: 'center',
     width: '100%',
   },
 };
@@ -49,7 +49,7 @@ class Teams extends React.Component {
     const home = this.getGroup(CONTESTANT_HOME);
     const guest = this.getGroup(CONTESTANT_GUEST);
     return (
-      <SplitView className={classes.split}>
+      <div className={classes.split}>
         {home && (
           <TeamDetails
             dimm={this.dimmTeam(home.id)}
@@ -64,7 +64,7 @@ class Teams extends React.Component {
             side="right"
             team={guest}
           />)}
-      </SplitView>
+      </div>
     );
   };
 }

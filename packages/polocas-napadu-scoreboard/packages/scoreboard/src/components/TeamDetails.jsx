@@ -12,25 +12,12 @@ import TeamScore from './TeamScore';
 const styles = theme => ({
   name: {
     display: 'flex',
-    margin: '0 4rem 0 auto',
+    margin: '0 auto 0 auto',
     minWidth: 0,
     overflow: 'hidden',
+    padding: '1rem 2rem',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-  },
-  score: {
-    borderRadius: '5rem',
-    color: '#fff',
-    display: 'block',
-    flexShrink: 0,
-    fontSize: '6rem',
-    fontWeight: 'bold',
-    margin: '-3rem',
-    height: '10rem',
-    lineHeight: '10rem',
-    width: '10rem',
-    textAlign: 'center',
-    justifyContent: 'center',
   },
   nameBar: {
     display: 'flex',
@@ -38,18 +25,13 @@ const styles = theme => ({
     justifyContent: 'flex-start',
   },
   nameBarRight: {
-    [theme.breakpoints.up('md')]: {
-      flexDirection: 'row-reverse',
-    },
-  },
-  nameRight: {
-    [theme.breakpoints.up('md')]: {
-      margin: '0 auto 0 4rem',
-    },
+    flexDirection: 'row-reverse',
   },
   logo: {
-    maxHeight: '4.5rem',
-    margin: '-0.5rem 0',
+    display: 'none',
+    height: '6.5rem',
+    width: '6.5rem',
+    margin: '-2.5rem -1.25rem',
   },
   penalty: {
     background: 'red',
@@ -65,20 +47,20 @@ const styles = theme => ({
     right: '8rem',
   },
   penaltiesRight: {
-    [theme.breakpoints.up('md')]: {
-      right: 'auto',
-      left: '8rem',
-    },
+    right: 'auto',
+    left: '8rem',
   },
   teamBubble: {
-    background: 'white',
-    borderRadius: '3rem',
+    height: 8 * 12,
+    borderRadius: '0.3rem 0 0 0.3rem',
     flexStretch: 0,
     fontSize: '3rem',
     marginBottom: '5rem',
-    padding: '1rem',
     position: 'relative',
     transition: 'opacity .5s',
+  },
+  teamBubbleRight: {
+    borderRadius: '0 0.3rem 0.3rem 0',
   },
   dimm: {
     opacity: 0.2,
@@ -105,6 +87,11 @@ class TeamDetails extends Component {
     hideScore: false,
   }
 
+  getTeamName (team) {
+    const { name } = team.band
+    return name.substr(0, 3).toUpperCase();
+  }
+
   render() {
     const { classes, dimm, hideScore, side, team } = this.props;
     if (!team || !team.band.name) {
@@ -112,9 +99,10 @@ class TeamDetails extends Component {
     }
     return (
       <div
-        className={classnames(classes.teamBubble, {
+        className={classnames(classes.teamBubble, classes[camelCase(`teamBubble-${side}`)], {
           [classes.dimm]: dimm,
         })}
+        style={{ backgroundColor: team.color }}
       >
         <div
           className={classnames(
@@ -129,7 +117,7 @@ class TeamDetails extends Component {
           />
           <span
             className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
-          >{team.band.name}</span>
+          >{this.getTeamName(team)}</span>
           {hideScore
             ? null
             : <TeamScore score={team.score} backgroundColor={team.color} />}
