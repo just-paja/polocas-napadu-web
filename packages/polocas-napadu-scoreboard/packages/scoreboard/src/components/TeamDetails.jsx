@@ -49,11 +49,7 @@ const styles = theme => ({
   },
   logo: {
     maxHeight: '4.5rem',
-    margin: '-0.5rem 1rem -0.5rem 0',
-  },
-  logoRight: {
-    marginLeft: '1rem',
-    marginRight: 0,
+    margin: '-0.5rem 0',
   },
   penalty: {
     background: 'red',
