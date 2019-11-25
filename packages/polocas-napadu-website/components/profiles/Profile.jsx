@@ -17,6 +17,7 @@ const QUERY_PROFILE = gql`
       id,
       slug,
       name,
+      alias,
       avatar,
       photos {
         id,
