@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 import { ContentContainer, List, Title } from '../layout'
 import { gql } from 'apollo-boost'
 import { BriefShowListItem } from './BriefShowListItem'
+import { GameList } from '../games'
 import { ShowType } from '../proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
@@ -19,6 +20,7 @@ const QUERY_SHOW = gql`
       name,
       shortDescription,
       slug,
+      useGames,
     }
     showList(showTypeSlug: $slug, limit: 5, orderBy: "-start") {
       id,
@@ -44,6 +46,12 @@ function ShowFormatDetailInner ({ data, t }) {
         <Col lg={8}>
           <Markdown className='lead' source={showType.shortDescription} />
           <Markdown source={showType.description} />
+          {showType.useGames ? (
+            <>
+              <h2>{t('games')}</h2>
+              <GameList />
+            </>
+          ): null}
         </Col>
         <Col lg={4}>
           <List>
