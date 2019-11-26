@@ -1,13 +1,20 @@
 import React from 'react'
 
+import { Link } from '../bindings'
 import { getStageOption, STAGE_GAME } from './stages'
 import { withTranslation } from '../../lib/i18n'
 
 function getGameLabel (stage) {
   if (stage.game && stage.game.rules) {
     const inspirations = getGameInspirations(stage)
-    const name = stage.game.rules.name
-    return inspirations ? `${name} (${inspirations})` : name
+    const name = (
+      <Link route='gameDetail' params={{ slug: stage.game.rules.slug }}>
+        <a>{stage.game.rules.name}</a>
+      </Link>
+    )
+    return inspirations
+      ? <>{name}{' '}({inspirations})</>
+      : name
   }
   return null
 }

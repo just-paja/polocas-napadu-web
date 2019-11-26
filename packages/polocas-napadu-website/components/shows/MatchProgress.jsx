@@ -59,6 +59,7 @@ const QUERY_SHOW = gql`
           id,
           rules {
             name,
+            slug,
           },
           inspirations {
             id,
