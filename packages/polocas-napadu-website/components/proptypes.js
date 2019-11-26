@@ -60,6 +60,11 @@ export const Show = PropTypes.shape({
   start: PropTypes.string.isRequired
 })
 
+export const GameRules = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired
+})
+
 export const I18n = PropTypes.shape({
   options: PropTypes.shape({
     allLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
