@@ -62,7 +62,7 @@ export const Show = PropTypes.shape({
 
 export const FoulType = PropTypes.shape({
   name: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired  
+  slug: PropTypes.string.isRequired
 })
 
 export const GameRules = PropTypes.shape({

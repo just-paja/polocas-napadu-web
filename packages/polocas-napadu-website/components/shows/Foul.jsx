@@ -17,7 +17,7 @@ export function Foul ({ foul }) {
   const actorName = getActorName(foul)
   return (
     <>
-      <Link route="foulTypeDetail" params={{ slug: foul.foulType.slug}}>
+      <Link route='foulTypeDetail' params={{ slug: foul.foulType.slug }}>
         <a>{foul.foulType.name}</a>
       </Link>
       {actorName ? ` (${actorName})` : null}

@@ -1,13 +1,11 @@
 import Col from 'react-bootstrap/Col'
 import Markdown from 'react-markdown'
-import Nav from 'react-bootstrap/Nav'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 
 import { BriefShowListItem } from './BriefShowListItem'
 import { ContentContainer, List, Title } from '../layout'
-import { GameList } from '../games'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { ShowType } from '../proptypes'
@@ -55,19 +53,19 @@ function ShowFormatDetailInner ({ data, t }) {
               <ul>
                 {showType.useGames && (
                   <li>
-                    <Link route="gameList">
+                    <Link route='gameList'>
                       <a>{t('gameList')}</a>
                     </Link>
                   </li>)}
                 {showType.useFouls && (
                   <li>
-                    <Link route="foulTypeList">
+                    <Link route='foulTypeList'>
                       <a>{t('foulTypes')}</a>
                     </Link>
                   </li>)}
               </ul>
             </>
-          ): null}
+          ) : null}
         </Col>
         <Col lg={4}>
           <List>
