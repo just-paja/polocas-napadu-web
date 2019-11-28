@@ -33,6 +33,7 @@ const QUERY_SHOW = gql`
           },
           foulType {
             name,
+            slug,
           },
           player {
             profile {
