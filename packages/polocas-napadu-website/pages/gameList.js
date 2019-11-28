@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import styles from './showList.scss'
 
@@ -11,9 +12,14 @@ class GameListPage extends TranslatedPage {
     return (
       <CommonLayout>
         <Title text={t('games')} />
+        <Head>
+          <meta property='og:description' content={t('gameListDescription')} />
+          <meta property='og:type' content='article' />
+        </Head>
         <ContentContainer>
           <main className={styles.list}>
             <h1>{t('games')}</h1>
+            <p className='lead'>{t('gameListDescription')}</p>
             <GameList />
           </main>
         </ContentContainer>

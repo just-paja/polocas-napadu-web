@@ -3,8 +3,9 @@ import React from 'react'
 
 import { GameRules } from '../proptypes'
 import { gql } from 'apollo-boost'
-import { withQuery } from '../graphql'
 import { Link } from '../bindings'
+import { withQuery } from '../graphql'
+import { withTranslation } from '../../lib/i18n'
 
 const QUERY_GAME_LIST = gql`
   query getGameRulesList {
@@ -16,16 +17,20 @@ const QUERY_GAME_LIST = gql`
 `
 
 const GameListComponent = ({ data, t }) => {
+  const allRules = data.gameRulesList
   return (
-    <ul>
-      {data.gameRulesList.map(rules => (
-        <li key={rules.slug}>
-          <Link route='gameDetail' params={{ slug: rules.slug }}>
-            <a>{rules.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <p>{t('gameRulesStats', { total: allRules.length })}</p>
+      <ul>
+        {allRules.map(rules => (
+          <li key={rules.slug}>
+            <Link route='gameDetail' params={{ slug: rules.slug }}>
+              <a>{rules.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
 
@@ -35,4 +40,4 @@ GameListComponent.propTypes = {
   })
 }
 
-export const GameList = withQuery({ query: QUERY_GAME_LIST })(GameListComponent)
+export const GameList = withQuery({ query: QUERY_GAME_LIST })(withTranslation('common')(GameListComponent))
