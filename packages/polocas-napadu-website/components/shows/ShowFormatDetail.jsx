@@ -1,13 +1,15 @@
 import Col from 'react-bootstrap/Col'
 import Markdown from 'react-markdown'
+import Nav from 'react-bootstrap/Nav'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 
-import { ContentContainer, List, Title } from '../layout'
-import { gql } from 'apollo-boost'
 import { BriefShowListItem } from './BriefShowListItem'
+import { ContentContainer, List, Title } from '../layout'
 import { GameList } from '../games'
+import { gql } from 'apollo-boost'
+import { Link } from '../bindings'
 import { ShowType } from '../proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
@@ -20,6 +22,7 @@ const QUERY_SHOW = gql`
       name,
       shortDescription,
       slug,
+      useFouls,
       useGames,
     }
     showList(showTypeSlug: $slug, limit: 5, orderBy: "-start") {
@@ -46,10 +49,23 @@ function ShowFormatDetailInner ({ data, t }) {
         <Col lg={8}>
           <Markdown className='lead' source={showType.shortDescription} />
           <Markdown source={showType.description} />
-          {showType.useGames ? (
+          {(showType.useGames || showType.useFouls) ? (
             <>
-              <h2>{t('games')}</h2>
-              <GameList />
+              <h2>{t('articleLinks')}</h2>
+              <ul>
+                {showType.useGames && (
+                  <li>
+                    <Link route="gameList">
+                      <a>{t('gameList')}</a>
+                    </Link>
+                  </li>)}
+                {showType.useFouls && (
+                  <li>
+                    <Link route="foulTypeList">
+                      <a>{t('foulTypes')}</a>
+                    </Link>
+                  </li>)}
+              </ul>
             </>
           ): null}
         </Col>
