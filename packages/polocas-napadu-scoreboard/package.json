@@ -3,24 +3,17 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
-    "test": "lerna run test -- --",
+    "test": "jest",
     "postinstall": "lerna bootstrap"
   },
   "dependencies": {
-    "@material-ui/core": "^4.7.0",
-    "@material-ui/icons": "^4.5.1",
-    "apollo-boost": "^0.4.4",
-    "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
-    "lerna": "^3.19.0",
-    "react": "^16.12.0",
-    "react-apollo": "^3.1.3",
-    "react-dom": "^16.12.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2"
+    "lerna": "^3.19.0"
   },
   "devDependencies": {
-    "apollo-link-schema": "^1.2.4",
-    "graphql-tools": "^4.0.6"
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0"
   }
 }
