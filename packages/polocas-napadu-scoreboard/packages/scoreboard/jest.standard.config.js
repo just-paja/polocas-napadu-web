@@ -1,8 +1,9 @@
-const base = require("../../jest.config.base.js");
-const pack = require('./package');
+const pack = require('./package')
+const { getSuiteName } = require('../../dev')
 
 module.exports = {
-  displayName: `${pack.name} linter`,
+  displayName: getSuiteName(pack, 'linter'),
+  rootDir: __dirname,
   runner: 'jest-runner-standard',
   testMatch: [
     '<rootDir>/**/*.{js,jsx}'
@@ -13,4 +14,4 @@ module.exports = {
     '/node_modules/',
     '/static/'
   ]
-};
+}

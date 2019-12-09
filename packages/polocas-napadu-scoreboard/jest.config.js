@@ -1,25 +1,18 @@
+const { resolve } = require('path')
+
+const scoreboardIntegration = require('./packages/scoreboard/jest.integration.config')
+const scoreboardLinter = require('./packages/scoreboard/jest.standard.config')
 // const base = require('./jest.config.base.js')
+
+process.env.NODE_PATH = resolve(__dirname, 'packages')
 
 module.exports = {
   // ...base,
-  // roots: ['<rootDir>/packages/scoreboard'],
-  // roots: ['<rootDir>/src'],
+  rootDir: __dirname,
   projects: [
-    // '<rootDir>/packages/*/jest.config.js',
-    '<rootDir>/packages/scoreboard/jest.config.js',
-    // {
-    //   displayName: 'linter',
-    //   runner: 'jest-runner-standard',
-    //   testMatch: [
-    //     '<rootDir>/**/*.{js,jsx}'
-    //   ],
-    //   testPathIgnorePatterns: [
-    //     '/build/',
-    //     '/coverage/',
-    //     '/node_modules/',
-    //     '/static/'
-    //   ]
-    // }
+    scoreboardIntegration,
+    scoreboardLinter
   ],
+  watchPlugins: ['jest-watch-select-projects']
   // coverageDirectory: '<rootDir>/coverage/'
 }

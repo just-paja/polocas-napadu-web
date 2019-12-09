@@ -11,9 +11,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "babel-jest": "^24.9.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "jest-runner-standard": "0.0.13",
+    "jest-watch-select-projects": "^1.0.0",
+    "standard": "^14.3.1"
   }
 }
