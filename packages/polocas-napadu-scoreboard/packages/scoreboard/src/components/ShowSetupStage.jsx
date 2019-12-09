@@ -1,41 +1,40 @@
-import React from 'react';
+import InspirationCount from './InspirationCount'
+import InspirationQr from './InspirationQr'
+import React from 'react'
+import Teams from './Teams'
 
-import { Classes } from 'core/proptypes';
-import { Stage } from './Stage';
-import { withStyles } from '@material-ui/core/styles';
-
-import InspirationCount from './InspirationCount';
-import InspirationQr from './InspirationQr';
-import Teams from './Teams';
+import { Classes } from 'core/proptypes'
+import { Stage } from './Stage'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   inspiration: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   qr: {
-    width: 400,
-  },
-};
+    width: 400
+  }
+}
 
 class ShowSetupStage extends Stage {
-  render() {
-    const { classes } = this.props;
+  render () {
+    const { classes } = this.props
     return (
-      <React.Fragment>
+      <>
         <Teams hideScore />
         <div className={classes.inspiration}>
           <InspirationQr className={classes.qr} />
         </div>
         <InspirationCount />
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
 ShowSetupStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(ShowSetupStage);
+export default withStyles(styles)(ShowSetupStage)

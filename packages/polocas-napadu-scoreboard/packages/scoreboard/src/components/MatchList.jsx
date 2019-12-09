@@ -1,27 +1,26 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import GraphContainer from './GraphContainer'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { Classes, Match } from 'core/proptypes';
-import { gql } from 'apollo-boost';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
-import { withStyles } from '@material-ui/core/styles';
-
-import GraphContainer from './GraphContainer';
+import { Classes, Match } from 'core/proptypes'
+import { gql } from 'apollo-boost'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   menu: {
     background: theme.palette.background.default,
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4
   },
   item: {
-    listStyle: 'none',
+    listStyle: 'none'
   },
   list: {
     margin: 0,
-    padding: 0,
+    padding: 0
   },
   page: {
     alignItems: 'center',
@@ -30,9 +29,9 @@ const styles = theme => ({
     height: '100%',
     justifyContent: 'center',
     position: 'fixed',
-    width: '100%',
+    width: '100%'
   }
-});
+})
 
 const GET_MATCHES = gql`
   query {
@@ -53,7 +52,7 @@ const GET_MATCHES = gql`
       }
     }
   }
-`;
+`
 
 const MatchList = ({ classes, data }) => (
   <div className={classes.page}>
@@ -72,16 +71,16 @@ const MatchList = ({ classes, data }) => (
       </ul>
     </div>
   </div>
-);
+)
 
 MatchList.propTypes = {
   classes: Classes.isRequired,
   data: PropTypes.shape({
-    matchList: PropTypes.arrayOf(Match).isRequired,
+    matchList: PropTypes.arrayOf(Match).isRequired
   }).isRequired
-};
+}
 
 export default GraphContainer(
   withRouter(withStyles(styles)(MatchList)),
   GET_MATCHES
-);
+)

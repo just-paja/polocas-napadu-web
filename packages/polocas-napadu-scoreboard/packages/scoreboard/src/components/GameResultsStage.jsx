@@ -1,16 +1,16 @@
-import GameVote from './GameVote';
-import React from 'react';
-import Teams from './Teams';
+import GameVote from './GameVote'
+import React from 'react'
+import Teams from './Teams'
 
 class GameResultsStage extends React.Component {
-  render() {
+  render () {
     return (
-      <React.Fragment>
+      <>
         <Teams />
         <GameVote />
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
-export default GameResultsStage;
+export default GameResultsStage

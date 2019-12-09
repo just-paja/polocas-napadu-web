@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Stage } from './Stage';
+import { Stage } from './Stage'
 
 class IntroStage extends Stage {
-  render() {
+  render () {
     return <div />
   }
 }
 
-export default IntroStage;
+export default IntroStage

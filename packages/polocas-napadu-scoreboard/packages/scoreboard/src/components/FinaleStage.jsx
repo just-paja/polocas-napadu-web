@@ -1,22 +1,21 @@
-import React from 'react';
+import Teams from './Teams'
+import GameHistory from './GameHistory'
+import React from 'react'
 
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-
-import Teams from './Teams';
-import GameHistory from './GameHistory';
+import { Classes } from 'core/proptypes'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   text: {
-    fontSize: '3rem',
-    textAlign: 'center',
     color: 'white',
+    fontSize: '3rem',
+    textAlign: 'center'
   },
   center: {
-    justifyContent: 'center',
     display: 'flex',
-  },
-};
+    justifyContent: 'center'
+  }
+}
 
 const FinaleStage = ({ classes }) => (
   <div>
@@ -27,10 +26,10 @@ const FinaleStage = ({ classes }) => (
     </div>
     <p className={classes.text}>www.polocas-napadu.cz</p>
   </div>
-);
+)
 
 FinaleStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(FinaleStage);
+export default withStyles(styles)(FinaleStage)

@@ -1,41 +1,40 @@
-import React from 'react';
+import GameHistory from './GameHistory'
+import Teams from './Teams'
+import React from 'react'
 
-import { Classes } from 'core/proptypes';
-import { Stage } from './Stage';
-import { withStyles } from '@material-ui/core/styles';
-
-import GameHistory from './GameHistory';
-import Teams from './Teams';
+import { Classes } from 'core/proptypes'
+import { Stage } from './Stage'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   text: {
-    fontSize: '3rem',
-    textAlign: 'center',
     color: 'white',
+    fontSize: '3rem',
+    textAlign: 'center'
   },
   center: {
-    justifyContent: 'center',
     display: 'flex',
-  },
-};
+    justifyContent: 'center'
+  }
+}
 
 class PauseStage extends Stage {
-  render() {
-    const { classes } = this.props;
+  render () {
+    const { classes } = this.props
     return (
-      <React.Fragment>
+      <>
         <Teams />
         <p className={classes.text}>V první půlce jste viděli</p>
         <div className={classes.center}>
           <GameHistory />
         </div>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
 PauseStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(PauseStage);
+export default withStyles(styles)(PauseStage)

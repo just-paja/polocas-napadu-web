@@ -1,6 +1,6 @@
-import { VolumeScrapeChart } from './VolumeScrapeChart';
-import { withVolumeScrape } from './withVolumeScrape';
+import { VolumeScrapeChart } from './VolumeScrapeChart'
+import { withVolumeScrape } from './withVolumeScrape'
 
 export default withVolumeScrape({
-  getLineColor: line => line.contestantGroup.color,
-})(VolumeScrapeChart);
+  getLineColor: line => line.contestantGroup.color
+})(VolumeScrapeChart)

@@ -1,18 +1,18 @@
-import GameInspiration from './GameInspiration';
-import React from 'react';
-import Teams from './Teams';
+import GameInspiration from './GameInspiration'
+import React from 'react'
+import Teams from './Teams'
 
-import { Stage } from './Stage';
+import { Stage } from './Stage'
 
 class GameSetupStage extends Stage {
-  render() {
+  render () {
     return (
-      <React.Fragment>
+      <>
         <Teams />
         <GameInspiration />
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
-export default GameSetupStage;
+export default GameSetupStage

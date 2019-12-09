@@ -1,24 +1,24 @@
-import React from 'react';
+import React from 'react'
 
-import { gql } from 'apollo-boost';
-import { MatchContext } from 'core/context';
+import { gql } from 'apollo-boost'
+import { MatchContext } from 'core/context'
 import {
   STAGE_FINALE,
   STAGE_GAME_RESULTS,
   STAGE_GAME_SETUP,
   STAGE_GAME,
   STAGE_INTRO,
-  STAGE_PAUSE,
-} from 'core/constants';
+  STAGE_PAUSE
+} from 'core/constants'
 
-import FinaleStage from './FinaleStage';
-import GameResultsStage from './GameResultsStage';
-import GameSetupStage from './GameSetupStage';
-import GameStage from './GameStage';
-import GraphContainer from './GraphContainer';
-import IntroStage from './IntroStage';
-import PauseStage from './PauseStage';
-import ShowSetupStage from './ShowSetupStage';
+import FinaleStage from './FinaleStage'
+import GameResultsStage from './GameResultsStage'
+import GameSetupStage from './GameSetupStage'
+import GameStage from './GameStage'
+import GraphContainer from './GraphContainer'
+import IntroStage from './IntroStage'
+import PauseStage from './PauseStage'
+import ShowSetupStage from './ShowSetupStage'
 
 const GET_MATCH_STAGE = gql`
   query Stage($matchId: Int!) {
@@ -75,35 +75,35 @@ const GET_MATCH_STAGE = gql`
 const getStageView = (stage) => {
   if (stage) {
     if (stage.type === STAGE_FINALE) {
-      return <FinaleStage />;
+      return <FinaleStage />
     }
     if (stage.type === STAGE_INTRO) {
-      return <IntroStage />;
+      return <IntroStage />
     }
     if (stage.type === STAGE_PAUSE) {
-      return <PauseStage />;
+      return <PauseStage />
     }
     if (stage.type === STAGE_GAME_RESULTS) {
-      return <GameResultsStage />;
+      return <GameResultsStage />
     }
     if (stage.type === STAGE_GAME) {
-      return <GameStage />;
+      return <GameStage />
     }
     if (stage.type === STAGE_GAME_SETUP) {
-      return <GameSetupStage />;
+      return <GameSetupStage />
     }
   }
-  return <ShowSetupStage />;
-};
+  return <ShowSetupStage />
+}
 
 const MatchStage = ({ data }) => (
   <MatchContext.Provider value={data}>
     {getStageView(data.match.currentStage)}
   </MatchContext.Provider>
-);
+)
 
 export default GraphContainer(
   MatchStage,
   GET_MATCH_STAGE,
-  true,
-);
+  true
+)

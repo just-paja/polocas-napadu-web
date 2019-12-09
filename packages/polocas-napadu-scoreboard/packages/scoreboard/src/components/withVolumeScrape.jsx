@@ -1,9 +1,9 @@
-import moment from 'moment';
-import React from 'react';
+import moment from 'moment'
+import React from 'react'
 
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
-import { VOLUME_SCRAPE_RATE } from 'core/constants';
+import { gql } from 'apollo-boost'
+import { Query } from 'react-apollo'
+import { VOLUME_SCRAPE_RATE } from 'core/constants'
 
 const GET_ACTIVE_VOLUME_SCRAPE = gql`
   query VolumeScrapeList($livePollVotingId: Int!) {
@@ -12,81 +12,81 @@ const GET_ACTIVE_VOLUME_SCRAPE = gql`
       volume,
     }
   }
-`;
+`
 
-function getZeroTime(scrapes) {
+function getZeroTime (scrapes) {
   if (scrapes.length === 0) {
-    return 0;
+    return 0
   }
   return scrapes.reduce((min, scrape) => {
-    const val = moment(scrapes[0].created).valueOf();
+    const val = moment(scrapes[0].created).valueOf()
     return val < min ? val : min
-  }, Infinity);
+  }, Infinity)
 }
 
-function convertScrapesToLine(scrapes) {
-  const start = getZeroTime(scrapes);
+function convertScrapesToLine (scrapes) {
+  const start = getZeroTime(scrapes)
   return scrapes.map(scrape => ({
     x: moment(scrape.created).valueOf() - start,
-    y: scrape.volume,
-  })).sort((a, b) => a.x - b.x);
+    y: scrape.volume
+  })).sort((a, b) => a.x - b.x)
 }
 
 export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
-  function getVotingCurve(voting, volumeScrapes) {
+  function getVotingCurve (voting, volumeScrapes) {
     return {
       color: getLineColor && getLineColor(voting),
       data: convertScrapesToLine(voting.volumeScrapes || volumeScrapes),
-      id: voting.id,
-    };
+      id: voting.id
+    }
   }
 
   class VolumeScraper extends React.Component {
-    constructor(props) {
-      super();
+    constructor (props) {
+      super()
       this.state = {
         scrapes: props.poll.votings.map(getVotingCurve)
-      };
-      this.handleLoad = this.handleLoad.bind(this);
-    }
-
-    getActiveVoting() {
-      const { poll } = this.props;
-      if (poll) {
-        return poll.votings.find(voting => !voting.closed);
       }
-      return null;
+      this.handleLoad = this.handleLoad.bind(this)
     }
 
-    handleLoad(data) {
-      const voting = this.getActiveVoting();
-      const scrapes = [...this.state.scrapes];
-      const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id);
-      const { volumeScrapeList } = data;
+    getActiveVoting () {
+      const { poll } = this.props
+      if (poll) {
+        return poll.votings.find(voting => !voting.closed)
+      }
+      return null
+    }
+
+    handleLoad (data) {
+      const voting = this.getActiveVoting()
+      const scrapes = [...this.state.scrapes]
+      const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id)
+      const { volumeScrapeList } = data
       if (targetIndex === -1) {
-        scrapes.push(getVotingCurve(voting, volumeScrapeList));
+        scrapes.push(getVotingCurve(voting, volumeScrapeList))
       } else {
         scrapes[targetIndex] = {
           ...scrapes[targetIndex],
-          data: convertScrapesToLine(volumeScrapeList),
-        };
+          data: convertScrapesToLine(volumeScrapeList)
+        }
       }
-      this.setState({ scrapes });
+      this.setState({ scrapes })
     }
 
-    renderContent() {
+    renderContent () {
       return (
         <WrappedComponent
           votings={this.state.scrapes}
           {...this.props}
         />
-      );
+      )
     }
 
-    render() {
-      const activeVoting = this.getActiveVoting();
+    render () {
+      const activeVoting = this.getActiveVoting()
       return (
-        <React.Fragment>
+        <>
           {activeVoting ? (
             <Query
               query={GET_ACTIVE_VOLUME_SCRAPE}
@@ -98,10 +98,10 @@ export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
             </Query>
           ) : null}
           {this.renderContent()}
-        </React.Fragment>
-      );
+        </>
+      )
     }
   }
 
-  return VolumeScraper;
-};
+  return VolumeScraper
+}

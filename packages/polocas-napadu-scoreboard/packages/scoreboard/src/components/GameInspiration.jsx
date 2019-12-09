@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import { Game } from 'core/proptypes';
-import { MatchContext } from 'core/context';
-import { withStyles } from '@material-ui/core/styles';
+import { Game } from 'core/proptypes'
+import { MatchContext } from 'core/context'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   inspiration: {
     color: 'white',
     fontSize: '4rem',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   game: {
     color: 'white',
     fontSize: '2rem',
-    textAlign: 'center',
-  },
-};
+    textAlign: 'center'
+  }
+}
 
 class GameInspiration extends React.Component {
-  render() {
-    const { classes } = this.props;
-    const { game, inspirations } = this.context.match.currentStage;
+  render () {
+    const { classes } = this.props
+    const { game, inspirations } = this.context.match.currentStage
     const list = game && game.inspirations && game.inspirations.length
       ? game.inspirations
-      : inspirations;
+      : inspirations
     return (
       <div>
         {game && game.type ? <div className={classes.game}>{game.type}</div> : null}
@@ -34,14 +34,14 @@ class GameInspiration extends React.Component {
             </div>
           ) : null}
       </div>
-    );
-  };
+    )
+  }
 }
 
-GameInspiration.contextType = MatchContext;
+GameInspiration.contextType = MatchContext
 
 GameInspiration.propTypes = {
-  game: Game,
-};
+  game: Game
+}
 
-export default withStyles(styles)(GameInspiration);
+export default withStyles(styles)(GameInspiration)

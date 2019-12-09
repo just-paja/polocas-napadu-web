@@ -1,12 +1,12 @@
-import GameInspiration from './GameInspiration';
-import React from 'react';
+import GameInspiration from './GameInspiration'
+import React from 'react'
 
-import { Stage } from './Stage';
+import { Stage } from './Stage'
 
 class GameStage extends Stage {
-  render() {
-    return <GameInspiration />;
+  render () {
+    return <GameInspiration />
   }
 }
 
-export default GameStage;
+export default GameStage
