@@ -14,11 +14,14 @@
   "scripts": {
     "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint"
   },
   "homepage": "./",
   "browserslist": [
@@ -29,6 +32,9 @@
   ],
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1"
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest-runner-standard": "0.0.13",
+    "jest-watch-select-projects": "^1.0.0",
+    "standard": "^14.3.1"
   }
 }

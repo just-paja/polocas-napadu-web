@@ -1,16 +1,13 @@
-const base = require("../../jest.config.base.js");
-const pack = require('./package');
+const { getPackageTestConfig } = require('../../dev')
+const { resolve } = require('path')
 
-module.exports = {
-  name: pack.name,
-  projects: [
-    {
-      displayName: 'referee',
-      setupFiles: [
-        '<rootDir>/jest.setup.js',
-      ],
-      setupFilesAfterEnv: ['jest-enzyme/lib/index.js'],
-      testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/']
-    }
-  ]
-}
+const standard = require('./jest.standard.config.js')
+const integration = require('./jest.integration.config.js')
+
+process.env.NODE_PATH = resolve(__dirname, '..')
+
+module.exports = getPackageTestConfig(
+  __dirname,
+  integration,
+  standard
+)
