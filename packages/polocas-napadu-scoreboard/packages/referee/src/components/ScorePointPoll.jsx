@@ -1,67 +1,67 @@
-import DecibelMeter from './DecibelMeter';
-import GraphContainer from './GraphContainer';
-import Grid from '@material-ui/core/Grid';
-import PropTypes from 'prop-types';
-import React from 'react';
+import DecibelMeter from './DecibelMeter'
+import GraphContainer from './GraphContainer'
+import Grid from '@material-ui/core/Grid'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { MatchContext } from 'core/context';
-import { withStage } from '../context';
-import { withMutation } from './withMutation';
+import { MatchContext } from 'core/context'
+import { withStage } from '../context'
+import { withMutation } from './withMutation'
 
-import * as queries from '../queries';
+import * as queries from '../queries'
 
 class ScorePointPoll extends React.Component {
-  constructor() {
-    super();
-    this.handleRecordingStart = this.handleRecordingStart.bind(this);
-    this.handleRecordingStop = this.handleRecordingStop.bind(this);
-    this.handleScrape = this.handleScrape.bind(this);
+  constructor () {
+    super()
+    this.handleRecordingStart = this.handleRecordingStart.bind(this)
+    this.handleRecordingStop = this.handleRecordingStop.bind(this)
+    this.handleScrape = this.handleScrape.bind(this)
   }
 
-  getVoting(contestantGroupId) {
-    const { scorePointPoll } = this.props.data;
+  getVoting (contestantGroupId) {
+    const { scorePointPoll } = this.props.data
     if (scorePointPoll) {
       return scorePointPoll.votings.find(
         voting => voting.contestantGroup && voting.contestantGroup.id === contestantGroupId
-      );
+      )
     }
-    return null;
+    return null
   }
 
-  handleRecordingStart(contestantGroupId) {
-    const { onVotingStart } = this.props;
+  handleRecordingStart (contestantGroupId) {
+    const { onVotingStart } = this.props
     onVotingStart({
       refetchQueries: ['ScorePointPoll'],
       variables: {
-        contestantGroupId,
+        contestantGroupId
       }
     })
   }
 
-  handleRecordingStop(contestantGroupId) {
-    const { onVotingEnd } = this.props;
-    const { id } = this.getVoting(contestantGroupId);
+  handleRecordingStop (contestantGroupId) {
+    const { onVotingEnd } = this.props
+    const { id } = this.getVoting(contestantGroupId)
     onVotingEnd({
       refetchQueries: ['ScorePointPoll'],
       variables: {
-        livePollVotingId: id,
+        livePollVotingId: id
       },
       optimisticResponse: {
         closeLivePollVoting: {
-          __typename: "Mutation",
+          __typename: 'Mutation',
           livePollVoting: {
-            __typename: "LivePollVoting",
+            __typename: 'LivePollVoting',
             id,
-            closed: true,
+            closed: true
           }
         }
       }
-    });
+    })
   }
 
-  handleScrape(contestantGroupId, volume) {
-    const { onVolumeScrape } = this.props;
-    const { id } = this.getVoting(contestantGroupId);
+  handleScrape (contestantGroupId, volume) {
+    const { onVolumeScrape } = this.props
+    const { id } = this.getVoting(contestantGroupId)
     onVolumeScrape({
       variables: {
         livePollVotingId: id,
@@ -70,27 +70,27 @@ class ScorePointPoll extends React.Component {
     })
   }
 
-  getGroupVoting(contestantGroupId) {
-    const { scorePointPoll } = this.props.data;
+  getGroupVoting (contestantGroupId) {
+    const { scorePointPoll } = this.props.data
     if (scorePointPoll) {
       return scorePointPoll.votings.find(
         voting =>
-          voting.contestantGroup
-          && voting.contestantGroup.id === contestantGroupId
-      );
+          voting.contestantGroup &&
+          voting.contestantGroup.id === contestantGroupId
+      )
     }
-    return null;
+    return null
   }
 
-  isAnyVoteOpen() {
+  isAnyVoteOpen () {
     if (this.props.data.scorePointPoll) {
-      return this.props.data.scorePointPoll.votings.some(voting => !voting.closed);
+      return this.props.data.scorePointPoll.votings.some(voting => !voting.closed)
     }
-    return false;
+    return false
   }
 
-  renderGroupMeter(group) {
-    const voting = this.getGroupVoting(group.id);
+  renderGroupMeter (group) {
+    const voting = this.getGroupVoting(group.id)
     return (
       <DecibelMeter
         disabled={this.isAnyVoteOpen()}
@@ -104,8 +104,8 @@ class ScorePointPoll extends React.Component {
     )
   }
 
-  render() {
-    const { contestantGroups } = this.context.match;
+  render () {
+    const { contestantGroups } = this.context.match
     return (
       <Grid container spacing={32}>
         {contestantGroups.map(group => (
@@ -119,24 +119,24 @@ class ScorePointPoll extends React.Component {
           </Grid>
         ))}
       </Grid>
-    );
+    )
   }
 }
 
-ScorePointPoll.contextType = MatchContext;
+ScorePointPoll.contextType = MatchContext
 ScorePointPoll.propTypes = {
   data: PropTypes.object.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   onVolumeScrape: PropTypes.func.isRequired,
   onVotingEnd: PropTypes.func.isRequired,
   onVotingStart: PropTypes.func.isRequired,
-  rate: PropTypes.number,
-};
+  rate: PropTypes.number
+}
 
 ScorePointPoll.defaultProps = {
   layout: 'horizontal',
-  rate: 10,
-};
+  rate: 10
+}
 
 export default withStage(GraphContainer(
   withMutation('onVotingStart', queries.startScorePointVoting)(
@@ -146,4 +146,4 @@ export default withStage(GraphContainer(
   ),
   queries.getScorePointPoll,
   true
-));
+))

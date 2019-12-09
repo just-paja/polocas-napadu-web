@@ -1,108 +1,107 @@
-import AppBar from '@material-ui/core/AppBar';
-import CloseIcon from '@material-ui/icons/Close';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import IconButton from '@material-ui/core/IconButton';
-import PropTypes from 'prop-types';
-import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar'
+import CloseIcon from '@material-ui/icons/Close'
+import DecibelMeter from './DecibelMeter'
+import Dialog from '@material-ui/core/Dialog'
+import DialogContent from '@material-ui/core/DialogContent'
+import IconButton from '@material-ui/core/IconButton'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
-import { Classes } from 'core/proptypes';
-import { MatchContext } from 'core/context';
-import { withStyles } from '@material-ui/core/styles';
-
-import DecibelMeter from './DecibelMeter';
+import { Classes } from 'core/proptypes'
+import { MatchContext } from 'core/context'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   appBar: {
-    position: 'relative',
+    position: 'relative'
   },
   flex: {
-    flex: 1,
+    flex: 1
   },
   center: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   calibration: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingTop: theme.spacing.unit * 4,
-  },
-});
+    paddingTop: theme.spacing.unit * 4
+  }
+})
 
 class CalibrationDialog extends React.Component {
-  constructor() {
-    super();
-    this.handleActorChange = this.handleActorChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleFoulTypeChange = this.handleFoulTypeChange.bind(this);
-    this.handleTabChange = this.handleTabChange.bind(this);
+  constructor () {
+    super()
+    this.handleActorChange = this.handleActorChange.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handleFoulTypeChange = this.handleFoulTypeChange.bind(this)
+    this.handleTabChange = this.handleTabChange.bind(this)
     this.state = {
       tab: 'groups',
-      value: {},
-    };
+      value: {}
+    }
   }
 
-  handleTabChange(event, tab) {
-    this.setState({ tab });
+  handleTabChange (event, tab) {
+    this.setState({ tab })
   }
 
-  handleActorChange(value) {
+  handleActorChange (value) {
     this.setState({
       value: {
         ...this.state.value,
         contestantGroupId: value.contestantGroupId,
-        playerId: value.playerId,
-      },
-    });
+        playerId: value.playerId
+      }
+    })
   }
 
-  handleClose() {
-    this.setState({ value: {} });
-    this.props.onClose();
+  handleClose () {
+    this.setState({ value: {} })
+    this.props.onClose()
   }
 
-  handleFoulTypeChange(foulType) {
+  handleFoulTypeChange (foulType) {
     this.setState({
       value: {
         ...this.state.value,
-        foulType: foulType,
-      },
-    });
+        foulType: foulType
+      }
+    })
   }
 
-  isSelected(value) {
-   return (
-     value.playerId === this.state.value.playerId
-     && value.contestantGroupId === this.state.value.contestantGroupId
-   );
+  isSelected (value) {
+    return (
+      value.playerId === this.state.value.playerId &&
+      value.contestantGroupId === this.state.value.contestantGroupId
+    )
   }
 
-  renderHeader() {
-    const { classes } = this.props;
+  renderHeader () {
+    const { classes } = this.props
     return (
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+          <IconButton color='inherit' onClick={this.handleClose} aria-label='Close'>
             <CloseIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.flex}>
+          <Typography variant='h6' color='inherit' className={classes.flex}>
             Kalibrace hlasovacího zařízení
           </Typography>
         </Toolbar>
       </AppBar>
-    );
+    )
   }
 
-  render() {
-    const { classes, open } = this.props;
+  render () {
+    const { classes, open } = this.props
     return (
       <MatchContext.Consumer>
         {data => (
           <Dialog
-            aria-labelledby="penaltyDialogTitle"
+            aria-labelledby='penaltyDialogTitle'
             fullScreen
             onClose={this.handleClose}
             open={open}
@@ -115,8 +114,8 @@ class CalibrationDialog extends React.Component {
                     id: 666,
                     contestantType: 'A_1',
                     band: {
-                      name: 'Kalibrace',
-                    },
+                      name: 'Kalibrace'
+                    }
                   }}
                   onRecordingStart={() => {}}
                   onRecordingStop={() => {}}
@@ -132,14 +131,14 @@ class CalibrationDialog extends React.Component {
           </Dialog>
         )}
       </MatchContext.Consumer>
-    );
+    )
   }
 }
 
 CalibrationDialog.propTypes = {
   classes: Classes.isRequired,
   open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
+  onClose: PropTypes.func.isRequired
+}
 
-export default withStyles(styles)(CalibrationDialog);
+export default withStyles(styles)(CalibrationDialog)

@@ -1,18 +1,12 @@
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import React from 'react';
+import Dialog from '@material-ui/core/Dialog'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import InspirationForm from './InspirationForm'
+import React from 'react'
 
-import { Classes } from 'core/proptypes';
-import { gql } from 'apollo-boost';
-import { MatchContext } from 'core/context';
-import { Mutation } from 'react-apollo';
-import { withStyles } from '@material-ui/core/styles';
-
-import InspirationForm from './InspirationForm';
-
-const styles = theme => ({
-});
+import { gql } from 'apollo-boost'
+import { MatchContext } from 'core/context'
+import { Mutation } from 'react-apollo'
 
 const ADD_AND_USE_INSPIRATION = gql`
   mutation AddAndUseInspiration($matchId: Int!, $inspirationText: String!) {
@@ -20,23 +14,23 @@ const ADD_AND_USE_INSPIRATION = gql`
       ok,
     }
   }
-`;
+`
 
 class CustomInspirationDialog extends React.Component {
-  constructor() {
-    super();
-    this.handleSaveSuccess = this.handleSaveSuccess.bind(this);
+  constructor () {
+    super()
+    this.handleSaveSuccess = this.handleSaveSuccess.bind(this)
     this.state = {
-      inspirationText: '',
-    };
+      inspirationText: ''
+    }
   }
 
-  handleSaveSuccess(data) {
-    this.props.onClose();
+  handleSaveSuccess (data) {
+    this.props.onClose()
   }
 
-  render() {
-    const { open, onClose } = this.props;
+  render () {
+    const { open, onClose } = this.props
     return (
       <Dialog
         open={open}
@@ -60,9 +54,9 @@ class CustomInspirationDialog extends React.Component {
                       mutate({
                         variables: {
                           inspirationText: formData.inspiration,
-                          matchId: data.match.id,
-                        },
-                      });
+                          matchId: data.match.id
+                        }
+                      })
                     }}
                   />
                 )}
@@ -71,12 +65,8 @@ class CustomInspirationDialog extends React.Component {
           </MatchContext.Consumer>
         </DialogContent>
       </Dialog>
-    );
+    )
   }
 }
 
-CustomInspirationDialog.propTypes = {
-  classes: Classes.isRequired,
-};
-
-export default withStyles(styles)(CustomInspirationDialog);
+export default CustomInspirationDialog

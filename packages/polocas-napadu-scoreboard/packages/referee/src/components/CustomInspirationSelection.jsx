@@ -1,29 +1,28 @@
-import React from 'react';
-
-import CustomInspirationDialog from './CustomInspirationDialog';
-import InteractiveButton from './InteractiveButton';
+import CustomInspirationDialog from './CustomInspirationDialog'
+import InteractiveButton from './InteractiveButton'
+import React from 'react'
 
 class CustomInspirationSelection extends React.Component {
-  constructor() {
-    super();
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+  constructor () {
+    super()
+    this.handleOpen = this.handleOpen.bind(this)
+    this.handleClose = this.handleClose.bind(this)
     this.state = {
-      open: false,
-    };
+      open: false
+    }
   }
 
-  handleClose() {
-    this.setState({ open: false });
+  handleClose () {
+    this.setState({ open: false })
   }
 
-  handleOpen() {
-    this.setState({ open: true });
+  handleOpen () {
+    this.setState({ open: true })
   }
 
-  render() {
+  render () {
     return (
-      <React.Fragment>
+      <>
         <InteractiveButton onClick={this.handleOpen}>
           Zadat ručně
         </InteractiveButton>
@@ -31,9 +30,9 @@ class CustomInspirationSelection extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         />
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
-export default CustomInspirationSelection;
+export default CustomInspirationSelection

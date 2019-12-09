@@ -1,22 +1,21 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import InteractiveButton from './InteractiveButton'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { MatchContext } from 'core/context';
-import { STAGES, STAGE_GAME, STAGE_OPTIONS } from 'core/constants';
-
-import InteractiveButton from './InteractiveButton';
+import { MatchContext } from 'core/context'
+import { STAGES, STAGE_GAME, STAGE_OPTIONS } from 'core/constants'
 
 const getStageLabel = (stage) => {
-  const option = STAGE_OPTIONS.find(option => option.value === stage);
-  return option && option.label;
-};
+  const option = STAGE_OPTIONS.find(option => option.value === stage)
+  return option && option.label
+}
 
 const isStageReady = (stage, currentStage) => {
   if (stage === STAGE_GAME) {
-    return Boolean(currentStage.game);
+    return Boolean(currentStage.game)
   }
-  return true;
-};
+  return true
+}
 
 const ShowStageButton = ({ mutate, loading, classes, stage }) => (
   <MatchContext.Consumer>
@@ -28,21 +27,23 @@ const ShowStageButton = ({ mutate, loading, classes, stage }) => (
           refetchQueries: ['MatchStage'],
           variables: {
             matchId: context.match.id,
-            stage,
-          },
+            stage
+          }
         })}
-      >{getStageLabel(stage)}</InteractiveButton>
+      >
+        {getStageLabel(stage)}
+      </InteractiveButton>
     )}
   </MatchContext.Consumer>
-);
+)
 
 ShowStageButton.propTypes = {
   back: PropTypes.bool,
-  stage: PropTypes.oneOf(STAGES).isRequired,
-};
+  stage: PropTypes.oneOf(STAGES).isRequired
+}
 
 ShowStageButton.defaultProps = {
-  back: false,
-};
+  back: false
+}
 
-export default ShowStageButton;
+export default ShowStageButton

@@ -1,18 +1,12 @@
-import React from 'react';
+import BoardLayout from './BoardLayout'
+import React from 'react'
+import ShowStageControls from './ShowStageControls'
 
-import { withStyles } from '@material-ui/core/styles';
-
-import BoardLayout from './BoardLayout';
-import ShowStageControls from './ShowStageControls';
-
-const styles = theme => ({
-});
-
-const ControlsLayout = ({ children, classes }) => (
-  <BoardLayout layout="vertical">
+const ControlsLayout = ({ children }) => (
+  <BoardLayout layout='vertical'>
     {children}
     <ShowStageControls />
   </BoardLayout>
-);
+)
 
-export default withStyles(styles)(ControlsLayout);
+export default ControlsLayout

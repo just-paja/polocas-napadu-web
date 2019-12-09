@@ -1,24 +1,20 @@
-import React from 'react';
+import BoardLayout from './BoardLayout'
+import ControlsLayout from './ControlsLayout'
+import MainControls from './MainControls'
+import React from 'react'
+import Team from './Team'
 
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  TEAM_SIDE_LEFT,
-  TEAM_SIDE_RIGHT,
-} from 'core/constants';
-
-import BoardLayout from './BoardLayout';
-import ControlsLayout from './ControlsLayout';
-import MainControls from './MainControls';
-import Team from './Team';
+import { Classes } from 'core/proptypes'
+import { withStyles } from '@material-ui/core/styles'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
 
 const styles = {
   inspiration: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center',
-  },
-};
+    justifyContent: 'center'
+  }
+}
 
 const IntroStage = ({ classes }) => (
   <ControlsLayout>
@@ -34,10 +30,10 @@ const IntroStage = ({ classes }) => (
       </p>
     </MainControls>
   </ControlsLayout>
-);
+)
 
 IntroStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(IntroStage);
+export default withStyles(styles)(IntroStage)

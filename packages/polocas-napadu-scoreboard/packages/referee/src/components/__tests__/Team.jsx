@@ -1,9 +1,9 @@
-import React from 'react';
-import Team from '../Team';
+import React from 'react'
+import Team from '../Team'
 
-import { MatchContext } from 'core/context';
-import { mount } from 'enzyme';
-import { apolloWrap } from 'core/mock';
+import { MatchContext } from 'core/context'
+import { mount } from 'enzyme'
+import { apolloWrap } from 'core/mock'
 
 describe('Team component', () => {
   it('given selected team is null, then it renders as null', () => {
@@ -11,13 +11,13 @@ describe('Team component', () => {
       <MatchContext.Provider
         value={{
           match: {
-            contestantGroups: [],
-          },
+            contestantGroups: []
+          }
         }}
       >
-        <Team side="left" />
+        <Team side='left' />
       </MatchContext.Provider>
-    ));
+    ))
     expect(comp.find('Team').children()).toHaveLength(0)
-  });
-});
+  })
+})

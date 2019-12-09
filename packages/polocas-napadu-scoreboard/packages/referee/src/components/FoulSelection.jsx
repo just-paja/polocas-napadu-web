@@ -1,14 +1,13 @@
-import React from 'react';
-import Select from 'react-select';
+import GraphContainer from './GraphContainer'
+import React from 'react'
+import Select from 'react-select'
 
-import { gql } from 'apollo-boost';
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-
-import GraphContainer from './GraphContainer';
+import { gql } from 'apollo-boost'
+import { Classes } from 'core/proptypes'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
-};
+}
 
 const GET_GAMES = gql`
   query FoulTypes {
@@ -17,7 +16,7 @@ const GET_GAMES = gql`
       name,
     }
   }
-`;
+`
 
 const FoulSelection = ({ classes, data, onChange, theme, value }) => (
   <Select
@@ -27,16 +26,16 @@ const FoulSelection = ({ classes, data, onChange, theme, value }) => (
     getOptionValue={option => option.id}
     value={value}
     onChange={onChange}
-    placeholder="Vyber druh chyby"
+    placeholder='Vyber druh chyby'
     isClearable
   />
-);
+)
 
 FoulSelection.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
 export default GraphContainer(
   withStyles(styles, { withTheme: true })(FoulSelection),
   GET_GAMES
-);
+)

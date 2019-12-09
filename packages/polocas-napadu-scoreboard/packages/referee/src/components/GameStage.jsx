@@ -1,28 +1,24 @@
-import moment from 'moment';
-import React from 'react';
+import BoardLayout from './BoardLayout'
+import ControlsLayout from './ControlsLayout'
+import InspirationList from './InspirationList'
+import MainControls from './MainControls'
+import moment from 'moment'
+import React from 'react'
+import Team from './Team'
+import Timer from './Timer'
 
-import { Classes } from 'core/proptypes';
-import { MatchContext } from 'core/context';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  TEAM_SIDE_LEFT,
-  TEAM_SIDE_RIGHT,
-} from 'core/constants';
-
-import BoardLayout from './BoardLayout';
-import ControlsLayout from './ControlsLayout';
-import MainControls from './MainControls';
-import InspirationList from './InspirationList';
-import Team from './Team';
-import Timer from './Timer';
+import { Classes } from 'core/proptypes'
+import { MatchContext } from 'core/context'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   inspiration: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center',
-  },
-};
+    justifyContent: 'center'
+  }
+}
 
 const GameStage = ({ classes }) => (
   <MatchContext.Consumer>
@@ -44,10 +40,10 @@ const GameStage = ({ classes }) => (
       </ControlsLayout>
     )}
   </MatchContext.Consumer>
-);
+)
 
 GameStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(GameStage);
+export default withStyles(styles)(GameStage)

@@ -20,7 +20,8 @@ function getIntegrationTestConfig (pack, path) {
       'src/**/*.{js,jsx}'
     ],
     setupFiles: [
-      'react-app-polyfill/jsdom'
+      'react-app-polyfill/jsdom',
+      resolve(path, 'jest.setup.js')
     ],
     testPathIgnorePatterns: [
       '/build/',

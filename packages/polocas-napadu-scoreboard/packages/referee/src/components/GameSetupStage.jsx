@@ -1,19 +1,15 @@
-import React from 'react';
+import BoardLayout from './BoardLayout'
+import ControlsLayout from './ControlsLayout'
+import GameSelection from './GameSelection'
+import InspirationSelection from './InspirationSelection'
+import MainControls from './MainControls'
+import React from 'react'
+import Team from './Team'
 
-import { gql } from 'apollo-boost';
-import { MatchContext } from 'core/context';
-import { Mutation } from 'react-apollo';
-import {
-  TEAM_SIDE_LEFT,
-  TEAM_SIDE_RIGHT,
-} from 'core/constants';
-
-import BoardLayout from './BoardLayout';
-import ControlsLayout from './ControlsLayout';
-import GameSelection from './GameSelection';
-import InspirationSelection from './InspirationSelection';
-import MainControls from './MainControls';
-import Team from './Team';
+import { gql } from 'apollo-boost'
+import { MatchContext } from 'core/context'
+import { Mutation } from 'react-apollo'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
 
 const SET_GAME = gql`
   mutation SetMatchGame($matchId: Int!, $gameRulesId: Int) {
@@ -21,10 +17,10 @@ const SET_GAME = gql`
       ok,
     }
   }
-`;
+`
 
 class GameSetupStage extends React.Component {
-  render() {
+  render () {
     return (
       <ControlsLayout>
         <BoardLayout>
@@ -37,7 +33,7 @@ class GameSetupStage extends React.Component {
           {this.context.match.closed
             ? null
             : (
-              <React.Fragment>
+              <>
                 <Mutation mutation={SET_GAME}>
                   {(setGame, { error, loading }) => (
                     <GameSelection
@@ -45,8 +41,8 @@ class GameSetupStage extends React.Component {
                         refetchQueries: ['MatchStage'],
                         variables: {
                           gameRulesId: value ? value.id : null,
-                          matchId: this.context.match.id,
-                        },
+                          matchId: this.context.match.id
+                        }
                       })}
                       value={this.context.match.currentStage.game && this.context.match.currentStage.game.rules}
                     />
@@ -54,15 +50,14 @@ class GameSetupStage extends React.Component {
                 </Mutation>
                 <h2>Inspirace ({this.context.match.preparedInspirationCount})</h2>
                 <InspirationSelection />
-              </React.Fragment>
-            )
-          }
+              </>
+            )}
         </MainControls>
       </ControlsLayout>
-    );
+    )
   }
 }
 
 GameSetupStage.contextType = MatchContext
 
-export default GameSetupStage;
+export default GameSetupStage

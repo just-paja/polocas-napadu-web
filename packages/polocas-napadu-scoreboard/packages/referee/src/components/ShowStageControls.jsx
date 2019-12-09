@@ -1,8 +1,11 @@
-import React from 'react';
+import React from 'react'
+import ShowProgress from './ShowProgress'
+import ShowStageControl from './ShowStageControl'
+import ShowStageMenu from './ShowStageMenu'
 
-import { MatchContext } from 'core/context';
-import { Children, Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
+import { MatchContext } from 'core/context'
+import { Children, Classes } from 'core/proptypes'
+import { withStyles } from '@material-ui/core/styles'
 import {
   STAGE_FINALE,
   STAGE_GAME_RESULTS,
@@ -10,12 +13,8 @@ import {
   STAGE_GAME,
   STAGE_INTRO,
   STAGE_PAUSE,
-  STAGE_SHOW_SETUP,
-} from 'core/constants';
-
-import ShowProgress from './ShowProgress';
-import ShowStageControl from './ShowStageControl';
-import ShowStageMenu from './ShowStageMenu';
+  STAGE_SHOW_SETUP
+} from 'core/constants'
 
 const STAGE_MAP = {
   [STAGE_FINALE]: [STAGE_GAME_SETUP],
@@ -24,79 +23,78 @@ const STAGE_MAP = {
   [STAGE_GAME]: [STAGE_GAME_RESULTS],
   [STAGE_INTRO]: [STAGE_GAME_SETUP],
   [STAGE_PAUSE]: [STAGE_GAME_SETUP],
-  [STAGE_SHOW_SETUP]: [STAGE_INTRO],
-};
+  [STAGE_SHOW_SETUP]: [STAGE_INTRO]
+}
 
 const styles = theme => ({
   box: {
-    background: theme.palette.grey['A100'],
+    background: theme.palette.grey.A100,
     display: 'flex',
     flexWrap: 'wrap',
-    padding: theme.spacing.unit * 2,
-    marginTop: 'auto',
+    padding: theme.spacing(2),
+    marginTop: 'auto'
   },
   closed: {
     color: theme.palette.error.main,
     textAlign: 'center',
     width: '100%'
   }
-});
+})
 
 const mapStageToButton = stage => <ShowStageControl key={stage} stage={stage} />
 
 class ShowStageControls extends React.Component {
-  getForwardButtons() {
-    const stage = this.context.match.currentStage;
+  getForwardButtons () {
+    const stage = this.context.match.currentStage
     const forward = stage
       ? STAGE_MAP[stage.type]
-      : STAGE_MAP[STAGE_SHOW_SETUP];
-    return forward || [];
+      : STAGE_MAP[STAGE_SHOW_SETUP]
+    return forward || []
   }
 
-  renderControls() {
-    const { currentStage, prevStage } = this.context.match;
-    const forward = this.getForwardButtons();
+  renderControls () {
+    const { currentStage, prevStage } = this.context.match
+    const forward = this.getForwardButtons()
     return (
-      <React.Fragment>
+      <>
         {currentStage ? (
-          <ShowProgress side="left">
+          <ShowProgress side='left'>
             <ShowStageControl back stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP} />
           </ShowProgress>
         ) : null}
-        <ShowProgress side="right">
+        <ShowProgress side='right'>
           {forward.map(mapStageToButton)}
           <ShowStageControl
             component={ShowStageMenu}
             omit={[
               currentStage && currentStage.type,
-              ...forward,
+              ...forward
             ]}
           />
         </ShowProgress>
-      </React.Fragment>
+      </>
     )
   }
 
-  render() {
-    const { classes } = this.props;
-    const { closed } = this.context.match;
+  render () {
+    const { classes } = this.props
+    const { closed } = this.context.match
 
     return (
       <div className={classes.box}>
         {closed
           ? <p className={classes.closed}>Zápas je uzavřen</p>
-          : this.renderControls()
-        }
+          : this.renderControls()}
       </div>
-    );
+    )
   }
 }
 
-ShowStageControls.contextType = MatchContext;
+ShowStageControls.contextType = MatchContext
 
 ShowStageControls.propTypes = {
   children: Children,
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(ShowStageControls);
+export default withStyles(styles)(ShowStageControls)

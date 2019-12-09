@@ -1,26 +1,22 @@
-import React from 'react';
+import BoardLayout from './BoardLayout'
+import ControlsLayout from './ControlsLayout'
+import MainControls from './MainControls'
+import React from 'react'
+import ScoreControls from './ScoreControls'
+import ScorePointPoll from './ScorePointPoll'
+import Team from './Team'
 
-import { Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  TEAM_SIDE_LEFT,
-  TEAM_SIDE_RIGHT,
-} from 'core/constants';
-
-import BoardLayout from './BoardLayout';
-import ControlsLayout from './ControlsLayout';
-import MainControls from './MainControls';
-import ScoreControls from './ScoreControls';
-import ScorePointPoll from './ScorePointPoll';
-import Team from './Team';
+import { Classes } from 'core/proptypes'
+import { withStyles } from '@material-ui/core/styles'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
 
 const styles = {
   inspiration: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center',
-  },
-};
+    justifyContent: 'center'
+  }
+}
 
 const GameResultsStage = ({ classes }) => (
   <ControlsLayout>
@@ -38,10 +34,10 @@ const GameResultsStage = ({ classes }) => (
       <ScorePointPoll />
     </MainControls>
   </ControlsLayout>
-);
+)
 
 GameResultsStage.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(GameResultsStage);
+export default withStyles(styles)(GameResultsStage)

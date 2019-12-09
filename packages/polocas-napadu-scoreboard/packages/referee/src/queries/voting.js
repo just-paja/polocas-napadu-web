@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from 'apollo-boost'
 
 export const getScorePointPoll = gql`
   query ScorePointPoll($matchStageId: Int!) {
@@ -17,7 +17,7 @@ export const getScorePointPoll = gql`
         }
       }
     }
-  }`;
+  }`
 
 export const saveVolumeScrape = gql`
   mutation ScrapeStageVolume($livePollVotingId: Int!, $volume: Float!) {
@@ -27,7 +27,7 @@ export const saveVolumeScrape = gql`
         created,
       }
     }
-  }`;
+  }`
 
 export const startScorePointVoting = gql`
   mutation ScorePointVotingStart($contestantGroupId: Int!) {
@@ -39,7 +39,7 @@ export const startScorePointVoting = gql`
         }
       }
     }
-  }`;
+  }`
 
 export const closeLivePollVoting = gql`
   mutation ScorePointVotingClose($livePollVotingId: Int!) {
@@ -49,4 +49,4 @@ export const closeLivePollVoting = gql`
         closed
       }
     }
-  }`;
+  }`

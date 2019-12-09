@@ -1,22 +1,22 @@
-import IconButton from '@material-ui/core/IconButton';
-import Add from '@material-ui/icons/Add';
-import Remove from '@material-ui/icons/Remove';
-import React from 'react';
+import IconButton from '@material-ui/core/IconButton'
+import Add from '@material-ui/icons/Add'
+import Remove from '@material-ui/icons/Remove'
+import React from 'react'
 
-import { Classes, Side } from 'core/proptypes';
-import { getContestantBySide } from 'core/sides';
-import { gql } from 'apollo-boost';
-import { MatchContext } from 'core/context';
-import { Mutation } from 'react-apollo';
-import { withStyles } from '@material-ui/core/styles';
+import { Classes, Side } from 'core/proptypes'
+import { getContestantBySide } from 'core/sides'
+import { gql } from 'apollo-boost'
+import { MatchContext } from 'core/context'
+import { Mutation } from 'react-apollo'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   box: {
     display: 'flex',
     justifyContent: 'center',
-    paddingTop: theme.spacing.unit * 3,
+    paddingTop: theme.spacing.unit * 3
   }
-});
+})
 
 const CHANGE_SCORE = gql`
   mutation ChangeScore($contestantGroupId: Int!, $subtract: Boolean) {
@@ -24,7 +24,7 @@ const CHANGE_SCORE = gql`
       ok,
     }
   }
-`;
+`
 
 const ScoreControls = ({ classes, side }) => (
   <MatchContext.Consumer>
@@ -32,7 +32,7 @@ const ScoreControls = ({ classes, side }) => (
       const contestantGroup = getContestantBySide(
         data.match.contestantGroups,
         side
-      );
+      )
       return (
         <Mutation mutation={CHANGE_SCORE}>
           {(mutate, { loading }) => (
@@ -42,8 +42,8 @@ const ScoreControls = ({ classes, side }) => (
                   refetchQueries: ['MatchStage'],
                   variables: {
                     contestantGroupId: contestantGroup.id,
-                    subtract: false,
-                  },
+                    subtract: false
+                  }
                 })}
               >
                 <Add />
@@ -54,8 +54,8 @@ const ScoreControls = ({ classes, side }) => (
                   refetchQueries: ['MatchStage'],
                   variables: {
                     contestantGroupId: contestantGroup.id,
-                    subtract: true,
-                  },
+                    subtract: true
+                  }
                 })}
               >
                 <Remove />
@@ -63,14 +63,14 @@ const ScoreControls = ({ classes, side }) => (
             </div>
           )}
         </Mutation>
-      );
+      )
     }}
   </MatchContext.Consumer>
-);
+)
 
 ScoreControls.propTypes = {
   classes: Classes.isRequired,
-  side: Side.isRequired,
-};
+  side: Side.isRequired
+}
 
-export default withStyles(styles)(ScoreControls);
+export default withStyles(styles)(ScoreControls)

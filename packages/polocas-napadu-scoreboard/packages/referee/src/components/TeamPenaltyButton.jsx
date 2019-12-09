@@ -1,23 +1,23 @@
-import Avatar from '@material-ui/core/Avatar';
-import Group from '@material-ui/icons/Group';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import PropTypes from 'prop-types';
-import React from 'react';
+import Avatar from '@material-ui/core/Avatar'
+import Group from '@material-ui/icons/Group'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemText from '@material-ui/core/ListItemText'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 class TeamPenaltyButton extends React.Component {
-  constructor() {
-    super();
-    this.handleChange = this.handleChange.bind(this);
+  constructor () {
+    super()
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange() {
-    this.props.onChange(this.props.target);
+  handleChange () {
+    this.props.onChange(this.props.target)
   }
 
-  render() {
-    const { target, ...other } = this.props;
+  render () {
+    const { target, ...other } = this.props
     return (
       <ListItem
         {...other}
@@ -34,7 +34,7 @@ class TeamPenaltyButton extends React.Component {
         </ListItemAvatar>
         <ListItemText primary={target.name} />
       </ListItem>
-    );
+    )
   }
 }
 
@@ -43,8 +43,8 @@ TeamPenaltyButton.propTypes = {
     avatar: PropTypes.string,
     contestantGroupId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    playerId: PropTypes.string,
-  }).isRequired,
-};
+    playerId: PropTypes.string
+  }).isRequired
+}
 
-export default TeamPenaltyButton;
+export default TeamPenaltyButton

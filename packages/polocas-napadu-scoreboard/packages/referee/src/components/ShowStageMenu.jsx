@@ -1,39 +1,35 @@
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import PropTypes from 'prop-types';
-import React from 'react';
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { Children, Classes } from 'core/proptypes';
-import { withStyles } from '@material-ui/core/styles';
-import { STAGE_OPTIONS, STAGES_JUMP } from 'core/constants';
-
-const styles = theme => ({
-});
+import { Children } from 'core/proptypes'
+import { STAGE_OPTIONS, STAGES_JUMP } from 'core/constants'
 
 class ShowStageMenu extends React.Component {
-  constructor() {
-    super();
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
+  constructor () {
+    super()
+    this.handleClose = this.handleClose.bind(this)
+    this.handleOpen = this.handleOpen.bind(this)
     this.state = {
-      anchorEl: null,
-    };
+      anchorEl: null
+    }
   }
 
-  handleClose() {
-    this.setState({ anchorEl: null });
+  handleClose () {
+    this.setState({ anchorEl: null })
   }
 
-  handleOpen(event) {
-    this.setState({ anchorEl: event.currentTarget });
+  handleOpen (event) {
+    this.setState({ anchorEl: event.currentTarget })
   }
 
-  render() {
-    const { matchId, mutate, omit } = this.props;
+  render () {
+    const { matchId, mutate, omit } = this.props
     return (
-      <React.Fragment>
+      <>
         <IconButton onClick={this.handleOpen}>
           <MoreVertIcon />
         </IconButton>
@@ -54,26 +50,27 @@ class ShowStageMenu extends React.Component {
                   refetchQueries: ['MatchStage'],
                   variables: {
                     matchId,
-                    stage: option.value,
-                  },
+                    stage: option.value
+                  }
                 })}
-              >{option.label}</MenuItem>
+              >
+                {option.label}
+              </MenuItem>
             ))}
         </Menu>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
 ShowStageMenu.propTypes = {
   children: Children,
-  classes: Classes.isRequired,
   mutate: PropTypes.func.isRequired,
-  omit: PropTypes.arrayOf(PropTypes.string),
-};
+  omit: PropTypes.arrayOf(PropTypes.string)
+}
 
 ShowStageMenu.defaultProps = {
-  omit: [],
-};
+  omit: []
+}
 
-export default withStyles(styles)(ShowStageMenu);
+export default ShowStageMenu

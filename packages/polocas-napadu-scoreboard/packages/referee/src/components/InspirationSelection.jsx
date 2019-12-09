@@ -1,20 +1,19 @@
-import React from 'react';
+import CustomInspirationSelection from './CustomInspirationSelection'
+import InspirationList from './InspirationList'
+import InteractiveButton from './InteractiveButton'
+import React from 'react'
 
-import { Classes } from 'core/proptypes';
-import { gql } from 'apollo-boost';
-import { MatchContext } from 'core/context';
-import { Mutation } from 'react-apollo';
-import { withStyles } from '@material-ui/core/styles';
-
-import CustomInspirationSelection from './CustomInspirationSelection';
-import InspirationList from './InspirationList';
-import InteractiveButton from './InteractiveButton';
+import { Classes } from 'core/proptypes'
+import { gql } from 'apollo-boost'
+import { MatchContext } from 'core/context'
+import { Mutation } from 'react-apollo'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   inspirationList: {
-    margin: theme.spacing.unit * -1,
-  },
-});
+    margin: theme.spacing.unit * -1
+  }
+})
 
 const INSPIRATION_PICK_RANDOM = gql`
   mutation RandomPickInspiration($matchId: Int!, $replace: Boolean) {
@@ -22,7 +21,7 @@ const INSPIRATION_PICK_RANDOM = gql`
       ok,
     }
   }
-`;
+`
 
 const renderShuffleButton = ({ data, disabled, replace, label }) => (
   <Mutation mutation={INSPIRATION_PICK_RANDOM}>
@@ -34,13 +33,15 @@ const renderShuffleButton = ({ data, disabled, replace, label }) => (
           refetchQueries: ['MatchStage'],
           variables: {
             matchId: data.match.id,
-            replace,
-          },
+            replace
+          }
         })}
-        >{label}</InteractiveButton>
+      >
+        {label}
+      </InteractiveButton>
     )}
   </Mutation>
-);
+)
 
 const InspirationSelection = ({ classes, data, onChange, value }) => (
   <MatchContext.Consumer>
@@ -56,21 +57,21 @@ const InspirationSelection = ({ classes, data, onChange, value }) => (
             data.match.currentStage.inspirations.length === 0
           ),
           label: 'Vylosovat a nahradit',
-          replace: true,
+          replace: true
         })}
         {renderShuffleButton({
           data,
           disabled: data.match.preparedInspirationCount === 0,
-          label: 'Vylosovat',
+          label: 'Vylosovat'
         })}
         <CustomInspirationSelection />
       </div>
     )}
   </MatchContext.Consumer>
-);
+)
 
 InspirationSelection.propTypes = {
-  classes: Classes.isRequired,
-};
+  classes: Classes.isRequired
+}
 
-export default withStyles(styles)(InspirationSelection);
+export default withStyles(styles)(InspirationSelection)

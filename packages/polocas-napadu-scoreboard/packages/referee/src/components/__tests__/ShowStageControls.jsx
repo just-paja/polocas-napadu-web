@@ -1,9 +1,9 @@
-import React from 'react';
-import ShowStageControls from '../ShowStageControls';
+import React from 'react'
+import ShowStageControls from '../ShowStageControls'
 
-import { MatchContext } from 'core/context';
-import { mount } from 'enzyme';
-import { apolloWrap } from 'core/mock';
+import { MatchContext } from 'core/context'
+import { mount } from 'enzyme'
+import { apolloWrap } from 'core/mock'
 
 describe('ShowStageControls', () => {
   it('given match is closed, then it renders empty', () => {
@@ -12,12 +12,12 @@ describe('ShowStageControls', () => {
         value={{
           match: {
             closed: true
-          },
+          }
         }}
       >
         <ShowStageControls />
       </MatchContext.Provider>
-    ));
+    ))
     expect(comp.find('ShowProgress')).toHaveLength(0)
-  });
-});
+  })
+})

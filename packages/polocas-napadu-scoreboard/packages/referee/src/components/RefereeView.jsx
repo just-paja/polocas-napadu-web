@@ -1,23 +1,17 @@
-import React from 'react';
+import MatchStage from './MatchStage'
+import React from 'react'
 
-import { RouterContext } from 'core/context';
-import { withStyles } from '@material-ui/core/styles';
+import { Match } from 'core/proptypes'
+import { RouterContext } from 'core/context'
 
-import MatchStage from './MatchStage';
-
-import { Classes } from 'core/proptypes';
-
-const styles = {
-};
-
-const RefereeView = ({ classes, match }) => (
+const RefereeView = ({ match }) => (
   <RouterContext.Provider value={match.params}>
     <MatchStage />
   </RouterContext.Provider>
-);
+)
 
 RefereeView.propTypes = {
-  classes: Classes.isRequired,
-};
+  match: Match.isRequired
+}
 
-export default withStyles(styles)(RefereeView);
+export default RefereeView
