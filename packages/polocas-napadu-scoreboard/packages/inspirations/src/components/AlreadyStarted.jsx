@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const AlreadyStarted = ({ classes }) => (
   <div>
@@ -8,6 +8,6 @@ const AlreadyStarted = ({ classes }) => (
       začalo. Nyní můžete odložit vaše mobilní telefony a užít si show.
     </p>
   </div>
-);
+)
 
-export default AlreadyStarted;
+export default AlreadyStarted

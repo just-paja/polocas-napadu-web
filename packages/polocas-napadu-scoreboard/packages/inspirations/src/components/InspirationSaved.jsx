@@ -1,11 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-
-import { withStyles } from '@material-ui/core/styles';
-
-import InteractiveButton from './InteractiveButton';
-
-const styles = theme => ({});
+import InteractiveButton from './InteractiveButton'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const InspirationSaved = ({ onContinue }) => (
   <div>
@@ -14,15 +9,14 @@ const InspirationSaved = ({ onContinue }) => (
       Inspiraci jsme si uložili a teď už je jenom na rozhodčím a na náhodě
       jestli se dostane do hry.
     </p>
-    <InteractiveButton
-      onClick={onContinue}
-      variant="outlined"
-    >Vložit další</InteractiveButton>
+    <InteractiveButton onClick={onContinue} variant='outlined'>
+      Vložit další
+    </InteractiveButton>
   </div>
-);
+)
 
 InspirationSaved.propTypes = {
-  onContinue: PropTypes.func.isRequired,
-};
+  onContinue: PropTypes.func.isRequired
+}
 
-export default withStyles(styles)(InspirationSaved);
+export default InspirationSaved

@@ -1,11 +1,10 @@
-import React from 'react';
+import InspirationForm from './InspirationForm'
+import InspirationSaved from './InspirationSaved'
+import React from 'react'
 
-import { gql } from 'apollo-boost';
-import { Mutation } from 'react-apollo';
-import { MatchContext } from 'core/context';
-
-import InspirationForm from './InspirationForm';
-import InspirationSaved from './InspirationSaved';
+import { gql } from 'apollo-boost'
+import { Mutation } from 'react-apollo'
+import { MatchContext } from 'core/context'
 
 const ADD_INSPIRATION = gql`
   mutation AddInspiration($showId: Int!, $inspirationText: String!) {
@@ -13,25 +12,25 @@ const ADD_INSPIRATION = gql`
       ok,
     }
   }
-`;
+`
 
 class InsertInspiration extends React.Component {
-  constructor() {
-    super();
-    this.handleContinue = this.handleContinue.bind(this);
-    this.handleSaveSuccess = this.handleSaveSuccess.bind(this);
-    this.state = { saved: false };
+  constructor () {
+    super()
+    this.handleContinue = this.handleContinue.bind(this)
+    this.handleSaveSuccess = this.handleSaveSuccess.bind(this)
+    this.state = { saved: false }
   }
 
-  handleContinue() {
-    this.setState({ saved: false });
+  handleContinue () {
+    this.setState({ saved: false })
   }
 
-  handleSaveSuccess() {
-    this.setState({ saved: true });
+  handleSaveSuccess () {
+    this.setState({ saved: true })
   }
 
-  render() {
+  render () {
     if (this.state.saved) {
       return <InspirationSaved onContinue={this.handleContinue} />
     }
@@ -48,8 +47,8 @@ class InsertInspiration extends React.Component {
                   refetchQueries: ['MatchStage'],
                   variables: {
                     inspirationText: formValue.inspiration,
-                    showId: data.match.show.id,
-                  },
+                    showId: data.match.show.id
+                  }
                 })}
                 error={error}
                 saving={loading}
@@ -58,8 +57,8 @@ class InsertInspiration extends React.Component {
           </Mutation>
         )}
       </MatchContext.Consumer>
-    );
+    )
   }
 }
 
-export default InsertInspiration;
+export default InsertInspiration

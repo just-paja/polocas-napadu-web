@@ -1,25 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-import { ErrorMessage } from 'core/proptypes';
+import { ErrorMessage } from 'core/proptypes'
 
 const AppError = ({ error }) => {
   if (!error) {
-    return null;
+    return null
   }
   if (error instanceof Error) {
     return (
       <span>{error.message}</span>
-    );
+    )
   }
-  return <span>{error}</span>;
-};
+  return <span>{error}</span>
+}
 
 AppError.propTypes = {
-  error: ErrorMessage,
-};
+  error: ErrorMessage
+}
 
 AppError.defaultProps = {
-  error: null,
-};
+  error: null
+}
 
-export default AppError;
+export default AppError
