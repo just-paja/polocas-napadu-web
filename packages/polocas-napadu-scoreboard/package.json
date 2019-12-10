@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
-    "test": "jest",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "start": "lerna run start",
+    "test": "jest"
   },
   "dependencies": {
     "lerna": "^3.19.0"
