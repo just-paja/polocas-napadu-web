@@ -1,14 +1,3 @@
-module.exports = {
-  plugins: ['@babel/plugin-proposal-class-properties'],
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        targets: {
-          node: 'current'
-        }
-      }
-    ],
-    '@babel/preset-react'
-  ]
-}
+const { getBabelConfig } = require('./dev')
+
+module.exports = getBabelConfig()

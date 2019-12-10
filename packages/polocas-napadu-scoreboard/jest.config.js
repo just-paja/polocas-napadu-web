@@ -1,16 +1,23 @@
+const { getPackageTestConfig } = require('./dev')
 const { resolve } = require('path')
 
+const core = require('./packages/core/jest.config')
 const referee = require('./packages/referee/jest.config')
 const scoreboard = require('./packages/scoreboard/jest.config')
 
-process.env.NODE_PATH = resolve(__dirname, 'packages')
-
-module.exports = {
-  rootDir: __dirname,
-  projects: [
-    ...referee.projects,
-    ...scoreboard.projects
+const config = {
+  collectCoverageFrom: [
+    '**/src/**/*.{js,jsx}'
   ],
-  watchPlugins: ['jest-watch-select-projects']
-  // coverageDirectory: '<rootDir>/coverage/'
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/locales/',
+    '/constants/',
+  ],
 }
+
+module.exports = getPackageTestConfig(__dirname, [
+  ...core.projects,
+  ...referee.projects,
+  ...scoreboard.projects
+], config)

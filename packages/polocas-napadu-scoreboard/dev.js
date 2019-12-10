@@ -1,5 +1,22 @@
 const { resolve } = require('path')
 
+function getBabelConfig () {
+  return {
+    plugins: ['@babel/plugin-proposal-class-properties'],
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            node: 'current'
+          }
+        }
+      ],
+      '@babel/preset-react'
+    ]
+  }
+}
+
 function getIntegrationTestConfig (pack, path) {
   return {
     displayName: getSuiteName(pack, 'integration'),
@@ -50,11 +67,17 @@ function getLinterTestConfig (pack, path) {
   }
 }
 
-function getPackageTestConfig (path, ...projects) {
+function getPackageTestConfig (path, projects, config = {}) {
   return {
     rootDir: path,
     projects,
-    watchPlugins: ['jest-watch-select-projects']
+    watchPlugins: [
+      'jest-watch-select-projects',
+      'jest-watch-suspend',
+      'jest-watch-typeahead/filename',
+      'jest-watch-typeahead/testname'
+    ],
+    ...config,
   }
 }
 
@@ -66,9 +89,17 @@ function getSuiteName (pack, specifier) {
   return `${pack.name.replace('polocas-napadu-', '')} ${specifier}`
 }
 
+function setupJest () {
+  const Enzyme = require('enzyme').default
+  const Adapter = require('enzyme-adapter-react-16').default
+  Enzyme.configure({ adapter: new Adapter() })
+}
+
 module.exports = {
+  getBabelConfig,
   getIntegrationTestConfig,
   getLinterTestConfig,
   getPackageTestConfig,
-  getSuiteName
+  getSuiteName,
+  setupJest
 }

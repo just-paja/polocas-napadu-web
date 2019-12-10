@@ -1,3 +1,3 @@
-module.exports = {
-  extends: '../../babel.config.js'
-}
+const { getBabelConfig } = require('../../dev')
+
+module.exports = getBabelConfig()
