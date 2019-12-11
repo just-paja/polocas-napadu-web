@@ -137,8 +137,8 @@ function ShowDetailInner ({ data, t }) {
         ) : null}
         <div className={styles.description}>
           <div>
-            <Markdown className='lead' source={show.description} />
-            <Markdown source={show.showType.shortDescription} />
+            {show.description && <Markdown className='lead' source={show.description} />}
+            <Markdown className={show.description ? null : 'lead'} source={show.showType.shortDescription} />
             {show.showType.visibility === 2 ? (
               <Link
                 route='showFormatDetail'
