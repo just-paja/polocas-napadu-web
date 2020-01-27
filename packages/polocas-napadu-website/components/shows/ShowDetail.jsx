@@ -68,14 +68,26 @@ const QUERY_SHOW = gql`
   }
 `
 
+function ExternalLink({ children, href }) {
+  const open = (e) => {
+    e.preventDefault();
+    window.open(href);
+  }
+  return (
+    <a href={href} rel='external' onClick={open}>
+      {children}
+    </a>
+  )
+}
+
 function renderLink (link, children, Icon) {
   return link
     ? (
       <div>
-        <a href={link} rel='external'>
+        <ExternalLink href={link}>
           {Icon && <><Icon />{' '}</>}
           {children}
-        </a>
+        </ExternalLink>
       </div>
     ) : null
 }
@@ -85,7 +97,7 @@ function ShowDetailInner ({ data, t }) {
   const ticketsLink = show.linkTickets || show.linkReservations
   const ticketsLabel = show.linkTickets ? 'buyTickets' : 'reserveSeats'
   const ticketsButton = ticketsLink && moment().isBefore(show.start) ? (
-    <Button className={styles.ticketsButton} href={ticketsLink} rel='external' variant='primary'>
+    <Button className={styles.ticketsButton} href={ticketsLink} variant='primary'>
       <FaTicketAlt />
       {t(ticketsLabel)}
     </Button>
@@ -119,12 +131,11 @@ function ShowDetailInner ({ data, t }) {
               summary={<EventLocation location={show.location} />}
             >
               <Address address={show.location.address} city={show.location.city} />
-              <a
+              <ExternalLink
                 href={`https://www.google.com/maps/dir/?api=1&destination=${show.location.address}`}
-                rel='external nofollow'
               >
                 {t('howDoIGetThere')}
-              </a>
+              </ExternalLink>
             </LogisticInfo>
           </Col>
         </Row>
