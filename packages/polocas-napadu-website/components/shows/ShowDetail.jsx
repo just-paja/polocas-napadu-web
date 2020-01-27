@@ -68,10 +68,10 @@ const QUERY_SHOW = gql`
   }
 `
 
-function ExternalLink({ children, href }) {
+function ExternalLink ({ children, href }) {
   const open = (e) => {
-    e.preventDefault();
-    window.open(href);
+    e.preventDefault()
+    window.open(href)
   }
   return (
     <a href={href} rel='external' onClick={open}>
