@@ -26,6 +26,7 @@ const QUERY_SHOW = gql`
     show(slug: $slug) {
       description,
       id,
+      emailReservations,
       linkFacebook,
       linkReservations,
       linkTickets,
@@ -92,16 +93,22 @@ function renderLink (link, children, Icon) {
     ) : null
 }
 
+function LinkButton ({ link, icon: Icon, label }) {
+  if (!link) {
+    return null
+  }
+  return (
+    <Col md={6} lg={4}>
+      <Button className={styles.ticketsButton} href={link} variant='primary'>
+        <FaTicketAlt />
+        {label}
+      </Button>
+    </Col>
+  )
+}
+
 function ShowDetailInner ({ data, t }) {
   const { show } = data
-  const ticketsLink = show.linkTickets || show.linkReservations
-  const ticketsLabel = show.linkTickets ? 'buyTickets' : 'reserveSeats'
-  const ticketsButton = ticketsLink && moment().isBefore(show.start) ? (
-    <Button className={styles.ticketsButton} href={ticketsLink} variant='primary'>
-      <FaTicketAlt />
-      {t(ticketsLabel)}
-    </Button>
-  ) : null
   return (
     <article>
       <PageHeading>
@@ -139,17 +146,24 @@ function ShowDetailInner ({ data, t }) {
             </LogisticInfo>
           </Col>
         </Row>
-        {ticketsButton ? (
+        {(show.linkTickets || show.linkReservations) && moment().isBefore(show.start) ? (
           <Row className={styles.logistics}>
-            <Col md={6} lg={4}>
-              {ticketsButton}
-            </Col>
+            <LinkButton link={show.linkTickets} label={t('buyTickets')} icon={FaTicketAlt} />
+            <LinkButton link={show.linkReservations} label={t('reserveSeats')} icon={FaTicketAlt} />
           </Row>
         ) : null}
         <div className={styles.description}>
           <div>
             {show.description && <Markdown className='lead' source={show.description} />}
             <Markdown className={show.description ? null : 'lead'} source={show.showType.shortDescription} />
+            {show.emailReservations ? (
+              <p>
+                {t('reserveSeatsEmail')}:{' '}
+                <a href={`mailto:${show.emailReservations}`}>
+                  {show.emailReservations}
+                </a>
+              </p>
+            ) : null}
             {show.showType.visibility === 2 ? (
               <Link
                 route='showFormatDetail'
