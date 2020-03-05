@@ -10,24 +10,19 @@ import { ShowParticipant } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function ShowParticipantsMap ({ participants }) {
-  return participants
-    .sort((a, b) =>
-      a.role.name.localeCompare(b.role.name) ||
-      formatName(a.profile).localeCompare(formatName(b.profile))
-    )
-    .map(participant => (
-      <li key={participant.id}>
-        <OptionalLink
-          route='profile'
-          params={{ slug: participant.profile.slug }}
-          isLink={Boolean(participant.profile.group)}
-        >
-          {formatName(participant.profile)}
-        </OptionalLink>
-        {' '}
-        ({participant.role.name})
-      </li>
-    ))
+  return participants.map(participant => (
+    <li key={participant.id}>
+      <OptionalLink
+        route='profile'
+        params={{ slug: participant.profile.slug }}
+        isLink={Boolean(participant.profile.group)}
+      >
+        {formatName(participant.profile)}
+      </OptionalLink>
+      {' '}
+      ({participant.role.name})
+    </li>
+  ))
 }
 
 function ShowParticipantsComponent ({ participants, t }) {
