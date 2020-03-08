@@ -19,6 +19,11 @@ describe('SocialNetworks component', () => {
     expect(comp.find('SocialNetworkLink[title="on-twitter"]')).toHaveLength(1)
   })
 
+  it('renders instagram link', async () => {
+    const comp = await renderWithI18n(<SocialNetworks />)
+    expect(comp.find('SocialNetworkLink[title="on-instagram"]')).toHaveLength(1)
+  })
+
   it('renders youtube link', async () => {
     const comp = await renderWithI18n(<SocialNetworks />)
     expect(comp.find('SocialNetworkLink[title="on-youtube"]')).toHaveLength(1)

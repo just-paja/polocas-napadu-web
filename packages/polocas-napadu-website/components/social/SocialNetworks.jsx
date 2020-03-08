@@ -7,6 +7,7 @@ import { SocialNetworkLink } from './SocialNetworkLink'
 import { ClassName, propsTranslated } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 import {
+  FaInstagram,
   FaEnvelopeOpenText,
   FaFacebookF,
   FaPhone,
@@ -33,6 +34,12 @@ const SocialNetworksComponent = ({ className, inverse, t }) => (
       icon={FaFacebookF}
       inverse={inverse}
       title={t('on-facebook')}
+    />
+    <SocialNetworkLink
+      href='https://instagram.com/polocasnapadu/'
+      icon={FaInstagram}
+      inverse={inverse}
+      title={t('on-instagram')}
     />
     <SocialNetworkLink
       href='https://twitter.com/polocasnapadu'
