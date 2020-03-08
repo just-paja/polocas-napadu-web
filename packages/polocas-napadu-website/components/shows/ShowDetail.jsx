@@ -8,13 +8,12 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './ShowDetail.scss'
 
-import { Address } from '../locations'
 import { ContentContainer, PageHeading, Title } from '../layout'
-import { AddToCalendar, EventLocation, EventStart } from '../events'
-import { FaCalendarDay, FaFacebookSquare, FaMapMarkerAlt, FaTicketAlt } from 'react-icons/fa'
+import { ShowDateInfo } from './ShowDateInfo'
+import { FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
-import { LogisticInfo } from './LogisticInfo'
+import { ShowVenueInfo } from './ShowVenueInfo'
 import { MatchProgress } from './MatchProgress'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
@@ -69,30 +68,6 @@ const QUERY_SHOW = gql`
   }
 `
 
-function ExternalLink ({ children, href }) {
-  const open = (e) => {
-    e.preventDefault()
-    window.open(href)
-  }
-  return (
-    <a href={href} rel='external' onClick={open}>
-      {children}
-    </a>
-  )
-}
-
-function renderLink (link, children, Icon) {
-  return link
-    ? (
-      <div>
-        <ExternalLink href={link}>
-          {Icon && <><Icon />{' '}</>}
-          {children}
-        </ExternalLink>
-      </div>
-    ) : null
-}
-
 function LinkButton ({ link, icon: Icon, label }) {
   if (!link) {
     return null
@@ -124,26 +99,10 @@ function ShowDetailInner ({ data, t }) {
       <ContentContainer>
         <Row className={styles.logistics}>
           <Col className={styles.logisticsItem} md={6} lg={4}>
-            <LogisticInfo
-              icon={FaCalendarDay}
-              summary={<EventStart end={show.end} start={show.start} />}
-            >
-              {renderLink(show.linkFacebook, t('eventOnFacebook'), FaFacebookSquare)}
-              <AddToCalendar className={styles.addToCalendar} event={show} />
-            </LogisticInfo>
+            <ShowDateInfo show={show} />
           </Col>
           <Col className={styles.logisticsItem} md={6} lg={4}>
-            <LogisticInfo
-              icon={FaMapMarkerAlt}
-              summary={<EventLocation location={show.location} />}
-            >
-              <Address address={show.location.address} city={show.location.city} />
-              <ExternalLink
-                href={`https://www.google.com/maps/dir/?api=1&destination=${show.location.address}`}
-              >
-                {t('howDoIGetThere')}
-              </ExternalLink>
-            </LogisticInfo>
+            <ShowVenueInfo show={show} />
           </Col>
         </Row>
         {(show.linkTickets || show.linkReservations) && moment().isBefore(show.start) ? (
