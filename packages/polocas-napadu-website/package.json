@@ -64,7 +64,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.1.0",
-    "jest-css-modules-transform": "^3.1.0",
+    "jest-css-modules-transform": "^4.0.0",
     "jest-date-mock": "^1.0.8",
     "jest-enzyme": "^7.1.2",
     "jest-runner-standard": "0.0.13",
