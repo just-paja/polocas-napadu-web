@@ -100,3 +100,9 @@ export const propsTranslated = {
 export const propsWithRouter = {
   router: Router.isRequired
 }
+
+export const Sponsor = PropTypes.shape({
+  id: Ident.isRequired,
+  logo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+})

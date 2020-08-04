@@ -1,0 +1,13 @@
+@import 'theme.scss';
+
+:local .logo {
+  background-color: $body-bg;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  height: $baseline * 8;
+  margin: $baseline $baseline / 2;
+  overflow: hidden;
+  width: $baseline * 8;
+}
