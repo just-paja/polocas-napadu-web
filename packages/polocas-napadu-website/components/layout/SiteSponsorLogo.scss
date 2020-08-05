@@ -1,6 +1,7 @@
-@import 'theme.scss';
+@import "theme.scss";
 
 :local .logo {
+  display: block;
   background-color: $body-bg;
   background-position: center center;
   background-repeat: no-repeat;

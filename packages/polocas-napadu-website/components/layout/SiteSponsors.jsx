@@ -10,10 +10,11 @@ import { withTranslation } from '../../lib/i18n'
 
 const SITE_SPONSOR_LIST_QUERY = gql`
   query GetSiteSponsorList {
-  siteSponsorList {
-    id,
-    name,
-    logo,
+    siteSponsorList {
+      id
+      name
+      logo
+      website
     }
   }
 `
@@ -43,6 +44,8 @@ SiteSponsorsComponent.propTypes = {
   })
 }
 
-export const SiteSponsors = withTranslation(['common'])(withQuery({
-  query: SITE_SPONSOR_LIST_QUERY
-})(SiteSponsorsComponent))
+export const SiteSponsors = withTranslation(['common'])(
+  withQuery({
+    query: SITE_SPONSOR_LIST_QUERY
+  })(SiteSponsorsComponent)
+)
