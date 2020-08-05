@@ -104,5 +104,5 @@ export const propsWithRouter = {
 export const Sponsor = PropTypes.shape({
   id: Ident.isRequired,
   logo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 })

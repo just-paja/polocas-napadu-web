@@ -25,10 +25,10 @@ const SiteSponsorsComponent = ({ data, t }) => {
 
   return (
     <>
-      <h4 className="text-center">
+      <h4 className='text-center'>
         <strong>{t('coopWith')}</strong>
       </h4>
-      <Row className="justify-content-center">
+      <Row className='justify-content-center'>
         {data.siteSponsorList.map(sponsor => (
           <SiteSponsorLogo key={sponsor.id} sponsor={sponsor} />
         ))}
@@ -43,5 +43,6 @@ SiteSponsorsComponent.propTypes = {
   })
 }
 
-export const SiteSponsors = withTranslation(['common'])(withQuery({ query: SITE_SPONSOR_LIST_QUERY })(SiteSponsorsComponent))
-
+export const SiteSponsors = withTranslation(['common'])(withQuery({
+  query: SITE_SPONSOR_LIST_QUERY
+})(SiteSponsorsComponent))
