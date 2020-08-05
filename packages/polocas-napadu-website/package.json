@@ -68,6 +68,7 @@
     "jest-date-mock": "^1.0.8",
     "jest-enzyme": "^7.1.2",
     "jest-runner-standard": "0.0.13",
+    "prettier-standard": "^16.4.1",
     "standard": "^14.3.1",
     "waait": "1.0.5"
   }
