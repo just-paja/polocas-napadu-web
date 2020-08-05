@@ -1,0 +1,11 @@
+@import 'theme';
+
+:local .sponsors {
+  margin-top: $baseline;
+  padding-top: $baseline;
+  border-top: $border-default;
+
+  h4 {
+    color: lighten($body-color, 10%);
+  }
+}

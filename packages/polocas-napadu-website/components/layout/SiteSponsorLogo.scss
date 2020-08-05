@@ -2,13 +2,10 @@
 
 :local .logo {
   display: block;
-  background-color: $body-bg;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  border-radius: 50%;
-  height: $baseline * 8;
+  height: $baseline * 5;
   margin: $baseline $baseline / 2;
-  overflow: hidden;
-  width: $baseline * 8;
+  width: $baseline * 7;
 }

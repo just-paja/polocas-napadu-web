@@ -14,6 +14,8 @@ $button-primary-color: $color-text-inverted;
 $button-secondary-background: $color-text-base;
 $button-secondary-color: $color-riptide;
 
+$border-default: 1px solid darken($body-bg, 10%);
+
 @import 'node_modules/bootstrap/scss/_functions.scss';
 @import 'node_modules/bootstrap/scss/_mixins.scss';
 @import 'node_modules/bootstrap/scss/_variables.scss';

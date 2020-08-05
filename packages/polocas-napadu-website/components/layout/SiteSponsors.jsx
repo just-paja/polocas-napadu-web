@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Row from 'react-bootstrap/Row'
+import styles from './SiteSponsors.scss'
 
 import { gql } from 'apollo-boost'
 import { SiteSponsorLogo } from './SiteSponsorLogo'
@@ -25,16 +25,16 @@ const SiteSponsorsComponent = ({ data, t }) => {
   }
 
   return (
-    <>
+    <div className={styles.sponsors}>
       <h4 className='text-center'>
         <strong>{t('coopWith')}</strong>
       </h4>
-      <Row className='justify-content-center'>
+      <div className='d-flex justify-content-center'>
         {data.siteSponsorList.map(sponsor => (
           <SiteSponsorLogo key={sponsor.id} sponsor={sponsor} />
         ))}
-      </Row>
-    </>
+      </div>
+    </div>
   )
 }
 
