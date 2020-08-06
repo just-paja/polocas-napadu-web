@@ -45,9 +45,9 @@
 @font-face {
   font-family: $font-family-heading;
   src:
-    url("/public/static/fonts/hk-blocker-heavy.woff") format("woff"),
-    url("/public/static/fonts/hk-blocker-heavy.woff2") format("woff2"),
-    url("/public/static/fonts/hk-blocker-heavy.otf") format("opentype");
+    url("/static/fonts/hk-blocker-heavy.woff") format("woff"),
+    url("/static/fonts/hk-blocker-heavy.woff2") format("woff2"),
+    url("/static/fonts/hk-blocker-heavy.otf") format("opentype");
 }
 
 html, body {
