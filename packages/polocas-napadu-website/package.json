@@ -59,6 +59,7 @@
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/runtime-corejs2": "^7.11.2",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "enzyme": "^3.11.0",
@@ -69,7 +70,7 @@
     "jest-enzyme": "^7.1.2",
     "jest-runner-standard": "0.0.13",
     "prettier-standard": "^16.4.1",
-    "standard": "^14.3.1",
+    "standard": "^14.3.4",
     "waait": "1.0.5"
   }
 }

@@ -90,6 +90,29 @@ function LinkButton ({ link, icon: Icon, label }) {
   )
 }
 
+function renderTicketButtons (show, t) {
+  if (
+    (show.linkTickets || show.linkReservations) &&
+    moment().isBefore(show.start)
+  ) {
+    return (
+      <Row className={styles.logistics}>
+        <LinkButton
+          link={show.linkTickets}
+          label={t('buyTickets')}
+          icon={FaTicketAlt}
+        />
+        <LinkButton
+          link={show.linkReservations}
+          label={t('reserveSeats')}
+          icon={FaTicketAlt}
+        />
+      </Row>
+    )
+  }
+  return null
+}
+
 function ShowDetailInner ({ data, t }) {
   const { show } = data
   return (
@@ -113,21 +136,7 @@ function ShowDetailInner ({ data, t }) {
             <ShowVenueInfo show={show} />
           </Col>
         </Row>
-        {(show.linkTickets || show.linkReservations) &&
-        moment().isBefore(show.start) ? (
-          <Row className={styles.logistics}>
-            <LinkButton
-              link={show.linkTickets}
-              label={t('buyTickets')}
-              icon={FaTicketAlt}
-            />
-            <LinkButton
-              link={show.linkReservations}
-              label={t('reserveSeats')}
-              icon={FaTicketAlt}
-            />
-          </Row>
-        ) : null}
+        {renderTicketButtons(show, t)}
         <div className={styles.description}>
           <div>
             {show.description && (
