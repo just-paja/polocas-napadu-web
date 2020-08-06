@@ -25,7 +25,7 @@
     "package-lock.json",
     "routes.js",
     "server.js",
-    "static"
+    "public"
   ],
   "dependencies": {
     "@apollo/react-components": "^3.1.3",
