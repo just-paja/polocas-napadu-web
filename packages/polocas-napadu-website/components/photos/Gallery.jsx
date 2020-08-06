@@ -1,17 +1,20 @@
+import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './Gallery.scss'
 
-export function Gallery ({ photos }) {
+export function Gallery ({ free, photos }) {
   return (
-    <div className={styles.gallery}>
+    <div className={classnames(styles.gallery, { [styles.freeGallery]: free })}>
       {photos.map(photo => (
         <div className={styles.photo} key={photo.id}>
-          <img
-            src={photo.image}
-            alt={photo.description}
-          />
+          <img src={photo.image} alt={photo.description} />
         </div>
       ))}
     </div>
   )
+}
+
+Gallery.propTypes = {
+  free: PropTypes.boolean
 }

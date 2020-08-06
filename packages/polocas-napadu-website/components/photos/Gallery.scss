@@ -4,6 +4,11 @@
   display: flex;
   flex-wrap: wrap;
   margin: $baseline -1/2 * $baseline;
+  justify-content: center;
+}
+
+:local .freeGallery {
+  margin: $baseline 0;
 }
 
 :local .photo {

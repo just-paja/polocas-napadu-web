@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row'
 import styles from './ShowDetail.scss'
 
 import { ContentContainer, PageHeading, Title } from '../layout'
+import { Gallery } from '../photos'
 import { ShowDateInfo } from './ShowDateInfo'
 import { FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
@@ -23,45 +24,52 @@ import { withTranslation } from '../../lib/i18n'
 const QUERY_SHOW = gql`
   query GetShow($slug: String!) {
     show(slug: $slug) {
-      description,
-      id,
-      emailReservations,
-      linkFacebook,
-      linkReservations,
-      linkTickets,
+      description
+      id
+      emailReservations
+      linkFacebook
+      linkReservations
+      linkTickets
       location {
-        address,
-        city,
-        id,
-        name,
-      },
+        address
+        city
+        id
+        name
+      }
       showType {
-        id,
-        name,
-        shortDescription,
-        slug,
+        id
+        name
+        shortDescription
+        slug
         visibility
-      },
+      }
       match {
-        closed,
-        id,
-      },
-      name,
-      start,
+        closed
+        id
+      }
+      name
+      photos {
+        id
+        description
+        height
+        image
+        width
+      }
+      start
       showsParticipants {
-        id,
+        id
         profile {
-          alias,
-          id,
-          name,
-          slug,
+          alias
+          id
+          name
+          slug
           group {
             name
           }
-        },
+        }
         role {
-          id,
-          name,
+          id
+          name
         }
       }
     }
@@ -105,16 +113,30 @@ function ShowDetailInner ({ data, t }) {
             <ShowVenueInfo show={show} />
           </Col>
         </Row>
-        {(show.linkTickets || show.linkReservations) && moment().isBefore(show.start) ? (
+        {(show.linkTickets || show.linkReservations) &&
+        moment().isBefore(show.start) ? (
           <Row className={styles.logistics}>
-            <LinkButton link={show.linkTickets} label={t('buyTickets')} icon={FaTicketAlt} />
-            <LinkButton link={show.linkReservations} label={t('reserveSeats')} icon={FaTicketAlt} />
+            <LinkButton
+              link={show.linkTickets}
+              label={t('buyTickets')}
+              icon={FaTicketAlt}
+            />
+            <LinkButton
+              link={show.linkReservations}
+              label={t('reserveSeats')}
+              icon={FaTicketAlt}
+            />
           </Row>
         ) : null}
         <div className={styles.description}>
           <div>
-            {show.description && <Markdown className='lead' source={show.description} />}
-            <Markdown className={show.description ? null : 'lead'} source={show.showType.shortDescription} />
+            {show.description && (
+              <Markdown className='lead' source={show.description} />
+            )}
+            <Markdown
+              className={show.description ? null : 'lead'}
+              source={show.showType.shortDescription}
+            />
             {show.emailReservations ? (
               <p>
                 {t('reserveSeatsEmail')}:{' '}
@@ -128,7 +150,9 @@ function ShowDetailInner ({ data, t }) {
                 route='showFormatDetail'
                 params={{ slug: show.showType.slug }}
               >
-                <a>{t('moreAboutFormat', { formatName: show.showType.name })}</a>
+                <a>
+                  {t('moreAboutFormat', { formatName: show.showType.name })}
+                </a>
               </Link>
             ) : null}
             {show.match ? (
@@ -145,6 +169,7 @@ function ShowDetailInner ({ data, t }) {
           </div>
         </div>
       </ContentContainer>
+      <Gallery photos={show.photos} free />
     </article>
   )
 }
@@ -155,4 +180,6 @@ ShowDetailInner.propTypes = {
   })
 }
 
-export const ShowDetail = withTranslation(['common'])(withQuery({ query: QUERY_SHOW })(ShowDetailInner))
+export const ShowDetail = withTranslation(['common'])(
+  withQuery({ query: QUERY_SHOW })(ShowDetailInner)
+)
