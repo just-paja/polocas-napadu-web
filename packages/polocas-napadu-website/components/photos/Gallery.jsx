@@ -16,5 +16,5 @@ export function Gallery ({ free, photos }) {
 }
 
 Gallery.propTypes = {
-  free: PropTypes.boolean
+  free: PropTypes.bool
 }
