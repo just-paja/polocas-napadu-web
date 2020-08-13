@@ -1,0 +1,9 @@
+---
+- name: Deploy the project
+  hosts: web
+  roles:
+    - role: practical-ansible.nginx-static
+      nginx_static_project_name: cz-polocas-napadu-interactive
+      nginx_static_server_name: interactive.polocas-napadu.cz
+      nginx_static_project_environment: production
+      nginx_static_directory: build/

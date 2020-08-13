@@ -7,6 +7,12 @@
   },
   "author": "Pavel Žák <pavel@zak.global>",
   "license": "ISC",
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint"
+  },
   "dependencies": {
     "apollo-boost": "^0.4.4",
     "apollo-client": "^2.6.4",
