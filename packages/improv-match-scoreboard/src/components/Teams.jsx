@@ -2,9 +2,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import TeamDetails from './TeamDetails'
 
-import { Classes } from 'core/proptypes'
-import { CONTESTANT_HOME, CONTESTANT_GUEST } from 'core/constants'
-import { MatchContext } from 'core/context'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import {
+  CONTESTANT_HOME,
+  CONTESTANT_GUEST
+} from 'polocas-napadu-core/constants'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
@@ -30,17 +33,20 @@ class Teams extends React.Component {
   dimmTeam (contestantGroupId) {
     const { currentStage } = this.context.match
     if (currentStage && currentStage.scorePointPoll) {
-      return currentStage.scorePointPoll.votings.some(voting => (
-        voting.contestantGroup &&
-        voting.contestantGroup.id !== contestantGroupId &&
-        !voting.closed
-      ))
+      return currentStage.scorePointPoll.votings.some(
+        voting =>
+          voting.contestantGroup &&
+          voting.contestantGroup.id !== contestantGroupId &&
+          !voting.closed
+      )
     }
     return false
   }
 
   getGroup (type) {
-    return this.context.match.contestantGroups.find(group => group.contestantType === type)
+    return this.context.match.contestantGroups.find(
+      group => group.contestantType === type
+    )
   }
 
   render () {
@@ -55,14 +61,16 @@ class Teams extends React.Component {
             hideScore={hideScore}
             side='left'
             team={home}
-          />)}
+          />
+        )}
         {guest && (
           <TeamDetails
             dimm={this.dimmTeam(guest.id)}
             hideScore={hideScore}
             side='right'
             team={guest}
-          />)}
+          />
+        )}
       </div>
     )
   }

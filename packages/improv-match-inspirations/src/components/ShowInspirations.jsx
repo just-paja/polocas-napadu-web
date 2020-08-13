@@ -3,11 +3,11 @@ import GraphContainer from './GraphContainer'
 import InsertInspiration from './InsertInspiration'
 import React from 'react'
 
-import { Classes } from 'core/proptypes'
-import { MatchContext } from 'core/context'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { gql } from 'apollo-boost'
 import { withStyles } from '@material-ui/core/styles'
-import { STAGE_INTRO } from 'core/constants'
+import { STAGE_INTRO } from 'polocas-napadu-core/constants'
 
 const styles = theme => ({
   flex: {
@@ -27,20 +27,20 @@ const GET_MATCH = gql`
   query MatchStage($matchId: Int!) {
     match(id: $matchId) {
       show {
-        id,
-        name,
-        start,
-        totalInspirations,
-      },
+        id
+        name
+        start
+        totalInspirations
+      }
       currentStage {
-        created,
-        type,
-      },
+        created
+        type
+      }
     }
   }
 `
 
-const getStageView = (stage) => {
+const getStageView = stage => {
   if (stage && stage.type !== STAGE_INTRO) {
     return <AlreadyStarted />
   }

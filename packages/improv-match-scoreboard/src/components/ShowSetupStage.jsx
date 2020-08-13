@@ -3,7 +3,7 @@ import InspirationQr from './InspirationQr'
 import React from 'react'
 import Teams from './Teams'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { Stage } from './Stage'
 import { withStyles } from '@material-ui/core/styles'
 

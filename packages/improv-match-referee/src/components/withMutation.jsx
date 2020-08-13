@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Mutation } from 'react-apollo'
+import { Mutation } from '@apollo/react-components'
 
 export const withMutation = (propName, mutation) => Component => props => (
   <Mutation mutation={mutation}>

@@ -9,6 +9,4 @@ describe('EventStart component', () => {
     const comp = shallow(<EventLocation location={{ name: 'Foo' }} />)
     expect(comp).toIncludeText('Foo')
   })
-
-  it.todo('given location, renders link to location detail')
 })

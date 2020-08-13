@@ -1,84 +1,96 @@
-const fs = require("fs");
-const os = require("os");
-const path = require("path");
-const rimraf = require("rimraf");
+const fs = require('fs')
+const os = require('os')
+const path = require('path')
+const rimraf = require('rimraf')
 
-function getBabelConfig() {
+function getBabelConfig () {
   return {
     presets: [
+      '@babel/preset-react',
       [
-        "@babel/preset-env",
-        "@babel/preset-react",
+        '@babel/preset-env',
         {
           targets: {
-            node: "current"
+            node: 'current'
           }
         }
       ]
     ]
-  };
+  }
 }
 
-function getIntegrationTestConfig(pack, path, extraConfig) {
+function getIntegrationTestConfig (pack, path, extraConfig) {
   return {
-    displayName: getSuiteName(pack, "integration"),
-    name: getSuiteIdent(pack, "integration"),
+    displayName: getSuiteName(pack, 'integration'),
+    name: getSuiteIdent(pack, 'integration'),
     rootDir: path,
-    roots: ["<rootDir>"],
-    testPathIgnorePatterns: ["/build/", "/coverage/", "/node_modules/"],
-    coveragePathIgnorePatterns: ["build", "debug"],
-    transformIgnorePatterns: ["node_modules/(?!((jest-)/.*))"],
-    setupFilesAfterEnv: ["jest-extended"],
+    roots: ['<rootDir>'],
+    testPathIgnorePatterns: ['/build/', '/coverage/', '/node_modules/'],
+    coveragePathIgnorePatterns: ['build', 'debug'],
+    transformIgnorePatterns: ['node_modules/(?!((jest-)/.*))'],
+    transform: {
+      '^.+\\.(js|jsx)$': 'babel-jest',
+      '^.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform'
+    },
+    moduleNameMapper: {
+      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+        '<rootDir>/../../__mocks__/fileMock.js'
+    },
+    setupFilesAfterEnv: [
+      'jest-enzyme',
+      'jest-extended',
+      '<rootDir>/../../jest.setup.js'
+    ],
     ...extraConfig
-  };
+  }
 }
 
-function getLinterTestConfig(pack, path) {
+function getLinterTestConfig (pack, path) {
   return {
-    displayName: getSuiteName(pack, "linter"),
-    name: getSuiteIdent(pack, "linter"),
+    displayName: getSuiteName(pack, 'linter'),
+    name: getSuiteIdent(pack, 'linter'),
     rootDir: path,
-    runner: "jest-runner-standard",
-    testMatch: ["<rootDir>/**/*.{js,jsx}"],
+    runner: 'jest-runner-standard',
+    testMatch: ['<rootDir>/**/*.{js,jsx}'],
     testPathIgnorePatterns: [
-      "/build/",
-      "/coverage/",
-      "/node_modules/",
-      "/static/"
+      '/build/',
+      '/coverage/',
+      '/node_modules/',
+      '/static/'
     ]
-  };
+  }
 }
 
-function getPackageTestConfig(path, projects, config = {}) {
+function getPackageTestConfig (path, projects, config = {}) {
   return {
     rootDir: path,
     projects,
     watchPlugins: [
-      "jest-watch-select-projects",
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
+      'jest-watch-select-projects',
+      'jest-watch-typeahead/filename',
+      'jest-watch-typeahead/testname'
     ],
     ...config
-  };
+  }
 }
 
-function getSuiteIdent(pack, specifier) {
-  return `${pack.name}-${specifier}`;
+function getSuiteIdent (pack, specifier) {
+  return `${pack.name}-${specifier}`
 }
 
-function getSuiteName(pack, specifier) {
-  return `${pack.name.replace("nakupuj-bez-andreje-", "")} ${specifier}`;
+function getSuiteName (pack, specifier) {
+  return `${pack.name.replace('nakupuj-bez-andreje-', '')} ${specifier}`
 }
 
-function setupJest() {
-  const Enzyme = require("enzyme").default;
-  const Adapter = require("enzyme-adapter-react-16").default;
-  Enzyme.configure({ adapter: new Adapter() });
+function setupJest () {
+  const Enzyme = require('enzyme')
+  const Adapter = require('enzyme-adapter-react-16')
+  Enzyme.configure({ adapter: new Adapter() })
 }
 
-function setupMoment() {
-  const moment = require("moment-timezone");
-  moment.tz.setDefault("UTC");
+function setupMoment () {
+  const moment = require('moment-timezone')
+  moment.tz.setDefault('UTC')
 }
 
 module.exports = {
@@ -88,4 +100,4 @@ module.exports = {
   getPackageTestConfig,
   setupJest,
   setupMoment
-};
+}

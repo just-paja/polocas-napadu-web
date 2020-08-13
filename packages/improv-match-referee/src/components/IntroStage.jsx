@@ -4,9 +4,9 @@ import MainControls from './MainControls'
 import React from 'react'
 import Team from './Team'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
-import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'polocas-napadu-core/constants'
 
 const styles = {
   inspiration: {
@@ -25,8 +25,8 @@ const IntroStage = ({ classes }) => (
     <MainControls center>
       <h1>Intro</h1>
       <p>
-        Během intra sportovní komentátoři udělají prognózu zápasu a
-        poté probíhá veřejná rozcvička.
+        Během intra sportovní komentátoři udělají prognózu zápasu a poté probíhá
+        veřejná rozcvička.
       </p>
     </MainControls>
   </ControlsLayout>

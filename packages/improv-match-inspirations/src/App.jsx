@@ -2,7 +2,7 @@ import InspirationsView from './components/InspirationsView'
 import NotFound from './components/NotFound'
 import React from 'react'
 
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from '@apollo/react-components'
 import { Switch, Route } from 'react-router'
 import { HashRouter } from 'react-router-dom'
 

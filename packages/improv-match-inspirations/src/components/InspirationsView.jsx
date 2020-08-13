@@ -1,7 +1,7 @@
 import React from 'react'
 import ShowInspirations from './ShowInspirations'
 
-import { RouterContext } from 'core/context'
+import { RouterContext } from 'polocas-napadu-core/context'
 
 const InspirationsView = ({ match }) => (
   <RouterContext.Provider value={match.params}>

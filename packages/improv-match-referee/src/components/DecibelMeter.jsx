@@ -4,11 +4,15 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
-import { ContestantGroup } from 'core/proptypes'
+import { ContestantGroup } from 'polocas-napadu-core/proptypes'
 import { DecibelMeterValues } from './DecibelMeterValues'
 import { throttle } from 'throttle-debounce'
 import { withStyles } from '@material-ui/core/styles'
-import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_RATE, VOLUME_SCRAPE_TIMEOUT } from 'core/constants'
+import {
+  VOLUME_SCRAPE_DURATION,
+  VOLUME_SCRAPE_RATE,
+  VOLUME_SCRAPE_TIMEOUT
+} from 'polocas-napadu-core/constants'
 
 const styles = theme => ({
   meter: {
@@ -109,7 +113,7 @@ class DecibelMeter extends React.Component {
 
   listen () {
     const { rate } = this.props
-    this.meter.sources.then((sources) => {
+    this.meter.sources.then(sources => {
       this.getReasonableDevices(sources).forEach(deviceId => {
         this.setState({ volume: 0 })
         this.meter.listenTo(deviceId, throttle(rate, this.propagateSoundFrame))
@@ -156,9 +160,7 @@ class DecibelMeter extends React.Component {
       return timeout
     }
     if (recording) {
-      return micReady
-        ? 'Zastavit'
-        : 'Čekám na mikrofon'
+      return micReady ? 'Zastavit' : 'Čekám na mikrofon'
     }
     if (result) {
       return 'Opakovat'
@@ -176,15 +178,19 @@ class DecibelMeter extends React.Component {
     const { micReady, stopped, timeout, volume } = this.state
     return (
       <div className={classes.meter}>
-        <Typography variant='h3'>
-          {group.band.name}
-        </Typography>
+        <Typography variant='h3'>{group.band.name}</Typography>
         <div className={classes.controls}>
           <Button
             className={classes.control}
             color={this.getButtonColor()}
-            disabled={!timeout && ((disabled && !recording) || (recording && stopped))}
-            onClick={timeout || (micReady && recording) ? this.recordingStop : this.recordingStart}
+            disabled={
+              !timeout && ((disabled && !recording) || (recording && stopped))
+            }
+            onClick={
+              timeout || (micReady && recording)
+                ? this.recordingStop
+                : this.recordingStart
+            }
             variant='contained'
           >
             {this.getButtonLabel()}

@@ -3,13 +3,13 @@ import React from 'react'
 import ShowStageButton from './ShowStageButton'
 
 import { gql } from 'apollo-boost'
-import { MatchContext } from 'core/context'
-import { Mutation } from 'react-apollo'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Mutation } from '@apollo/react-components'
 
 const CHANGE_STAGE = gql`
   mutation ChangeStage($matchId: Int!, $stage: String!) {
     changeMatchStage(matchId: $matchId, stage: $stage) {
-      ok,
+      ok
     }
   }
 `
@@ -17,7 +17,7 @@ const CHANGE_STAGE = gql`
 const REWIND_STAGE = gql`
   mutation RewindStage($matchId: Int!) {
     rewindMatchStage(matchId: $matchId) {
-      ok,
+      ok
     }
   }
 `

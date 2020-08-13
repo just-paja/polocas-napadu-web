@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
+import { ApolloProvider } from '@apollo/react-components'
+import { ApolloClient } from 'apollo-boost'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { SchemaLink } from 'apollo-link-schema'
 import { makeExecutableSchema } from 'graphql-tools'
@@ -17,11 +17,7 @@ export const mockClient = () => {
   return { schema, client }
 }
 
-export const apolloWrap = (children) => {
+export const apolloWrap = children => {
   const { client } = mockClient()
-  return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
-  )
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
 }

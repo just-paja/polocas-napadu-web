@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import TeamScore from './TeamScore'
 
-import { Band } from 'core/proptypes'
+import { Band } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
-import { TEAM_LOGO_DEFAULT } from 'core/constants'
+import { TEAM_LOGO_DEFAULT } from 'polocas-napadu-core/constants'
 
 const styles = theme => ({
   name: {
@@ -98,9 +98,13 @@ class TeamDetails extends Component {
     }
     return (
       <div
-        className={classnames(classes.teamBubble, classes[camelCase(`teamBubble-${side}`)], {
-          [classes.dimm]: dimm
-        })}
+        className={classnames(
+          classes.teamBubble,
+          classes[camelCase(`teamBubble-${side}`)],
+          {
+            [classes.dimm]: dimm
+          }
+        )}
         style={{ backgroundColor: team.color }}
       >
         <div
@@ -110,19 +114,30 @@ class TeamDetails extends Component {
           )}
         >
           <img
-            className={classnames(classes.logo, classes[camelCase(`logo-${side}`)])}
+            className={classnames(
+              classes.logo,
+              classes[camelCase(`logo-${side}`)]
+            )}
             src={team.logo || TEAM_LOGO_DEFAULT}
             alt='Band logo'
           />
           <span
-            className={classnames(classes.name, classes[camelCase(`name-${side}`)])}
+            className={classnames(
+              classes.name,
+              classes[camelCase(`name-${side}`)]
+            )}
           >
             {this.getTeamName(team)}
           </span>
-          {hideScore
-            ? null
-            : <TeamScore score={team.score} backgroundColor={team.color} />}
-          <span className={classnames(classes.penalties, classes[camelCase(`penalties-${side}`)])}>
+          {hideScore ? null : (
+            <TeamScore score={team.score} backgroundColor={team.color} />
+          )}
+          <span
+            className={classnames(
+              classes.penalties,
+              classes[camelCase(`penalties-${side}`)]
+            )}
+          >
             {generatePenalties(classes, team.penaltyPoints)}
           </span>
         </div>

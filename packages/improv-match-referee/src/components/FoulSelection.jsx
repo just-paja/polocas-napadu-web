@@ -3,17 +3,16 @@ import React from 'react'
 import Select from 'react-select'
 
 import { gql } from 'apollo-boost'
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
-const styles = {
-}
+const styles = {}
 
 const GET_GAMES = gql`
   query FoulTypes {
     foulTypeList {
-      id,
-      name,
+      id
+      name
     }
   }
 `

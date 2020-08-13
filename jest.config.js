@@ -11,8 +11,7 @@ const config = {
     '**/**/*.{js,jsx}',
     '!**/node_modules/**',
     '!**/coverage/**',
-    '!**/*.config.js',
-    '!<rootDir>/build-android.js'
+    '!**/*.config.js'
   ]
 }
 

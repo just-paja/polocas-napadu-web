@@ -9,8 +9,8 @@ import React from 'react'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import { Classes } from 'core/proptypes'
-import { MatchContext } from 'core/context'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -84,7 +84,11 @@ class CalibrationDialog extends React.Component {
     return (
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton color='inherit' onClick={this.handleClose} aria-label='Close'>
+          <IconButton
+            color='inherit'
+            onClick={this.handleClose}
+            aria-label='Close'
+          >
             <CloseIcon />
           </IconButton>
           <Typography variant='h6' color='inherit' className={classes.flex}>
@@ -124,7 +128,8 @@ class CalibrationDialog extends React.Component {
                   recording={false}
                 />
                 <p className={classes.center}>
-                  Pro úspěšnou kalibraci je potřeba hlasovat alespoň dvakrát. Sleduj graf na obrazovce.
+                  Pro úspěšnou kalibraci je potřeba hlasovat alespoň dvakrát.
+                  Sleduj graf na obrazovce.
                 </p>
               </DialogContent>
             </div>

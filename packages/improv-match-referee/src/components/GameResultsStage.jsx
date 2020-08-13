@@ -6,9 +6,9 @@ import ScoreControls from './ScoreControls'
 import ScorePointPoll from './ScorePointPoll'
 import Team from './Team'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
-import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'polocas-napadu-core/constants'
 
 const styles = {
   inspiration: {

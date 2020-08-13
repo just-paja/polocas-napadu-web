@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import SpeedDial from '@material-ui/lab/SpeedDial'
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon'
 
-import { Children, Classes } from 'core/proptypes'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({

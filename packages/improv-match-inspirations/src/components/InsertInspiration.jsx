@@ -3,13 +3,13 @@ import InspirationSaved from './InspirationSaved'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-import { Mutation } from 'react-apollo'
-import { MatchContext } from 'core/context'
+import { Mutation } from '@apollo/react-components'
+import { MatchContext } from 'polocas-napadu-core/context'
 
 const ADD_INSPIRATION = gql`
   mutation AddInspiration($showId: Int!, $inspirationText: String!) {
     addInspiration(showId: $showId, inspirationText: $inspirationText) {
-      ok,
+      ok
     }
   }
 `
@@ -43,13 +43,15 @@ class InsertInspiration extends React.Component {
           >
             {(mutate, { loading, error }) => (
               <InspirationForm
-                onSubmit={(formValue) => mutate({
-                  refetchQueries: ['MatchStage'],
-                  variables: {
-                    inspirationText: formValue.inspiration,
-                    showId: data.match.show.id
-                  }
-                })}
+                onSubmit={formValue =>
+                  mutate({
+                    refetchQueries: ['MatchStage'],
+                    variables: {
+                      inspirationText: formValue.inspiration,
+                      showId: data.match.show.id
+                    }
+                  })
+                }
                 error={error}
                 saving={loading}
               />

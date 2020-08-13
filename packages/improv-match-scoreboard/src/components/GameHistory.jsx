@@ -1,7 +1,7 @@
 import GraphContainer from './GraphContainer'
 import React from 'react'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -21,9 +21,9 @@ const GET_MATCH_GAMES = gql`
     match(id: $matchId) {
       show {
         games {
-          type,
+          type
           inspirations {
-            text,
+            text
           }
         }
       }
@@ -94,7 +94,4 @@ GameHistory.propTypes = {
   classes: Classes.isRequired
 }
 
-export default GraphContainer(
-  withStyles(styles)(GameHistory),
-  GET_MATCH_GAMES
-)
+export default GraphContainer(withStyles(styles)(GameHistory), GET_MATCH_GAMES)

@@ -7,14 +7,14 @@ import React from 'react'
 import Team from './Team'
 
 import { gql } from 'apollo-boost'
-import { MatchContext } from 'core/context'
-import { Mutation } from 'react-apollo'
-import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Mutation } from '@apollo/react-components'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'polocas-napadu-core/constants'
 
 const SET_GAME = gql`
   mutation SetMatchGame($matchId: Int!, $gameRulesId: Int) {
     setMatchGame(matchId: $matchId, gameRulesId: $gameRulesId) {
-      ok,
+      ok
     }
   }
 `
@@ -30,28 +30,31 @@ class GameSetupStage extends React.Component {
         <MainControls center>
           <h1>Nastavení kategorie</h1>
           <p>Rozhodčí určuje jaká kategorie se bude hrát a vybírá téma</p>
-          {this.context.match.closed
-            ? null
-            : (
-              <>
-                <Mutation mutation={SET_GAME}>
-                  {(setGame, { error, loading }) => (
-                    <GameSelection
-                      onChange={(value) => setGame({
+          {this.context.match.closed ? null : (
+            <>
+              <Mutation mutation={SET_GAME}>
+                {(setGame, { error, loading }) => (
+                  <GameSelection
+                    onChange={value =>
+                      setGame({
                         refetchQueries: ['MatchStage'],
                         variables: {
                           gameRulesId: value ? value.id : null,
                           matchId: this.context.match.id
                         }
-                      })}
-                      value={this.context.match.currentStage.game && this.context.match.currentStage.game.rules}
-                    />
-                  )}
-                </Mutation>
-                <h2>Inspirace ({this.context.match.preparedInspirationCount})</h2>
-                <InspirationSelection />
-              </>
-            )}
+                      })
+                    }
+                    value={
+                      this.context.match.currentStage.game &&
+                      this.context.match.currentStage.game.rules
+                    }
+                  />
+                )}
+              </Mutation>
+              <h2>Inspirace ({this.context.match.preparedInspirationCount})</h2>
+              <InspirationSelection />
+            </>
+          )}
         </MainControls>
       </ControlsLayout>
     )

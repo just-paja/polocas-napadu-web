@@ -2,8 +2,8 @@ import MatchStage from './MatchStage'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Classes } from 'core/proptypes'
-import { RouterContext } from 'core/context'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import { RouterContext } from 'polocas-napadu-core/context'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = {

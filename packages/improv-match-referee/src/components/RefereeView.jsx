@@ -1,8 +1,8 @@
 import MatchStage from './MatchStage'
 import React from 'react'
 
-import { Match } from 'core/proptypes'
-import { RouterContext } from 'core/context'
+import { Match } from 'polocas-napadu-core/proptypes'
+import { RouterContext } from 'polocas-napadu-core/context'
 
 const RefereeView = ({ match }) => (
   <RouterContext.Provider value={match.params}>

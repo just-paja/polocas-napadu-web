@@ -3,8 +3,8 @@ import MatchSpeedDial from './MatchSpeedDial'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Children, Classes } from 'core/proptypes'
-import { MatchContext } from 'core/context'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({

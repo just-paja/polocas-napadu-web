@@ -5,13 +5,13 @@ import InspirationForm from './InspirationForm'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-import { MatchContext } from 'core/context'
-import { Mutation } from 'react-apollo'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Mutation } from '@apollo/react-components'
 
 const ADD_AND_USE_INSPIRATION = gql`
   mutation AddAndUseInspiration($matchId: Int!, $inspirationText: String!) {
     addAndUseInspiration(matchId: $matchId, inspirationText: $inspirationText) {
-      ok,
+      ok
     }
   }
 `
@@ -32,13 +32,8 @@ class CustomInspirationDialog extends React.Component {
   render () {
     const { open, onClose } = this.props
     return (
-      <Dialog
-        open={open}
-        onClose={onClose}
-      >
-        <DialogTitle>
-          Vlastní inspirace
-        </DialogTitle>
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle>Vlastní inspirace</DialogTitle>
         <DialogContent>
           <MatchContext.Consumer>
             {data => (
@@ -50,7 +45,7 @@ class CustomInspirationDialog extends React.Component {
                 {(mutate, { loading, error }) => (
                   <InspirationForm
                     error={error}
-                    onSubmit={(formData) => {
+                    onSubmit={formData => {
                       mutate({
                         variables: {
                           inspirationText: formData.inspiration,

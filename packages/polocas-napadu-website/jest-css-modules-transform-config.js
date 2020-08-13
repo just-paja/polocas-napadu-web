@@ -1,5 +1,7 @@
+const path = require('path')
+
 module.exports = {
   sassConfig: {
-    includePaths: ['lib/styles']
+    includePaths: [path.join(__dirname, 'lib', 'styles')]
   }
 }

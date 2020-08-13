@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Children, Classes } from 'core/proptypes'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -15,9 +15,7 @@ const styles = theme => ({
 })
 
 const StageProgress = ({ children, classes, side }) => (
-  <div className={classnames(classes.box, classes[side])}>
-    {children}
-  </div>
+  <div className={classnames(classes.box, classes[side])}>{children}</div>
 )
 
 StageProgress.propTypes = {

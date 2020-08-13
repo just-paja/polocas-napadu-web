@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import TeamDetails from './TeamDetails'
 
-import { Children, Classes } from 'core/proptypes'
-import { MatchContext } from 'core/context'
-import { getContestantTypeBySide } from 'core/sides'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { getContestantTypeBySide } from 'polocas-napadu-core/sides'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -17,7 +17,9 @@ class Team extends React.Component {
   render () {
     const { children, classes, side } = this.props
     const contestantType = getContestantTypeBySide(side)
-    const team = this.context.match.contestantGroups.find(group => group.contestantType === contestantType)
+    const team = this.context.match.contestantGroups.find(
+      group => group.contestantType === contestantType
+    )
 
     if (!team) {
       return null

@@ -3,10 +3,10 @@ import InspirationList from './InspirationList'
 import InteractiveButton from './InteractiveButton'
 import React from 'react'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
-import { MatchContext } from 'core/context'
-import { Mutation } from 'react-apollo'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Mutation } from '@apollo/react-components'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -18,7 +18,7 @@ const styles = theme => ({
 const INSPIRATION_PICK_RANDOM = gql`
   mutation RandomPickInspiration($matchId: Int!, $replace: Boolean) {
     randomPickInspiration(matchId: $matchId, replace: $replace) {
-      ok,
+      ok
     }
   }
 `
@@ -29,13 +29,15 @@ const renderShuffleButton = ({ data, disabled, replace, label }) => (
       <InteractiveButton
         disabled={disabled}
         loading={loading}
-        onClick={() => mutate({
-          refetchQueries: ['MatchStage'],
-          variables: {
-            matchId: data.match.id,
-            replace
-          }
-        })}
+        onClick={() =>
+          mutate({
+            refetchQueries: ['MatchStage'],
+            variables: {
+              matchId: data.match.id,
+              replace
+            }
+          })
+        }
       >
         {label}
       </InteractiveButton>
@@ -45,17 +47,18 @@ const renderShuffleButton = ({ data, disabled, replace, label }) => (
 
 const InspirationSelection = ({ classes, data, onChange, value }) => (
   <MatchContext.Consumer>
-    {(data) => (
+    {data => (
       <div>
         <div className={classes.inspirationList}>
-          <InspirationList inspirations={data.match.currentStage.inspirations} />
+          <InspirationList
+            inspirations={data.match.currentStage.inspirations}
+          />
         </div>
         {renderShuffleButton({
           data,
-          disabled: (
+          disabled:
             data.match.preparedInspirationCount === 0 ||
-            data.match.currentStage.inspirations.length === 0
-          ),
+            data.match.currentStage.inspirations.length === 0,
           label: 'Vylosovat a nahradit',
           replace: true
         })}

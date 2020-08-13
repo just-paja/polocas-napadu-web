@@ -3,8 +3,8 @@ import ShowProgress from './ShowProgress'
 import ShowStageControl from './ShowStageControl'
 import ShowStageMenu from './ShowStageMenu'
 
-import { MatchContext } from 'core/context'
-import { Children, Classes } from 'core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 import {
   STAGE_FINALE,
@@ -14,7 +14,7 @@ import {
   STAGE_INTRO,
   STAGE_PAUSE,
   STAGE_SHOW_SETUP
-} from 'core/constants'
+} from 'polocas-napadu-core/constants'
 
 const STAGE_MAP = {
   [STAGE_FINALE]: [STAGE_GAME_SETUP],
@@ -46,9 +46,7 @@ const mapStageToButton = stage => <ShowStageControl key={stage} stage={stage} />
 class ShowStageControls extends React.Component {
   getForwardButtons () {
     const stage = this.context.match.currentStage
-    const forward = stage
-      ? STAGE_MAP[stage.type]
-      : STAGE_MAP[STAGE_SHOW_SETUP]
+    const forward = stage ? STAGE_MAP[stage.type] : STAGE_MAP[STAGE_SHOW_SETUP]
     return forward || []
   }
 
@@ -59,17 +57,17 @@ class ShowStageControls extends React.Component {
       <>
         {currentStage ? (
           <ShowProgress side='left'>
-            <ShowStageControl back stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP} />
+            <ShowStageControl
+              back
+              stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP}
+            />
           </ShowProgress>
         ) : null}
         <ShowProgress side='right'>
           {forward.map(mapStageToButton)}
           <ShowStageControl
             component={ShowStageMenu}
-            omit={[
-              currentStage && currentStage.type,
-              ...forward
-            ]}
+            omit={[currentStage && currentStage.type, ...forward]}
           />
         </ShowProgress>
       </>
@@ -82,9 +80,11 @@ class ShowStageControls extends React.Component {
 
     return (
       <div className={classes.box}>
-        {closed
-          ? <p className={classes.closed}>Zápas je uzavřen</p>
-          : this.renderControls()}
+        {closed ? (
+          <p className={classes.closed}>Zápas je uzavřen</p>
+        ) : (
+          this.renderControls()
+        )}
       </div>
     )
   }

@@ -17,13 +17,16 @@
     "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "apollo-link-schema": "^1.2.5",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
+    "graphql-tools": "^6.0.18",
     "jest": "^26.4.0",
     "jest-css-modules-transform": "^4.0.1",
     "jest-date-mock": "^1.0.8",
+    "jest-enzyme": "^7.1.2",
     "jest-extended": "^0.11.5",
     "jest-runner-standard": "0.0.13",
     "jest-watch-select-projects": "^2.0.0",
@@ -32,5 +35,12 @@
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4",
     "waait": "^1.0.5"
+  },
+  "dependencies": {
+    "improv-match-inspirations": "file:packages/improv-match-inspirations",
+    "improv-match-referee": "file:packages/improv-match-referee",
+    "improv-match-scoreboard": "file:packages/improv-match-scoreboard",
+    "polocas-napadu-core": "file:packages/polocas-napadu-core",
+    "polocas-napadu-website": "file:packages/polocas-napadu-website"
   }
 }

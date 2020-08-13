@@ -4,8 +4,8 @@ import MainControls from './MainControls'
 import React from 'react'
 import Team from './Team'
 
-import { Classes } from 'core/proptypes'
-import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'core/constants'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import { TEAM_SIDE_LEFT, TEAM_SIDE_RIGHT } from 'polocas-napadu-core/constants'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = {

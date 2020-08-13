@@ -5,8 +5,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Children } from 'core/proptypes'
-import { STAGE_OPTIONS, STAGES_JUMP } from 'core/constants'
+import { Children } from 'polocas-napadu-core/proptypes'
+import { STAGE_OPTIONS, STAGES_JUMP } from 'polocas-napadu-core/constants'
 
 class ShowStageMenu extends React.Component {
   constructor () {
@@ -38,25 +38,26 @@ class ShowStageMenu extends React.Component {
           onClose={this.handleClose}
           open={Boolean(this.state.anchorEl)}
         >
-          {STAGE_OPTIONS
-            .filter(option => (
+          {STAGE_OPTIONS.filter(
+            option =>
               STAGES_JUMP.indexOf(option.value) !== -1 &&
               omit.indexOf(option.value) === -1
-            ))
-            .map(option => (
-              <MenuItem
-                key={option.value}
-                onClick={() => mutate({
+          ).map(option => (
+            <MenuItem
+              key={option.value}
+              onClick={() =>
+                mutate({
                   refetchQueries: ['MatchStage'],
                   variables: {
                     matchId,
                     stage: option.value
                   }
-                })}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
+                })
+              }
+            >
+              {option.label}
+            </MenuItem>
+          ))}
         </Menu>
       </>
     )

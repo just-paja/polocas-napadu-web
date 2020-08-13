@@ -24,7 +24,11 @@ const TestComponentWrapped = withQuery({ query: TEST_QUERY })(TestComponent)
 describe('withQuery HOC', () => {
   it('given query is loading, it renders loader', async () => {
     const comp = mount(
-      <MockedProvider mocks={[]}>
+      <MockedProvider
+        mocks={[
+          { request: { query: TEST_QUERY }, result: { data: { showList: [] } } }
+        ]}
+      >
         <TestComponentWrapped />
       </MockedProvider>
     )

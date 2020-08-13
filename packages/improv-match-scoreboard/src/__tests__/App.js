@@ -2,7 +2,7 @@ import App from '../App'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { mockClient } from 'core/mock/apollo'
+import { mockClient } from 'polocas-napadu-core/mock/apollo'
 
 describe('app', () => {
   it('renders without crashing', () => {

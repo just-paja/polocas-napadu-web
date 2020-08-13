@@ -2,7 +2,7 @@ import NotFound from './components/NotFound'
 import React, { Component } from 'react'
 import RefereeView from './components/RefereeView'
 
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from '@apollo/react-components'
 import { Switch, Route } from 'react-router'
 import { HashRouter } from 'react-router-dom'
 

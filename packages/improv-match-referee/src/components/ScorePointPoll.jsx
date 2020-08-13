@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { MatchContext } from 'core/context'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { withStage } from '../context'
 import { withMutation } from './withMutation'
 
@@ -22,7 +22,9 @@ class ScorePointPoll extends React.Component {
     const { scorePointPoll } = this.props.data
     if (scorePointPoll) {
       return scorePointPoll.votings.find(
-        voting => voting.contestantGroup && voting.contestantGroup.id === contestantGroupId
+        voting =>
+          voting.contestantGroup &&
+          voting.contestantGroup.id === contestantGroupId
       )
     }
     return null
@@ -84,7 +86,9 @@ class ScorePointPoll extends React.Component {
 
   isAnyVoteOpen () {
     if (this.props.data.scorePointPoll) {
-      return this.props.data.scorePointPoll.votings.some(voting => !voting.closed)
+      return this.props.data.scorePointPoll.votings.some(
+        voting => !voting.closed
+      )
     }
     return false
   }
@@ -109,12 +113,7 @@ class ScorePointPoll extends React.Component {
     return (
       <Grid container spacing={32}>
         {contestantGroups.map(group => (
-          <Grid
-            item
-            key={group.id}
-            md={6}
-            xs={12}
-          >
+          <Grid item key={group.id} md={6} xs={12}>
             {this.renderGroupMeter(group)}
           </Grid>
         ))}
@@ -138,12 +137,20 @@ ScorePointPoll.defaultProps = {
   rate: 10
 }
 
-export default withStage(GraphContainer(
-  withMutation('onVotingStart', queries.startScorePointVoting)(
-    withMutation('onVotingEnd', queries.closeLivePollVoting)(
-      withMutation('onVolumeScrape', queries.saveVolumeScrape)(ScorePointPoll)
-    )
-  ),
-  queries.getScorePointPoll,
-  true
-))
+export default withStage(
+  GraphContainer(
+    withMutation(
+      'onVotingStart',
+      queries.startScorePointVoting
+    )(
+      withMutation(
+        'onVotingEnd',
+        queries.closeLivePollVoting
+      )(
+        withMutation('onVolumeScrape', queries.saveVolumeScrape)(ScorePointPoll)
+      )
+    ),
+    queries.getScorePointPoll,
+    true
+  )
+)

@@ -2,7 +2,7 @@ import GraphContainer from './GraphContainer'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Classes, Match } from 'core/proptypes'
+import { Classes, Match } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
@@ -36,18 +36,18 @@ const styles = theme => ({
 const GET_MATCHES = gql`
   query {
     matchList {
-      id,
+      id
       contestantGroups {
         band {
-          name,
-        },
-        contestantType,
-      },
+          name
+        }
+        contestantType
+      }
       show {
-        name,
-        start,
+        name
+        start
         location {
-          name,
+          name
         }
       }
     }
@@ -61,10 +61,10 @@ const MatchList = ({ classes, data }) => (
       <ul className={classes.list}>
         {data.matchList.map(match => (
           <li className={classes.item} key={match.id}>
-            <Link to={`/match/${match.id}`}>
-              {match.show.name}
-            </Link><br />
-            {match.show.location.name}<br />
+            <Link to={`/match/${match.id}`}>{match.show.name}</Link>
+            <br />
+            {match.show.location.name}
+            <br />
             {match.show.start}
           </li>
         ))}

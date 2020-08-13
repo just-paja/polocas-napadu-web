@@ -2,14 +2,14 @@ import moment from 'moment'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-import { Query } from 'react-apollo'
-import { VOLUME_SCRAPE_RATE } from 'core/constants'
+import { Query } from '@apollo/react-components'
+import { VOLUME_SCRAPE_RATE } from 'polocas-napadu-core/constants'
 
 const GET_ACTIVE_VOLUME_SCRAPE = gql`
   query VolumeScrapeList($livePollVotingId: Int!) {
     volumeScrapeList(livePollVotingId: $livePollVotingId) {
-      created,
-      volume,
+      created
+      volume
     }
   }
 `
@@ -26,10 +26,12 @@ function getZeroTime (scrapes) {
 
 function convertScrapesToLine (scrapes) {
   const start = getZeroTime(scrapes)
-  return scrapes.map(scrape => ({
-    x: moment(scrape.created).valueOf() - start,
-    y: scrape.volume
-  })).sort((a, b) => a.x - b.x)
+  return scrapes
+    .map(scrape => ({
+      x: moment(scrape.created).valueOf() - start,
+      y: scrape.volume
+    }))
+    .sort((a, b) => a.x - b.x)
 }
 
 export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
@@ -61,7 +63,9 @@ export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
     handleLoad (data) {
       const voting = this.getActiveVoting()
       const scrapes = [...this.state.scrapes]
-      const targetIndex = this.state.scrapes.findIndex(line => line.id === voting.id)
+      const targetIndex = this.state.scrapes.findIndex(
+        line => line.id === voting.id
+      )
       const { volumeScrapeList } = data
       if (targetIndex === -1) {
         scrapes.push(getVotingCurve(voting, volumeScrapeList))
@@ -75,12 +79,7 @@ export const withVolumeScrape = ({ getLineColor }) => WrappedComponent => {
     }
 
     renderContent () {
-      return (
-        <WrappedComponent
-          votings={this.state.scrapes}
-          {...this.props}
-        />
-      )
+      return <WrappedComponent votings={this.state.scrapes} {...this.props} />
     }
 
     render () {

@@ -2,7 +2,7 @@ import Teams from './Teams'
 import GameHistory from './GameHistory'
 import React from 'react'
 
-import { Classes } from 'core/proptypes'
+import { Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = {

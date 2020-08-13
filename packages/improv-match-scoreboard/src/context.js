@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MatchContext } from 'core/context'
+import { MatchContext } from 'polocas-napadu-core/context'
 
 export const withStage = Component => props => (
   <MatchContext.Consumer>
@@ -10,11 +10,10 @@ export const withStage = Component => props => (
         stage={matchContext.match.currentStage}
         variables={{
           ...props.variables,
-          matchStageId: (
+          matchStageId:
             matchContext.match &&
             matchContext.match.currentStage &&
             matchContext.match.currentStage.id
-          )
         }}
       />
     )}

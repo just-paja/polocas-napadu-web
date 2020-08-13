@@ -8,7 +8,7 @@ import PauseStage from './PauseStage'
 import React from 'react'
 import ShowSetupStage from './ShowSetupStage'
 
-import { MatchContext } from 'core/context'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { gql } from 'apollo-boost'
 import {
   STAGE_FINALE,
@@ -17,64 +17,64 @@ import {
   STAGE_GAME,
   STAGE_INTRO,
   STAGE_PAUSE
-} from 'core/constants'
+} from 'polocas-napadu-core/constants'
 
 const GET_MATCH = gql`
   query MatchStage($matchId: Int!) {
     match(id: $matchId) {
-      id,
-      preparedInspirationCount,
+      id
+      preparedInspirationCount
       show {
-        name,
-        start,
-      },
-      closed,
+        name
+        start
+      }
+      closed
       contestantGroups {
-        id,
-        contestantType,
-        score,
-        color,
-        logo,
-        scorePoints,
-        penaltyPoints,
+        id
+        contestantType
+        score
+        color
+        logo
+        scorePoints
+        penaltyPoints
         band {
-          name,
-        },
+          name
+        }
         players {
-          id,
+          id
           profile {
-            name,
-          },
+            name
+          }
         }
-      },
+      }
       currentStage {
-        id,
-        created,
-        type,
+        id
+        created
+        type
         game {
-          type,
+          type
           inspirations {
-            id,
-            text,
-          },
+            id
+            text
+          }
           rules {
-            id,
-            name,
-          },
-        },
-        inspirations {
-          id,
-          text,
+            id
+            name
+          }
         }
-      },
+        inspirations {
+          id
+          text
+        }
+      }
       prevStage {
         type
-      },
+      }
     }
   }
 `
 
-const getStageView = (stage) => {
+const getStageView = stage => {
   if (stage) {
     if (stage.type === STAGE_INTRO) {
       return <IntroStage />
@@ -104,8 +104,4 @@ const MatchStage = ({ data }) => (
   </MatchContext.Provider>
 )
 
-export default GraphContainer(
-  MatchStage,
-  GET_MATCH,
-  true
-)
+export default GraphContainer(MatchStage, GET_MATCH, true)

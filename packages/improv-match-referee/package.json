@@ -1,22 +1,20 @@
 {
-  "name": "referee",
+  "name": "improv-match-referee",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-components": "4.0.0",
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.35",
-    "apollo-boost": "^0.4.4",
+    "apollo-boost": "^0.4.9",
     "classnames": "^2.2.6",
     "decibel-meter": "^2.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "graphql": "^14.5.8",
-    "moment": "^2.24.0",
-    "query-string": "^6.4.2",
-    "react": "^16.12.0",
-    "react-apollo": "^3.1.3",
-    "react-dom": "^16.12.0",
+    "graphql": "^15.3.0",
+    "moment": "^2.27.0",
+    "query-string": "^6.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
@@ -41,16 +39,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/preset-react": "^7.7.4",
-    "jest-runner-standard": "0.0.13",
-    "jest-watch-select-projects": "^1.0.0",
-    "jest-watch-suspend": "^1.1.2",
-    "jest-watch-typeahead": "^0.4.2",
-    "standard": "^14.3.1"
-  }
+  ]
 }

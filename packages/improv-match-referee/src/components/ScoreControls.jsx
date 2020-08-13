@@ -3,11 +3,11 @@ import Add from '@material-ui/icons/Add'
 import Remove from '@material-ui/icons/Remove'
 import React from 'react'
 
-import { Classes, Side } from 'core/proptypes'
-import { getContestantBySide } from 'core/sides'
+import { Classes, Side } from 'polocas-napadu-core/proptypes'
+import { getContestantBySide } from 'polocas-napadu-core/sides'
 import { gql } from 'apollo-boost'
-import { MatchContext } from 'core/context'
-import { Mutation } from 'react-apollo'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Mutation } from '@apollo/react-components'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -20,15 +20,18 @@ const styles = theme => ({
 
 const CHANGE_SCORE = gql`
   mutation ChangeScore($contestantGroupId: Int!, $subtract: Boolean) {
-    changeContestantGroupScore(contestantGroupId: $contestantGroupId, subtract: $subtract) {
-      ok,
+    changeContestantGroupScore(
+      contestantGroupId: $contestantGroupId
+      subtract: $subtract
+    ) {
+      ok
     }
   }
 `
 
 const ScoreControls = ({ classes, side }) => (
   <MatchContext.Consumer>
-    {(data) => {
+    {data => {
       const contestantGroup = getContestantBySide(
         data.match.contestantGroups,
         side
@@ -38,25 +41,29 @@ const ScoreControls = ({ classes, side }) => (
           {(mutate, { loading }) => (
             <div className={classes.box}>
               <IconButton
-                onClick={() => mutate({
-                  refetchQueries: ['MatchStage'],
-                  variables: {
-                    contestantGroupId: contestantGroup.id,
-                    subtract: false
-                  }
-                })}
+                onClick={() =>
+                  mutate({
+                    refetchQueries: ['MatchStage'],
+                    variables: {
+                      contestantGroupId: contestantGroup.id,
+                      subtract: false
+                    }
+                  })
+                }
               >
                 <Add />
               </IconButton>
               <IconButton
                 disabled={contestantGroup.scorePoints === 0}
-                onClick={() => mutate({
-                  refetchQueries: ['MatchStage'],
-                  variables: {
-                    contestantGroupId: contestantGroup.id,
-                    subtract: true
-                  }
-                })}
+                onClick={() =>
+                  mutate({
+                    refetchQueries: ['MatchStage'],
+                    variables: {
+                      contestantGroupId: contestantGroup.id,
+                      subtract: true
+                    }
+                  })
+                }
               >
                 <Remove />
               </IconButton>

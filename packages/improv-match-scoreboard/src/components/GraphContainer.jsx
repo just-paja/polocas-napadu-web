@@ -1,14 +1,10 @@
 import React from 'react'
 
-import { Query } from 'react-apollo'
-import { RouterContext } from 'core/context'
+import { Query } from '@apollo/react-components'
+import { RouterContext } from 'polocas-napadu-core/context'
 
-const getComponentName = (component, defaultName) => (
-  component.displayName ||
-  component.name ||
-  defaultName ||
-  'Component'
-)
+const getComponentName = (component, defaultName) =>
+  component.displayName || component.name || defaultName || 'Component'
 
 const GraphContainer = (WrappedComponent, query, poll = false) => {
   if (!WrappedComponent) {
@@ -38,7 +34,9 @@ const GraphContainer = (WrappedComponent, query, poll = false) => {
           {({ loading, error, data }) => {
             if (loading) return <div>Loading...</div>
             if (error) return <div>Error!</div>
-            return <WrappedComponent data={data} variables={variables} {...props} />
+            return (
+              <WrappedComponent data={data} variables={variables} {...props} />
+            )
           }}
         </Query>
       )

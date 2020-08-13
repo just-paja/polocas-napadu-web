@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { VOLUME_SCRAPE_DURATION, VOLUME_SCRAPE_TIMEOUT } from 'core/constants'
+import {
+  VOLUME_SCRAPE_DURATION,
+  VOLUME_SCRAPE_TIMEOUT
+} from 'polocas-napadu-core/constants'
 import { ResponsiveLine } from '@nivo/line'
 import { withStyles } from '@material-ui/core/styles'
 
 function getAvg (values) {
   return values.length === 0
     ? 0
-    : (values.reduce((aggr, value) => aggr + value) / values.length)
+    : values.reduce((aggr, value) => aggr + value) / values.length
 }
 
 function getVotingAvg (voting) {
@@ -35,7 +38,9 @@ function getAvgLine (maxX, xScale, yScale, height) {
 
 function hasNewVoting (prevProps, props) {
   return props.poll.votings.some(voting => {
-    const prevInstance = prevProps.poll.votings.find(prevVoting => prevVoting.id === voting.id)
+    const prevInstance = prevProps.poll.votings.find(
+      prevVoting => prevVoting.id === voting.id
+    )
     return !voting.closed && (!prevInstance || prevInstance.closed)
   })
 }
@@ -87,7 +92,10 @@ class VolumeScrapeChartInner extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.poll.votings.length === 1 && !this.props.poll.votings[0].closed) {
+    if (
+      this.props.poll.votings.length === 1 &&
+      !this.props.poll.votings[0].closed
+    ) {
       this.startCountdown()
     }
   }
@@ -103,7 +111,7 @@ class VolumeScrapeChartInner extends React.Component {
   }
 
   startCountdown () {
-    this.setState({ countdown: (VOLUME_SCRAPE_TIMEOUT / 1000) - 1 })
+    this.setState({ countdown: VOLUME_SCRAPE_TIMEOUT / 1000 - 1 })
     this.countdownTimeout = setTimeout(() => {
       this.decrementCountdown()
     }, 1000)
@@ -125,12 +133,9 @@ class VolumeScrapeChartInner extends React.Component {
   getRefsComponent () {
     return props => (
       <g>
-        {this.props.votings.map(getAvgLine(
-          this.getMaxX(),
-          props.xScale,
-          props.yScale,
-          props.height
-        ))}
+        {this.props.votings.map(
+          getAvgLine(this.getMaxX(), props.xScale, props.yScale, props.height)
+        )}
       </g>
     )
   }
@@ -142,9 +147,7 @@ class VolumeScrapeChartInner extends React.Component {
     }
     return (
       <div className={classes.countdown}>
-        <span className={classes.countdownNumber}>
-          {this.state.countdown}
-        </span>
+        <span className={classes.countdownNumber}>{this.state.countdown}</span>
       </div>
     )
   }

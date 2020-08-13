@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { Band } from 'core/proptypes'
+import { Band } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -30,9 +30,7 @@ class TeamDetails extends Component {
       >
         <span className={classes.name}>{team.band.name}</span>
         <span className={classes.score}>
-          {team.score}
-          /
-          {team.penaltyPoints || 0}
+          {team.score}/{team.penaltyPoints || 0}
         </span>
       </div>
     )

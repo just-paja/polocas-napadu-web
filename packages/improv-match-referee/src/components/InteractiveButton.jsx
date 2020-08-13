@@ -4,8 +4,8 @@ import IconButton from '@material-ui/core/IconButton'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { MatchContext } from 'core/context'
-import { Children, Classes } from 'core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -44,10 +44,8 @@ const InteractiveButton = ({
             {children}
           </Component>
           {loading && (
-            <CircularProgress
-              size={24}
-              className={classes.buttonProgress}
-            />)}
+            <CircularProgress size={24} className={classes.buttonProgress} />
+          )}
         </div>
       )}
     </MatchContext.Consumer>

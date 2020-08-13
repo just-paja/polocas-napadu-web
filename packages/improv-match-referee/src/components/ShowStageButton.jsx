@@ -2,10 +2,14 @@ import InteractiveButton from './InteractiveButton'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { MatchContext } from 'core/context'
-import { STAGES, STAGE_GAME, STAGE_OPTIONS } from 'core/constants'
+import { MatchContext } from 'polocas-napadu-core/context'
+import {
+  STAGES,
+  STAGE_GAME,
+  STAGE_OPTIONS
+} from 'polocas-napadu-core/constants'
 
-const getStageLabel = (stage) => {
+const getStageLabel = stage => {
   const option = STAGE_OPTIONS.find(option => option.value === stage)
   return option && option.label
 }
@@ -23,13 +27,15 @@ const ShowStageButton = ({ mutate, loading, classes, stage }) => (
       <InteractiveButton
         loading={loading}
         disabled={!isStageReady(stage, context.match.currentStage)}
-        onClick={() => mutate({
-          refetchQueries: ['MatchStage'],
-          variables: {
-            matchId: context.match.id,
-            stage
-          }
-        })}
+        onClick={() =>
+          mutate({
+            refetchQueries: ['MatchStage'],
+            variables: {
+              matchId: context.match.id,
+              stage
+            }
+          })
+        }
       >
         {getStageLabel(stage)}
       </InteractiveButton>

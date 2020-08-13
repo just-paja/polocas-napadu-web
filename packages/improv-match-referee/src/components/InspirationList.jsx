@@ -8,9 +8,9 @@ import ListItemText from '@material-ui/core/ListItemText'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Classes, Inspiration } from 'core/proptypes'
+import { Classes, Inspiration } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
-import { Mutation } from 'react-apollo'
+import { Mutation } from '@apollo/react-components'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -23,7 +23,7 @@ const styles = theme => ({
 const INSPIRATION_DISCARD = gql`
   mutation InspirationDiscard($inspirationId: Int!) {
     discardInspiration(inspirationId: $inspirationId) {
-      ok,
+      ok
     }
   }
 `
@@ -31,7 +31,10 @@ const INSPIRATION_DISCARD = gql`
 const InspirationList = ({ classes, inspirations, readOnly }) => (
   <List>
     {inspirations.map(inspiration => (
-      <ListItem className={classnames({ [classes.readOnly]: readOnly })} key={inspiration.id}>
+      <ListItem
+        className={classnames({ [classes.readOnly]: readOnly })}
+        key={inspiration.id}
+      >
         <ListItemText>{inspiration.text}</ListItemText>
         {readOnly ? null : (
           <ListItemSecondaryAction>
@@ -40,12 +43,14 @@ const InspirationList = ({ classes, inspirations, readOnly }) => (
                 <InteractiveButton
                   loading={loading}
                   icon
-                  onClick={() => mutate({
-                    refetchQueries: ['MatchStage'],
-                    variables: {
-                      inspirationId: inspiration.id
-                    }
-                  })}
+                  onClick={() =>
+                    mutate({
+                      refetchQueries: ['MatchStage'],
+                      variables: {
+                        inspirationId: inspiration.id
+                      }
+                    })
+                  }
                 >
                   <Delete />
                 </InteractiveButton>

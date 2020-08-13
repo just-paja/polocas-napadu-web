@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Children, Classes } from 'core/proptypes'
+import { Children, Classes } from 'polocas-napadu-core/proptypes'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -33,18 +33,12 @@ const InteractiveButton = ({
   const Component = icon ? IconButton : Button
   return (
     <div className={classes.wrapper}>
-      <Component
-        disabled={loading || disabled}
-        onClick={onClick}
-        {...other}
-      >
+      <Component disabled={loading || disabled} onClick={onClick} {...other}>
         {children}
       </Component>
       {loading && (
-        <CircularProgress
-          size={24}
-          className={classes.buttonProgress}
-        />)}
+        <CircularProgress size={24} className={classes.buttonProgress} />
+      )}
     </div>
   )
 }

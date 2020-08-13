@@ -12,24 +12,24 @@ import TeamPenaltyButton from './TeamPenaltyButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import { Classes } from 'core/proptypes'
-import { MatchContext } from 'core/context'
+import { Classes } from 'polocas-napadu-core/proptypes'
+import { MatchContext } from 'polocas-napadu-core/context'
 import { withStyles } from '@material-ui/core/styles'
-import { Mutation } from 'react-apollo'
+import { Mutation } from '@apollo/react-components'
 import { gql } from 'apollo-boost'
 
 const ADD_PENALTY_POINT = gql`
   mutation AddTeamPenalty(
-    $contestantGroupId: Int!,
+    $contestantGroupId: Int!
     $foulTypeId: Int!
-    $playerId: Int,
+    $playerId: Int
   ) {
     addFoulPoint(
-      contestantGroupId: $contestantGroupId,
-      foulTypeId: $foulTypeId,
-      playerId: $playerId,
+      contestantGroupId: $contestantGroupId
+      foulTypeId: $foulTypeId
+      playerId: $playerId
     ) {
-      ok,
+      ok
     }
   }
 `
@@ -97,10 +97,23 @@ class PenaltyDialog extends React.Component {
 
   renderHeader (mutate, loading) {
     const { classes } = this.props
+    const handleClick = () =>
+      mutate({
+        variables: {
+          contestantGroupId: this.state.value.contestantGroupId,
+          foulTypeId: this.state.value.foulType.id,
+          playerId: this.state.value.playerId
+        }
+      })
+
     return (
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton color='inherit' onClick={this.handleClose} aria-label='Close'>
+          <IconButton
+            color='inherit'
+            onClick={this.handleClose}
+            aria-label='Close'
+          >
             <CloseIcon />
           </IconButton>
           <Typography variant='h6' color='inherit' className={classes.flex}>
@@ -108,15 +121,11 @@ class PenaltyDialog extends React.Component {
           </Typography>
           <InteractiveButton
             color='inherit'
-            disabled={!this.state.value.contestantGroupId || !this.state.value.foulType}
+            disabled={
+              !this.state.value.contestantGroupId || !this.state.value.foulType
+            }
             loading={loading}
-            onClick={() => mutate({
-              variables: {
-                contestantGroupId: this.state.value.contestantGroupId,
-                foulTypeId: this.state.value.foulType.id,
-                playerId: this.state.value.playerId
-              }
-            })}
+            onClick={handleClick}
           >
             Uložit
           </InteractiveButton>

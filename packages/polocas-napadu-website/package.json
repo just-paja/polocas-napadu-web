@@ -28,18 +28,18 @@
     "public"
   ],
   "engines": {
-    "node": ">=14,<13"
+    "node": "12"
   },
   "dependencies": {
-    "@apollo/react-components": "^3.1.3",
-    "@apollo/react-hooks": "^3.1.3",
-    "@apollo/react-ssr": "^3.1.3",
+    "@apollo/react-components": "^4.0.0",
+    "@apollo/react-hooks": "^4.0.0",
+    "@apollo/react-ssr": "^4.0.0",
     "@zeit/next-sass": "^1.0.1",
-    "apollo-boost": "^0.4.7",
+    "apollo-boost": "^0.4.9",
     "bootstrap": "^4.3.1",
     "core-js": "^3.6.5",
     "express": "4.17.1",
-    "graphql": "^14.6.0",
+    "graphql": "^15.3.0",
     "isomorphic-unfetch": "3.0.0",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",

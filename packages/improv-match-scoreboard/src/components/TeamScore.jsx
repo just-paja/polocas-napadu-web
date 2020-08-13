@@ -26,10 +26,14 @@ const availableFanfares = [
   pointWindows
 ]
 
-const fanfares = availableFanfares.map((sound) => {
-  AudioManager.store(sound, new Howl({
-    src: [sound]
-  }))
+const fanfares = availableFanfares.map(sound => {
+  AudioManager.store(
+    sound,
+    new Howl({
+      src: [sound],
+      format: 'wav'
+    })
+  )
   return sound
 })
 
@@ -114,10 +118,7 @@ class TeamScore extends React.PureComponent {
         animate={Boolean(this.state.animation)}
         onAnimationEnd={this.handleAnimationEnd}
       >
-        <span
-          className={classes.score}
-          style={{ backgroundColor }}
-        >
+        <span className={classes.score} style={{ backgroundColor }}>
           {score}
         </span>
       </AnimateOnChange>
