@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import Col from 'react-bootstrap/Col'
 import React from 'react'
-import styles from './ShowListItem.scss'
+import styles from './ShowListItem.module.scss'
 
 import { Link } from '../bindings'
 import { Show } from '../proptypes'

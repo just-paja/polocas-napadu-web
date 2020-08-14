@@ -1,8 +1,17 @@
 import React from 'react'
-import styles from './showList.scss'
+import styles from './showList.module.scss'
 
-import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
-import { FutureShowList, HomeStageNotice, RecentShowList } from '../components/shows'
+import {
+  CommonLayout,
+  ContentContainer,
+  Title,
+  TranslatedPage
+} from '../components/layout'
+import {
+  FutureShowList,
+  HomeStageNotice,
+  RecentShowList
+} from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
 class ShowListPage extends TranslatedPage {
@@ -17,7 +26,9 @@ class ShowListPage extends TranslatedPage {
             <HomeStageNotice />
             <FutureShowList />
             <RecentShowList />
-            <p>Více naleznete v <a href=''>archivu</a></p>
+            <p>
+              Více naleznete v <a href=''>archivu</a>
+            </p>
           </main>
         </ContentContainer>
       </CommonLayout>

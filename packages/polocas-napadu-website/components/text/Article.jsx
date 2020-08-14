@@ -1,6 +1,6 @@
 import Markdown from 'react-markdown'
 import React from 'react'
-import styles from './Article.scss'
+import styles from './Article.module.scss'
 
 import { Carousel } from '../photos'
 import { ContentContainer, Title } from '../layout'

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import ImageGallery from 'react-image-gallery'
 import React from 'react'
-import styles from './Carousel.scss'
+import styles from './Carousel.module.scss'
 
 export function Carousel ({ className, photos, ...props }) {
   return (

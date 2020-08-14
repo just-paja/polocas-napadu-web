@@ -1,12 +1,14 @@
-const withSass = require('@zeit/next-sass')
+const path = require('path')
 
-module.exports = withSass({
+module.exports = {
   publicRuntimeConfig: {
     API_URL: process.env.NODE_API_URL || 'http://localhost:8000/graphql',
     GA_CODE: process.env.NODE_GA_CODE || null
   },
-  sassLoaderOptions: {
-    includePaths: ['lib/styles']
-  },
-  cssModules: 'global'
-})
+  sassOptions: {
+    includePaths: [
+      path.join(__dirname, 'lib', 'styles'),
+      path.resolve(__dirname, '..', '..')
+    ]
+  }
+}

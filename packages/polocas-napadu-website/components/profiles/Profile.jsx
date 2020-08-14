@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import Markdown from 'react-markdown'
 import React from 'react'
-import styles from './Profile.scss'
+import styles from './Profile.module.scss'
 
 import { ProfileListItem } from './ProfileListItem'
 import { ContentContainer, PageHeading, Title } from '../layout'
@@ -13,18 +13,18 @@ import { withQuery } from '../graphql'
 const QUERY_PROFILE = gql`
   query GetProfile($slug: String!) {
     profile(slug: $slug) {
-      about,
-      id,
-      slug,
-      name,
-      alias,
-      avatar,
+      about
+      id
+      slug
+      name
+      alias
+      avatar
       photos {
-        id,
-        description,
-        height,
-        image,
-        width,
+        id
+        description
+        height
+        image
+        width
       }
     }
   }

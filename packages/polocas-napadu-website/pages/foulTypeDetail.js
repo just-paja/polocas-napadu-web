@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './showList.scss'
+import styles from './showList.module.scss'
 
 import { CommonLayout, ContentContainer, TranslatedPage } from '../components/layout'
 import { FoulTypeDetail } from '../components/games'

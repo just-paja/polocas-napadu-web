@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import React from 'react'
-import styles from './showList.scss'
+import styles from './showList.module.scss'
 
-import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
+import {
+  CommonLayout,
+  ContentContainer,
+  Title,
+  TranslatedPage
+} from '../components/layout'
 import { GameList } from '../components/games'
 import { withTranslation } from '../lib/i18n'
 

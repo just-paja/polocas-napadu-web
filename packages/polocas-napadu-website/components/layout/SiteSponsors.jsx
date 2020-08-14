@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './SiteSponsors.scss'
+import styles from './SiteSponsors.module.scss'
 
 import { gql } from 'apollo-boost'
 import { SiteSponsorLogo } from './SiteSponsorLogo'

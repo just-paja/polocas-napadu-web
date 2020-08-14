@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './Gallery.scss'
+import styles from './Gallery.module.scss'
 
 export function Gallery ({ free, photos }) {
   return (

@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './SocialNetworks.scss'
+import styles from './SocialNetworks.module.scss'
 
 import { SocialNetworkLink } from './SocialNetworkLink'
 import { ClassName, propsTranslated } from '../proptypes'
@@ -67,6 +67,6 @@ SocialNetworksComponent.defaultProps = {
   inverse: false
 }
 
-export const SocialNetworks = withTranslation([
-  'common'
-])(SocialNetworksComponent)
+export const SocialNetworks = withTranslation(['common'])(
+  SocialNetworksComponent
+)

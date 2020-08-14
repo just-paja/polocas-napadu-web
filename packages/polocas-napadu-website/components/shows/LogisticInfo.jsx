@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import styles from './LogisticInfo.scss'
+import styles from './LogisticInfo.module.scss'
 
 import { Children } from '../proptypes'
 

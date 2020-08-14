@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import styles from './showList.scss'
+import styles from './showList.module.scss'
 
 import { CommonLayout, ContentContainer, Title, TranslatedPage } from '../components/layout'
 import { FoulTypeList } from '../components/games'

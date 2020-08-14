@@ -1,10 +1,16 @@
 import Col from 'react-bootstrap/Col'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
-import styles from './index.scss'
+import styles from './home.module.scss'
 
 import { BriefFutureShowList } from '../components/shows'
-import { ContentContainer, Footer, MainMenu, Title, TranslatedPage } from '../components/layout'
+import {
+  ContentContainer,
+  Footer,
+  MainMenu,
+  Title,
+  TranslatedPage
+} from '../components/layout'
 import { HomeBanner } from '../components/about'
 import { withTranslation } from '../lib/i18n'
 

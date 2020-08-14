@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Footer.scss'
+import styles from './Footer.module.scss'
 
 import { ContentContainer } from './ContentContainer'
 import { LanguageSwitcher } from '../i18n'

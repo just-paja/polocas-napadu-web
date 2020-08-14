@@ -5,7 +5,7 @@ import { ContentContainer } from '../layout'
 import { propsTranslated } from '../proptypes'
 import { withTranslation } from '../../lib/i18n'
 
-import styles from './HomeBanner.scss'
+import styles from './HomeBanner.module.scss'
 
 export const HomeBannerComponent = ({ t }) => (
   <header className={styles.banner}>

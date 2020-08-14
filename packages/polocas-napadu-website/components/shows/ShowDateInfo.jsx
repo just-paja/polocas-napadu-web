@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './ShowDetail.scss'
+import styles from './ShowDetail.module.scss'
 
 import { AddToCalendar, EventStart } from '../events'
 import { ExternalLink } from '../text'

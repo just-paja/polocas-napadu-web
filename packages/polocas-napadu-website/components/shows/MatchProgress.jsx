@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import moment from 'moment'
 import React from 'react'
-import styles from './MatchProgress.scss'
+import styles from './MatchProgress.module.scss'
 
 import { FaExclamationTriangle, FaFlag, FaStopwatch } from 'react-icons/fa'
 import { Foul } from './Foul'
@@ -16,69 +16,69 @@ const QUERY_SHOW = gql`
   query GetMatch($id: Int!) {
     match(id: $id) {
       contestantGroups {
-        id,
+        id
         band {
-          name,
-          logo,
-        },
-        score,
-        penaltyPoints,
+          name
+          logo
+        }
+        score
+        penaltyPoints
         fouls {
-          id,
-          created,
+          id
+          created
           contestantGroup {
             band {
-              name,
-            },
-          },
+              name
+            }
+          }
           foulType {
-            name,
-            slug,
-          },
+            name
+            slug
+          }
           player {
             profile {
-              alias,
-              name,
-            },
-          },
-        },
-      },
+              alias
+              name
+            }
+          }
+        }
+      }
       scorePoints {
-        id,
+        id
         contestantGroup {
           band {
-            name,
-          },
-        },
-        created,
-      },
+            name
+          }
+        }
+        created
+      }
       stages {
-        type,
-        id,
-        created,
+        type
+        id
+        created
         game {
-          id,
+          id
           rules {
-            name,
-            slug,
-          },
+            name
+            slug
+          }
           inspirations {
-            id,
-            text,
-          },
-          start,
-          end,
-        },
+            id
+            text
+          }
+          start
+          end
+        }
       }
     }
   }
 `
 
 function getFouls (match) {
-  return match.contestantGroups.reduce((acc, group) => [
-    ...acc,
-    ...group.fouls
-  ], [])
+  return match.contestantGroups.reduce(
+    (acc, group) => [...acc, ...group.fouls],
+    []
+  )
 }
 
 function getScorePoints (match) {
@@ -116,8 +116,13 @@ function padLeft (number) {
 }
 
 function getTimerValue (time, start) {
-  const duration = moment.duration(moment(time).diff(start, 'seconds'), 'seconds')
-  return `${padLeft(duration.hours())}:${padLeft(duration.minutes())}:${padLeft(duration.seconds())}`
+  const duration = moment.duration(
+    moment(time).diff(start, 'seconds'),
+    'seconds'
+  )
+  return `${padLeft(duration.hours())}:${padLeft(duration.minutes())}:${padLeft(
+    duration.seconds()
+  )}`
 }
 
 function renderEvent (event, start) {
@@ -156,24 +161,18 @@ function renderEvent (event, start) {
         title={moment(event.created).format('LL LTS')}
       >
         {time}
-      </time>
-      {' '}
-      {Icon && <Icon />}
-      {' '}
-      {content}
+      </time>{' '}
+      {Icon && <Icon />} {content}
     </div>
   )
 }
 
 function renderScore (match) {
-  return match.contestantGroups
-    .sort(sortByScore)
-    .map(group => (
-      <div key={group.id}>
-        {group.band.name}:{' '}
-        {group.score}
-      </div>
-    ))
+  return match.contestantGroups.sort(sortByScore).map(group => (
+    <div key={group.id}>
+      {group.band.name}: {group.score}
+    </div>
+  ))
 }
 
 export function MatchProgressComponent ({ data, t }) {
@@ -188,11 +187,7 @@ export function MatchProgressComponent ({ data, t }) {
   ].sort(sortByDate)
   const start = log.find(event => event.type === STAGE_INTRO)
   if (!start) {
-    return (
-      <div className={styles.log}>
-        {t('matchHasNotStartedYet')}
-      </div>
-    )
+    return <div className={styles.log}>{t('matchHasNotStartedYet')}</div>
   }
   return (
     <div className={styles.log}>
@@ -202,4 +197,6 @@ export function MatchProgressComponent ({ data, t }) {
   )
 }
 
-export const MatchProgress = withTranslation(['common'])(withQuery({ query: QUERY_SHOW })(MatchProgressComponent))
+export const MatchProgress = withTranslation(['common'])(
+  withQuery({ query: QUERY_SHOW })(MatchProgressComponent)
+)

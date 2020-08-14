@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './SocialNetworkLink.scss'
+import styles from './SocialNetworkLink.module.scss'
 
 function openInNewWindow (event) {
   const href = event.currentTarget.href
@@ -11,18 +11,11 @@ function openInNewWindow (event) {
   }
 }
 
-export const SocialNetworkLink = ({
-  href,
-  icon: Icon,
-  inverse,
-  title
-}) => (
+export const SocialNetworkLink = ({ href, icon: Icon, inverse, title }) => (
   <a
     className={classnames(
       styles.circle,
-      inverse
-        ? styles.inverse
-        : styles.regular
+      inverse ? styles.inverse : styles.regular
     )}
     href={href}
     onClick={openInNewWindow}

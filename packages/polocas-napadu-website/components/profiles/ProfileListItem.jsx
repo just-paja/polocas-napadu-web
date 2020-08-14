@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
-import styles from './ProfileListItem.scss'
+import styles from './ProfileListItem.module.scss'
 
 import { Bulb } from '../logo'
 import { formatName } from './names'
@@ -18,7 +18,8 @@ function Circle ({ profile, children, className, rotate }) {
   }
   if (profile) {
     const name = formatName(profile)
-    props.style.backgroundImage = `linear-gradient(${primary}, ${primary}), url('${profile.avatar || defaultAvatar}')`
+    props.style.backgroundImage = `linear-gradient(${primary}, ${primary}), url('${profile.avatar ||
+      defaultAvatar}')`
     return (
       <Link params={{ slug: profile.slug }} route='profile'>
         <a {...props} title={name}>
@@ -40,11 +41,15 @@ function Circle ({ profile, children, className, rotate }) {
 export function ProfileListItem ({ dark, profile, className, rotate }) {
   return (
     <Circle
-      className={classnames(styles.circle, {
-        [styles.dark]: dark,
-        [styles.withProfile]: Boolean(profile),
-        [styles.withoutProfile]: !profile
-      }, className)}
+      className={classnames(
+        styles.circle,
+        {
+          [styles.dark]: dark,
+          [styles.withProfile]: Boolean(profile),
+          [styles.withoutProfile]: !profile
+        },
+        className
+      )}
       profile={profile}
       rotate={rotate}
     >

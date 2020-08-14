@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import styles from './SiteSponsorLogo.scss'
+import styles from './SiteSponsorLogo.module.scss'
 
 import { Sponsor } from '../proptypes'
 

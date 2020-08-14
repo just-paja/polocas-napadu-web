@@ -1,7 +1,7 @@
 import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './ShowFormatGalleryItem.scss'
+import styles from './ShowFormatGalleryItem.module.scss'
 
 import { ContentContainer } from '../layout'
 import { Link } from '../bindings'
@@ -29,4 +29,6 @@ ShowFormatGalleryItemComponent.propTypes = {
   })
 }
 
-export const ShowFormatGalleryItem = withTranslation(['common'])(ShowFormatGalleryItemComponent)
+export const ShowFormatGalleryItem = withTranslation(['common'])(
+  ShowFormatGalleryItemComponent
+)

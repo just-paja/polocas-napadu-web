@@ -6,7 +6,7 @@ import { Children } from '../proptypes'
 import { Footer } from './Footer'
 import { MainMenu } from './MainMenu'
 
-import styles from './CommonLayout.scss'
+import styles from './CommonLayout.module.scss'
 
 export function CommonLayout ({ center, children, flex }) {
   return (

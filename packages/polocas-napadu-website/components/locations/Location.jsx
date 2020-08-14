@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Location.scss'
+import styles from './Location.module.scss'
 
 import { LocationProp } from '../proptypes'
 import { Address } from './Address'

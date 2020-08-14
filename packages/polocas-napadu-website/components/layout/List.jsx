@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styles from './List.scss'
+import styles from './List.module.scss'
 
 import { Children } from '../proptypes'
 
@@ -14,10 +14,7 @@ export function List ({ as: Component, className, children }) {
 }
 
 List.propTypes = {
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: Children
 }
 

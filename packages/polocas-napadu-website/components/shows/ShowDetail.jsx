@@ -6,7 +6,7 @@ import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
-import styles from './ShowDetail.scss'
+import styles from './ShowDetail.module.scss'
 
 import { ContentContainer, PageHeading, Title } from '../layout'
 import { Gallery } from '../photos'
