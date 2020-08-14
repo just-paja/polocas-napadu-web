@@ -25,7 +25,8 @@
     "package-lock.json",
     "routes.js",
     "server.js",
-    "public"
+    "public",
+    "node_deps"
   ],
   "engines": {
     "node": "12"

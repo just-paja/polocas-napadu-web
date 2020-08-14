@@ -1,9 +1,13 @@
 ---
 - name: Deploy to AWS
   hosts: web
-  vars:
-    node_project_id: 'cz-polocas-napadu-web'
-    node_project_environment: '{{ lookup("env", "NODE_PROJECT_ENVIRONMENT") }}'
-
   roles:
-    - role: practical-ansible.nginx_node
+    - role: practical-ansible.nginx_docker
+      project_name: 'cz-polocas-napadu-website'
+      server_names: '{{ lookup("env", "NODE_SERVER_NAME") }}'
+      project_environment: '{{ lookup("env", "NODE_PROJECT_ENVIRONMENT") }}'
+      admin_email: pavel@zak.global
+      become: true
+      env:
+        NODE_GA_CODE: '{{ lookup("env", "NODE_GA_CODE") }}'
+        NODE_API_URL: '{{ lookup("env", "NODE_API_URL") }}'

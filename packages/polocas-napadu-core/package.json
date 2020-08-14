@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest"
   },
+  "private": true,
   "author": "Pavel Žák <pavel@zak.global>",
   "license": "ISC",
   "standard": {
