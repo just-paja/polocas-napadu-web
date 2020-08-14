@@ -33,23 +33,26 @@ class GameSetupStage extends React.Component {
           {this.context.match.closed ? null : (
             <>
               <Mutation mutation={SET_GAME}>
-                {(setGame, { error, loading }) => (
-                  <GameSelection
-                    onChange={value =>
-                      setGame({
-                        refetchQueries: ['MatchStage'],
-                        variables: {
-                          gameRulesId: value ? value.id : null,
-                          matchId: this.context.match.id
-                        }
-                      })
-                    }
-                    value={
-                      this.context.match.currentStage.game &&
-                      this.context.match.currentStage.game.rules
-                    }
-                  />
-                )}
+                {(setGame, { error, loading }) => {
+                  const handleChange = value =>
+                    setGame({
+                      refetchQueries: ['MatchStage'],
+                      variables: {
+                        gameRulesId: value ? value.id : null,
+                        matchId: this.context.match.id
+                      }
+                    })
+
+                  return (
+                    <GameSelection
+                      onChange={handleChange}
+                      value={
+                        this.context.match.currentStage.game &&
+                        this.context.match.currentStage.game.rules
+                      }
+                    />
+                  )
+                }}
               </Mutation>
               <h2>Inspirace ({this.context.match.preparedInspirationCount})</h2>
               <InspirationSelection />

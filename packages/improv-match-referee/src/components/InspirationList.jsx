@@ -39,22 +39,24 @@ const InspirationList = ({ classes, inspirations, readOnly }) => (
         {readOnly ? null : (
           <ListItemSecondaryAction>
             <Mutation mutation={INSPIRATION_DISCARD}>
-              {(mutate, { loading }) => (
-                <InteractiveButton
-                  loading={loading}
-                  icon
-                  onClick={() =>
-                    mutate({
-                      refetchQueries: ['MatchStage'],
-                      variables: {
-                        inspirationId: inspiration.id
-                      }
-                    })
-                  }
-                >
-                  <Delete />
-                </InteractiveButton>
-              )}
+              {(mutate, { loading }) => {
+                const handleClick = () =>
+                  mutate({
+                    refetchQueries: ['MatchStage'],
+                    variables: {
+                      inspirationId: inspiration.id
+                    }
+                  })
+                return (
+                  <InteractiveButton
+                    loading={loading}
+                    icon
+                    onClick={handleClick}
+                  >
+                    <Delete />
+                  </InteractiveButton>
+                )
+              }}
             </Mutation>
           </ListItemSecondaryAction>
         )}

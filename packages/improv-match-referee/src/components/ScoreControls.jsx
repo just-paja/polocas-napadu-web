@@ -38,37 +38,29 @@ const ScoreControls = ({ classes, side }) => (
       )
       return (
         <Mutation mutation={CHANGE_SCORE}>
-          {(mutate, { loading }) => (
-            <div className={classes.box}>
-              <IconButton
-                onClick={() =>
-                  mutate({
-                    refetchQueries: ['MatchStage'],
-                    variables: {
-                      contestantGroupId: contestantGroup.id,
-                      subtract: false
-                    }
-                  })
+          {(mutate, { loading }) => {
+            const handleClick = () =>
+              mutate({
+                refetchQueries: ['MatchStage'],
+                variables: {
+                  contestantGroupId: contestantGroup.id,
+                  subtract: false
                 }
-              >
-                <Add />
-              </IconButton>
-              <IconButton
-                disabled={contestantGroup.scorePoints === 0}
-                onClick={() =>
-                  mutate({
-                    refetchQueries: ['MatchStage'],
-                    variables: {
-                      contestantGroupId: contestantGroup.id,
-                      subtract: true
-                    }
-                  })
-                }
-              >
-                <Remove />
-              </IconButton>
-            </div>
-          )}
+              })
+            return (
+              <div className={classes.box}>
+                <IconButton onClick={handleClick}>
+                  <Add />
+                </IconButton>
+                <IconButton
+                  disabled={contestantGroup.scorePoints === 0}
+                  onClick={handleClick}
+                >
+                  <Remove />
+                </IconButton>
+              </div>
+            )
+          }}
         </Mutation>
       )
     }}

@@ -25,23 +25,26 @@ const INSPIRATION_PICK_RANDOM = gql`
 
 const renderShuffleButton = ({ data, disabled, replace, label }) => (
   <Mutation mutation={INSPIRATION_PICK_RANDOM}>
-    {(mutate, { loading }) => (
-      <InteractiveButton
-        disabled={disabled}
-        loading={loading}
-        onClick={() =>
-          mutate({
-            refetchQueries: ['MatchStage'],
-            variables: {
-              matchId: data.match.id,
-              replace
-            }
-          })
-        }
-      >
-        {label}
-      </InteractiveButton>
-    )}
+    {(mutate, { loading }) => {
+      const handleClick = () =>
+        mutate({
+          refetchQueries: ['MatchStage'],
+          variables: {
+            matchId: data.match.id,
+            replace
+          }
+        })
+
+      return (
+        <InteractiveButton
+          disabled={disabled}
+          loading={loading}
+          onClick={handleClick}
+        >
+          {label}
+        </InteractiveButton>
+      )
+    }}
   </Mutation>
 )
 

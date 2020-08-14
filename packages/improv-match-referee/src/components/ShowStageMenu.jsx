@@ -42,22 +42,22 @@ class ShowStageMenu extends React.Component {
             option =>
               STAGES_JUMP.indexOf(option.value) !== -1 &&
               omit.indexOf(option.value) === -1
-          ).map(option => (
-            <MenuItem
-              key={option.value}
-              onClick={() =>
-                mutate({
-                  refetchQueries: ['MatchStage'],
-                  variables: {
-                    matchId,
-                    stage: option.value
-                  }
-                })
-              }
-            >
-              {option.label}
-            </MenuItem>
-          ))}
+          ).map(option => {
+            const handleClick = () =>
+              mutate({
+                refetchQueries: ['MatchStage'],
+                variables: {
+                  matchId,
+                  stage: option.value
+                }
+              })
+
+            return (
+              <MenuItem key={option.value} onClick={handleClick}>
+                {option.label}
+              </MenuItem>
+            )
+          })}
         </Menu>
       </>
     )

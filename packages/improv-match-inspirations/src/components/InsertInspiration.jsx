@@ -41,21 +41,23 @@ class InsertInspiration extends React.Component {
             mutation={ADD_INSPIRATION}
             onCompleted={this.handleSaveSuccess}
           >
-            {(mutate, { loading, error }) => (
-              <InspirationForm
-                onSubmit={formValue =>
-                  mutate({
-                    refetchQueries: ['MatchStage'],
-                    variables: {
-                      inspirationText: formValue.inspiration,
-                      showId: data.match.show.id
-                    }
-                  })
-                }
-                error={error}
-                saving={loading}
-              />
-            )}
+            {(mutate, { loading, error }) => {
+              const handleSubmit = formValue =>
+                mutate({
+                  refetchQueries: ['MatchStage'],
+                  variables: {
+                    inspirationText: formValue.inspiration,
+                    showId: data.match.show.id
+                  }
+                })
+              return (
+                <InspirationForm
+                  onSubmit={handleSubmit}
+                  error={error}
+                  saving={loading}
+                />
+              )
+            }}
           </Mutation>
         )}
       </MatchContext.Consumer>

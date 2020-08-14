@@ -23,23 +23,25 @@ const isStageReady = (stage, currentStage) => {
 
 const ShowStageButton = ({ mutate, loading, classes, stage }) => (
   <MatchContext.Consumer>
-    {context => (
-      <InteractiveButton
-        loading={loading}
-        disabled={!isStageReady(stage, context.match.currentStage)}
-        onClick={() =>
-          mutate({
-            refetchQueries: ['MatchStage'],
-            variables: {
-              matchId: context.match.id,
-              stage
-            }
-          })
-        }
-      >
-        {getStageLabel(stage)}
-      </InteractiveButton>
-    )}
+    {context => {
+      const handleClick = () =>
+        mutate({
+          refetchQueries: ['MatchStage'],
+          variables: {
+            matchId: context.match.id,
+            stage
+          }
+        })
+      return (
+        <InteractiveButton
+          loading={loading}
+          disabled={!isStageReady(stage, context.match.currentStage)}
+          onClick={handleClick}
+        >
+          {getStageLabel(stage)}
+        </InteractiveButton>
+      )
+    }}
   </MatchContext.Consumer>
 )
 
