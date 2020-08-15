@@ -3,9 +3,10 @@
   hosts: web
   roles:
     - role: practical-ansible.nginx_redirect
-      project_name: cz-polocas-napadu
+      project_name: cz-polocas-napadu-redirect-main
       server_names: polocasnapadu.cz,www.polocasnapadu.cz,www.polocas-napadu.cz
       destination_domain: polocas-napadu.cz
+      admin_email: pavel@zak.global
       become: true
 
 - name: Deploy inspiration app redirects
@@ -16,6 +17,7 @@
       server_names: tema.polocasnapadu.cz,tema.polocas-napadu.cz,temata.polocasnapadu.cz,temata.polocas-napadu.cz
       destination_url: https://interactive.polocas-napadu.cz/inspirations/?apiUrl=https://api.polocas-napadu.cz/graphql#/match/8
       redirect_status: 302
+      admin_email: pavel@zak.global
       become: true
 
 - name: Deploy reservation redirect
@@ -26,6 +28,7 @@
       server_names: rezervace.polocasnapadu.cz,rezervace.polocas-napadu.cz
       destination_url: https://docs.google.com/forms/d/e/1FAIpQLSfXS7zBebKGgtmnvTFKzXdcXn3rjx9zWg5moBaijPd0YagqyQ/viewform?usp=sf_link
       redirect_status: 302
+      admin_email: pavel@zak.global
       become: true
 
 - name: Deploy knowledge base redirect
@@ -36,6 +39,7 @@
       server_names: internal.polocasnapadu.cz,internal.polocas-napadu.cz
       destination_url: https://sites.google.com/polocas-napadu.cz/polocas-wiki
       redirect_status: 302
+      admin_email: pavel@zak.global
       become: true
 
 - name: Deploy improviser poll redirect
@@ -46,4 +50,5 @@
       server_names: anketa.polocasnapadu.cz,anketa.polocas-napadu.cz
       destination_url: https://docs.google.com/forms/d/e/1FAIpQLSeu9Kzku8SbC12c6koJM4qzjAxsX7vO-u5i9qH0dgaasSdw3Q/viewform?usp=sf_link
       redirect_status: 302
+      admin_email: pavel@zak.global
       become: true
