@@ -20,9 +20,7 @@ jobs:
           python-version: '3.8'
       - uses: ansible/ansible-lint-action@master
         with:
-          targets: |
-            packages/polocas-napadu-website/deploy.yml
-            packages/polocas-napadu-website/deploy-static.yml
+          targets: packages/polocas-napadu-website/deploy.yml
       - uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -53,3 +51,26 @@ jobs:
           cd ./packages/polocas-napadu-website
           echo -e "[web]\n${{ secrets.PRODUCTION_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory
+
+  deploy-redirects:
+    name: Deploy production website redirects
+    runs-on: ubuntu-latest
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+      - uses: ansible/ansible-lint-action@master
+        with:
+          targets: packages/polocas-napadu-website/deploy-static.yml
+      - name: Install dependencies
+        run: ansible-galaxy install -r requirements-ansible.yml
+      - uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRODUCTION_WEBSITE_SSH_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.PRODUCTION_WEBSITE_KNOWN_HOSTS }}
+      - name: Deploy app
+        run: |
+          cd ./packages/polocas-napadu-website
+          echo -e "[web]\n${{ secrets.PRODUCTION_WEBSITE_DEPLOY_HOST }}\n" > inventory
+          ansible-playbook deploy-static.yml -i inventory
