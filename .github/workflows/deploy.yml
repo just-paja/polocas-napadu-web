@@ -55,6 +55,7 @@ jobs:
   deploy-redirects:
     name: Deploy production website redirects
     runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
