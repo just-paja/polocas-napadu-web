@@ -39,22 +39,22 @@ const ScoreControls = ({ classes, side }) => (
       return (
         <Mutation mutation={CHANGE_SCORE}>
           {(mutate, { loading }) => {
-            const handleClick = () =>
+            const handleClick = (subtract = false) => () =>
               mutate({
                 refetchQueries: ['MatchStage'],
                 variables: {
                   contestantGroupId: contestantGroup.id,
-                  subtract: false
+                  subtract
                 }
               })
             return (
               <div className={classes.box}>
-                <IconButton onClick={handleClick}>
+                <IconButton onClick={handleClick()}>
                   <Add />
                 </IconButton>
                 <IconButton
                   disabled={contestantGroup.scorePoints === 0}
-                  onClick={handleClick}
+                  onClick={handleClick(true)}
                 >
                   <Remove />
                 </IconButton>
