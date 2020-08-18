@@ -12,6 +12,7 @@ export const NgoContactComponent = ({ t }) => (
       <li>{t('bankAccountCz')}: 2501561542/2010</li>
       <li>{t('iban')}: CZ0920100000002501561542</li>
       <li>{t('swift')}: FIOBCZPPXXX</li>
+      <li>{t('dataPostBox')}: epwghq9</li>
     </ul>
   </>
 )
