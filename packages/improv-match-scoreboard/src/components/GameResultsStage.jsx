@@ -1,4 +1,4 @@
-import GameVote from './GameVote'
+import GameInspiration from './GameInspiration'
 import React from 'react'
 import Teams from './Teams'
 
@@ -7,7 +7,7 @@ class GameResultsStage extends React.Component {
     return (
       <>
         <Teams />
-        <GameVote />
+        <GameInspiration />
       </>
     )
   }

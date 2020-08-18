@@ -3,7 +3,6 @@ import ControlsLayout from './ControlsLayout'
 import MainControls from './MainControls'
 import React from 'react'
 import ScoreControls from './ScoreControls'
-import ScorePointPoll from './ScorePointPoll'
 import Team from './Team'
 
 import { Classes } from 'polocas-napadu-core/proptypes'
@@ -31,7 +30,6 @@ const GameResultsStage = ({ classes }) => (
     <MainControls center>
       <h1>Hlasování</h1>
       <p>V této fázi hry diváci hlasují o tom který tým dostane bod.</p>
-      <ScorePointPoll />
     </MainControls>
   </ControlsLayout>
 )
