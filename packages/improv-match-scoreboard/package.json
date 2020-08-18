@@ -1,6 +1,6 @@
 {
   "name": "improv-match-scoreboard",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "private": true,
   "dependencies": {
     "@apollo/react-components": "4.0.0",
