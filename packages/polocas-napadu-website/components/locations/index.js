@@ -1,4 +1,5 @@
 export * from './Address'
 export * from './Location'
+export * from './LocationName'
 export * from './UsualPlace'
 export * from './UsualPlaces'
