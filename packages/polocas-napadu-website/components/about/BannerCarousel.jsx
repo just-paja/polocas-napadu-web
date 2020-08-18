@@ -44,6 +44,7 @@ export const BannerCarouselComponent = ({ className, data, t }) => {
               [styles.visible]: photo.id === backgroundPhoto
             })}
             key={photo.id}
+            onClick={() => setBackgroundPhoto(photo.id)}
             style={{
               backgroundImage: `url(${photo.image})`
             }}

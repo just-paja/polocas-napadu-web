@@ -16,6 +16,7 @@
 }
 
 .content {
+  pointer-events: none;
   position: relative;
   z-index: 2;
 }
@@ -55,6 +56,10 @@
 
 .text {
   color: $color-coconut-cream;
+  background: rgba(0,0,0,0.3);
+  padding-bottom: $baseline;
+  border-radius: $baseline / 2;
+  width: 100%;
 
   &, p {
     text-align: center;
