@@ -1,0 +1,28 @@
+@import 'theme.scss';
+
+.carousel {
+}
+
+.inner {
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.photo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  height: 100%;
+  max-width: map-get($container-max-widths, 'xl');
+  opacity: 0.6;
+  transition: opacity 2s, flex 2s;
+  flex: 1;
+  overflow: hidden;
+
+  &.visible {
+    opacity: 1;
+    flex: 8;
+  }
+}
