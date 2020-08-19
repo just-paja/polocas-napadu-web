@@ -11,6 +11,7 @@ const paths = {
     foulTypeList: '/short-formy/typy-faulu',
     gameDetail: '/short-formy/kategorie/:slug',
     gameList: '/short-formy/kategorie',
+    members: '/o-nas#clenove',
     profile: '/clen/:slug',
     repertoir: '/repertoar',
     showDetail: '/predstaveni/:slug',
@@ -26,6 +27,7 @@ const paths = {
     foulTypeList: '/short-forms/foul-types',
     gameDetail: '/short-forms/games/:slug',
     gameList: '/short-forms/games',
+    members: '/o-nas#members',
     profile: '/member/:slug',
     repertoir: '/repertoir',
     showDetail: '/shows/:slug',
@@ -46,7 +48,7 @@ function getRoutePattern (language, routeName) {
 }
 
 function registerPatterns (router, language) {
-  Object.keys(paths[language]).forEach((routeName) => {
+  Object.keys(paths[language]).forEach(routeName => {
     const route = {
       name: `${language}-${routeName}`,
       page: routeName,
@@ -57,7 +59,7 @@ function registerPatterns (router, language) {
 }
 
 function registerLanguages (router) {
-  Object.keys(paths).forEach((language) => {
+  Object.keys(paths).forEach(language => {
     registerPatterns(router, language)
   })
 }

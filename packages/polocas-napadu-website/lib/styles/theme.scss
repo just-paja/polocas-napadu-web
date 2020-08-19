@@ -16,6 +16,9 @@ $button-secondary-color: $color-riptide;
 
 $border-default: 1px solid darken($body-bg, 10%);
 
+$breadcrumb-bg: $body-bg;
+$breadcrumb-padding: $baseline;
+
 @import 'node_modules/bootstrap/scss/_functions.scss';
 @import 'node_modules/bootstrap/scss/_mixins.scss';
 @import 'node_modules/bootstrap/scss/_variables.scss';

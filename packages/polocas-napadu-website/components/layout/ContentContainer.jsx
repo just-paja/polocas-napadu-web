@@ -6,11 +6,18 @@ import styles from './ContentContainer.module.scss'
 
 import { Children, ClassName } from '../proptypes'
 
-export function ContentContainer ({ as, children, className, column }) {
+export function ContentContainer ({
+  as,
+  children,
+  className,
+  column,
+  ...props
+}) {
   return (
     <Container
       as={as}
       className={classnames({ [styles.column]: column }, className)}
+      {...props}
     >
       {children}
     </Container>

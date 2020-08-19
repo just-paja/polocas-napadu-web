@@ -1,4 +1,3 @@
-import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -23,7 +22,7 @@ export function Image ({ component, bg, image, style, ...props }) {
     )
   }
   const Component = 'img' || component
-  return <img src={src} style={style} {...props} />
+  return <Component src={src} style={style} {...props} />
 }
 
 Image.propTypes = {

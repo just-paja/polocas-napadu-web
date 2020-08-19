@@ -18,7 +18,7 @@ const QUERY_PROFILE_GROUPS = gql`
 `
 
 const ProfileGroupListComponent = ({ data, t }) => (
-  <section className={styles.block}>
+  <section className={styles.block} id={t('membersAnchor')}>
     <ContentContainer className={styles.container}>
       <h2 className={styles.heading}>{t('members')}</h2>
       <div className={styles.list}>
