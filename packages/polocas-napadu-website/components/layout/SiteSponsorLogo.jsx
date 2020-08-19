@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 import styles from './SiteSponsorLogo.module.scss'
 
+import { Image } from '../photos'
 import { Sponsor } from '../proptypes'
 
 export const SiteSponsorLogo = ({ sponsor }) => {
-  const style = { backgroundImage: `url(${sponsor.logo})` }
   const href = sponsor.website
   const onClick = useCallback(
     e => {
@@ -16,11 +16,13 @@ export const SiteSponsorLogo = ({ sponsor }) => {
     [href]
   )
   return (
-    <a
+    <Image
+      bg
       className={styles.logo}
+      component='a'
       href={href}
+      image={sponsor.logo}
       onClick={onClick}
-      style={style}
       title={sponsor.name}
     />
   )

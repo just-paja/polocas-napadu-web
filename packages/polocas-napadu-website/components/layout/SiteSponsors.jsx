@@ -5,7 +5,7 @@ import styles from './SiteSponsors.module.scss'
 import { gql } from 'apollo-boost'
 import { SiteSponsorLogo } from './SiteSponsorLogo'
 import { Sponsor } from '../proptypes'
-import { withQuery } from '../graphql'
+import { imageQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
 const SITE_SPONSOR_LIST_QUERY = gql`
@@ -13,7 +13,7 @@ const SITE_SPONSOR_LIST_QUERY = gql`
     siteSponsorList {
       id
       name
-      logo
+      logo ${imageQuery}
       website
     }
   }

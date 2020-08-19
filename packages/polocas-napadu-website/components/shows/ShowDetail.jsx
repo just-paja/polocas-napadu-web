@@ -18,7 +18,7 @@ import { ShowVenueInfo } from './ShowVenueInfo'
 import { MatchProgress } from './MatchProgress'
 import { Show } from '../proptypes'
 import { ShowParticipants } from './ShowParticipants'
-import { withQuery } from '../graphql'
+import { photoQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
 const QUERY_SHOW = gql`
@@ -48,13 +48,7 @@ const QUERY_SHOW = gql`
         id
       }
       name
-      photos {
-        id
-        description
-        height
-        image
-        width
-      }
+      photos ${photoQuery}
       start
       showsParticipants {
         id

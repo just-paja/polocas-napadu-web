@@ -101,8 +101,22 @@ export const propsWithRouter = {
   router: Router.isRequired
 }
 
+export const ImageObject = PropTypes.shape({
+  height: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired
+})
+
+export const Image = PropTypes.oneOfType([PropTypes.string, ImageObject])
+
 export const Sponsor = PropTypes.shape({
   id: Ident.isRequired,
-  logo: PropTypes.string.isRequired,
+  logo: Image.isRequired,
   name: PropTypes.string.isRequired
+})
+
+export const Photo = PropTypes.shape({
+  description: PropTypes.string,
+  id: Ident,
+  image: Image
 })

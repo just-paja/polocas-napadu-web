@@ -8,7 +8,7 @@ import { ContentContainer, PageHeading, Title } from '../layout'
 import { formatName } from './names'
 import { Gallery } from '../photos'
 import { gql } from 'apollo-boost'
-import { withQuery } from '../graphql'
+import { imageQuery, photoQuery, withQuery } from '../graphql'
 
 const QUERY_PROFILE = gql`
   query GetProfile($slug: String!) {
@@ -18,14 +18,8 @@ const QUERY_PROFILE = gql`
       slug
       name
       alias
-      avatar
-      photos {
-        id
-        description
-        height
-        image
-        width
-      }
+      avatar ${imageQuery}
+      photos ${photoQuery}
     }
   }
 `

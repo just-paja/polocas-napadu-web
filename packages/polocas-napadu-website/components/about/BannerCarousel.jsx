@@ -1,8 +1,10 @@
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 
 import { gql } from 'apollo-boost'
-import { propsTranslated } from '../proptypes'
+import { Image } from '../photos'
+import { Photo, propsTranslated } from '../proptypes'
 import { withQuery } from '../graphql'
 
 import styles from './BannerCarousel.module.scss'
@@ -11,7 +13,11 @@ const QUERY_SHOW_PHOTOS = gql`
   query {
     showPhotoList(limit: 10) {
       id
-      image
+      image {
+        height
+        src
+        width
+      }
       created
     }
   }
@@ -23,7 +29,7 @@ function getRandomPhoto (list, current) {
   return allowed[number]
 }
 
-export const BannerCarouselComponent = ({ className, data, t }) => {
+export const BannerCarouselComponent = ({ className, data }) => {
   const list = data.showPhotoList
   const [backgroundPhoto, setBackgroundPhoto] = useState(list[0].id)
   useEffect(() => {
@@ -39,15 +45,14 @@ export const BannerCarouselComponent = ({ className, data, t }) => {
     <div className={classnames(styles.carousel, className)}>
       <div className={styles.inner}>
         {list.map((photo, index) => (
-          <div
+          <Image
+            bg
             className={classnames(styles.photo, {
               [styles.visible]: photo.id === backgroundPhoto
             })}
             key={photo.id}
             onClick={() => setBackgroundPhoto(photo.id)}
-            style={{
-              backgroundImage: `url(${photo.image})`
-            }}
+            image={photo.image}
           />
         ))}
       </div>
@@ -55,7 +60,13 @@ export const BannerCarouselComponent = ({ className, data, t }) => {
   )
 }
 
-BannerCarouselComponent.propTypes = propsTranslated
+BannerCarouselComponent.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.shape({
+    showPhotoList: PropTypes.arrayOf(Photo).isRequired
+  })
+}
+
 BannerCarouselComponent.displayName = 'BannerCarousel'
 
 export const BannerCarousel = withQuery({

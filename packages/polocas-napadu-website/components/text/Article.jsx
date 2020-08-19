@@ -5,7 +5,7 @@ import styles from './Article.module.scss'
 import { Carousel } from '../photos'
 import { ContentContainer, Title } from '../layout'
 import { gql } from 'apollo-boost'
-import { withQuery } from '../graphql'
+import { photoQuery, withQuery } from '../graphql'
 
 const QUERY_ARTICLE = gql`
   query GetArticle($slug: String!) {
@@ -17,9 +17,7 @@ const QUERY_ARTICLE = gql`
         name,
         slug,
         description,
-        photos {
-          image,
-        }
+        photos ${photoQuery}
       }
     }
   }
