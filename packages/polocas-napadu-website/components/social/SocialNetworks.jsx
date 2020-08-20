@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './SocialNetworks.module.scss'
 
 import { SocialNetworkLink } from './SocialNetworkLink'
-import { ClassName, propsTranslated } from '../proptypes'
+import { ClassName, propsTranslated } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 import {
   FaInstagram,

@@ -4,6 +4,10 @@ const path = require('path')
 const rimraf = require('rimraf')
 
 function getBabelConfig () {
+  const projectNames = fs
+    .readdirSync(path.join(__dirname, 'packages'), { withFileTypes: true })
+    .filter(item => item.isDirectory())
+    .map(item => item.name)
   return {
     presets: [
       '@babel/preset-react',
@@ -15,7 +19,8 @@ function getBabelConfig () {
           }
         }
       ]
-    ]
+    ],
+    plugins: ['@babel/plugin-proposal-class-properties']
   }
 }
 

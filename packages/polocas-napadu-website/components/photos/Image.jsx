@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Image as ImageProp } from '../proptypes'
+import { Image as ImageProp } from 'polocas-napadu-core/proptypes'
 
 function getImageSrc (image) {
   if (typeof image === 'string') {

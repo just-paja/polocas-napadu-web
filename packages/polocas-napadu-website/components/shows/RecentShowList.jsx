@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { List } from '../layout'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { BriefShowListItem } from './BriefShowListItem'
 import { withShowList } from './withShowList'
 import { withTranslation } from '../../lib/i18n'

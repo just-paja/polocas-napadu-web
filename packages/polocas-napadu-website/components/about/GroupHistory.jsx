@@ -2,7 +2,7 @@ import React from 'react'
 import Markdown from 'react-markdown'
 
 import { ContentContainer } from '../layout'
-import { propsTranslated } from '../proptypes'
+import { propsTranslated } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 const GroupHistoryComponent = ({ t }) => (

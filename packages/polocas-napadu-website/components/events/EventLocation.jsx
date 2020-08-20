@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { LocationProp } from '../proptypes'
+import { Location } from 'polocas-napadu-core/proptypes'
 
 export const EventLocation = ({ location }) => (
   <span>{location.name}</span>
 )
 
 EventLocation.propTypes = {
-  location: LocationProp.isRequired
+  location: Location.isRequired
 }

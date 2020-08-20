@@ -3,7 +3,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 
 import { NoFutureShows } from './NoFutureShows'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { ShowListItem } from './ShowListItem'
 import { withShowList } from './withShowList'
 

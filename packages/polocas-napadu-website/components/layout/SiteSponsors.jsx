@@ -4,7 +4,7 @@ import styles from './SiteSponsors.module.scss'
 
 import { gql } from 'apollo-boost'
 import { SiteSponsorLogo } from './SiteSponsorLogo'
-import { Sponsor } from '../proptypes'
+import { Sponsor } from 'polocas-napadu-core/proptypes'
 import { imageQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 

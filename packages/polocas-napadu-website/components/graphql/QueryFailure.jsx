@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ErrorType } from '../proptypes'
+import { ErrorType } from 'polocas-napadu-core/proptypes'
 
 export function QueryFailure () {
   return <div>Error!</div>

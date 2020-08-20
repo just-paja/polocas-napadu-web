@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styles from './SiteSponsorLogo.module.scss'
 
 import { Image } from '../photos'
-import { Sponsor } from '../proptypes'
+import { Sponsor } from 'polocas-napadu-core/proptypes'
 
 export const SiteSponsorLogo = ({ sponsor }) => {
   const href = sponsor.website

@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './ShowListItem.module.scss'
 
 import { Link } from '../bindings'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { EventLocation, EventStart } from '../events'
 
 export function ShowListItem ({ show }) {

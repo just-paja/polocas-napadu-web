@@ -6,7 +6,7 @@ import { AddToCalendar, EventStart } from '../events'
 import { ExternalLink } from '../text'
 import { FaCalendarDay, FaFacebookSquare } from 'react-icons/fa'
 import { LogisticInfo } from './LogisticInfo'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function ShowDateInfoComponent ({ show, t }) {

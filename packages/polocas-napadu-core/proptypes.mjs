@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+import * as constants from './constants'
+
 export const Ident = PropTypes.string
 
 export const Children = PropTypes.oneOfType([
@@ -16,12 +18,16 @@ export const ClassName = PropTypes.oneOfType([
   PropTypes.string
 ])
 
-export const ErrorType = PropTypes.shape({
-  message: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+export const ContestantType = PropTypes.oneOf([
+  constants.CONTESTANT_HOME,
+  constants.CONTESTANT_GUEST
+])
+
+export const Band = PropTypes.shape({
+  name: PropTypes.isRequired
 })
 
-export const LocationProp = PropTypes.shape({
+export const Location = PropTypes.shape({
   name: PropTypes.string.isRequired
 })
 
@@ -53,12 +59,54 @@ export const ShowType = PropTypes.shape({
 
 export const Show = PropTypes.shape({
   id: Ident.isRequired,
-  location: LocationProp.isRequired,
+  location: Location.isRequired,
   name: PropTypes.string.isRequired,
   showsParticipants: PropTypes.arrayOf(ShowParticipant),
   slug: PropTypes.string,
   start: PropTypes.string.isRequired
 })
+
+export const ContestantGroup = PropTypes.shape({
+  band: Band.isRequired,
+  contestantType: ContestantType.isRequired
+})
+
+export const Inspiration = PropTypes.shape({
+  text: PropTypes.string.isRequired
+})
+
+export const Game = PropTypes.shape({
+  inspirations: PropTypes.arrayOf(Inspiration).isRequired,
+  type: PropTypes.string.isRequired
+})
+
+export const Stage = PropTypes.shape({
+  game: Game,
+  type: PropTypes.oneOf([
+    constants.STAGE_INTRO,
+    constants.STAGE_GAME_SETUP,
+    constants.STAGE_GAME,
+    constants.STAGE_VOTING,
+    constants.STAGE_GAME_RESULTS,
+    constants.STAGE_PAUSE,
+    constants.STAGE_FINALE
+  ])
+})
+
+export const Match = PropTypes.shape({
+  closed: PropTypes.bool,
+  currentStage: Stage,
+  contestantGroups: PropTypes.arrayOf(ContestantGroup).isRequired,
+  id: PropTypes.string.isRequired,
+  show: Show.isRequired
+})
+
+export const ErrorType = PropTypes.shape({
+  message: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+})
+
+export const ErrorMessage = PropTypes.oneOfType([PropTypes.node, ErrorType])
 
 export const FoulType = PropTypes.shape({
   name: PropTypes.string.isRequired,
@@ -70,6 +118,11 @@ export const GameRules = PropTypes.shape({
   slug: PropTypes.string.isRequired
 })
 
+export const Side = PropTypes.oneOf([
+  constants.TEAM_SIDE_LEFT,
+  constants.TEAM_SIDE_RIGHT
+])
+
 export const I18n = PropTypes.shape({
   options: PropTypes.shape({
     allLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -77,29 +130,13 @@ export const I18n = PropTypes.shape({
   })
 })
 
-export const Router = PropTypes.shape({
-  pathname: PropTypes.string
-})
-
-export const UsualPlaceProp = PropTypes.shape({
+export const UsualPlace = PropTypes.shape({
   description: PropTypes.string.isRequired,
   id: Ident.isRequired,
-  location: LocationProp.isRequired,
+  location: Location.isRequired,
   name: PropTypes.string.isRequired,
   placeType: PropTypes.number
 })
-
-export const propsStyled = {
-  classes: Classes.isRequired
-}
-
-export const propsTranslated = {
-  t: PropTypes.func.isRequired
-}
-
-export const propsWithRouter = {
-  router: Router.isRequired
-}
 
 export const ImageObject = PropTypes.shape({
   height: PropTypes.number.isRequired,
@@ -120,3 +157,7 @@ export const Photo = PropTypes.shape({
   id: Ident,
   image: Image
 })
+
+export const propsTranslated = {
+  t: PropTypes.func.isRequired
+}
