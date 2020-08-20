@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-import { UsualPlaceProp } from '../proptypes'
+import { UsualPlace } from 'polocas-napadu-core/proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
@@ -38,7 +38,7 @@ const HomeStageNoticeComponent = ({ data, t }) => {
 
 HomeStageNoticeComponent.propTypes = {
   data: PropTypes.shape({
-    usualPlaceList: PropTypes.arrayOf(UsualPlaceProp).isRequired
+    usualPlaceList: PropTypes.arrayOf(UsualPlace).isRequired
   }),
   t: PropTypes.func.isRequired
 }

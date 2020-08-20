@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link } from '../bindings'
-import { ShowType } from '../proptypes'
+import { ShowType } from 'polocas-napadu-core/proptypes'
 
 function ShowFormatListItemComponent ({ showFormat }) {
   return (

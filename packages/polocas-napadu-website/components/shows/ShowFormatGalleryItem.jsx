@@ -5,7 +5,7 @@ import styles from './ShowFormatGalleryItem.module.scss'
 
 import { ContentContainer } from '../layout'
 import { Link } from '../bindings'
-import { ShowType } from '../proptypes'
+import { ShowType } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function ShowFormatGalleryItemComponent ({ showFormat, t }) {

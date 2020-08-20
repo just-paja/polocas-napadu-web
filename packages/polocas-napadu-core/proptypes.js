@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 
 import * as constants from './constants'
 
+export const Ident = PropTypes.string
+
 export const Children = PropTypes.oneOfType([
   PropTypes.node,
   PropTypes.arrayOf(PropTypes.node)
@@ -29,9 +31,39 @@ export const Location = PropTypes.shape({
   name: PropTypes.string.isRequired
 })
 
+export const Profile = PropTypes.shape({
+  avatar: PropTypes.string,
+  alias: PropTypes.string,
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired
+})
+
+export const Role = PropTypes.shape({
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired
+})
+
+export const ShowParticipant = PropTypes.shape({
+  id: Ident.isRequired,
+  profile: Profile.isRequired,
+  role: Role.isRequired
+})
+
+export const ShowType = PropTypes.shape({
+  description: PropTypes.string,
+  id: Ident.isRequired,
+  name: PropTypes.string.isRequired,
+  shortDescription: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired
+})
+
+
 export const Show = PropTypes.shape({
-  name: PropTypes.isRequired,
+  id: Ident.isRequired,
   location: Location.isRequired,
+  name: PropTypes.string.isRequired,
+  showsParticipants: PropTypes.arrayOf(ShowParticipant),
+  slug: PropTypes.string,
   start: PropTypes.string.isRequired
 })
 
@@ -70,14 +102,66 @@ export const Match = PropTypes.shape({
   show: Show.isRequired
 })
 
+export const ErrorType = PropTypes.shape({
+  message: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+})
+
 export const ErrorMessage = PropTypes.oneOfType([
   PropTypes.node,
-  PropTypes.shape({
-    message: PropTypes.string
-  })
+  ErrorType,
 ])
+
+export const FoulType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired
+})
+
+export const GameRules = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired
+})
 
 export const Side = PropTypes.oneOf([
   constants.TEAM_SIDE_LEFT,
   constants.TEAM_SIDE_RIGHT
 ])
+
+export const I18n = PropTypes.shape({
+  options: PropTypes.shape({
+    allLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    defaultLanguage: PropTypes.string
+  })
+})
+
+export const UsualPlace = PropTypes.shape({
+  description: PropTypes.string.isRequired,
+  id: Ident.isRequired,
+  location: LocationProp.isRequired,
+  name: PropTypes.string.isRequired,
+  placeType: PropTypes.number
+})
+
+export const ImageObject = PropTypes.shape({
+  height: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired
+})
+
+export const Image = PropTypes.oneOfType([PropTypes.string, ImageObject])
+
+export const Sponsor = PropTypes.shape({
+  id: Ident.isRequired,
+  logo: Image.isRequired,
+  name: PropTypes.string.isRequired
+})
+
+export const Photo = PropTypes.shape({
+  description: PropTypes.string,
+  id: Ident,
+  image: Image
+})
+
+export const propsTranslated = {
+  t: PropTypes.func.isRequired
+}

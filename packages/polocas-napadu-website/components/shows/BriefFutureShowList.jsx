@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 
 import { List } from '../layout'
 import { NoFutureShows } from './NoFutureShows'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { ShowListItem } from './ShowListItem'
 import { withShowList } from './withShowList'
 

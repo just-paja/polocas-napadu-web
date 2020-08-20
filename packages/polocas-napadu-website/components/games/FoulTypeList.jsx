@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { FoulType } from '../proptypes'
+import { FoulType } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
 import { withQuery } from '../graphql'
 import { Link } from '../bindings'

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { GameRules } from '../proptypes'
+import { GameRules } from 'polocas-napadu-core/proptypes'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { withQuery } from '../graphql'

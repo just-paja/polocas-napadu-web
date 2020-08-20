@@ -3,7 +3,7 @@ import React from 'react'
 import { BannerCarousel } from './BannerCarousel.jsx'
 import { Bulb } from '../logo'
 import { ContentContainer } from '../layout'
-import { propsTranslated } from '../proptypes'
+import { propsTranslated } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 import styles from './HomeBanner.module.scss'

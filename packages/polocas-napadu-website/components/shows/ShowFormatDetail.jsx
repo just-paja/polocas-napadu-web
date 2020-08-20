@@ -8,7 +8,7 @@ import { BriefShowListItem } from './BriefShowListItem'
 import { ContentContainer, List, Title } from '../layout'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
-import { ShowType } from '../proptypes'
+import { ShowType } from 'polocas-napadu-core/proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 

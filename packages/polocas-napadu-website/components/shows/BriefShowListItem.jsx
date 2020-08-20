@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link } from '../bindings'
-import { Show } from '../proptypes'
+import { Show } from 'polocas-napadu-core/proptypes'
 import { EventStart } from '../events'
 import { LocationName } from '../locations'
 

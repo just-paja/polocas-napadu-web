@@ -4,7 +4,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import qsm from 'query-string-manipulator'
 import React from 'react'
 
-import { ClassName, Show } from '../proptypes'
+import { ClassName, Show } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function nonEmpty (item) {

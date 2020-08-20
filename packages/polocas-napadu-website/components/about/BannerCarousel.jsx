@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import { gql } from 'apollo-boost'
 import { Image } from '../photos'
-import { Photo } from '../proptypes'
+import { Photo } from 'polocas-napadu-core/proptypes'
 import { withQuery } from '../graphql'
 
 import styles from './BannerCarousel.module.scss'

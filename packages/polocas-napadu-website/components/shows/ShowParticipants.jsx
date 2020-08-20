@@ -6,7 +6,7 @@ import styles from './ShowParticipants.module.scss'
 import { OptionalLink } from '../bindings'
 import { List } from '../layout'
 import { formatName } from '../profiles/names'
-import { ShowParticipant } from '../proptypes'
+import { ShowParticipant } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 function ShowParticipantsMap ({ participants }) {

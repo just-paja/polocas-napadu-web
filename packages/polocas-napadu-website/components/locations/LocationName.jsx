@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LocationProp } from '../proptypes'
+import { Location } from 'polocas-napadu-core/proptypes'
 
 export const LocationName = ({ location }) => (
   <>
@@ -10,5 +10,5 @@ export const LocationName = ({ location }) => (
 )
 
 LocationName.propTypes = {
-  location: LocationProp.isRequired
+  location: Location.isRequired
 }

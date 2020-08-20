@@ -4,7 +4,7 @@ import React from 'react'
 import { gql } from 'apollo-boost'
 import { List } from '../layout'
 import { ShowFormatListItem } from './ShowFormatListItem'
-import { ShowType } from '../proptypes'
+import { ShowType } from 'polocas-napadu-core/proptypes'
 import { withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 

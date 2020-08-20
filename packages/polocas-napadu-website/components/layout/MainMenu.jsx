@@ -5,7 +5,7 @@ import React from 'react'
 import styles from './MainMenu.module.scss'
 
 import { Link } from '../bindings'
-import { propsTranslated } from '../proptypes'
+import { propsTranslated } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 const MainMenuComponent = ({ t }) => (

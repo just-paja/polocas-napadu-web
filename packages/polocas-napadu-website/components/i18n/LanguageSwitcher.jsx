@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './LanguageSwitcher.module.scss'
 
 import { OptionalLink } from '../bindings'
-import { I18n, propsTranslated } from '../proptypes'
+import { I18n, propsTranslated } from 'polocas-napadu-core/proptypes'
 import { withTranslation } from '../../lib/i18n'
 
 const renderLink = (t, lngCurrent, lngChoice, lngDefault) => {

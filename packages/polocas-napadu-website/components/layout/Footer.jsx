@@ -3,7 +3,7 @@ import styles from './Footer.module.scss'
 
 import { ContentContainer } from './ContentContainer'
 import { LanguageSwitcher } from '../i18n'
-import { propsTranslated } from '../proptypes'
+import { propsTranslated } from 'polocas-napadu-core/proptypes'
 import { SiteSponsors } from './SiteSponsors'
 import { SocialNetworks } from '../social'
 import { withTranslation } from '../../lib/i18n'

@@ -2,7 +2,7 @@ import Markdown from 'react-markdown'
 import React from 'react'
 
 import { Location } from './Location'
-import { UsualPlaceProp } from '../proptypes'
+import { UsualPlace as UsualPlaceProp } from 'polocas-napadu-core/proptypes'
 
 const UsualPlaceComponent = ({ place }) => (
   <div>

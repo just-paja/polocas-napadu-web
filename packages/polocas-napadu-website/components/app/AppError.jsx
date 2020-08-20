@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ErrorType } from '../proptypes'
+import { ErrorType } from 'polocas-napadu-core/proptypes'
 
 export const AppError = () => (
   <div>Application failed with Error!</div>

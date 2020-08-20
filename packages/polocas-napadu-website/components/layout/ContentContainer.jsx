@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './ContentContainer.module.scss'
 
-import { Children, ClassName } from '../proptypes'
+import { Children, ClassName } from 'polocas-napadu-core/proptypes'
 
 export function ContentContainer ({
   as,
