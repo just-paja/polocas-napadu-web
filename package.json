@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build-website": "lerna run build --scope '{polocas-napadu-core,polocas-napadu-website}' && lerna-isolate bundle polocas-napadu-website",
-    "dev": "lerna run dev --stream",
+    "dev": "lerna run dev --stream --parallel",
     "test": "jest"
   },
   "standard": {
