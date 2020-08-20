@@ -1,7 +1,6 @@
 build
 cc-test-reporter
 coverage
-coverage
 .DS_Store
 .env.development.local
 .env.local
@@ -9,7 +8,7 @@ coverage
 .env.test.local
 lerna-debug.log
 .next
-node_modules
+node_deps
 node_modules
 npm-debug.log*
 /.pnp
