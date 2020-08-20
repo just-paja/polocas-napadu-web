@@ -12,14 +12,11 @@ const RecentShowListComponent = ({ data, t }) => {
     return null
   }
   return (
-    <>
-      <h2>{t('recentShows')}</h2>
-      <List>
-        {data.showList.map(show => (
-          <BriefShowListItem key={show.id} show={show} />
-        ))}
-      </List>
-    </>
+    <List>
+      {data.showList.map(show => (
+        <BriefShowListItem key={show.id} show={show} />
+      ))}
+    </List>
   )
 }
 
@@ -29,4 +26,6 @@ RecentShowListComponent.propTypes = {
   })
 }
 
-export const RecentShowList = withTranslation(['common'])(withShowList({ limit: 5, past: true })(RecentShowListComponent))
+export const RecentShowList = withTranslation(['common'])(
+  withShowList({ limit: 5, past: true })(RecentShowListComponent)
+)

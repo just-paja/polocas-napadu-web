@@ -24,17 +24,8 @@ class ShowListPage extends TranslatedPage {
         <Title text={t('shows')} />
         <ContentContainer>
           <main className={styles.list}>
-            <h1>{t('shows')}</h1>
-            <HomeStageNotice />
-            <FutureShowList />
-            <h2>{t('recentShows')}</h2>
-            <RecentShowList />
-            <p>
-              {t('display')}{' '}
-              <Link route='showArchive'>
-                <a>{t('olderShows')}</a>
-              </Link>
-            </p>
+            <h1>{t('showArchive')}</h1>
+            <RecentShowList variables={{ limit: 20 }} />
           </main>
         </ContentContainer>
       </CommonLayout>

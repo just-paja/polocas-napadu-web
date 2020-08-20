@@ -14,6 +14,7 @@ const paths = {
     members: '/o-nas#clenove',
     profile: '/clen/:slug',
     repertoir: '/repertoar',
+    showArchive: '/predstaveni/archiv',
     showDetail: '/predstaveni/:slug',
     showFormatDetail: '/repertoar/:slug',
     showList: '/predstaveni'
@@ -30,6 +31,7 @@ const paths = {
     members: '/o-nas#members',
     profile: '/member/:slug',
     repertoir: '/repertoir',
+    showArchive: '/shows/archive',
     showDetail: '/shows/:slug',
     showFormatDetail: '/repertoir/:slug',
     showList: '/shows'
