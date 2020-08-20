@@ -1,6 +1,6 @@
 {
   "name": "polocas-napadu-core",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Core libraries for Poločas nápadu apps",
   "scripts": {
     "build": "babel src --out-dir .",
