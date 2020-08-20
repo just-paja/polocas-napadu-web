@@ -18,8 +18,9 @@ function Circle ({ profile, children, className, rotate }) {
   }
   if (profile) {
     const name = formatName(profile)
-    props.style.backgroundImage = `linear-gradient(${primary}, ${primary}), url('${profile.avatar ||
-      defaultAvatar}')`
+    props.style.backgroundImage = `linear-gradient(${primary}, ${primary}), url('${
+      profile.avatar ? profile.avatar.src : defaultAvatar
+    }')`
     return (
       <Link params={{ slug: profile.slug }} route='profile'>
         <a {...props} title={name}>
@@ -27,7 +28,11 @@ function Circle ({ profile, children, className, rotate }) {
           {profile.avatar && (
             <span
               className={styles.profileOverlay}
-              style={{ backgroundImage: `url(${profile.avatar})` }}
+              style={{
+                backgroundImage: `url(${
+                  profile.avatar ? profile.avatar.src : null
+                })`
+              }}
             />
           )}
           <span className={styles.seoName}>{name}</span>
