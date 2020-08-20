@@ -20,9 +20,5 @@
     "graphql": "^15.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
-    "apollo-link-schema": "^1.2.5",
-    "graphql-tools": "^6.0.18"
   }
 }
