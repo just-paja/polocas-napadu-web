@@ -1,12 +1,21 @@
 @import 'theme.scss';
 
-:local .flex {
+.flex {
   display: flex;
   justify-content: center;
-  margin-top: $baseline;
+  flex-wrap: wrap;
+  margin-top: $baseline * 3 / 4;
 
   & > * {
-    margin-left: $baseline / 2;
-    margin-right: $baseline / 2;
+    margin: $baseline / 4;
+    flex-shrink: 0;
+  }
+}
+
+.inverse {
+  margin-top: $baseline / 2;
+  margin-bottom: $baseline / -2;
+  & > * {
+    margin: $baseline / 2;
   }
 }

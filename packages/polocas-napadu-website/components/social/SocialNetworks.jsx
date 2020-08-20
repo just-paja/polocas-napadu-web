@@ -16,7 +16,15 @@ import {
 } from 'react-icons/fa'
 
 const SocialNetworksComponent = ({ className, inverse, t }) => (
-  <div className={classnames(styles.flex, className)}>
+  <div
+    className={classnames(
+      styles.flex,
+      {
+        [styles.inverse]: inverse
+      },
+      className
+    )}
+  >
     <SocialNetworkLink
       href='tel:+420 608 212 242'
       icon={FaPhone}

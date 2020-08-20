@@ -9,30 +9,25 @@ import { withQuery } from '../graphql'
 const QUERY_USUAL_PLACES = gql`
   query GetUsualPlaceList {
     usualPlaceList {
-      description,
-      id,
+      description
+      id
       location {
-        name,
-        address,
-      },
-      name,
+        name
+        address
+      }
+      name
     }
   }
 `
 
 const UsualPlacesComponent = ({ data }) => (
-  <Row className='justify-content-center'>
+  <>
     {data.usualPlaceList.map(place => (
-      <Col
-        key={place.id}
-        md={5}
-        sm={6}
-        xs={12}
-      >
-        <UsualPlace place={place} />
-      </Col>
+      <UsualPlace key={place.id} place={place} />
     ))}
-  </Row>
+  </>
 )
 
-export const UsualPlaces = withQuery({ query: QUERY_USUAL_PLACES })(UsualPlacesComponent)
+export const UsualPlaces = withQuery({ query: QUERY_USUAL_PLACES })(
+  UsualPlacesComponent
+)
