@@ -33,8 +33,9 @@ function getIntegrationTestConfig (pack, path, extraConfig) {
     testPathIgnorePatterns: ['/build/', '/coverage/', '/node_modules/'],
     coveragePathIgnorePatterns: ['build', 'debug'],
     transformIgnorePatterns: ['node_modules/(?!((jest-)/.*))'],
+    moduleFileExtensions: ['js', 'jsx', 'json', 'mjs', 'node'],
     transform: {
-      '^.+\\.(js|jsx)$': 'babel-jest',
+      '^.+\\.(js|jsx|mjs)$': 'babel-jest',
       '^.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform'
     },
     moduleNameMapper: {

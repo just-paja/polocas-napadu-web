@@ -1,6 +1,4 @@
-import Col from 'react-bootstrap/Col'
 import React from 'react'
-import Row from 'react-bootstrap/Row'
 
 import { gql } from 'apollo-boost'
 import { UsualPlace } from './UsualPlace'

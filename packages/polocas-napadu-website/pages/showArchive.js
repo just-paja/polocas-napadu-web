@@ -1,19 +1,13 @@
 import React from 'react'
 import styles from './showList.module.scss'
 
-import { Link } from '../components/bindings'
-
 import {
   CommonLayout,
   ContentContainer,
   Title,
   TranslatedPage
 } from '../components/layout'
-import {
-  FutureShowList,
-  HomeStageNotice,
-  RecentShowList
-} from '../components/shows'
+import { RecentShowList } from '../components/shows'
 import { withTranslation } from '../lib/i18n'
 
 class ShowListPage extends TranslatedPage {
