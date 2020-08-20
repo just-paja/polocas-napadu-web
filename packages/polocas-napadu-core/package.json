@@ -3,6 +3,8 @@
   "version": "0.7.0",
   "description": "Core libraries for Poločas nápadu apps",
   "scripts": {
+    "build": "babel src --out-dir .",
+    "dev": "babel src --out-dir . --watch",
     "test": "jest"
   },
   "private": true,
@@ -14,6 +16,13 @@
     ],
     "parser": "babel-eslint"
   },
+  "files": [
+    "clientLogger.js",
+    "constants.js",
+    "context.js",
+    "proptypes.js",
+    "sides.js"
+  ],
   "dependencies": {
     "@apollo/react-components": "^4.0.0",
     "apollo-boost": "^0.4.9",

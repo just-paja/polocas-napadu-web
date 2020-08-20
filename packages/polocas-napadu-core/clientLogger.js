@@ -1,12 +1,25 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.compatLogWarning = exports.logWarning = exports.logError = void 0;
+
 /* eslint-disable no-console */
-export const logError = (error) => {
-  console.error(error)
-}
+const logError = error => {
+  console.error(error);
+};
 
-export const logWarning = (error) => {
-  console.warn(error)
-}
+exports.logError = logError;
 
-export const compatLogWarning = (next, error) => {
-  logWarning(error)
-}
+const logWarning = error => {
+  console.warn(error);
+};
+
+exports.logWarning = logWarning;
+
+const compatLogWarning = (next, error) => {
+  logWarning(error);
+};
+
+exports.compatLogWarning = compatLogWarning;

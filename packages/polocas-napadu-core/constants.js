@@ -1,76 +1,70 @@
-export const MAX_PENALTIES = 3
+"use strict";
 
-export const CONTESTANT_HOME = 'A_1'
-export const CONTESTANT_GUEST = 'A_2'
-
-export const STAGE_SHOW_SETUP = 'A_1'
-export const STAGE_INTRO = 'A_2'
-export const STAGE_GAME_SETUP = 'A_3'
-export const STAGE_GAME = 'A_4'
-export const STAGE_VOTING = 'A_5'
-export const STAGE_GAME_RESULTS = 'A_6'
-export const STAGE_PAUSE = 'A_7'
-export const STAGE_FINALE = 'A_8'
-
-export const STAGES = [
-  STAGE_SHOW_SETUP,
-  STAGE_INTRO,
-  STAGE_GAME_SETUP,
-  STAGE_GAME,
-  STAGE_VOTING,
-  STAGE_GAME_RESULTS,
-  STAGE_PAUSE,
-  STAGE_FINALE
-]
-
-export const STAGES_JUMP = [
-  STAGE_SHOW_SETUP,
-  STAGE_INTRO,
-  STAGE_GAME_SETUP,
-  STAGE_PAUSE,
-  STAGE_FINALE
-]
-
-export const STAGE_OPTIONS = [
-  {
-    value: STAGE_SHOW_SETUP,
-    label: 'Nastavení zápasu'
-  },
-  {
-    value: STAGE_INTRO,
-    label: 'Intro'
-  },
-  {
-    value: STAGE_GAME_SETUP,
-    label: 'Příprava kategorie'
-  },
-  {
-    value: STAGE_GAME,
-    label: 'Hra!'
-  },
-  {
-    value: STAGE_VOTING,
-    label: 'Hlasování'
-  },
-  {
-    value: STAGE_GAME_RESULTS,
-    label: 'Výsledky kategorie'
-  },
-  {
-    value: STAGE_PAUSE,
-    label: 'Přestávka'
-  },
-  {
-    value: STAGE_FINALE,
-    label: 'Konec zápasu'
-  }
-]
-
-export const TEAM_LOGO_DEFAULT = '/default-logo.png'
-
-export const TEAM_SIDE_LEFT = 'left'
-export const TEAM_SIDE_RIGHT = 'right'
-
-export const VOLUME_SCRAPE_DURATION = 5000
-export const VOLUME_SCRAPE_RATE = 50
-export const VOLUME_SCRAPE_TIMEOUT = 4000
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.VOLUME_SCRAPE_TIMEOUT = exports.VOLUME_SCRAPE_RATE = exports.VOLUME_SCRAPE_DURATION = exports.TEAM_SIDE_RIGHT = exports.TEAM_SIDE_LEFT = exports.TEAM_LOGO_DEFAULT = exports.STAGE_OPTIONS = exports.STAGES_JUMP = exports.STAGES = exports.STAGE_FINALE = exports.STAGE_PAUSE = exports.STAGE_GAME_RESULTS = exports.STAGE_VOTING = exports.STAGE_GAME = exports.STAGE_GAME_SETUP = exports.STAGE_INTRO = exports.STAGE_SHOW_SETUP = exports.CONTESTANT_GUEST = exports.CONTESTANT_HOME = exports.MAX_PENALTIES = void 0;
+const MAX_PENALTIES = 3;
+exports.MAX_PENALTIES = MAX_PENALTIES;
+const CONTESTANT_HOME = 'A_1';
+exports.CONTESTANT_HOME = CONTESTANT_HOME;
+const CONTESTANT_GUEST = 'A_2';
+exports.CONTESTANT_GUEST = CONTESTANT_GUEST;
+const STAGE_SHOW_SETUP = 'A_1';
+exports.STAGE_SHOW_SETUP = STAGE_SHOW_SETUP;
+const STAGE_INTRO = 'A_2';
+exports.STAGE_INTRO = STAGE_INTRO;
+const STAGE_GAME_SETUP = 'A_3';
+exports.STAGE_GAME_SETUP = STAGE_GAME_SETUP;
+const STAGE_GAME = 'A_4';
+exports.STAGE_GAME = STAGE_GAME;
+const STAGE_VOTING = 'A_5';
+exports.STAGE_VOTING = STAGE_VOTING;
+const STAGE_GAME_RESULTS = 'A_6';
+exports.STAGE_GAME_RESULTS = STAGE_GAME_RESULTS;
+const STAGE_PAUSE = 'A_7';
+exports.STAGE_PAUSE = STAGE_PAUSE;
+const STAGE_FINALE = 'A_8';
+exports.STAGE_FINALE = STAGE_FINALE;
+const STAGES = [STAGE_SHOW_SETUP, STAGE_INTRO, STAGE_GAME_SETUP, STAGE_GAME, STAGE_VOTING, STAGE_GAME_RESULTS, STAGE_PAUSE, STAGE_FINALE];
+exports.STAGES = STAGES;
+const STAGES_JUMP = [STAGE_SHOW_SETUP, STAGE_INTRO, STAGE_GAME_SETUP, STAGE_PAUSE, STAGE_FINALE];
+exports.STAGES_JUMP = STAGES_JUMP;
+const STAGE_OPTIONS = [{
+  value: STAGE_SHOW_SETUP,
+  label: 'Nastavení zápasu'
+}, {
+  value: STAGE_INTRO,
+  label: 'Intro'
+}, {
+  value: STAGE_GAME_SETUP,
+  label: 'Příprava kategorie'
+}, {
+  value: STAGE_GAME,
+  label: 'Hra!'
+}, {
+  value: STAGE_VOTING,
+  label: 'Hlasování'
+}, {
+  value: STAGE_GAME_RESULTS,
+  label: 'Výsledky kategorie'
+}, {
+  value: STAGE_PAUSE,
+  label: 'Přestávka'
+}, {
+  value: STAGE_FINALE,
+  label: 'Konec zápasu'
+}];
+exports.STAGE_OPTIONS = STAGE_OPTIONS;
+const TEAM_LOGO_DEFAULT = '/default-logo.png';
+exports.TEAM_LOGO_DEFAULT = TEAM_LOGO_DEFAULT;
+const TEAM_SIDE_LEFT = 'left';
+exports.TEAM_SIDE_LEFT = TEAM_SIDE_LEFT;
+const TEAM_SIDE_RIGHT = 'right';
+exports.TEAM_SIDE_RIGHT = TEAM_SIDE_RIGHT;
+const VOLUME_SCRAPE_DURATION = 5000;
+exports.VOLUME_SCRAPE_DURATION = VOLUME_SCRAPE_DURATION;
+const VOLUME_SCRAPE_RATE = 50;
+exports.VOLUME_SCRAPE_RATE = VOLUME_SCRAPE_RATE;
+const VOLUME_SCRAPE_TIMEOUT = 4000;
+exports.VOLUME_SCRAPE_TIMEOUT = VOLUME_SCRAPE_TIMEOUT;
