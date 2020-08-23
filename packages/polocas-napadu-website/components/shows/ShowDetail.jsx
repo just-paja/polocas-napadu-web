@@ -66,6 +66,14 @@ const QUERY_SHOW = gql`
           name
         }
       }
+      ticketPrices {
+        id,
+        amount,
+        currency,
+        priceLevel {
+          name
+        }
+      }
     }
   }
 `
