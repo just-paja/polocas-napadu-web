@@ -10,16 +10,18 @@ function ignore (e) {
 }
 
 export function LogisticInfo ({ icon: Icon, summary, children }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   return (
-    <details className={classnames(styles.box, { [styles.open]: open })} open onClick={ignore}>
+    <details
+      className={classnames(styles.box, { [styles.open]: open })}
+      open
+      onClick={ignore}
+    >
       <summary onClick={() => setOpen(true)}>
         <Icon className={styles.icon} />
         {summary}
       </summary>
-      <div className={styles.details}>
-        {children}
-      </div>
+      <div className={styles.details}>{children}</div>
     </details>
   )
 }
