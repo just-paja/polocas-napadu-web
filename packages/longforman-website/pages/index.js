@@ -18,8 +18,6 @@ export default function Home () {
             festival divadelní improvizace
           </span>
         </h1>
-      </main>
-      <main className={styles.main}>
         <p className={styles.description}>
           30. 4. - 2. 5. 2021
           <br />
