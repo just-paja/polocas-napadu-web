@@ -1,6 +1,6 @@
 {
   "name": "improv-match-inspirations",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.7.2",
