@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build-website": "lerna run build --scope '{polocas-napadu-core,polocas-napadu-website}' && lerna-isolate bundle polocas-napadu-website",
+    "build-longforman-website": "lerna run build --scope '{polocas-napadu-core,longforman-website}' && lerna-isolate bundle longforman-website",
     "dev": "lerna run dev --stream --parallel",
     "test": "jest"
   },
@@ -44,6 +45,7 @@
     "improv-match-inspirations": "file:packages/improv-match-inspirations",
     "improv-match-referee": "file:packages/improv-match-referee",
     "improv-match-scoreboard": "file:packages/improv-match-scoreboard",
+    "longforman-website": "file:packages/longforman-website",
     "polocas-napadu-core": "file:packages/polocas-napadu-core",
     "polocas-napadu-website": "file:packages/polocas-napadu-website"
   }
