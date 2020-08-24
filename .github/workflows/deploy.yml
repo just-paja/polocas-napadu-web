@@ -141,6 +141,6 @@ jobs:
           known_hosts: ${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_KNOWN_HOSTS }}
       - name: Deploy app
         run: |
-          cd ./packages/longforman
+          cd ./packages/longforman-website
           echo -e "[web]\n${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy-static.yml -i inventory
