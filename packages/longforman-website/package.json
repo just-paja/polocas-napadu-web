@@ -3,9 +3,9 @@
   "version": "0.8.2",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3004",
+    "dev": "NODE_PORT=3004 node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "files": [
     ".next",
