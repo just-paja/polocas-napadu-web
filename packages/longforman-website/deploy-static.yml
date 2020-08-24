@@ -1,0 +1,11 @@
+---
+- name: Deploy main domain redirects
+  hosts: web
+  roles:
+    - role: practical-ansible.nginx_redirect
+      project_name: cz-longforman-redirect-main
+      server_names: www.longforman.cz
+      destination_domain: longforman.cz
+      admin_email: pavel@zak.global
+      become: true
+
