@@ -9,8 +9,9 @@ import { ContentContainer, List, Title } from '../layout'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
 import { ShowType } from 'polocas-napadu-core/proptypes'
-import { withQuery } from '../graphql'
+import { photoQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
+import { Gallery } from '../photos'
 
 const QUERY_SHOW = gql`
   query GetShowFormat($slug: String!) {
@@ -22,6 +23,7 @@ const QUERY_SHOW = gql`
       slug,
       useFouls,
       useGames,
+      photos ${photoQuery}
     }
     showList(showTypeSlug: $slug, limit: 5, orderBy: "-start") {
       id,
@@ -47,7 +49,7 @@ function ShowFormatDetailInner ({ data, t }) {
         <Col lg={8}>
           <Markdown className='lead' source={showType.shortDescription} />
           <Markdown source={showType.description} />
-          {(showType.useGames || showType.useFouls) ? (
+          {showType.useGames || showType.useFouls ? (
             <>
               <h2>{t('articleLinks')}</h2>
               <ul>
@@ -56,13 +58,15 @@ function ShowFormatDetailInner ({ data, t }) {
                     <Link route='gameList'>
                       <a>{t('gameList')}</a>
                     </Link>
-                  </li>)}
+                  </li>
+                )}
                 {showType.useFouls && (
                   <li>
                     <Link route='foulTypeList'>
                       <a>{t('foulTypes')}</a>
                     </Link>
-                  </li>)}
+                  </li>
+                )}
               </ul>
             </>
           ) : null}
@@ -75,6 +79,7 @@ function ShowFormatDetailInner ({ data, t }) {
           </List>
         </Col>
       </Row>
+      <Gallery photos={showType.photos} />
     </ContentContainer>
   )
 }
@@ -85,4 +90,6 @@ ShowFormatDetailInner.propTypes = {
   })
 }
 
-export const ShowFormatDetail = withTranslation(['common'])(withQuery({ query: QUERY_SHOW })(ShowFormatDetailInner))
+export const ShowFormatDetail = withTranslation(['common'])(
+  withQuery({ query: QUERY_SHOW })(ShowFormatDetailInner)
+)

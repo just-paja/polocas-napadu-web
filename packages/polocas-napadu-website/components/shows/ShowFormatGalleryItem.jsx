@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './ShowFormatGalleryItem.module.scss'
 
-import { ContentContainer } from '../layout'
 import { Image } from '../photos'
 import { Link } from '../bindings'
 import { ShowType } from 'polocas-napadu-core/proptypes'
