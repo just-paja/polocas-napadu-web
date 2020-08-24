@@ -12,7 +12,8 @@
     "next.config.js",
     "package-lock.json",
     "public",
-    "node_deps"
+    "node_deps",
+    "server.js"
   ],
   "dependencies": {
     "classnames": "^2.2.6",
