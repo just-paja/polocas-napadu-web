@@ -1,6 +1,12 @@
 @import 'theme.scss';
 
-:local .format {
-  background: $secondary;
-  padding: 3 * $baseline;
+.format {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    margin-top: $baseline;
+    max-width: 40rem;
+    width: 100%;
+  }
 }

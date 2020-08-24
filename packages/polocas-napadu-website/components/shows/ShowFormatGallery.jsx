@@ -1,11 +1,13 @@
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import { gql } from 'apollo-boost'
-import { List } from '../layout'
+import { ContentContainer, List } from '../layout'
 import { ShowFormatGalleryItem } from './ShowFormatGalleryItem'
 import { ShowType } from 'polocas-napadu-core/proptypes'
-import { withQuery } from '../graphql'
+import { photoQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
 
 const QUERY_SHOW_FORMAT_LIST = gql`
@@ -15,6 +17,7 @@ const QUERY_SHOW_FORMAT_LIST = gql`
       name,
       shortDescription,
       slug,
+      photos ${photoQuery}
     }
   }
 `
@@ -25,9 +28,15 @@ const ShowFormatGalleryComponent = ({ data, t }) => {
   }
   return (
     <List>
-      {data.showTypeList.map(showFormat => (
-        <ShowFormatGalleryItem key={showFormat.id} showFormat={showFormat} />
-      ))}
+      <ContentContainer>
+        <Row>
+          {data.showTypeList.map(showFormat => (
+            <Col key={showFormat.id} lg={6} xl={4}>
+              <ShowFormatGalleryItem showFormat={showFormat} />
+            </Col>
+          ))}
+        </Row>
+      </ContentContainer>
     </List>
   )
 }
