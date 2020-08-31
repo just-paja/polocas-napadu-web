@@ -7,9 +7,11 @@
 @font-face {
   font-family: $font-family-heading;
   src:
+    local($font-family-heading),
     url("/static/fonts/hk-blocker-heavy.woff") format("woff"),
     url("/static/fonts/hk-blocker-heavy.woff2") format("woff2"),
     url("/static/fonts/hk-blocker-heavy.otf") format("opentype");
+  font-display: swap;
 }
 
 html, body {
