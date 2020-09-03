@@ -24,6 +24,7 @@ export const SiteSponsorLogo = ({ sponsor }) => {
       image={sponsor.logo}
       onClick={onClick}
       title={sponsor.name}
+      size='avatar'
     />
   )
 }

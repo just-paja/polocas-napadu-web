@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { gql } from 'apollo-boost'
 import { Image } from '../photos'
 import { Photo } from 'polocas-napadu-core/proptypes'
-import { withQuery } from '../graphql'
+import { withQuery, imageQuery } from '../graphql'
 
 import styles from './BannerCarousel.module.scss'
 
@@ -13,11 +13,7 @@ const QUERY_SHOW_PHOTOS = gql`
   query {
     showPhotoList(limit: 10) {
       id
-      image {
-        height
-        src
-        width
-      }
+      image ${imageQuery}
       created
     }
   }
@@ -50,6 +46,7 @@ export const BannerCarouselComponent = ({ className, data }) => {
             className={classnames(styles.photo, {
               [styles.visible]: photo.id === backgroundPhoto
             })}
+            size='horizon'
             key={photo.id}
             onClick={() => setBackgroundPhoto(photo.id)}
             image={photo.image}
