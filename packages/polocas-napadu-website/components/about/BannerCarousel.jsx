@@ -11,7 +11,7 @@ import styles from './BannerCarousel.module.scss'
 
 const QUERY_SHOW_PHOTOS = gql`
   query {
-    showPhotoList(limit: 10) {
+    showPhotoList(limit: 7) {
       id
       image ${imageQuery}
       created
