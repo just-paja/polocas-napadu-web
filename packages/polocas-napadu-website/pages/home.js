@@ -1,4 +1,5 @@
 import Col from 'react-bootstrap/Col'
+import Head from 'next/head'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './home.module.scss'
@@ -21,8 +22,12 @@ class HomePage extends TranslatedPage {
       <>
         <Title
           text={`${t('projectName')} - ${t('projectNameAppendix')}`}
+          description={t('projectAbout')}
           pure
         />
+        <Head>
+          <meta property='og:image' content='/static/pixmaps/og-main.jpg' />
+        </Head>
         <MainMenu />
         <HomeBanner />
         <ContentContainer className={styles.content}>
