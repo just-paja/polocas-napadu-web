@@ -17,7 +17,7 @@ class ContactPage extends TranslatedPage {
     const { t } = this.props
     return (
       <CommonLayout>
-        <Title text={t('contact')} />
+        <Title text={t('contact')} description={t('contactText')} />
         <ContentContainer>
           <h1>{t('contact')}</h1>
           <ContactUs />

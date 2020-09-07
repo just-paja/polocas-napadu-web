@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './showList.module.scss'
 
 import { Link } from '../components/bindings'
-
 import {
   CommonLayout,
   ContentContainer,
@@ -14,6 +13,7 @@ import {
   HomeStageNotice,
   RecentShowList
 } from '../components/shows'
+import { OgImage } from '../components/social'
 import { withTranslation } from '../lib/i18n'
 
 class ShowListPage extends TranslatedPage {
@@ -21,7 +21,8 @@ class ShowListPage extends TranslatedPage {
     const { t } = this.props
     return (
       <CommonLayout>
-        <Title text={t('shows')} />
+        <Title text={t('shows')} description={t('showsInvite')} />
+        <OgImage src='/static/pixmaps/og-show-list.jpg' />
         <ContentContainer>
           <main className={styles.list}>
             <h1>{t('shows')}</h1>
