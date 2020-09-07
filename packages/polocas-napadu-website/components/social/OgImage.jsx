@@ -7,7 +7,7 @@ export function OgImage ({ src }) {
   const urlBase = useContext(UrlBase)
   return (
     <Head>
-      <meta name='og:image' content={`${urlBase.origin}${src}`} />
+      <meta property='og:image' content={`${urlBase.origin}${src}`} />
     </Head>
   )
 }
