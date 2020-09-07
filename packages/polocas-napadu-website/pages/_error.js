@@ -46,4 +46,4 @@ class Error extends React.Component {
   }
 }
 
-export default withTranslation(['error'])(Error)
+export default withTranslation('error')(Error)
