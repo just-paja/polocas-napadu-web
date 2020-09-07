@@ -1,5 +1,4 @@
 import Col from 'react-bootstrap/Col'
-import Head from 'next/head'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './home.module.scss'
@@ -12,6 +11,7 @@ import {
   Title,
   TranslatedPage
 } from '../components/layout'
+import { OgImage } from '../components/social'
 import { HomeBanner } from '../components/about'
 import { withTranslation } from '../lib/i18n'
 
@@ -25,9 +25,7 @@ class HomePage extends TranslatedPage {
           description={t('projectAbout')}
           pure
         />
-        <Head>
-          <meta property='og:image' content='/static/pixmaps/og-main.jpg' />
-        </Head>
+        <OgImage src='/static/pixmaps/og-main.jpg' />
         <MainMenu />
         <HomeBanner />
         <ContentContainer className={styles.content}>

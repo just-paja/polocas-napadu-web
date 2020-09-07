@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MatchContext = exports.RouterContext = void 0;
+exports.UrlBase = exports.MatchContext = exports.RouterContext = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -16,3 +16,7 @@ exports.RouterContext = RouterContext;
 const MatchContext = /*#__PURE__*/_react.default.createContext(null);
 
 exports.MatchContext = MatchContext;
+
+const UrlBase = /*#__PURE__*/_react.default.createContext();
+
+exports.UrlBase = UrlBase;

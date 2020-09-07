@@ -10,8 +10,8 @@ import { ApolloProvider } from '@apollo/react-components'
 import { AppError } from '../components/app'
 import { appWithTranslation, i18n } from '../lib/i18n'
 import { Favicon } from '../components/layout'
-import { SocialLinker } from '../components/social/SocialLinker'
-import { UrlBase } from 'polocas-napadu-core/UrlBase'
+import { OgUrl } from '../components/social'
+import { UrlBase } from 'polocas-napadu-core/context'
 import { withApolloClient } from '../lib/with-apollo-client'
 import { withRouter } from 'next/router'
 
@@ -64,7 +64,7 @@ class MyApp extends App {
       <>
         <Favicon />
         <UrlBase.Provider value={urlBase}>
-          <SocialLinker />
+          <OgUrl />
           <ApolloProvider client={apolloClient}>
             {this.state.error ? <AppError /> : <Component {...pageProps} />}
           </ApolloProvider>

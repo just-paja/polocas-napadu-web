@@ -37,7 +37,6 @@
     "jest-watch-typeahead": "^0.6.0",
     "lerna": "^3.20.2",
     "lerna-isolate": "^0.1.4",
-    "next-absolute-url": "^1.2.2",
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4",
     "waait": "^1.0.5"
