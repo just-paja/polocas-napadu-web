@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.propsTranslated = exports.Photo = exports.Sponsor = exports.Image = exports.ImageObject = exports.UsualPlace = exports.I18n = exports.Side = exports.GameRules = exports.FoulType = exports.ErrorMessage = exports.ErrorType = exports.Match = exports.Stage = exports.Game = exports.Inspiration = exports.ContestantGroup = exports.Show = exports.ShowType = exports.ShowParticipant = exports.Role = exports.Profile = exports.Location = exports.Band = exports.ContestantType = exports.ClassName = exports.Classes = exports.Children = exports.Ident = void 0;
+exports.UrlBase = exports.propsTranslated = exports.Photo = exports.Sponsor = exports.Image = exports.ImageObject = exports.UsualPlace = exports.I18n = exports.Side = exports.GameRules = exports.FoulType = exports.ErrorMessage = exports.ErrorType = exports.Match = exports.Stage = exports.Game = exports.Inspiration = exports.ContestantGroup = exports.Show = exports.ShowType = exports.ShowParticipant = exports.Role = exports.Profile = exports.Location = exports.Band = exports.ContestantType = exports.ClassName = exports.Classes = exports.Children = exports.Ident = void 0;
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -203,3 +203,10 @@ const propsTranslated = {
   t: _propTypes.default.func.isRequired
 };
 exports.propsTranslated = propsTranslated;
+const UrlBase = {
+  host: _propTypes.default.string.isRequired,
+  origin: _propTypes.default.string.isRequired,
+  protocol: _propTypes.default.string.isRequired,
+  url: _propTypes.default.string.isRequired
+};
+exports.UrlBase = UrlBase;

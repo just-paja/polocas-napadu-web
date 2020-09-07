@@ -21,7 +21,8 @@
     "constants.js",
     "context.js",
     "proptypes.js",
-    "sides.js"
+    "sides.js",
+    "UrlBase.js"
   ],
   "dependencies": {
     "@apollo/react-components": "^4.0.0",

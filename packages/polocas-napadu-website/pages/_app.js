@@ -1,4 +1,5 @@
 import App from 'next/app'
+import getAbsoluteUrl from 'next-absolute-url'
 import getConfig from 'next/config'
 import moment from 'moment-timezone'
 import React from 'react'
@@ -9,6 +10,8 @@ import { ApolloProvider } from '@apollo/react-components'
 import { AppError } from '../components/app'
 import { appWithTranslation, i18n } from '../lib/i18n'
 import { Favicon } from '../components/layout'
+import { SocialLinker } from '../components/social/SocialLinker'
+import { UrlBase } from 'polocas-napadu-core/UrlBase'
 import { withApolloClient } from '../lib/with-apollo-client'
 import { withRouter } from 'next/router'
 
@@ -27,7 +30,14 @@ class MyApp extends App {
     const req = ctx && ctx.ctx && ctx.ctx.req
     moment.locale((req && req.language) || i18n.language)
     moment.tz.setDefault('Europe/Prague')
-    return props
+    const urlBase = getAbsoluteUrl(req)
+    return {
+      ...props,
+      urlBase: {
+        ...urlBase,
+        url: `${urlBase.origin}${req ? req.path : window.location.pathname}`
+      }
+    }
   }
 
   componentDidCatch (error) {
@@ -46,21 +56,24 @@ class MyApp extends App {
   }
 
   render () {
-    const { Component, pageProps, apolloClient } = this.props
+    const { Component, pageProps, apolloClient, urlBase } = this.props
     moment.locale(i18n.language)
     moment.tz.setDefault('Europe/Prague')
 
     return (
       <>
         <Favicon />
-        <ApolloProvider client={apolloClient}>
-          {this.state.error
-            ? <AppError />
-            : <Component {...pageProps} />}
-        </ApolloProvider>
+        <UrlBase.Provider value={urlBase}>
+          <SocialLinker />
+          <ApolloProvider client={apolloClient}>
+            {this.state.error ? <AppError /> : <Component {...pageProps} />}
+          </ApolloProvider>
+        </UrlBase.Provider>
       </>
     )
   }
 }
 
-export default withApolloClient(withRouter(appWithTranslation(withGa(GA_CODE, Router)(MyApp))))
+export default withApolloClient(
+  withRouter(appWithTranslation(withGa(GA_CODE, Router)(MyApp)))
+)

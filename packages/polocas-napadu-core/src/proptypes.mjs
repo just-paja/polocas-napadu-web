@@ -161,3 +161,10 @@ export const Photo = PropTypes.shape({
 export const propsTranslated = {
   t: PropTypes.func.isRequired
 }
+
+export const UrlBase = {
+  host: PropTypes.string.isRequired,
+  origin: PropTypes.string.isRequired,
+  protocol: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+}
