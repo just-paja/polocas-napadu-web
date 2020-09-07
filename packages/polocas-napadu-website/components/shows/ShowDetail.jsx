@@ -1,7 +1,6 @@
 import moment from 'moment'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Head from 'next/head'
 import Markdown from 'react-markdown'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -14,6 +13,7 @@ import { ShowDateInfo } from './ShowDateInfo'
 import { FaTicketAlt } from 'react-icons/fa'
 import { gql } from 'apollo-boost'
 import { Link } from '../bindings'
+import { OgEvent } from '../social'
 import { ShowVenueInfo } from './ShowVenueInfo'
 import { MatchProgress } from './MatchProgress'
 import { Show } from 'polocas-napadu-core/proptypes'
@@ -121,13 +121,8 @@ function ShowDetailInner ({ data, t }) {
     <article>
       <PageHeading>
         <h1>{show.name}</h1>
-        <Title text={show.name} />
-        <Head>
-          <meta property='event:end_date' content={show.end} />
-          <meta property='event:start_date' content={show.start} />
-          <meta property='og:description' content={show.description} />
-          <meta property='og:type' content='event' />
-        </Head>
+        <Title text={show.name} description={show.description} />
+        <OgEvent event={show} />
       </PageHeading>
       <ContentContainer>
         <Row className={styles.logistics}>

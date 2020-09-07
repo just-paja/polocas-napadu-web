@@ -7,7 +7,7 @@ export function OgUrl () {
   const urlBase = useContext(UrlBase)
   return (
     <Head>
-      <meta property='og:url' value={urlBase.url} />
+      <meta property='og:url' content={urlBase.url} />
     </Head>
   )
 }
