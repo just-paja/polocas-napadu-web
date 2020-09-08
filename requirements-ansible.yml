@@ -1,6 +1,6 @@
 - src: practical-ansible.nginx_redirect
-  version: 1.2.2
+  version: 1.2.3
 - src: practical-ansible.nginx_static
-  version: 1.2.2
+  version: 1.2.3
 - src: practical-ansible.nginx_docker
-  version: 1.8.2
+  version: 1.8.5
