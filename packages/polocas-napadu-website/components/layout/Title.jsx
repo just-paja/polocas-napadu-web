@@ -11,6 +11,7 @@ const TitleComponent = ({ pure, t, text, description }) => (
     <meta property='og:title' content={text} />
     <meta property='og:site_name' content={t('projectName')} />
     <meta property='og:description' content={description} />
+    <meta name='description' content={description} />
   </Head>
 )
 
