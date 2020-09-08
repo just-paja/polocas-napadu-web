@@ -62,18 +62,17 @@ module.exports = function (nexti18next) {
       )
 
       if (!lngFromCurrentSubpath) {
-        const resourcePath = path.resolve(
-          __dirname,
-          '..',
-          'public',
-          req.url.substr('1')
-        )
-        console.log(resourcePath)
-        return access(resourcePath, fs.constants.R_OK)
-          .then(next)
-          .catch(() => {
-            redirectWithoutCache(res, `/${currentLng}${req.url}`)
-          })
+        const file = req.url.substr(1)
+        if (file) {
+          const resourcePath = path.resolve(__dirname, '..', 'public')
+          return access(resourcePath, fs.constants.R_OK)
+            .then(next)
+            .catch(() => {
+              redirectWithoutCache(res, `/${currentLng}${req.url}`)
+            })
+        } else {
+          return redirectWithoutCache(res, `/${currentLng}${req.url}`)
+        }
       } else if (currentLng !== lngFromCurrentSubpath) {
         /*
           If a user has hit a subpath which does not
