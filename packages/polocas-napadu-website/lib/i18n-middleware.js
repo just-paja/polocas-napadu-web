@@ -1,8 +1,16 @@
+const fs = require('fs')
+const path = require('path')
 const i18nextMiddleware = require('i18next-express-middleware')
 const pathMatch = require('path-match')
-const { lngFromReq, redirectWithoutCache } = require('next-i18next/dist/commonjs/utils')
+const {
+  lngFromReq,
+  redirectWithoutCache
+} = require('next-i18next/dist/commonjs/utils')
+const { promisify } = require('util')
 
 const route = pathMatch()
+
+const access = promisify(fs.access)
 
 function subpathFromLng (config, lng) {
   return `/${lng}`
@@ -16,8 +24,10 @@ module.exports = function (nexti18next) {
   const { config, i18n } = nexti18next
   const { allLanguages, ignoreRoutes, localeSubpaths } = config
 
-  const isI18nRoute = (req) => ignoreRoutes.every(x => !req.url.startsWith(x))
-  const localeSubpathRoute = route(`/:subpath(${Object.values(localeSubpaths).join('|')})(.*)`)
+  const isI18nRoute = req => ignoreRoutes.every(x => !req.url.startsWith(x))
+  const localeSubpathRoute = route(
+    `/:subpath(${Object.values(localeSubpaths).join('|')})(.*)`
+  )
 
   const middleware = []
 
@@ -47,11 +57,23 @@ module.exports = function (nexti18next) {
     if (isI18nRoute(req) && req.i18n) {
       let currentLng = lngFromReq(req)
 
-      const lngFromCurrentSubpath = allLanguages.find((l) =>
-        subpathIsPresent(req.url, subpathFromLng(config, l)))
+      const lngFromCurrentSubpath = allLanguages.find(l =>
+        subpathIsPresent(req.url, subpathFromLng(config, l))
+      )
 
       if (!lngFromCurrentSubpath) {
-        return redirectWithoutCache(res, `/${currentLng}${req.url}`)
+        const resourcePath = path.resolve(
+          __dirname,
+          '..',
+          'public',
+          req.url.substr('1')
+        )
+        console.log(resourcePath)
+        return access(resourcePath, fs.constants.R_OK)
+          .then(next)
+          .catch(() => {
+            redirectWithoutCache(res, `/${currentLng}${req.url}`)
+          })
       } else if (currentLng !== lngFromCurrentSubpath) {
         /*
           If a user has hit a subpath which does not
