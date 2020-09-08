@@ -13,6 +13,11 @@ async function main () {
   await app.prepare()
   const server = express()
 
+  server.get('*.(jpg|png|svg|gif|ico|woff|ttf|woff2)', (req, res, next) => {
+    res.setHeader('Cache-Control', 'public,max-age=31536000,immutable')
+    next()
+  })
+
   server.use(middleware(nextI18next))
   server.use(handle)
 
