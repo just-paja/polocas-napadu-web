@@ -15,7 +15,7 @@
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-tema
       server_names: tema.polocasnapadu.cz,tema.polocas-napadu.cz,temata.polocasnapadu.cz,temata.polocas-napadu.cz
-      destination_url: https://interactive.polocas-napadu.cz/inspirations/?apiUrl=https://api.polocas-napadu.cz/graphql#/match/8
+      destination_url: https://interactive.polocas-napadu.cz/inspirations/?apiUrl=https://api.polocas-napadu.cz/graphql#/match/9
       redirect_status: 302
       admin_email: pavel@zak.global
       become: true
@@ -26,7 +26,7 @@
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-rezervace
       server_names: rezervace.polocasnapadu.cz,rezervace.polocas-napadu.cz
-      destination_url: https://docs.google.com/forms/d/e/1FAIpQLSfXS7zBebKGgtmnvTFKzXdcXn3rjx9zWg5moBaijPd0YagqyQ/viewform?usp=sf_link
+      destination_url: https://docs.google.com/forms/d/e/1FAIpQLSeHRqy7TMpjmIa0_eAvwOoCWQEbARUUl1-GbbKwHZcUk6HYvQ/viewform
       redirect_status: 302
       admin_email: pavel@zak.global
       become: true
