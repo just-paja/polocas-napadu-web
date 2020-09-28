@@ -9,8 +9,9 @@ function getEmptyKeys (data) {
 }
 
 function getNotFoundError (data) {
-  const empty = getEmptyKeys(data).join(', ')
-  const error = new Error(`Could not find ${empty}!`)
+  const error = data
+    ? new Error(`Could not find ${getEmptyKeys(data).join(', ')}!`)
+    : new Error('Could not find requested data')
   error.statusCode = 404
   error.code = 'ENOENT'
   return error
@@ -30,7 +31,7 @@ export const withQuery = ({
   if (error) {
     return <QueryFailure error={error} />
   }
-  if (!optional && getEmptyKeys(data).length > 0) {
+  if (!optional && (!data || getEmptyKeys(data).length > 0)) {
     throw getNotFoundError(data)
   }
   return <Component data={data} {...props} />
