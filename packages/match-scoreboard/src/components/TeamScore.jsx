@@ -58,7 +58,7 @@ const styles = theme => ({
     animationDuration: '3s'
   },
   appear: {
-    animationName: 'highlightScore',
+    animationName: '$highlightScore',
     zIndex: 10000
   },
   score: {
