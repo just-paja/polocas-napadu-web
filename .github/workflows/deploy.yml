@@ -67,6 +67,7 @@ jobs:
           NODE_API_URL: ${{ secrets.PRODUCTION_NODE_API_URL }}
           NODE_GA_CODE: ${{ secrets.PRODUCTION_NODE_GA_CODE }}
         run: |
+          cp dist/polocas-napadu-website.tgz packages/website/
           cd ./packages/website
           echo -e "[web]\n${{ secrets.PRODUCTION_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory
@@ -98,6 +99,7 @@ jobs:
           NODE_API_URL: ${{ secrets.PRODUCTION_LONGFORMAN_NODE_API_URL }}
           NODE_GA_CODE: ${{ secrets.PRODUCTION_LONGFORMAN_NODE_GA_CODE }}
         run: |
+          cp dist/longforman-website.tgz packages/longforman-website/
           cd ./packages/longforman-website
           echo -e "[web]\n${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory

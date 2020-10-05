@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 ENV NODE_PORT=80
 ENV NODE_ENV=production
 
-ADD ../../dist/longforman-website-*.tgz .
+ADD longforman-website.tgz .
 
 WORKDIR /usr/src/app/package
 
