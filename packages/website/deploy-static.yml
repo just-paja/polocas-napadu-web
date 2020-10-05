@@ -7,7 +7,7 @@
       server_names: interactive.polocas-napadu.cz,interactive.polocas-napadu.cz
       admin_email: pavel@zak.global
       become: true
-      dir_source: ../../dist/interactive
+      dir_source: ../../dist/interactive/
 
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-redirect-main

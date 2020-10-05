@@ -122,6 +122,8 @@ jobs:
         with:
           name: dist
           path: dist/
+      - name: Debug
+        run: ls -lR
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/website/deploy-static.yml
