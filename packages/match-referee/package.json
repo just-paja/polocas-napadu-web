@@ -1,6 +1,6 @@
 {
   "name": "polocas-napadu-match-referee",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "private": true,
   "dependencies": {
     "@apollo/react-components": "4.0.0",
