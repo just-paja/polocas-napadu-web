@@ -90,6 +90,6 @@ jobs:
           NODE_PROJECT_ENVIRONMENT: staging
           NODE_API_URL: ${{ secrets.STAGING_NODE_API_URL }}
         run: |
-          cd ./packages/polocas-napadu-website
+          cd ./packages/website
           echo -e "[web]\n${{ secrets.STAGING_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory
