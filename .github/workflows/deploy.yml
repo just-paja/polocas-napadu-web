@@ -118,6 +118,10 @@ jobs:
       - build
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist/
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/website/deploy-static.yml
