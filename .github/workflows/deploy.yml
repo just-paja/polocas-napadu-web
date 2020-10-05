@@ -36,7 +36,7 @@ jobs:
         run: npm test -- --coverage
       - name: Build website
         run: npm run build
-      - uses: actions/upload-artifacts@v2
+      - uses: actions/upload-artifact@v2
         with:
           name: dist
           path: dist/
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifacts@v2
+      - uses: actions/download-artifact@v2
         with:
           name: dist
       - uses: ansible/ansible-lint-action@master
@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifacts@v2
+      - uses: actions/download-artifact@v2
         with:
           name: dist
       - name: Install dependencies
