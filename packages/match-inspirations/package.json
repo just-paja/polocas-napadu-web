@@ -1,6 +1,6 @@
 {
   "name": "polocas-napadu-match-inspirations",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.7.2",
