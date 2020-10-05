@@ -45,7 +45,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build the packages
-        run: ./node_modules/.bin/lerna run build
+        run: npm run build
+      - name: Store artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
 
   deploy-staging:
     name: Deploy staging website
@@ -55,9 +60,12 @@ jobs:
       - test
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/download-artifact@v2
         with:
-          node-version: '12'
+          name: dist
+          path: dist/
+      - name: Debug
+        run: ls -lR
       - uses: actions/setup-python@v1
         with:
           python-version: '3.8'
@@ -66,19 +74,10 @@ jobs:
           targets: |
             packages/polocas-napadu-website/deploy.yml
             packages/polocas-napadu-website/deploy-static.yml
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: Install dependencies
         run: |
-          npm ci
           sudo apt-get -y install python-docker python3-docker
           ansible-galaxy install -r requirements-ansible.yml
-      - name: Build
-        run: npm run build-website
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.STAGING_WEBSITE_SSH_KEY }}
