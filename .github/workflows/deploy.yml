@@ -138,6 +138,8 @@ jobs:
   deploy-longforman-website-static:
     name: Deploy longforman website static media
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v2
       - uses: ansible/ansible-lint-action@master
