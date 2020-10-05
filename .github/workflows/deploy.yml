@@ -44,6 +44,8 @@ jobs:
   deploy-polocas-napadu-website:
     name: Deploy polocas napadu website
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
