@@ -15,6 +15,12 @@
     "node_deps",
     "server.js"
   ],
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "express": "^4.17.1",

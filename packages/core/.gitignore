@@ -1,6 +1,6 @@
-./clientLogger.js
-./constants.js
-./context.js
-./proptypes.js
-./sides.js
+/clientLogger.js
+/constants.js
+/context.js
+/proptypes.js
+/sides.js
 *.tgz

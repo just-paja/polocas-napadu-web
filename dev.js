@@ -63,7 +63,13 @@ function getLinterTestConfig (pack, path) {
       '/coverage/',
       '/node_modules/',
       '/static/',
-      '/polocas-napadu-core/'
+      '/polocas-napadu-core/',
+      '/core/constants',
+      '/core/context',
+      '/core/index',
+      '/core/sides',
+      '/core/proptypes',
+      '/core/clientLogger'
     ]
   }
 }
