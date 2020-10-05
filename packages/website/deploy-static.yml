@@ -2,6 +2,13 @@
 - name: Deploy main domain redirects
   hosts: web
   roles:
+    - role: practical-ansible.nginx_static
+      project_name: cz-polocas-napadu-interactive
+      server_names: interactive.polocas-napadu.cz,interactive.polocas-napadu.cz
+      admin_email: pavel@zak.global
+      become: true
+      dir_source: ../../dist/interactive
+
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-redirect-main
       server_names: polocasnapadu.cz,www.polocasnapadu.cz,www.polocas-napadu.cz
@@ -9,9 +16,6 @@
       admin_email: pavel@zak.global
       become: true
 
-- name: Deploy inspiration app redirects
-  hosts: web
-  roles:
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-tema
       server_names: tema.polocasnapadu.cz,tema.polocas-napadu.cz,temata.polocasnapadu.cz,temata.polocas-napadu.cz
@@ -20,9 +24,6 @@
       admin_email: pavel@zak.global
       become: true
 
-- name: Deploy reservation redirect
-  hosts: web
-  roles:
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-rezervace
       server_names: rezervace.polocasnapadu.cz,rezervace.polocas-napadu.cz
@@ -31,9 +32,6 @@
       admin_email: pavel@zak.global
       become: true
 
-- name: Deploy knowledge base redirect
-  hosts: web
-  roles:
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-internal
       server_names: internal.polocasnapadu.cz,internal.polocas-napadu.cz
@@ -42,9 +40,6 @@
       admin_email: pavel@zak.global
       become: true
 
-- name: Deploy improviser poll redirect
-  hosts: web
-  roles:
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-anketa
       server_names: anketa.polocasnapadu.cz,anketa.polocas-napadu.cz

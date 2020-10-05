@@ -4,7 +4,10 @@
   "scripts": {
     "build-website": "lerna run build --scope '{polocas-napadu-core,polocas-napadu-website}' && lerna-isolate bundle polocas-napadu-website",
     "build-longforman-website": "lerna run build --scope '{polocas-napadu-core,longforman-website}' && lerna-isolate bundle longforman-website",
-    "build": "lerna run build --stream --parallel && lerna-isolate bundle",
+    "build": "npm run build:transpile && npm run build:isolate && npm run build:interactive",
+    "build:transpile": "lerna run build --stream --parallel",
+    "build:isolate": "lerna-isolate bundle -e",
+    "build:interactive": "node scripts/bundle-interactive.js",
     "dev": "lerna run dev --stream --parallel",
     "test": "jest"
   },
