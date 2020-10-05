@@ -23,6 +23,8 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm ci
+      - name: Buld core
+        run: npm run build:core
       - name: Run tests
         run: npm test -- --coverage
 
