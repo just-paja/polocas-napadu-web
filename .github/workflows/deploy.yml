@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build production packages
+    name: Build packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,6 +51,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: dist
+          path: dist/
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/website/deploy.yml
@@ -109,16 +110,20 @@ jobs:
           echo -e "[web]\n${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy.yml -i inventory
 
-  deploy-redirects:
-    name: Deploy production website redirects
+  deploy-polocas-napadu-website-static:
+    name: Deploy polocas napadu static media
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v2
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/website/deploy-static.yml
       - name: Install dependencies
-        run: ansible-galaxy install -r requirements-ansible.yml
+        run: |
+          sudo apt-get install rsync
+          ansible-galaxy install -r requirements-ansible.yml
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PRODUCTION_WEBSITE_SSH_KEY }}
@@ -130,8 +135,8 @@ jobs:
           echo -e "[web]\n${{ secrets.PRODUCTION_WEBSITE_DEPLOY_HOST }}\n" > inventory
           ansible-playbook deploy-static.yml -i inventory
 
-  deploy-longforman-redirects:
-    name: Deploy longforman production website redirects
+  deploy-longforman-website-static:
+    name: Deploy longforman website static media
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
