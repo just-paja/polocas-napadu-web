@@ -50,7 +50,7 @@ const QUERY_SHOW = gql`
       name
       photos ${photoQuery}
       start
-      showsParticipants {
+      participants {
         id
         profile {
           alias
@@ -171,7 +171,7 @@ function ShowDetailInner ({ data, t }) {
               </div>
             ) : null}
             <h2>{t('showParticipants')}</h2>
-            <ShowParticipants participants={show.showsParticipants} />
+            <ShowParticipants participants={show.participants} />
           </div>
         </div>
       </ContentContainer>

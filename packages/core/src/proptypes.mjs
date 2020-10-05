@@ -61,7 +61,7 @@ export const Show = PropTypes.shape({
   id: Ident.isRequired,
   location: Location.isRequired,
   name: PropTypes.string.isRequired,
-  showsParticipants: PropTypes.arrayOf(ShowParticipant),
+  participants: PropTypes.arrayOf(ShowParticipant),
   slug: PropTypes.string,
   start: PropTypes.string.isRequired
 })
