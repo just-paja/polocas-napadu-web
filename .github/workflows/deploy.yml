@@ -1,3 +1,4 @@
+---
 name: Continuous deployment
 on:
   push:
@@ -7,17 +8,13 @@ on:
       - 'v*'
 
 jobs:
-  deploy-website-production:
-    name: Deploy production website
-    runs-on: ubuntu-latest
+  build:
+    name: Build production packages
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.8'
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/polocas-napadu-website/deploy.yml
@@ -35,7 +32,23 @@ jobs:
       - name: Test
         run: npm test -- --coverage
       - name: Build website
-        run: npm run build-website
+        run: npm run build
+      - uses: actions/upload-artifacts@v2
+        with:
+          name: dist
+          path: dist/
+  
+  deploy-polocas-napadu-website:
+    name: Deploy polocas napadu website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifacts@v2
+        with:
+          name: dist
+      - uses: ansible/ansible-lint-action@master
+        with:
+          targets: packages/polocas-napadu-website/deploy.yml
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PRODUCTION_WEBSITE_SSH_KEY }}
@@ -53,34 +66,17 @@ jobs:
           ansible-playbook deploy.yml -i inventory
 
   deploy-longforman-website-production:
-    name: Deploy longforman production website
+    name: Deploy longforman website
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/download-artifacts@v2
         with:
-          node-version: '12'
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.8'
+          name: dist
+      - uses: actions/checkout@v2
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/polocas-napadu-website/deploy.yml
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies
-        run: |
-          npm ci
-          sudo apt-get -y install python-docker python3-docker
-          ansible-galaxy install -r requirements-ansible.yml
-      - name: Test
-        run: npm test -- --coverage
-      - name: Build website
-        run: npm run build-longforman-website
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_SSH_KEY }}
@@ -102,9 +98,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.8'
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/polocas-napadu-website/deploy-static.yml
@@ -126,9 +119,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
-        with:
-          python-version: '3.8'
       - uses: ansible/ansible-lint-action@master
         with:
           targets: packages/longforman-website/deploy-static.yml

@@ -1,10 +1,11 @@
 const { getPackageTestConfig } = require('./dev')
 
-const improvMatchInspirations = require('./packages/improv-match-inspirations/jest.config')
-const improvMatchReferee = require('./packages/improv-match-referee/jest.config')
-const improvMatchScoreboard = require('./packages/improv-match-scoreboard/jest.config')
-const polocasNapaduCore = require('./packages/polocas-napadu-core/jest.config')
-const polocasNapaduWebsite = require('./packages/polocas-napadu-website/jest.config')
+const longformanWebsite = require('./packages/longforman-website/jest.config')
+const matchInspirations = require('./packages/match-inspirations/jest.config')
+const matchReferee = require('./packages/match-referee/jest.config')
+const matchScoreboard = require('./packages/match-scoreboard/jest.config')
+const polocasNapaduCore = require('./packages/core/jest.config')
+const polocasNapaduWebsite = require('./packages/website/jest.config')
 
 const config = {
   collectCoverageFrom: [
@@ -18,9 +19,10 @@ const config = {
 module.exports = getPackageTestConfig(
   __dirname,
   [
-    ...improvMatchInspirations.projects,
-    ...improvMatchReferee.projects,
-    ...improvMatchScoreboard.projects,
+    ...longformanWebsite.projects,
+    ...matchInspirations.projects,
+    ...matchReferee.projects,
+    ...matchScoreboard.projects,
     ...polocasNapaduCore.projects,
     ...polocasNapaduWebsite.projects
   ],
