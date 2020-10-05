@@ -18,8 +18,14 @@ import { ShowVenueInfo } from './ShowVenueInfo'
 import { MatchProgress } from './MatchProgress'
 import { Show } from 'polocas-napadu-core/proptypes'
 import { ShowParticipants } from './ShowParticipants'
-import { photoQuery, withQuery } from '../graphql'
 import { withTranslation } from '../../lib/i18n'
+import {
+  eventParticipantQuery,
+  locationQuery,
+  photoQuery,
+  showTypeQuery,
+  withQuery
+} from '../graphql'
 
 const QUERY_SHOW = gql`
   query GetShow($slug: String!) {
@@ -30,19 +36,8 @@ const QUERY_SHOW = gql`
       linkFacebook
       linkReservations
       linkTickets
-      location {
-        address
-        city
-        id
-        name
-      }
-      showType {
-        id
-        name
-        shortDescription
-        slug
-        visibility
-      }
+      location ${locationQuery}
+      showType ${showTypeQuery}
       match {
         closed
         id
@@ -50,22 +45,7 @@ const QUERY_SHOW = gql`
       name
       photos ${photoQuery}
       start
-      participants {
-        id
-        profile {
-          alias
-          id
-          name
-          slug
-          group {
-            name
-          }
-        }
-        role {
-          id
-          name
-        }
-      }
+      participants ${eventParticipantQuery}
       ticketPrices {
         id,
         amount,
@@ -92,20 +72,20 @@ function LinkButton ({ link, icon: Icon, label }) {
   )
 }
 
-function renderTicketButtons (show, t) {
+function EventTicketButtons ({ event, t }) {
   if (
-    (show.linkTickets || show.linkReservations) &&
-    moment().isBefore(show.start)
+    (event.linkTickets || event.linkReservations) &&
+    moment().isBefore(event.start)
   ) {
     return (
       <Row className={styles.logistics}>
         <LinkButton
-          link={show.linkTickets}
+          link={event.linkTickets}
           label={t('buyTickets')}
           icon={FaTicketAlt}
         />
         <LinkButton
-          link={show.linkReservations}
+          link={event.linkReservations}
           label={t('reserveSeats')}
           icon={FaTicketAlt}
         />
@@ -115,15 +95,86 @@ function renderTicketButtons (show, t) {
   return null
 }
 
+function EventDetailHeading ({ event }) {
+  return (
+    <PageHeading>
+      <h1>{event.name}</h1>
+      <Title text={event.name} description={event.description} />
+      <OgEvent event={event} />
+    </PageHeading>
+  )
+}
+
+function EventDetailDescription ({ event }) {
+  if (event.description) {
+    return <Markdown className='lead' source={event.description} />
+  }
+  return null
+}
+
+function ShowDetailDescription ({ show }) {
+  return (
+    <>
+      <EventDetailDescription event={show} />
+      <Markdown
+        className={show.description ? null : 'lead'}
+        source={show.showType.shortDescription}
+      />
+    </>
+  )
+}
+
+function ShowDetailTypeLink ({ showType, t }) {
+  if (showType.visibility === 2) {
+    return (
+      <Link route='showFormatDetail' params={{ slug: showType.slug }}>
+        <a>{t('moreAboutFormat', { formatName: showType.name })}</a>
+      </Link>
+    )
+  }
+  return null
+}
+
+function ShowDetailEmailReservations ({ show, t }) {
+  if (show.emailReservations) {
+    return (
+      <p>
+        {t('reserveSeatsEmail')}:{' '}
+        <a href={`mailto:${show.emailReservations}`}>
+          {show.emailReservations}
+        </a>
+      </p>
+    )
+  }
+  return null
+}
+
+function ShowDetailMatchReport ({ match, t }) {
+  if (match) {
+    return (
+      <div>
+        <h2>{t('matchProgress')}</h2>
+        <MatchProgress closed={match.closed} variables={{ id: match.id }} />
+      </div>
+    )
+  }
+  return null
+}
+
+function ShowDetailParticipants ({ participants, t }) {
+  return (
+    <>
+      <h2>{t('showParticipants')}</h2>
+      <ShowParticipants participants={participants} />
+    </>
+  )
+}
+
 function ShowDetailInner ({ data, t }) {
   const { show } = data
   return (
     <article>
-      <PageHeading>
-        <h1>{show.name}</h1>
-        <Title text={show.name} description={show.description} />
-        <OgEvent event={show} />
-      </PageHeading>
+      <EventDetailHeading event={show} />
       <ContentContainer>
         <Row className={styles.logistics}>
           <Col className={styles.logisticsItem} md={6} lg={4}>
@@ -133,45 +184,14 @@ function ShowDetailInner ({ data, t }) {
             <ShowVenueInfo show={show} />
           </Col>
         </Row>
-        {renderTicketButtons(show, t)}
+        <EventTicketButtons event={show} t={t} />
         <div className={styles.description}>
           <div>
-            {show.description && (
-              <Markdown className='lead' source={show.description} />
-            )}
-            <Markdown
-              className={show.description ? null : 'lead'}
-              source={show.showType.shortDescription}
-            />
-            {show.emailReservations ? (
-              <p>
-                {t('reserveSeatsEmail')}:{' '}
-                <a href={`mailto:${show.emailReservations}`}>
-                  {show.emailReservations}
-                </a>
-              </p>
-            ) : null}
-            {show.showType.visibility === 2 ? (
-              <Link
-                route='showFormatDetail'
-                params={{ slug: show.showType.slug }}
-              >
-                <a>
-                  {t('moreAboutFormat', { formatName: show.showType.name })}
-                </a>
-              </Link>
-            ) : null}
-            {show.match ? (
-              <div>
-                <h2>{t('matchProgress')}</h2>
-                <MatchProgress
-                  closed={show.match.closed}
-                  variables={{ id: show.match.id }}
-                />
-              </div>
-            ) : null}
-            <h2>{t('showParticipants')}</h2>
-            <ShowParticipants participants={show.participants} />
+            <ShowDetailDescription show={show} />
+            <ShowDetailEmailReservations show={show} t={t} />
+            <ShowDetailTypeLink showType={show.showType} t={t} />
+            <ShowDetailMatchReport match={show.match} />
+            <ShowDetailParticipants participants={show.participants} t={t} />
           </div>
         </div>
       </ContentContainer>
