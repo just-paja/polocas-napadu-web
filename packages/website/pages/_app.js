@@ -1,10 +1,9 @@
 import App from 'next/app'
 import getAbsoluteUrl from 'next-absolute-url'
 import getConfig from 'next/config'
+import Head from 'next/head'
 import moment from 'moment-timezone'
 import React from 'react'
-import Router from '../routes'
-import withGa from 'next-ga'
 
 import { ApolloProvider } from '@apollo/react-components'
 import { AppError } from '../components/app'
@@ -17,8 +16,27 @@ import { withRouter } from 'next/router'
 
 import './_app.scss'
 
-const { publicRuntimeConfig } = getConfig()
-const { GA_CODE } = publicRuntimeConfig
+function Gtm () {
+  const config = getConfig()
+  const { publicRuntimeConfig } = config
+  const { GTM_CODE } = publicRuntimeConfig
+  if (!GTM_CODE) {
+    return null
+  }
+  const innerHTML = {
+    __html: `
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${GTM_CODE}');`
+  }
+  return (
+    <Head>
+      <script dangerouslySetInnerHTML={innerHTML} />
+    </Head>
+  )
+}
 
 class MyApp extends App {
   state = {
@@ -62,6 +80,7 @@ class MyApp extends App {
 
     return (
       <>
+        <Gtm />
         <Favicon />
         <UrlBase.Provider value={urlBase}>
           <OgUrl />
@@ -74,6 +93,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(
-  withRouter(appWithTranslation(withGa(GA_CODE, Router)(MyApp)))
-)
+export default withApolloClient(withRouter(appWithTranslation(MyApp)))
