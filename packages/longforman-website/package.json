@@ -1,6 +1,6 @@
 {
   "name": "longforman-website",
-  "version": "0.9.15",
+  "version": "0.9.17",
   "private": true,
   "scripts": {
     "dev": "NODE_PORT=3004 node server.js",
