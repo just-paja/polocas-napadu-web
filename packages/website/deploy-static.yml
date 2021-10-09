@@ -27,7 +27,7 @@
     - role: practical-ansible.nginx_redirect
       project_name: cz-polocas-napadu-rezervace
       server_names: rezervace.polocasnapadu.cz,rezervace.polocas-napadu.cz
-      destination_url: https://docs.google.com/forms/d/e/1FAIpQLSeHRqy7TMpjmIa0_eAvwOoCWQEbARUUl1-GbbKwHZcUk6HYvQ/viewform
+      destination_url: https://forms.gle/nCmEDb8HQdp65gFV7
       redirect_status: 302
       admin_email: pavel@zak.global
       become: true
