@@ -1,6 +1,6 @@
 {
   "name": "polocas-napadu-match-scoreboard",
-  "version": "0.9.17",
+  "version": "0.9.18",
   "private": true,
   "dependencies": {
     "@apollo/react-components": "4.0.0",
