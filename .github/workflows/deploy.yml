@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Build packages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -40,7 +40,7 @@ jobs:
 
   deploy-polocas-napadu-website:
     name: Deploy polocas napadu website
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     steps:
@@ -72,7 +72,7 @@ jobs:
 
   deploy-longforman-website:
     name: Deploy longforman website
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     steps:
@@ -104,7 +104,7 @@ jobs:
 
   deploy-polocas-napadu-website-static:
     name: Deploy polocas napadu static media
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     steps:
@@ -132,7 +132,7 @@ jobs:
 
   deploy-longforman-website-static:
     name: Deploy longforman website static media
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     steps:
