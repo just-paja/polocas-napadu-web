@@ -16,9 +16,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - uses: ansible/ansible-lint-action@master
-        with:
-          targets: packages/website/deploy.yml
       - uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -52,9 +49,6 @@ jobs:
         with:
           name: dist
           path: dist/
-      - uses: ansible/ansible-lint-action@master
-        with:
-          targets: packages/website/deploy.yml
       - name: Install dependencies
         run: |
           sudo apt-get -y install python3-docker
@@ -91,9 +85,6 @@ jobs:
         run: |
           sudo apt-get -y install python3-docker
           ansible-galaxy install -r requirements-ansible.yml
-      - uses: ansible/ansible-lint-action@master
-        with:
-          targets: packages/website/deploy.yml
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.PRODUCTION_LONGFORMAN_WEBSITE_SSH_KEY }}
@@ -124,9 +115,6 @@ jobs:
           path: dist/
       - name: Debug
         run: ls -lR
-      - uses: ansible/ansible-lint-action@master
-        with:
-          targets: packages/website/deploy-static.yml
       - name: Install dependencies
         run: |
           sudo apt-get install rsync
@@ -153,9 +141,6 @@ jobs:
         with:
           name: dist
           path: dist/
-      - uses: ansible/ansible-lint-action@master
-        with:
-          targets: packages/longforman-website/deploy-static.yml
       - name: Install dependencies
         run: ansible-galaxy install -r requirements-ansible.yml
       - uses: shimataro/ssh-key-action@v2
