@@ -5,7 +5,7 @@ import pdf from 'html-pdf'
 import { file } from 'tmp-promise'
 import { parse } from 'csv-parse'
 
-const getCsvUrl = (documentId, sheetId) => 
+const getCsvUrl = (documentId, sheetId) =>
   `https://docs.google.com/spreadsheets/d/${documentId}/export?format=csv&gid=${sheetId}`
 
 const getCsvStream = async url => {
@@ -20,30 +20,36 @@ const getCsvStream = async url => {
 const parseDocumentId = absUrl => {
   const url = new URL(absUrl)
   const documentId = url.pathname.split('/')[3]
-  const [,sheetId] = url.hash.substring(1).split('&').map(item => item.split('=')).find(([key]) => key === 'gid')
-  return {documentId, sheetId}
+  const [, sheetId] = url.hash
+    .substring(1)
+    .split('&')
+    .map(item => item.split('='))
+    .find(([key]) => key === 'gid')
+  return { documentId, sheetId }
 }
 
-const readSheet = async src => await new Promise((resolve ,reject) => {
-  const records = []
-  const parser = parse()
-  parser.on('readable', () => {
-    let record 
-    do {
-      record = parser.read()
-      if (record) {
-        records.push(record)
-      }
-    } while(record)
+const readSheet = async src =>
+  await new Promise((resolve, reject) => {
+    const records = []
+    const parser = parse()
+    parser.on('readable', () => {
+      let record
+      do {
+        record = parser.read()
+        if (record) {
+          records.push(record)
+        }
+      } while (record)
+    })
+    parser.on('error', reject)
+    parser.on('end', () => resolve(records))
+    src.pipe(parser)
   })
-  parser.on('error', reject)
-  parser.on('end', () => resolve(records))
-  src.pipe(parser)
-})
 
 const name = 'Vaše jméno'
 const count = 'Počet rezervací'
 const locationSpec = 'Kde chcete sedět?'
+const noteHeader = 'Poznámka'
 
 const parseValue = (header, value) => {
   if (header === count) {
@@ -54,35 +60,56 @@ const parseValue = (header, value) => {
 
 const parseRecords = records => {
   const headers = records.shift()
-  return records.map(record => record.reduce(
-    (aggr, value, column) => Object.assign(aggr, {
-      [headers[column]]: parseValue(headers[column], value),
-    }),
-    {})
+  return records.map(record =>
+    record.reduce(
+      (aggr, value, column) =>
+        Object.assign(aggr, {
+          [headers[column]]: parseValue(headers[column], value)
+        }),
+      {}
+    )
   )
 }
 
-const duplicateReservation = reservation => Array(reservation[count]).fill(reservation, 0, reservation[count])
+const duplicateReservation = reservation =>
+  reservation[count]
+    ? Array(reservation[count]).fill(reservation, 0, reservation[count])
+    : []
 
 const addIndexes = (res, index, src) => ({
   ...res,
   ordinal: index + 1,
-  total: src.length,
+  total: src.length
 })
 
-const mapDataToDoc = data => data
-  .reduce((aggr, reservation) => [...aggr, ...(duplicateReservation(reservation).map(addIndexes))], [])
-  .map(reservation => `
+const mapDataToDoc = data =>
+  data
+    .reduce(
+      (aggr, reservation) => [
+        ...aggr,
+        ...duplicateReservation(reservation).map(addIndexes)
+      ],
+      []
+    )
+    .map(
+      reservation => `
     <div class="person">
       <div class="text">
-        <div>${reservation[name]}</div>
-        <div>
-          <span class="locationSpec">(${reservation[locationSpec]})</span><br />
-          <span class="numbers">(${reservation.ordinal}/${reservation.total})</span>
+        <div><div>${reservation[name]}</div>${
+        reservation.total > 1
+          ? ` <span class="numbers">(${reservation.ordinal}/${reservation.total})</span>`
+          : ''
+      }</div>
+        <div class="info">
+          <span class="locationSpec">"${reservation[locationSpec]}
+          ${
+            reservation[noteHeader] ? `, ${reservation[noteHeader]}` : ''
+          }"</span>
         </div>
       </div>
-    </div>`)
-  .join('\n')
+    </div>`
+    )
+    .join('\n')
 
 const style = `
   html, body {
@@ -103,33 +130,37 @@ const style = `
     text-align: center;
     vertical-align: middle;
   }
-  .locationSpec, .numbers {
+  .locationSpec, .numbers, .note, .info {
     color: #999;
-    font-size: 1rem;
+    font-size: 0.75rem;
+    line-height: 100%;
   }
 `
 
 const createDocument = data => {
-  return `<!DOCTYPE html><html><head><style>${style}</style></head><body>${mapDataToDoc(data)}</body></html>`
+  return `<!DOCTYPE html><html><head><style>${style}</style></head><body>${mapDataToDoc(
+    data
+  )}</body></html>`
 }
 
-const createPdf = async (doc, dest) => await new Promise((resolve, reject) => { 
-  const options = {
-    border: '10mm',
-    format: 'A4',
-    orientation: 'portrait',
-  }
-  pdf.create(doc, options).toFile(dest, (err, res) => {
-    if (err) {
-      reject(err)
-    } else {
-      resolve(res)
+const createPdf = async (doc, dest) =>
+  await new Promise((resolve, reject) => {
+    const options = {
+      border: '10mm',
+      format: 'A4',
+      orientation: 'portrait'
     }
+    pdf.create(doc, options).toFile(dest, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
   })
-})
 
-const main = async (documentUrl) => {
-  const {documentId, sheetId} = parseDocumentId(documentUrl)
+const main = async documentUrl => {
+  const { documentId, sheetId } = parseDocumentId(documentUrl)
   const url = getCsvUrl(documentId, sheetId)
   const src = await getCsvStream(url)
   const records = await readSheet(src)
@@ -142,4 +173,3 @@ const main = async (documentUrl) => {
 }
 
 await main(process.argv[2])
-
