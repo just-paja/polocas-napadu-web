@@ -8,11 +8,11 @@ import { makeExecutableSchema } from 'graphql-tools'
 
 export const mockClient = () => {
   const schema = makeExecutableSchema({
-    typeDefs: 'type Show { id: Int! }'
+    typeDefs: 'type Show { id: Int! }',
   })
   const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: new SchemaLink({ schema })
+    link: new SchemaLink({ schema }),
   })
   return { schema, client }
 }

@@ -1,0 +1,36 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "@optimics/eslint-config"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/prop-types": 0
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.mjs"
+      ],
+      "rules": {
+        "import/extensions": ["error", "always"]
+      }
+    },
+    {
+      "files": [
+        "__tests__/**",
+        "__jest__/**"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

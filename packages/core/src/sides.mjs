@@ -2,8 +2,8 @@ import {
   CONTESTANT_GUEST,
   CONTESTANT_HOME,
   TEAM_SIDE_LEFT,
-  TEAM_SIDE_RIGHT
-} from './constants'
+  TEAM_SIDE_RIGHT,
+} from './constants.mjs'
 
 export const getContestantTypeBySide = side => {
   if (side === TEAM_SIDE_LEFT) {

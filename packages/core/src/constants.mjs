@@ -20,7 +20,7 @@ export const STAGES = [
   STAGE_VOTING,
   STAGE_GAME_RESULTS,
   STAGE_PAUSE,
-  STAGE_FINALE
+  STAGE_FINALE,
 ]
 
 export const STAGES_JUMP = [
@@ -28,42 +28,42 @@ export const STAGES_JUMP = [
   STAGE_INTRO,
   STAGE_GAME_SETUP,
   STAGE_PAUSE,
-  STAGE_FINALE
+  STAGE_FINALE,
 ]
 
 export const STAGE_OPTIONS = [
   {
     value: STAGE_SHOW_SETUP,
-    label: 'Nastavení zápasu'
+    label: 'Nastavení zápasu',
   },
   {
     value: STAGE_INTRO,
-    label: 'Intro'
+    label: 'Intro',
   },
   {
     value: STAGE_GAME_SETUP,
-    label: 'Příprava kategorie'
+    label: 'Příprava kategorie',
   },
   {
     value: STAGE_GAME,
-    label: 'Hra!'
+    label: 'Hra!',
   },
   {
     value: STAGE_VOTING,
-    label: 'Hlasování'
+    label: 'Hlasování',
   },
   {
     value: STAGE_GAME_RESULTS,
-    label: 'Výsledky kategorie'
+    label: 'Výsledky kategorie',
   },
   {
     value: STAGE_PAUSE,
-    label: 'Přestávka'
+    label: 'Přestávka',
   },
   {
     value: STAGE_FINALE,
-    label: 'Konec zápasu'
-  }
+    label: 'Konec zápasu',
+  },
 ]
 
 export const TEAM_LOGO_DEFAULT = '/default-logo.png'

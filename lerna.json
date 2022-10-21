@@ -2,5 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.9.18"
+  "version": "0.9.18",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "useWorkspaces": true
 }

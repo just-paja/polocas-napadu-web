@@ -1,3 +1,2 @@
-import { setupJest } from './dev'
-
-setupJest()
+const moment = require('moment-timezone')
+moment.tz.setDefault('UTC')
