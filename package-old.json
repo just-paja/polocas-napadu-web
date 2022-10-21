@@ -10,6 +10,7 @@
     "build:isolate": "lerna-isolate bundle -e",
     "build:interactive": "node scripts/bundle-interactive.js",
     "dev": "lerna run dev --stream --parallel",
+    "web": "lerna run --no-prefix --stream dev --scope polocas-napadu-website",
     "test": "jest"
   },
   "standard": {
