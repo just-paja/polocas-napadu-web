@@ -1,0 +1,27 @@
+{
+  "name": "polocas-napadu-inspirations",
+  "version": "0.9.18",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.7.0",
+    "graphql": "^16.6.0",
+    "polocas-napadu-core": "^0.9.18",
+    "query-string": "^7.1.1",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev-server.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "./",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

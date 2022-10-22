@@ -1,0 +1,13 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.controls {
+  align-items: baseline;
+  display: flex;
+  margin-top: 16px;
+}
+
+.error {
+  color: $danger;
+  margin-left: $grid-base;
+  margin-top: 0;
+}

@@ -1,0 +1,9 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.layout {
+  border: $border-default;
+  border-radius: $border-radius;
+  margin: auto;
+  max-width: 48rem;
+  padding: 0 $grid-base * 3 $grid-base * 2;
+}

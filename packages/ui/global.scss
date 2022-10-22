@@ -1,8 +1,5 @@
-@import 'polocas-napadu-ui/theme.scss';
-
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-
-@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+@import './variables.scss';
+@import 'bootstrap/scss/bootstrap.scss';
 
 html, body {
   margin: 0;
@@ -16,14 +13,14 @@ html {
   min-height: 100%;
 }
 
-address {
-  margin-bottom: 0;
-}
-
 body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+address {
+  margin-bottom: 0;
 }
 
 p {
