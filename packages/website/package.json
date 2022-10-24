@@ -1,0 +1,44 @@
+{
+  "name": "polocas-napadu-website",
+  "version": "0.9.18",
+  "description": "Website to Prague improv group Poločas nápadu",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "jest"
+  },
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "ISC",
+  "private": true,
+  "files": [
+    ".next",
+    "lib",
+    "next.config.js",
+    "package-lock.json",
+    "routes.js",
+    "server.js",
+    "public",
+    "*.mjs"
+  ],
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "cookies-next": "^2.1.1",
+    "locale": "^0.1.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.38",
+    "next": "^12.3.1",
+    "next-i18next": "^12.1.0",
+    "next-transpile-modules": "^9.1.0",
+    "polocas-napadu-core": "^0.9.18",
+    "polocas-napadu-ui": "^0.9.18",
+    "query-string-manipulator": "^1.2.2",
+    "react-hook-form": "^7.38.0",
+    "react-icons": "^4.6.0",
+    "react-image-gallery": "^1.2.11",
+    "react-markdown": "^8.0.3"
+  }
+}

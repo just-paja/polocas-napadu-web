@@ -1,0 +1,106 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.carousel {
+  align-items: flex-end;
+  display: flex;
+  height: 16 * $baseline;
+  overflow: hidden;
+  justify-content: center;
+
+  img {
+    min-height: 16 * $baseline;
+    flex-shrink: 1;
+    min-width: 100%;
+  }
+
+  :global .image-gallery-content {
+    align-content: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+  }
+
+  :global .image-gallery-image {
+    display: flex;
+  }
+
+  :global .image-gallery-slide {
+    width: 100%;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "sm")) {
+  $size: 24 * $baseline;
+  
+  .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "md")) {
+  $size: 32 * $baseline;
+
+  .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "lg")) {
+  $size: 36 * $baseline;
+
+  .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, "xl")) {
+  $size: 48 * $baseline;
+
+  .carousel {
+    height: $size;
+    img {
+      min-height: $size;
+    }
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: $baseline -1/2 * $baseline;
+  justify-content: center;
+}
+
+.freeGallery {
+  margin: $baseline 0;
+}
+
+.photo {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin: $baseline/2;
+  height: $baseline * 16;
+  width: $baseline * 16;
+  border-radius: $baseline * 8;
+  overflow: hidden;
+}
+
+.img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}

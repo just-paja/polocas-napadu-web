@@ -1,0 +1,26 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: $baseline / 2 $grid-gutter-width;
+  margin: 0 -1 * $grid-gutter-width;
+  border-bottom: $border-default;
+}
+
+.location {
+  font-size: $font-size-sm;
+}
+
+.additional {
+  display: none
+}
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .additional {
+    display: inline-flex;
+    border-left: $border-default;
+    padding-left: $grid-base;
+    margin-left: $grid-base;
+  }
+}

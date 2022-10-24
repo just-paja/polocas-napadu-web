@@ -1,0 +1,35 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+:local .col {
+  margin-top: $baseline;
+}
+
+:local .host {
+  border-radius: $baseline/4;
+  display: block;
+  padding: $baseline;
+  background: $primary;
+  color: $color-text-inverted;
+
+  &:hover {
+    background: $primary-hover;
+    color: $color-text-inverted;
+    text-decoration: none;
+  }
+}
+
+:local .item {
+  display: flex;
+}
+
+:local .topLine {
+  color: $primary;
+}
+
+:local .date {
+  // width: $baseline * 14;
+}
+
+:local .name {
+  font-size: $h3-font-size;
+}

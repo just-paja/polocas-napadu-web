@@ -1,0 +1,22 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+$color-past: desaturate($color-riptide, 66%);
+
+.event {
+  background: $color-riptide;
+  border-radius: $border-radius;
+  margin: $grid-base * 2 0 0;
+  padding: $grid-base * 2 0;
+
+  h2 a {
+    text-decoration: none;
+  }
+}
+
+.past {
+  background: $color-past;
+
+  h2 a {
+    color: desaturate($primary, 66%);
+  }
+}

@@ -1,0 +1,9 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+:local a.link {
+  color: $body-bg;
+
+  &:hover {
+    color: $secondary;
+  }
+}

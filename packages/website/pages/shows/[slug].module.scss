@@ -1,0 +1,42 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.logistics {
+  justify-content: center;
+
+  .logisticsItem {
+    margin-top: $baseline;
+  }
+}
+
+.largeHeading {
+  align-items: flex-end;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  max-height: 66vh;
+  text-shadow: 0 0 5px $dark, 0 0 10px $dark;
+  width: 100%;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    filter: blur(20px);
+
+  }
+}
+
+.description {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 40rem;
+}
+
+a.ticketsButton {
+  width: 100%;
+}

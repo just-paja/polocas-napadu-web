@@ -1,0 +1,57 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+:local .heading {
+  background-color: $primary;
+}
+
+:local .center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+:local .headingContainer {
+  color: $color-text-inverted;
+  padding: $baseline;
+}
+
+.blurContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.background,
+.backdrop {
+  align-items: flex-end;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  text-shadow: 0 0 5px $dark, 0 0 10px $dark;
+}
+
+.backdrop {
+  $blur-offset: -200px;
+  position: absolute;
+  left: $blur-offset;
+  top: $blur-offset - 200px;
+  bottom: $blur-offset;
+  right: $blur-offset;
+  filter: blur(24px) saturate(33%);
+  z-index: 1;
+}
+
+.background {
+  padding-bottom: $baseline;
+  filter: none;
+  position: relative;
+  max-height: 66vh;
+  background-repeat: no-repeat;
+  z-index: 10;
+  width: 100%;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+
+  }
+}

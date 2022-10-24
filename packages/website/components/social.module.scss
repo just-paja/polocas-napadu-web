@@ -1,0 +1,58 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: $baseline * 3 / 4;
+
+  & > * {
+    margin: $baseline / 4;
+    flex-shrink: 0;
+  }
+}
+
+.inverse {
+  margin-top: $baseline / 2;
+  margin-bottom: $baseline / -2;
+  & > * {
+    margin: $baseline / 2;
+  }
+}
+
+.circle {
+  align-items: center;
+  background-color: $primary;
+  border-radius: 50%;
+  color: $color-text-inverted;
+  display: flex;
+  font-size: $baseline * 1.5;
+  height: $baseline * 3;
+  justify-content: center;
+  width: $baseline * 3;
+}
+
+a:hover .circle,
+.circle:hover {
+  background-color: $link-hover-color;
+  color: $color-text-inverted;
+}
+
+.circleInverse {
+  background: transparent;
+  color: $color-footer;
+  font-size: $font-size-base * 1.5;
+  height: $baseline * 1.5;
+  width: $baseline * 1.5;
+}
+
+a:hover .circleInverse,
+.circleInverse:hover {
+  background-color: transparent;
+  color: lighten($color-footer, 15%);
+}
+
+.verticalLink {
+  text-decoration: none;
+  line-height: $baseline;
+}

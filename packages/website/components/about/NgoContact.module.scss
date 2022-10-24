@@ -1,0 +1,36 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.ngo {
+  background-color: $secondary;
+  padding: $baseline * 2 $baseline;
+  margin: $baseline calc(-0.5 * $container-padding-x);
+
+  h1, h2, h3 {
+    margin-top: 0;
+  }
+
+  @include media-breakpoint-up('sm') {
+    padding: $baseline * 2;
+    margin: $baseline * 2 0;
+  }
+}
+
+.details {
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin-top: $baseline / 2;
+  }
+
+  .label {
+    color: $color-text-dimm;
+    font-size: $font-size-base * 0.75;
+  }
+
+  .value {
+    font-size: $font-size-base * 1.25;
+    line-height: 100%;
+    line-break: anywhere;
+  }
+}

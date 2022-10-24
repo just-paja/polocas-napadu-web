@@ -1,0 +1,23 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+:local .log {
+  margin-top: $baseline;
+
+  time {
+    color: $color-text-light;
+  }
+}
+
+:local .routine {
+  color: $color-text-light;
+}
+
+:local .event {
+  svg {
+    margin: 0 $grid-base;
+  }
+}
+
+:local .foul {
+  color: theme-color('danger');
+}

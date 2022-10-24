@@ -1,0 +1,58 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.col {
+  display: flex;
+  justify-content: center;
+  margin-top: 2 * $grid-base;
+
+  @include media-breakpoint-up('lg') {
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+}
+
+@mixin photo-circle($size) {
+  border-radius: calc($size / 2);
+  height: $size;
+  width: $size;
+  margin: calc($size * -0.1) calc($size * -0.05);
+
+  &:hover {
+    transform: scale(1.66);
+    z-index: 10;
+  }
+}
+
+.photo {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.2s all;
+  @include photo-circle(calc(map-get($container-max-widths, 'sm') / 24 * 5));
+  margin: 0 calc(-2 * $grid-base);
+
+  @include media-breakpoint-up('sm') {
+    @include photo-circle(calc(map-get($container-max-widths, 'sm') / 24 * 7));
+    margin: 0 calc(-4 * $grid-base);
+  }
+
+  @include media-breakpoint-up('md') {
+    @include photo-circle(calc(map-get($container-max-widths, 'md') / 24 * 7));
+    margin: 0 calc(-4 * $grid-base);
+  }
+
+  @include media-breakpoint-up('lg') {
+    @include photo-circle(calc(map-get($container-max-widths, 'lg') / 24 * 5));
+  }
+
+  @include media-breakpoint-up('xl') {
+    @include photo-circle(calc(map-get($container-max-widths, 'lg') / 24 * 5));
+  }
+  
+  @include media-breakpoint-up('xxl') {
+    @include photo-circle(calc(map-get($container-max-widths, 'xl') / 24 * 5));
+  }
+}
+

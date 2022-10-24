@@ -1,0 +1,15 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+.format {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    margin-top: $baseline;
+    width: 100%;
+  }
+}
+
+.formatDescription {
+  max-width: $paragraph-max-width;
+}

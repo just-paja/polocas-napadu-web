@@ -12,6 +12,7 @@
     }
   },
   "rules": {
+    "react/display-name": 0,
     "react/prop-types": 0
   },
   "overrides": [
@@ -20,7 +21,7 @@
         "*.mjs"
       ],
       "rules": {
-        "import/extensions": ["error", "always"]
+        "import/extensions": ["error", "ignorePackages"]
       }
     },
     {

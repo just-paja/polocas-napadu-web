@@ -1,0 +1,7 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+@media (min-width: map-get($grid-breakpoints, 'lg')) {
+  div.menu {
+    justify-content: center;
+  }
+}

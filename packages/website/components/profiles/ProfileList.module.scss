@@ -1,0 +1,74 @@
+@import 'polocas-napadu-ui/variables.scss';
+
+:local .circle {
+  align-items: center;
+  background-color: $secondary;
+  border-radius: 100%;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: $baseline * 7;
+  justify-content: center;
+  margin: $baseline / 4;
+  overflow: hidden;
+  padding: $baseline;
+  width: $baseline * 7;
+}
+
+:local .bulb {
+  height: 100%;
+  width: 100%;
+}
+
+:local .dark {
+  background-color: $dark;
+}
+
+:local .profileOverlay {
+  height: 100%;
+  margin: -1 * $baseline;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  transition: opacity 1s ease-out;
+}
+
+:local .withProfile {
+  background-blend-mode: screen, luminosity;
+  background-color: $body-bg;
+  position: relative;
+  transition: transform .25s ease-out;
+
+  &,
+  :local .profileOverlay {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .bulb {
+    opacity: .1;
+  }
+
+  &:hover {
+    transform: rotate(0) !important;
+
+    :local .profileOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+:local .withoutProfile {
+  display: none;
+}
+
+:local .seoName {
+  display: none;
+}
+
+@media (min-width: map-get($grid-breakpoints, "md")) {
+  :local .withoutProfile {
+    display: block;
+  }
+}
