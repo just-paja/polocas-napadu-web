@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Button } from 'polocas-napadu-ui/Button.mjs'
+import { AgainIcon } from 'polocas-napadu-ui/icons.mjs'
 
 export const InspirationSaved = ({ onContinue }) => (
   <div>
@@ -11,7 +12,9 @@ export const InspirationSaved = ({ onContinue }) => (
       jestli se dostane do hry.
     </p>
     <div className="mt-3">
-      <Button onClick={onContinue}>Vložit další</Button>
+      <Button icon={<AgainIcon />} onClick={onContinue}>
+        Vložit další
+      </Button>
     </div>
   </div>
 )

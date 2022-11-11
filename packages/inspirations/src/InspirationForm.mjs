@@ -3,19 +3,21 @@ import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
 import { Button } from 'polocas-napadu-ui/Button.mjs'
+import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
 import { PlainInput } from 'polocas-napadu-ui/Input.mjs'
+import { SendIcon } from 'polocas-napadu-ui/icons.mjs'
 
 export const InspirationForm = ({ onSubmit, error, saving }) => {
   const [inspiration, setInspiration] = useState('')
   return (
-    <div>
-      <h2>Vložit inspiraci</h2>
+    <Section>
+      <Heading>Vložit inspiraci</Heading>
       <p>
         Prosíme vás o krátké, třeba dvouslovné téma, které využijeme jako
         inspiraci do scének. Tedy potom, co si z nich rozhodčí vybere :-)
       </p>
       <form onSubmit={() => onSubmit({ inspiration })}>
-        <div>
+        <div className="mt-3">
           <PlainInput
             disabled={saving}
             id="inspirationField"
@@ -30,6 +32,7 @@ export const InspirationForm = ({ onSubmit, error, saving }) => {
             loading={saving}
             disabled={!inspiration}
             type="submit"
+            icon={<SendIcon />}
             variant="primary"
           >
             Vložit
@@ -44,7 +47,7 @@ export const InspirationForm = ({ onSubmit, error, saving }) => {
           ) : null}
         </div>
       </form>
-    </div>
+    </Section>
   )
 }
 

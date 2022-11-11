@@ -29,7 +29,7 @@ export const Section = ({
 )
 
 export const Main = ({ children, ...props }) => (
-  <Section {...props} as="main">
+  <Section {...props} component="main">
     {children}
   </Section>
 )

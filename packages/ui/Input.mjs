@@ -1,6 +1,7 @@
 import classnames from 'classnames'
-import Form from 'react-bootstrap/Form'
 import React, { forwardRef } from 'react'
+
+import { Form } from 'react-bootstrap'
 
 export const InputLabel = ({ colon = true, formCheck, required, text }) => (
   <Form.Label
@@ -19,7 +20,7 @@ const ReflessPlainInput = (
   ref
 ) => (
   <Form.Group controlId={controlId}>
-    <InputLabel required={required} label={label} />
+    <InputLabel required={required} text={label} />
     <Form.Control {...inputProps} ref={ref} />
     {helpText ? <Form.Text as="div">{helpText}</Form.Text> : null}
   </Form.Group>

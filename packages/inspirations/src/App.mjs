@@ -1,7 +1,7 @@
-import Container from 'react-bootstrap/Container'
 import React from 'react'
 
 import { Apollo } from './ApolloLayer.mjs'
+import { Container } from 'react-bootstrap'
 import { FixedDialog } from 'polocas-napadu-ui/FixedDialog.mjs'
 import { HashRouter } from 'react-router-dom'
 import { NotFound } from './NotFound.mjs'

@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import BsButton from 'react-bootstrap/Button'
 import React, { forwardRef } from 'react'
-import Spinner from 'react-bootstrap/Spinner'
 import styles from './Button.module.scss'
+
+import { Button as BsButton, Spinner } from 'react-bootstrap'
 
 const ReflessButton = (
   { className, children, disabled, icon, loading, ...props },

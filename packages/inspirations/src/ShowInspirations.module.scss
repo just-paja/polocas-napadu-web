@@ -1,9 +1,22 @@
 @import 'polocas-napadu-ui/variables.scss';
 
+.main h1 {
+  padding: 0 $baseline;
+}
+
 .layout {
-  border: $border-default;
+  background-color: $secondary;
   border-radius: $border-radius;
-  margin: auto;
+  border: none;
   max-width: 48rem;
-  padding: 0 $grid-base * 3 $grid-base * 2;
+  padding: $baseline * 2;
+  margin: $baseline calc(-1 * $grid-gutter-width / 2);
+
+  @include media-breakpoint-up('sm') {
+    margin: $baseline auto;
+  }
+
+  h1, h2 {
+    margin-top: 0;
+  }
 }

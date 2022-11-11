@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AlreadyStarted } from './AlreadyStarted.mjs'
+import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
 import { AppError } from './AppError.mjs'
 import { gql, useQuery } from '@apollo/client'
 import { InsertInspiration } from './InsertInspiration.mjs'
@@ -29,7 +30,6 @@ const GET_MATCH = gql`
 `
 
 const getStageView = match => {
-  console.log(match)
   if (!match.currentStage || match.currentStage.type === STAGE_INTRO) {
     return <InsertInspiration show={match.show} />
   }
@@ -53,11 +53,15 @@ export const ShowInspirations = () => {
   }
   return (
     <MatchContext.Provider value={data.match}>
-      <div className={styles.layout}>
-        <h1>{data.match.show.name}</h1>
-        {getStageView(data.match)}
-        <p>Celkem jste nás inspirovali {data.match.show.totalInspirations}x</p>
-      </div>
+      <Main className={styles.main}>
+        <Heading>{data.match.show.name}</Heading>
+        <div className={styles.layout}>
+          {getStageView(data.match)}
+          <p>
+            Celkem jste nás inspirovali {data.match.show.totalInspirations}x
+          </p>
+        </div>
+      </Main>
     </MatchContext.Provider>
   )
 }

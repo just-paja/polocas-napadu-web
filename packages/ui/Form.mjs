@@ -1,9 +1,9 @@
 import Alert from 'react-bootstrap/Alert'
-import BsForm from 'react-bootstrap/Form'
 import FormCheck from 'react-bootstrap/FormCheck'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useState } from 'react'
 
+import { Form as BsForm } from 'react-bootstrap'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { Button } from './Button.mjs'
 import { useTranslation } from 'next-i18next'
