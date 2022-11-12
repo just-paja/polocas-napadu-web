@@ -1,0 +1,41 @@
+@keyframes highlightScore {
+  0% {
+    opacity: 0;
+    transform: scale(3) translate(0, 100%);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: scale(3.5) translate(0, 100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate {
+  animation-duration: 3s;
+}
+
+.appear {
+  animation-name: highlightScore;
+  z-index: 10000;
+}
+
+.score {
+  border-radius: 4 * 12;
+  display: block;
+  flex-shrink: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  height: 8 * 12;
+  justify-content: center;
+  line-height: 6rem;
+  text-align: center;
+  width: 8 * 12;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ApolloProvider } from '@apollo/client'
-import { apolloClient } from 'polocas-napadu-ui/apollo.mjs'
+import { apolloClient } from 'polocas-napadu-ui/apollo-next.mjs'
 import { appWithTranslation } from 'next-i18next'
 import { MetaBase, MetaPage } from '../components/meta.mjs'
 import { PageContext } from 'polocas-napadu-core/context.mjs'

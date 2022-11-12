@@ -1,5 +1,5 @@
 {
-  "name": "polocas-napadu-inspirations",
+  "name": "polocas-napadu-match-scoreboard",
   "version": "0.9.18",
   "private": true,
   "scripts": {
@@ -7,6 +7,7 @@
     "dev": "node scripts/dev-server.mjs"
   },
   "files": [
-    "dist"
+    "build",
+    "node_deps"
   ]
 }
