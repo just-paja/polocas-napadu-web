@@ -5,7 +5,7 @@ import { App } from './App.mjs'
 
 import * as serviceWorker from './serviceWorker.mjs'
 
-import './index.scss'
+import 'polocas-napadu-ui/global.scss'
 
 const render = RootComponent => {
   const root = createRoot(document.getElementById('root'))

@@ -10,11 +10,40 @@ button.button {
     align-items: center;
     display: inline-flex;
     margin-right: calc($grid-base / 2);
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &:global(.btn-lg) {
     .icon {
       margin-right: $grid-base;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.iconOnly {
+    border-radius: $baseline * 2;
+    padding: calc($baseline / 2);
+    font-size: $font-size-base * 2;
+
+    .icon {
+      margin-right: 0;
+    }
+  }
+
+  &.iconRight {
+    .icon {
+      margin-right: 0;
+      margin-left: calc($grid-base / 2);
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }

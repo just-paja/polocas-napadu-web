@@ -4,17 +4,16 @@ import React from 'react'
 import styles from './MonthShowList.module.scss'
 
 import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
-import { isLive, isPast, EventLocation, EventStart } from '../events.mjs'
 import { Link } from '../links.mjs'
 import { TicketButtons } from './TicketButtons.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n'
-import { PriceSummary } from '../prices.mjs'
+import { isLive, isPast } from 'polocas-napadu-ui/events.mjs'
 import {
-  LocationIcon,
-  LogisticsIcon,
-  ShowFormatIcon,
-  TicketsIcon,
-} from 'polocas-napadu-ui/icons.mjs'
+  ShowStart,
+  ShowLocation,
+  ShowFormat,
+  ShowTicketPriceSummary,
+} from 'polocas-napadu-ui/shows.mjs'
 
 const ListItem = ({ show }) => {
   return (
@@ -32,21 +31,19 @@ const ListItem = ({ show }) => {
       </Heading>
       <div className="mt-2">
         <div>
-          <LogisticsIcon /> <EventStart start={show.start} />
+          <ShowStart show={show} />
         </div>
         <div>
-          <LocationIcon />{' '}
-          {show.location && <EventLocation location={show.location} />}
+          <ShowLocation show={show} />
         </div>
         <div>
-          <ShowFormatIcon />{' '}
           <Link route="showFormatDetail" params={{ slug: show.showType.slug }}>
-            {show.showType.name}
+            <ShowFormat show={show} />
           </Link>
         </div>
         {show.ticketPrices.length !== 0 && (
           <div>
-            <TicketsIcon /> <PriceSummary prices={show.ticketPrices} />
+            <ShowTicketPriceSummary show={show} />
           </div>
         )}
       </div>

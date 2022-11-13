@@ -13,7 +13,7 @@ export const App = () => (
       <Routes>
         <Route path="/" exact element={<MatchList />} />
         <Route path="/match/:matchId" exact element={<SpectatorView />} />
-        <Route element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </HashRouter>
   </Apollo>

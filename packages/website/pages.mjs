@@ -1,13 +1,10 @@
 import getConfig from 'next/config'
 
+import { apolloClient } from 'polocas-napadu-ui/apollo-next.mjs'
+import { gql } from '@apollo/client'
+import { mergeQueryResults, stripData } from 'polocas-napadu-ui/apollo.mjs'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations.js'
 import { sponsorsQuery } from './graphql.mjs'
-import { gql } from '@apollo/client'
-import {
-  apolloClient,
-  mergeQueryResults,
-  stripData,
-} from 'polocas-napadu-ui/apollo.mjs'
 
 const { publicRuntimeConfig } = getConfig()
 

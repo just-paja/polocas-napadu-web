@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
-    "react-bootstrap": "^2.5.0"
+    "react-bootstrap": "^2.5.0",
+    "react-overlays": "^5.2.1"
   }
 }

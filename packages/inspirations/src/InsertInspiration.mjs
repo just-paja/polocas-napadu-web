@@ -22,7 +22,7 @@ export const InsertInspiration = ({ show }) => {
 
   const handleSubmit = async formValue => {
     await save({
-      refetchQueries: ['MatchStage'],
+      refetchQueries: ['ShowInfo'],
       variables: {
         inspirationText: formValue.inspiration,
         showId: show.id,

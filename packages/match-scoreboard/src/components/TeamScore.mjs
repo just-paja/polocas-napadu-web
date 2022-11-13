@@ -1,4 +1,4 @@
-import AnimateOnChange from 'react-animate-on-change'
+import animations from 'react-animate-on-change'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './TeamScore.module.scss'
 
@@ -14,6 +14,7 @@ import pointSynth02 from '../sounds/point-synth-02.wav'
 import pointSynthBaseball from '../sounds/point-synth-baseball.wav'
 import pointWindows from '../sounds/point-windows.wav'
 
+const AnimateOnChange = animations.default
 const availableFanfares = [
   point8bit,
   pointDistortionGuitar,
@@ -54,7 +55,6 @@ export const TeamScore = ({ backgroundColor = '#ccc', score }) => {
     }
     handleAnimationEnd()
   }, [score, visibleScore])
-
   return (
     <AnimateOnChange
       baseClassName={styles.animate}

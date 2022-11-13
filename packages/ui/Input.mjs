@@ -1,7 +1,6 @@
 import classnames from 'classnames'
+import Form from 'react-bootstrap/Form'
 import React, { forwardRef } from 'react'
-
-import { Form } from 'react-bootstrap'
 
 export const InputLabel = ({ colon = true, formCheck, required, text }) => (
   <Form.Label

@@ -1,8 +1,9 @@
 import classnames from 'classnames'
+import Col from 'react-bootstrap/Col'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 import styles from './ShowFormatGallery.module.scss'
 
-import { Col, Row } from 'react-bootstrap'
 import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
 import { List } from '../layout/List.mjs'
 import { Markdown } from '../markdown.mjs'

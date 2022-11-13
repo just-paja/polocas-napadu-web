@@ -1,45 +1,31 @@
 import React from 'react'
 
-import { AlreadyStarted } from './AlreadyStarted.mjs'
-import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
 import { AppError } from './AppError.mjs'
 import { gql, useQuery } from '@apollo/client'
+import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
 import { InsertInspiration } from './InsertInspiration.mjs'
-import { MatchContext } from 'polocas-napadu-core/context.mjs'
 import { NotFound } from './NotFound.mjs'
-import { STAGE_INTRO } from 'polocas-napadu-core/constants.mjs'
+import { ShowContext } from 'polocas-napadu-core/context.mjs'
 import { useParams } from 'react-router'
 
 import styles from './ShowInspirations.module.scss'
 
-const GET_MATCH = gql`
-  query MatchStage($matchId: Int!) {
-    match(id: $matchId) {
-      show {
-        id
-        name
-        start
-        totalInspirations
-      }
-      currentStage {
-        created
-        type
-      }
+const GET_SHOW = gql`
+  query ShowInfo($showId: Int!) {
+    show(showId: $showId, useInspirations: true) {
+      id
+      name
+      start
+      end
+      totalInspirations
     }
   }
 `
 
-const getStageView = match => {
-  if (!match.currentStage || match.currentStage.type === STAGE_INTRO) {
-    return <InsertInspiration show={match.show} />
-  }
-  return <AlreadyStarted />
-}
-
 export const ShowInspirations = () => {
-  const { matchId } = useParams()
-  const { loading, data, error } = useQuery(GET_MATCH, {
-    variables: { matchId },
+  const { showId } = useParams()
+  const { loading, data, error } = useQuery(GET_SHOW, {
+    variables: { showId },
     pollInterval: 5000,
   })
   if (loading) {
@@ -48,20 +34,18 @@ export const ShowInspirations = () => {
   if (error) {
     return <AppError error={error} />
   }
-  if (!data.match) {
+  if (!data.show) {
     return <NotFound />
   }
   return (
-    <MatchContext.Provider value={data.match}>
+    <ShowContext.Provider value={data.show}>
       <Main className={styles.main}>
-        <Heading>{data.match.show.name}</Heading>
+        <Heading>{data.show.name}</Heading>
         <div className={styles.layout}>
-          {getStageView(data.match)}
-          <p>
-            Celkem jste nás inspirovali {data.match.show.totalInspirations}x
-          </p>
+          <InsertInspiration show={data.show} />
+          <p>Celkem jste nás inspirovali {data.show.totalInspirations}x</p>
         </div>
       </Main>
-    </MatchContext.Provider>
+    </ShowContext.Provider>
   )
 }

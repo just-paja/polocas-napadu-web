@@ -1,61 +1,10 @@
 import moment from 'moment-timezone'
 import React from 'react'
 
-import { qsm } from 'query-string-manipulator'
 import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
-import { DateLabel, DateRangeLabel } from 'polocas-napadu-ui/datetime.mjs'
+import { DateLabel } from 'polocas-napadu-ui/datetime.mjs'
+import { qsm } from 'query-string-manipulator'
 import { useUrl } from './hooks.mjs'
-import { Location } from 'polocas-napadu-core/proptypes.mjs'
-
-export const EventLocation = ({ location }) => <span>{location.name}</span>
-
-EventLocation.propTypes = {
-  location: Location.isRequired,
-}
-
-/**
- * Detects if event start is before now and event end is before now. Given
- * event end is null, it compares it to end of day.
- */
-export const isPast = event => {
-  const start = moment(event.start)
-  const now = moment()
-  const end = event.end ? moment(event.end) : moment(event.start).endOf('day')
-  return now.isAfter(start) && now.isAfter(end)
-}
-
-export const isLive = event => {
-  const start = moment(event.start)
-  const now = moment()
-  const end = event.end ? moment(event.end) : moment(event.start).endOf('day')
-  return now.isAfter(start) && now.isBefore(end)
-}
-
-export const EventStart = withTranslation(
-  ({ allDay, className, end, start, t }) => {
-    if (!start) {
-      return t('event-start-indeterminate')
-    }
-    const startDate = moment(start)
-    if (!end) {
-      return <DateLabel showTime={!allDay} date={start} className={className} />
-    }
-    if (startDate.isSame(end, 'day')) {
-      if (allDay) {
-        return <DateLabel date={start} className={className} />
-      }
-    }
-    return (
-      <DateRangeLabel
-        showTime={!allDay}
-        start={start}
-        end={end}
-        className={className}
-      />
-    )
-  }
-)
 
 const MonthButton = ({ month, onClick, selected, ...props }) => {
   const url = qsm(useUrl(), {

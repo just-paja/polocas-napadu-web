@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ShowDateInfo.module.scss'
 
 import { AddToCalendar } from '../ics.mjs'
-import { EventStart } from '../events.mjs'
+import { EventStart } from 'polocas-napadu-ui/events.mjs'
 import { ExternalLink } from '../links.mjs'
 import { LogisticInfo } from './LogisticInfo.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'

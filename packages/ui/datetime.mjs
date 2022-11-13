@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next'
 
 const getFormat = (locale, props) =>
   new Intl.DateTimeFormat(locale, {
@@ -28,7 +28,7 @@ export const DateLabel = ({ date, showTime, ...props }) => (
   </time>
 )
 
-export const DateTimeLabel = ({ showTime, ...props }) => (
+export const DateTimeLabel = ({ showTime = true, ...props }) => (
   <DateLabel {...props} showTime={showTime} />
 )
 

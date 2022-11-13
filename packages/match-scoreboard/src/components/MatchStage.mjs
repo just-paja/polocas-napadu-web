@@ -1,8 +1,8 @@
-import graphContainer from './GraphContainer.mjs'
 import React from 'react'
 
 import { gql } from '@apollo/client'
 import { MatchContext } from 'polocas-napadu-core/context.mjs'
+import { withQuery } from 'polocas-napadu-ui/apollo.mjs'
 import {
   STAGE_FINALE,
   STAGE_GAME_RESULTS,
@@ -96,7 +96,7 @@ const getStageView = stage => {
   return <ShowSetupStage />
 }
 
-export const MatchStage = graphContainer(
+export const MatchStage = withQuery(
   ({ data }) => (
     <MatchContext.Provider value={data.match}>
       {getStageView(data.match.currentStage)}

@@ -1,7 +1,8 @@
+import Col from 'react-bootstrap/Col'
 import React from 'react'
+import Row from 'react-bootstrap/Row'
 
 import { BriefShowListItem } from './BriefShowListItem.mjs'
-import { Col, Row } from 'react-bootstrap'
 import { ContentContainer } from '../layout/ContentContainer.mjs'
 import { Gallery } from '../images.mjs'
 import { Link } from '../links.mjs'

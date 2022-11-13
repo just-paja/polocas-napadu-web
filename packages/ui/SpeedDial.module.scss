@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+.anchor {
+  $spacing: $baseline * 2;
+  position: fixed;
+  left: $spacing;
+  bottom: $spacing;
+}
+
+.menu {
+  pointer-events: none;
+  display: flex;
+
+  .menuButton {
+    margin: calc($baseline / 2) 0;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  &.open {
+    pointer-events: auto;
+    .menuButton {
+      opacity: 1;
+    }
+  }
+}

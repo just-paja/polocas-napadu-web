@@ -1,11 +1,11 @@
 import classnames from 'classnames'
+import Col from 'react-bootstrap/Col'
 import React from 'react'
 import styles from './ShowListItem.module.scss'
 
-import { Col } from 'react-bootstrap'
 import { Link } from '../links.mjs'
 import { Show } from 'polocas-napadu-core/proptypes.mjs'
-import { EventLocation, EventStart } from '../events.mjs'
+import { EventLocation, EventStart } from 'polocas-napadu-ui/events.mjs'
 
 export function ShowListItem({ show }) {
   const isFuture = false

@@ -1,8 +1,8 @@
+import Col from 'react-bootstrap/Col'
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './ShowsCounter.module.scss'
 
-import { Col } from 'react-bootstrap'
 import { Markdown } from '../markdown.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
 import { Link } from '../links.mjs'

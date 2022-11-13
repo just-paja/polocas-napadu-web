@@ -1,4 +1,5 @@
-import { apolloClient, mergeQueryResults, stripData } from './apollo.mjs'
+import { mergeQueryResults, stripData } from './apollo.mjs'
+import { apolloClient } from './apollo-next.mjs'
 
 export const compose = (...handlers) =>
   handlers

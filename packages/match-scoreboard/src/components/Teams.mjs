@@ -12,8 +12,6 @@ const getGroup = (groups, type) =>
 
 export const Teams = ({ hideScore = false }) => {
   const { contestantGroups, currentStage } = useMatch()
-  console.log(useMatch())
-
   const home = getGroup(contestantGroups, CONTESTANT_HOME)
   const guest = getGroup(contestantGroups, CONTESTANT_GUEST)
 

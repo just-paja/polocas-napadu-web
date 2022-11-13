@@ -1,12 +1,12 @@
 import Alert from 'react-bootstrap/Alert'
 import FormCheck from 'react-bootstrap/FormCheck'
+import BsForm from 'react-bootstrap/Form'
 import classnames from 'classnames'
 import React, { forwardRef, useCallback, useState } from 'react'
 
-import { Form as BsForm } from 'react-bootstrap'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { Button } from './Button.mjs'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next'
 import { InputLabel } from './Input.mjs'
 
 const ReflessControlledForm = ({ children, id, onSubmit, ...props }, ref) => (
@@ -94,9 +94,9 @@ const rightLabelMap = ['checkbox', 'radio']
 
 const isLabelRight = type => rightLabelMap.includes(type)
 
-const getOptions = (options, required) => {
+const getOptions = (type, options, required) => {
   let opts = null
-  if (options) {
+  if (type === 'select' && options) {
     opts = options.map(option => (
       <option key={option.value} value={option.value}>
         {option.label}
@@ -132,6 +132,40 @@ const getChangeWrapper = (field, onChange) => e => {
   field.onChange(e)
 }
 
+const InputWrapper = ({
+  controlId,
+  children,
+  fieldError,
+  helpText,
+  label,
+  required,
+  rightLabel,
+}) => {
+  const { t } = useTranslation()
+  return (
+    <BsForm.Group
+      controlId={controlId}
+      className={classnames('mt-2', {
+        'form-check': rightLabel,
+      })}
+    >
+      {label && !rightLabel ? (
+        <InputLabel required={required} text={label} />
+      ) : null}
+      {children}
+      {label && rightLabel ? (
+        <InputLabel colon={false} text={label} required={required} formCheck />
+      ) : null}
+      {fieldError ? (
+        <BsForm.Control.Feedback type="invalid">
+          {describeError(t, fieldError)}
+        </BsForm.Control.Feedback>
+      ) : null}
+      {helpText ? <BsForm.Text as="div">{helpText}</BsForm.Text> : null}
+    </BsForm.Group>
+  )
+}
+
 export const FormlessInput = forwardRef(function InnerForlessInput(
   {
     as,
@@ -149,11 +183,10 @@ export const FormlessInput = forwardRef(function InnerForlessInput(
   ref
 ) {
   const { formId, formState, watch } = useFormContext()
-  const { t } = useTranslation()
   const rightLabel = isLabelRight(type)
   const controlId =
     id || `${formId}-${name}${rightLabel ? `-${props.value}` : ''}`
-  const htmlOptions = getOptions(options, required)
+  const htmlOptions = getOptions(type, options, required)
   const Component = resolveComponent(type, as)
   const fieldError = error || formState.errors[name]
   const currentValue = watch(name)
@@ -166,15 +199,14 @@ export const FormlessInput = forwardRef(function InnerForlessInput(
     inputProps.value = props.value
   }
   return (
-    <BsForm.Group
+    <InputWrapper
       controlId={controlId}
-      className={classnames('mt-2', {
-        'form-check': rightLabel,
-      })}
+      fieldError={fieldError}
+      helpText={helpText}
+      label={label}
+      required={required}
+      rightLabel={rightLabel}
     >
-      {label && !rightLabel ? (
-        <InputLabel required={required} text={label} />
-      ) : null}
       <Component
         as={resolveType(type)}
         disabled={formState.isSubmitting}
@@ -188,16 +220,7 @@ export const FormlessInput = forwardRef(function InnerForlessInput(
       >
         {htmlOptions}
       </Component>
-      {label && rightLabel ? (
-        <InputLabel colon={false} text={label} required={required} formCheck />
-      ) : null}
-      {fieldError ? (
-        <BsForm.Control.Feedback type="invalid">
-          {describeError(t, fieldError)}
-        </BsForm.Control.Feedback>
-      ) : null}
-      {helpText ? <BsForm.Text as="div">{helpText}</BsForm.Text> : null}
-    </BsForm.Group>
+    </InputWrapper>
   )
 })
 
@@ -246,6 +269,34 @@ export const FormError = ({ vague }) => {
   return null
 }
 
+export const RadioGroup = ({
+  emptyLabel = 'none',
+  label,
+  options,
+  name,
+  required,
+}) => (
+  <InputWrapper label={label} required={required}>
+    {!required && (
+      <Input
+        label={<span className="text-muted">{emptyLabel}</span>}
+        name={name}
+        type="radio"
+        value=""
+      />
+    )}
+    {options.map(opt => (
+      <Input
+        value={opt.value}
+        label={opt.label}
+        name={name}
+        type="radio"
+        key={opt.value}
+      />
+    ))}
+  </InputWrapper>
+)
+
 export const FormControls = ({
   cancelLabel,
   children,
@@ -262,7 +313,7 @@ export const FormControls = ({
       <div className="mt-3">
         <Submit
           disabled={disabled}
-          inProgress={formState.isSubmitting}
+          loading={formState.isSubmitting}
           size={size}
         >
           {submitLabel}

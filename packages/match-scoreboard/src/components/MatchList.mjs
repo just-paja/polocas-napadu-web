@@ -1,10 +1,10 @@
-import graphContainer from './GraphContainer.mjs'
 import React from 'react'
 import styles from './MatchList.module.scss'
 
-import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
 import { gql } from '@apollo/client'
+import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
 import { Link } from 'react-router-dom'
+import { withQuery } from 'polocas-napadu-ui/apollo.mjs'
 
 const GET_MATCHES = gql`
   query {
@@ -27,7 +27,7 @@ const GET_MATCHES = gql`
   }
 `
 
-export const MatchList = graphContainer(
+export const MatchList = withQuery(
   ({ data }) => (
     <Main className={styles.page}>
       <div className={styles.menu}>

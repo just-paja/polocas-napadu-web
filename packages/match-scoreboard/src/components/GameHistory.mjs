@@ -1,8 +1,8 @@
-import graphContainer from './GraphContainer.mjs'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './GameHistory.module.scss'
 
 import { gql } from '@apollo/client'
+import { withQuery } from 'polocas-napadu-ui/apollo.mjs'
 
 const GET_MATCH_GAMES = gql`
   query Games($matchId: Int!) {
@@ -21,7 +21,7 @@ const GET_MATCH_GAMES = gql`
 
 const GAME_TTL = 2000
 
-export const GameHistory = graphContainer(({ data }) => {
+export const GameHistory = withQuery(({ data }) => {
   const [showGame, setShowGame] = useState(null)
   const timeout = useRef(null)
   const games = data.match.show.games

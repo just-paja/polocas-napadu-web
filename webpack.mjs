@@ -58,6 +58,12 @@ export const getSassLoader = nodeEnv => ({
 
 export const getReactRules = nodeEnv => [
   {
+    test: /\.mjs$/,
+    resolve: {
+      fullySpecified: false,
+    },
+  },
+  {
     test: /\.m?jsx?$/,
     exclude: /node_modules/,
     loader: 'babel-loader',

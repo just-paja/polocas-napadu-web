@@ -1,0 +1,12 @@
+{
+  "name": "polocas-napadu-match-referee",
+  "version": "0.9.18",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev-server.mjs"
+  },
+  "files": [
+    "build"
+  ]
+}
