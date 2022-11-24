@@ -39,4 +39,14 @@ export default withModules({
     },
   ],
   rewrites: getRewrites,
+  webpack: config => {
+    config.module.rules.unshift({
+      test: /\.m?js$/,
+      type: 'javascript/auto',
+      resolve: {
+        fullySpecified: false,
+      },
+    })
+    return config
+  },
 })
