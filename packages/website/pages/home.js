@@ -11,12 +11,13 @@ import { Title } from '../components/meta.mjs'
 import { compose, withQueryset } from 'polocas-napadu-ui/decorators.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
 import { withPageProps } from '../pages.mjs'
-import { showListQuery } from '../graphql.mjs'
+import { showListQuery, showPhotosQuery } from '../graphql.mjs'
 import { gql } from '@apollo/client'
 
 export const getServerSideProps = compose(
   withPageProps,
   withQueryset({
+    showPhotos: { query: gql(showPhotosQuery) },
     shows: { query: gql(showListQuery), variables: { future: true } },
   }),
   props => props

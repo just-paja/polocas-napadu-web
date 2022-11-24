@@ -10,5 +10,5 @@ export const LocationName = ({ location }) => (
 )
 
 LocationName.propTypes = {
-  location: Location.isRequired
+  location: Location.isRequired,
 }

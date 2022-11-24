@@ -12,11 +12,11 @@ describe('ShowListItem component', () => {
           name: 'Dvouhodinový motel',
           start: '2019-03-08T19:30:00',
           location: {
-            name: 'Divadlo Bez Hranic'
+            name: 'Divadlo Bez Hranic',
           },
           showType: {
-            name: 'Improvizační zápas'
-          }
+            name: 'Improvizační zápas',
+          },
         }}
       />
     )

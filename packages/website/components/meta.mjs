@@ -2,7 +2,6 @@ import Error from 'next/error'
 import Head from 'next/head'
 import React from 'react'
 
-import { propsTranslated } from 'polocas-napadu-core/proptypes.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
 import { useRouter } from 'next/router'
 

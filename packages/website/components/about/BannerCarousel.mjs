@@ -17,11 +17,12 @@ function getRandomPhoto(list, current) {
 const PHOTO_TIMEOUT = 10000
 
 export const BannerCarousel = ({ className }) => {
-  const { carouselImages } = usePage()
-  if (!carouselImages) {
+  const { showPhotoList } = usePage()
+  if (!showPhotoList) {
     return null
   }
-  const list = carouselImages
+  const list = showPhotoList
+  console.log(list)
   const [backgroundPhoto, setBackgroundPhoto] = useState(list[0].id)
   useEffect(() => {
     const timeout = setTimeout(
@@ -37,7 +38,6 @@ export const BannerCarousel = ({ className }) => {
       <div className={styles.inner}>
         {list.map(photo => (
           <Image
-            bg
             className={classnames(styles.photo, {
               [styles.visible]: photo.id === backgroundPhoto,
             })}

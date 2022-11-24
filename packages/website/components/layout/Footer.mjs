@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Footer.module.scss'
 
-import { ContentContainer } from './ContentContainer'
+import { ContentContainer } from './ContentContainer.mjs'
 import { LanguageSwitcher } from '../i18n.mjs'
 import { SiteSponsors } from '../sponsors.mjs'
 import { SocialNetworks } from '../social.mjs'

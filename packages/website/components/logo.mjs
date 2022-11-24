@@ -1,12 +1,14 @@
+/* eslint-disable no-magic-numbers */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 const colors = {
   inverse: '#fcfaed',
-  primary: '#007120'
+  primary: '#007120',
 }
 
-function BulbHandle ({ style }) {
+function BulbHandle({ style }) {
   const posx = 438
   const posy = 640
   const width = 120
@@ -14,14 +16,32 @@ function BulbHandle ({ style }) {
   const spacing = 16
   return (
     <>
-      <rect x={posx} y={posy + spacing} width={width} height={height} style={style} />
-      <rect x={posx} y={posy + height + 2 * spacing} width={width} height={height} style={style} />
-      <rect x={posx + width / 4} y={posy + height * 2 + spacing * 3} width={width / 2} height={height} style={style} />
+      <rect
+        x={posx}
+        y={posy + spacing}
+        width={width}
+        height={height}
+        style={style}
+      />
+      <rect
+        x={posx}
+        y={posy + height + 2 * spacing}
+        width={width}
+        height={height}
+        style={style}
+      />
+      <rect
+        x={posx + width / 4}
+        y={posy + height * 2 + spacing * 3}
+        width={width / 2}
+        height={height}
+        style={style}
+      />
     </>
   )
 }
 
-function BulbRay ({ style, rotate, x, y }) {
+function BulbRay({ style, rotate, x, y }) {
   return (
     <rect
       height={125}
@@ -34,13 +54,13 @@ function BulbRay ({ style, rotate, x, y }) {
   )
 }
 
-export function Bulb ({ className, color }) {
+export function Bulb({ className, color }) {
   const style = {
-    fill: colors[color]
+    fill: colors[color],
   }
 
   return (
-    <svg className={className} viewBox='260 150 480 660'>
+    <svg className={className} viewBox="260 150 480 660">
       <path
         d={[
           'm 408.88,365.37',
@@ -56,7 +76,7 @@ export function Bulb ({ className, color }) {
           'h -77.51',
           'l -27,-83.76 -2.47,-2.46',
           'a 95.9,95.9 0 0 1 -28.28,-68.24',
-          'z'
+          'z',
         ].join(' ')}
         style={style}
       />
@@ -71,9 +91,9 @@ export function Bulb ({ className, color }) {
 }
 
 Bulb.propTypes = {
-  color: PropTypes.oneOf(['primary', 'inverse'])
+  color: PropTypes.oneOf(['primary', 'inverse']),
 }
 
 Bulb.defaultProps = {
-  color: 'primary'
+  color: 'primary',
 }

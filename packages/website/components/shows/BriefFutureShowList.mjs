@@ -1,9 +1,9 @@
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 
-import { List } from '../layout'
-import { NoFutureShows } from './NoFutureShows'
-import { ShowListItem } from './ShowListItem'
+import { List } from '../layout/List.mjs'
+import { NoFutureShows } from './NoFutureShows.mjs'
+import { ShowListItem } from './ShowListItem.mjs'
 
 export const BriefFutureShowList = ({ shows }) => {
   return (

@@ -2,12 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import styles from './showList.module.scss'
 
-import {
-  CommonLayout,
-  ContentContainer,
-  Title,
-  TranslatedPage,
-} from '../components/layout'
+import { CommonLayout, ContentContainer, Title } from '../components/layout'
 import { GameList } from '../components/games'
 import { useTranslation } from 'next-i18next'
 

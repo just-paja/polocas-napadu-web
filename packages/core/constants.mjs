@@ -75,9 +75,9 @@ export const VOLUME_SCRAPE_DURATION = 5000
 export const VOLUME_SCRAPE_RATE = 50
 export const VOLUME_SCRAPE_TIMEOUT = 4000
 
-const VISIBILITY_PRIVATE = 1
-const VISIBILITY_PUBLIC = 2
-const VISIBILITY_DELETED = 3
+const VISIBILITY_PRIVATE = 'A_1'
+const VISIBILITY_PUBLIC = 'A_2'
+const VISIBILITY_DELETED = 'A_3'
 
 export const Visibility = {
   private: VISIBILITY_PRIVATE,

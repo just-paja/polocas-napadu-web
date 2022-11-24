@@ -1,7 +1,7 @@
 import React from 'react'
-import I18n from 'i18next'
 
 import { propsTranslated } from 'polocas-napadu-core/proptypes.mjs'
+import { use } from 'i18next'
 import { useTranslation, initReactI18next } from 'react-i18next'
 
 export const withTranslation = Component => {
@@ -15,7 +15,7 @@ export const withTranslation = Component => {
 }
 
 export const initLocalization = locales =>
-  I18n.use(initReactI18next).init({
+  use(initReactI18next).init({
     resources: Object.fromEntries(
       Object.entries(locales).map(([lang, translation]) => [
         lang,

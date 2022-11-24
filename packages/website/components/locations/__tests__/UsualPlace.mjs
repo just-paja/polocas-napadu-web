@@ -13,9 +13,9 @@ describe('UsualPlace component', () => {
           description: 'Tady pravidelně trénujeme',
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
-            name: 'Neobyčejná klubovna'
+            name: 'Neobyčejná klubovna',
           },
-          placeType: 1
+          placeType: 1,
         }}
       />
     )
@@ -31,9 +31,9 @@ describe('UsualPlace component', () => {
           description: 'Tady pravidelně trénujeme',
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
-            name: 'Neobyčejná klubovna'
+            name: 'Neobyčejná klubovna',
           },
-          placeType: 1
+          placeType: 1,
         }}
       />
     )
@@ -52,15 +52,15 @@ describe('UsualPlace component', () => {
           description: 'Tady pravidelně trénujeme',
           location: {
             address: 'Norská 16, 101 00 Praha, Vršovice',
-            name: 'Neobyčejná klubovna'
+            name: 'Neobyčejná klubovna',
           },
-          placeType: 1
+          placeType: 1,
         }}
       />
     )
     expect(comp.find('Location')).toHaveProp('location', {
       address: 'Norská 16, 101 00 Praha, Vršovice',
-      name: 'Neobyčejná klubovna'
+      name: 'Neobyčejná klubovna',
     })
   })
 })

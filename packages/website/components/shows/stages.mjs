@@ -10,41 +10,41 @@ export const STAGE_FINALE = 'A_8'
 export const STAGE_OPTIONS = [
   {
     label: 'Nastavení zápasu',
-    value: STAGE_SHOW_SETUP
+    value: STAGE_SHOW_SETUP,
   },
   {
     label: 'Intro',
-    value: STAGE_INTRO
+    value: STAGE_INTRO,
   },
   {
     label: 'Příprava kategorie',
     ignore: true,
-    value: STAGE_GAME_SETUP
+    value: STAGE_GAME_SETUP,
   },
   {
     label: 'Hra',
-    value: STAGE_GAME
+    value: STAGE_GAME,
   },
   {
     label: 'Hlasování',
     ignore: true,
-    value: STAGE_VOTING
+    value: STAGE_VOTING,
   },
   {
     label: 'Výsledky kategorie',
     ignore: true,
-    value: STAGE_GAME_RESULTS
+    value: STAGE_GAME_RESULTS,
   },
   {
     label: 'Přestávka',
-    value: STAGE_PAUSE
+    value: STAGE_PAUSE,
   },
   {
     label: 'Konec zápasu',
-    value: STAGE_FINALE
-  }
+    value: STAGE_FINALE,
+  },
 ]
 
-export function getStageOption (stage) {
+export function getStageOption(stage) {
   return STAGE_OPTIONS.find(option => option.value === stage.type)
 }

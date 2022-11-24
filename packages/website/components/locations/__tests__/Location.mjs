@@ -9,7 +9,7 @@ describe('Location component', () => {
       <Location
         location={{
           address: 'Norská 16, 101 00 Praha, Vršovice',
-          name: 'Neobyčejná klubovna'
+          name: 'Neobyčejná klubovna',
         }}
       />
     )
@@ -21,7 +21,7 @@ describe('Location component', () => {
       <Location
         location={{
           address: 'Norská 16, 101 00 Praha, Vršovice',
-          name: 'Neobyčejná klubovna'
+          name: 'Neobyčejná klubovna',
         }}
       />
     )

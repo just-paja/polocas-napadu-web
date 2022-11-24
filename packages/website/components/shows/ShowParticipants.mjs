@@ -4,8 +4,8 @@ import React from 'react'
 import styles from './ShowParticipants.module.scss'
 
 import { OptionalLink } from '../links.mjs'
-import { List } from '../layout'
-import { formatName } from '../profiles/names'
+import { List } from '../layout/List.mjs'
+import { formatName } from '../profiles/names.mjs'
 import { ShowParticipant } from 'polocas-napadu-core/proptypes'
 import { useTranslation } from 'next-i18next'
 

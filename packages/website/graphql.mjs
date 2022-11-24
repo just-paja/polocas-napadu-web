@@ -100,7 +100,7 @@ export const showPhotosQuery = `
 
 export const usualPlacesQuery = `
   query GetUsualPlaceList {
-    usualPlaceList {
+    usualPlaceList(placeType: $placeType) {
       description
       id
       location {
@@ -155,20 +155,6 @@ export const showListQuery = `
       },
       start,
       slug,
-    }
-  }
-`
-
-const homeStagesQuery = `
-  query GetHomeStages($placeType: Int!) {
-    usualPlaceList(placeType: $placeType) {
-      description
-      id
-      location {
-        name
-        address
-      }
-      name
     }
   }
 `
@@ -345,6 +331,44 @@ export const showCountQuery = `
       name,
       showCount,
       slug,
+    }
+  }
+`
+
+export const gameListQuery = `
+  query getGameRulesList {
+    gameRulesList {
+      name
+      slug
+    }
+  }
+`
+
+export const foulTypeQuery = `
+  query FoulType($slug: String!) {
+    foulType(slug: $slug) {
+      name,
+      description,
+      slug,
+    }
+  }
+`
+
+export const gameRulesQuery = `
+  query GameRules($slug: String!) {
+    gameRules(slug: $slug) {
+      name
+      description
+      slug
+    }
+  }
+`
+
+export const foulTypeListQuery = `
+  query getFoulTypeList {
+    foulTypeList {
+      name
+      slug
     }
   }
 `

@@ -33,3 +33,9 @@ export const Main = ({ children, ...props }) => (
     {children}
   </Section>
 )
+
+export const Details = ({ children, ...props }) => (
+  <Section {...props} component="details">
+    {children}
+  </Section>
+)

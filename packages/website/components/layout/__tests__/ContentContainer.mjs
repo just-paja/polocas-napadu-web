@@ -7,7 +7,7 @@ describe('ContentContainer', () => {
   it('renders children', () => {
     const comp = mount(
       <ContentContainer>
-        <div className='foo' />
+        <div className="foo" />
       </ContentContainer>
     )
     expect(comp.find('.foo')).toHaveLength(1)

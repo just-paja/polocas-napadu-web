@@ -44,8 +44,10 @@ function sortByScore(a, b) {
   return 0
 }
 
+const minPadding = 10
+
 function padLeft(number) {
-  if (number < 10) {
+  if (number < minPadding) {
     return `0${number}`
   }
   return number
@@ -61,28 +63,24 @@ function getTimerValue(time, start) {
   )}`
 }
 
-function renderEvent(event, start) {
+function MatchEvent({ event, start }) {
   const stageOption = getStageOption(event)
   let content = null
   let Icon = null
   let className
-  let key = null
   if (event.object === 'scorePoint') {
     content = <ScorePoint point={event} />
     Icon = FaFlag
-    key += 'scorePoint'
   }
   if (stageOption && !stageOption.ignore) {
     content = <MatchStage stage={event} />
     Icon = FaStopwatch
     className = styles.routine
-    key += 'stage'
   }
   if (event.foulType) {
     content = <Foul foul={event} />
     Icon = FaExclamationTriangle
     className = styles.foul
-    key += 'foul'
   }
   if (!content) {
     return null
@@ -91,7 +89,7 @@ function renderEvent(event, start) {
     ? getTimerValue(event.created, start)
     : moment(event.created).format('LTS')
   return (
-    <div className={classnames(styles.event, className)} key={key + event.id}>
+    <div className={classnames(styles.event, className)}>
       <time
         dateTime={moment(event.created).format()}
         title={moment(event.created).format('LL LTS')}
@@ -111,6 +109,9 @@ function renderScore(match) {
   ))
 }
 
+const addKey = (eventType, array) =>
+  array.map(item => ({ ...item, eventType, key: `${eventType}-${item.id}` }))
+
 export const MatchProgress = withTranslation(({ matchId, t }) => {
   if (!matchId) {
     return null
@@ -121,9 +122,9 @@ export const MatchProgress = withTranslation(({ matchId, t }) => {
     return null
   }
   const log = [
-    ...getFouls(match),
-    ...getScorePoints(match),
-    ...match.stages,
+    ...addKey('foul', getFouls(match)),
+    ...addKey('score', getScorePoints(match)),
+    ...addKey('stage', match.stages),
   ].sort(sortByDate)
   const start = log.find(event => event.type === STAGE_INTRO)
   if (!start) {
@@ -132,7 +133,13 @@ export const MatchProgress = withTranslation(({ matchId, t }) => {
   return (
     <div className={styles.log}>
       {renderScore(match)}
-      {log.map(logEvent => renderEvent(logEvent, start ? start.created : null))}
+      {log.map(logEvent => (
+        <MatchEvent
+          key={logEvent.key}
+          event={logEvent}
+          start={start?.created}
+        />
+      ))}
     </div>
   )
 })

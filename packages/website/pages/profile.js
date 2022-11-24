@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { CommonLayout, TranslatedPage } from '../components/layout'
-import { Profile } from '../components/profiles'
-import { useTranslation } from 'next-i18next'
+import { CommonLayout } from '../components/layout/CommonLayout.mjs'
+import { Profile } from '../components/profiles/Profile.mjs'
 
 export default function ProfilePage({ slug }) {
   return (

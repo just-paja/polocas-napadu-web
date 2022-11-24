@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import styles from './LogisticInfo.module.scss'
 
 import { Children } from 'polocas-napadu-core/proptypes'
+import { Details } from 'polocas-napadu-ui/content.mjs'
 
 function ignore(e) {
   e.preventDefault()
@@ -12,7 +13,7 @@ function ignore(e) {
 export function LogisticInfo({ icon: Icon, summary, children }) {
   const [open, setOpen] = useState(true)
   return (
-    <details
+    <Details
       className={classnames(styles.box, { [styles.open]: open })}
       open
       onClick={ignore}
@@ -22,7 +23,7 @@ export function LogisticInfo({ icon: Icon, summary, children }) {
         {summary}
       </summary>
       <div className={styles.details}>{children}</div>
-    </details>
+    </Details>
   )
 }
 

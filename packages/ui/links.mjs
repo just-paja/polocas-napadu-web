@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-export function ExternalLink ({ children, href, icon: Icon }) {
+export function ExternalLink({ children, href, icon: Icon }) {
   if (!href) {
     return null
   }
@@ -12,7 +12,7 @@ export function ExternalLink ({ children, href, icon: Icon }) {
     [href]
   )
   return (
-    <a href={href} rel='external' onClick={open}>
+    <a href={href} rel="external" onClick={open}>
       {Icon && (
         <>
           <Icon />{' '}

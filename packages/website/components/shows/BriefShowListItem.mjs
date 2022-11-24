@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from '../links.mjs'
 import { Show } from 'polocas-napadu-core/proptypes'
 import { EventStart } from 'polocas-napadu-ui/events.mjs'
-import { LocationName } from '../locations.mjs'
+import { LocationName } from '../locations/LocationName.mjs'
 
 import styles from './BriefShowListItem.module.scss'
 

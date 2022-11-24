@@ -11,7 +11,7 @@ export const ProfileGroupList = withTranslation(({ groups, t }) => (
       <h2 className={styles.heading}>{t('members')}</h2>
       <div className={styles.list}>
         {groups.map(group => (
-          <ProfileList group={group} />
+          <ProfileList key={group.id} group={group} />
         ))}
       </div>
     </ContentContainer>

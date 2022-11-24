@@ -13,11 +13,11 @@ const AppError = ({ error }) => {
 }
 
 AppError.propTypes = {
-  error: ErrorMessage
+  error: ErrorMessage,
 }
 
 AppError.defaultProps = {
-  error: null
+  error: null,
 }
 
 export default AppError

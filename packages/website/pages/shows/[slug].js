@@ -1,5 +1,4 @@
 import React from 'react'
-import moment from 'moment'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import styles from './[slug].module.scss'
@@ -14,11 +13,12 @@ import { Link } from '../../components/links.mjs'
 import { Markdown } from '../../components/markdown.mjs'
 import { MatchProgress } from '../../components/shows//MatchProgress'
 import { OgEvent } from '../../components/opengraph.mjs'
+import { LogisticInfo } from '../../components/shows/LogisticInfo.mjs'
 import { Price } from 'polocas-napadu-ui/prices.mjs'
-import { ShowDateInfo } from '../../components/shows/ShowDateInfo'
+import { ShowDateInfo } from '../../components/shows/ShowDateInfo.mjs'
 import { ShowParticipants } from '../../components/shows/ShowParticipants.mjs'
 import { showQuery } from '../../graphql.mjs'
-import { ShowVenueInfo } from '../../components/shows/ShowVenueInfo'
+import { ShowVenueInfo } from '../../components/shows/ShowVenueInfo.mjs'
 import { TicketsIcon } from 'polocas-napadu-ui/icons.mjs'
 import { Title } from '../../components/meta.mjs'
 import { withPageProps } from '../../pages.mjs'
@@ -34,40 +34,11 @@ function LinkButton({ href, label, ...props }) {
     return null
   }
   return (
-    <div className="mt-2">
-      <Button className={styles.ticketsButton} href={href} {...props}>
-        {label}
-      </Button>
-    </div>
+    <Button className={styles.ticketsButton} href={href} {...props}>
+      {label}
+    </Button>
   )
 }
-
-const EventTicketButtons = withTranslation(({ event, t }) => {
-  if (
-    (event.linkTickets || event.linkReservations) &&
-    moment().isBefore(event.start)
-  ) {
-    return (
-      <div className="mt-3">
-        <LinkButton
-          href={event.linkTickets}
-          label={t('buyTickets')}
-          icon={<TicketsIcon />}
-          variant="primary"
-          size="lg"
-        />
-        <LinkButton
-          href={event.linkReservations}
-          label={t('reserveSeats')}
-          icon={<TicketsIcon />}
-          variant={event.linkTickets ? 'secondary' : 'primary'}
-          size="lg"
-        />
-      </div>
-    )
-  }
-  return null
-})
 
 const EventDetailHeading = ({ event }) => {
   const photo = event.showType.photos[0]
@@ -95,6 +66,7 @@ const ShowDetailDescription = ({ show }) => (
 )
 
 const ShowDetailTypeLink = withTranslation(({ showType, t }) => {
+  console.log(showType)
   if (isVisible(showType)) {
     return (
       <Link route="showFormatDetail" params={{ slug: showType.slug }}>
@@ -153,16 +125,58 @@ const TicketPrice = ({ price }) => (
   </div>
 )
 
-const EventPrices = withTranslation(({ prices, t }) => (
-  <Section className="mt-3">
-    <Heading className="mt-0">{t('ticket-price')}</Heading>
-    <div className="mt-2">
+const EventPrices = withTranslation(({ event, prices, t }) => (
+  <LogisticInfo
+    icon={TicketsIcon}
+    summary={<Heading>{t('ticket-links')}</Heading>}
+  >
+    <div>
       {prices.map(price => (
         <TicketPrice price={price} key={price.id} />
       ))}
     </div>
-  </Section>
+    <div className="d-flex flex-wrap">
+      <LinkButton
+        href={event.linkTickets}
+        label={t('buyTickets')}
+        icon={<TicketsIcon />}
+        variant="primary"
+        size="lg"
+        className="mt-2 me-2 flex-grow-1"
+      />
+      <LinkButton
+        href={event.linkReservations}
+        label={t('reserveSeats')}
+        icon={<TicketsIcon />}
+        variant={event.linkTickets ? 'secondary' : 'primary'}
+        size="lg"
+        className="mt-2 me-2 flex-grow-1"
+      />
+    </div>
+  </LogisticInfo>
 ))
+
+const InfoCol = ({ children, ...props }) => (
+  <Col className={styles.logisticsItem} md={6} lg={6} xl={5} {...props}>
+    {children}
+  </Col>
+)
+
+const ShowInfo = ({ show }) => (
+  <Row className={styles.logistics}>
+    <InfoCol>
+      <ShowDateInfo show={show} />
+    </InfoCol>
+    <InfoCol>
+      <ShowVenueInfo show={show} />
+    </InfoCol>
+    {show.ticketPrices.length !== 0 && (
+      <InfoCol md={8} lg={7}>
+        <EventPrices event={show} prices={show.ticketPrices} />
+      </InfoCol>
+    )}
+  </Row>
+)
 
 export default function ShowDetail({ show }) {
   return (
@@ -170,28 +184,7 @@ export default function ShowDetail({ show }) {
       <Section as="article">
         <EventDetailHeading event={show} />
         <ContentContainer>
-          <Row className={styles.logistics}>
-            <Col className={styles.logisticsItem} md={6} lg={4}>
-              <ShowDateInfo show={show} />
-            </Col>
-            <Col className={styles.logisticsItem} md={6} lg={4}>
-              <ShowVenueInfo show={show} />
-            </Col>
-          </Row>
-          <Row className={styles.logistics}>
-            <Col md={10} lg={7}>
-              <Row>
-                <Col md={6} xl={5}>
-                  <EventTicketButtons event={show} />
-                </Col>
-                {show.ticketPrices.length !== 0 && (
-                  <Col>
-                    <EventPrices prices={show.ticketPrices} />
-                  </Col>
-                )}
-              </Row>
-            </Col>
-          </Row>
+          <ShowInfo show={show} />
           <div className={styles.description}>
             <div>
               <ShowDetailDescription show={show} />

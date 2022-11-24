@@ -1,6 +1,6 @@
 @import 'polocas-napadu-ui/variables.scss';
 
-:local .box {
+.box {
   border: 1px solid $color-borders;
   border-radius: $baseline / 4;
   color: $color-text-dimm;
@@ -15,6 +15,14 @@
     list-style: none;
     vertical-align: middle;
 
+    h1, h2, h3 {
+      font-size: $h3-font-size;
+    }
+
+    & > * {
+      margin-top: 0;
+    }
+
     &::-webkit-details-marker {
       display: none;
     }
@@ -25,7 +33,7 @@
   }
 }
 
-:local .icon {
+.icon {
   flex-shrink: 0;
   height: $h4-font-size * 1.5;
   margin-right: $font-size-base * 0.75;
@@ -33,19 +41,19 @@
   width: $h4-font-size;
 }
 
-:local .details {
+.details {
   display: none;
   padding: 0 0 0 $h4-font-size + $font-size-base * 0.75;
 }
 
-:local .box.open {
+.box.open {
   .details {
     display: block;
   }
 }
 
 @media (min-width: map-get($grid-breakpoints, 'lg')) {
-  :local .details {
+  .details {
     display: block;
   }
 }

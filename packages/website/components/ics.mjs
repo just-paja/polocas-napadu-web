@@ -1,5 +1,4 @@
 import moment from 'moment'
-import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import React from 'react'
 
@@ -55,7 +54,8 @@ function getYahooLink(event) {
   })
 }
 
-const getUrl = event => ''
+/** @TODO: Construct URL to the event */
+const getUrl = () => ''
 
 function getICalLink(event) {
   return [

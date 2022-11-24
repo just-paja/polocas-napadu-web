@@ -1,3 +1,3 @@
-export * from './Profile'
-export * from './ProfileGroupList'
-export * from './ProfileList'
+export * from './Profile.mjs'
+export * from './ProfileGroupList.mjs'
+export * from './ProfileList.mjs'

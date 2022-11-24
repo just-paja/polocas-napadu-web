@@ -1,4 +1,4 @@
-export const getRandomItem = (items) =>
+export const getRandomItem = items =>
   items[Math.floor(Math.random() * items.length)]
 
 export const getNewRandomItem = (items, last) =>

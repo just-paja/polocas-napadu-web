@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BannerCarousel } from './BannerCarousel.mjs'
 import { Bulb } from '../logo.mjs'
-import { ContentContainer } from '../layout'
+import { ContentContainer } from '../layout/ContentContainer.mjs'
 import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
 
 import styles from './HomeBanner.module.scss'

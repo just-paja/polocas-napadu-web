@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 import React from 'react'
 import classnames from 'classnames'
 import styles from './ProfileList.module.scss'
@@ -7,9 +9,7 @@ import { formatName } from './names.mjs'
 import { Link } from '../links.mjs'
 
 const dummySequences = {
-  // eslint-disable-next-line no-magic-numbers
   dark: [0, 1, 2, 6, 7, 9, 11, 16, 17, 22, 27],
-  // eslint-disable-next-line no-magic-numbers
   secondary: [1, 2, 3, 4, 6, 5, 8, 10, 11, 13, 14, 21, 23, 25],
 }
 const primary = '#007120'
