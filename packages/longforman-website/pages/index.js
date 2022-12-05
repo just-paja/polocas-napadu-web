@@ -1,13 +1,14 @@
 import classnames from 'classnames'
 import Head from 'next/head'
+import React from 'react'
 import styles from '../styles/Home.module.css'
 
-export default function Home () {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
         <title>Longforman - festival divadelní improvizace</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={classnames(styles.main, styles.first)}>
