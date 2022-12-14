@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Location.module.scss'
 
-import { Location as LocationProp } from 'polocas-napadu-core/proptypes'
+import { Location as LocationProp } from '@polocas-napadu/core/proptypes'
 import { Address } from './Address.mjs'
 
 export const Location = ({ location }) => (

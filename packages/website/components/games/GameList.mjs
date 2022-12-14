@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link } from '../links.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n'
+import { withTranslation } from '@polocas-napadu/ui/i18n'
 
 export const GameList = withTranslation(({ gameRules, t }) => {
   return (

@@ -5,10 +5,10 @@ import { CommonLayout, ContentContainer } from '../components/layout'
 import { Title } from '../components/meta.mjs'
 import { OgImage } from '../components/opengraph.mjs'
 import { ShowFormatGallery } from '../components/shows/ShowFormatGallery.mjs'
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
 import { useTranslation } from 'next-i18next'
 import { withPageProps } from '../pages.mjs'
-import { compose, withQueryset } from 'polocas-napadu-ui/decorators.mjs'
+import { compose, withQueryset } from '@polocas-napadu/ui/decorators.mjs'
 import { showFormatListQuery } from '../graphql.mjs'
 
 export const getServerSideProps = compose(

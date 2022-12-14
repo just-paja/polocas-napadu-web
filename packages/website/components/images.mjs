@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import styles from './images.module.scss'
 
-import { Image as ImageProp } from 'polocas-napadu-core/proptypes.mjs'
+import { Image as ImageProp } from '@polocas-napadu/core/proptypes.mjs'
 
 function getImageSrc(image, size) {
   if (typeof image === 'string') {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './social.module.scss'
 
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 import { openExternalUrl } from './links.mjs'
 import {
   InstagramIcon,
@@ -12,7 +12,7 @@ import {
   CallIcon,
   TwitterIcon,
   YouTubeIcon,
-} from 'polocas-napadu-ui/icons.mjs'
+} from '@polocas-napadu/ui/icons.mjs'
 
 export const SocialNetworkLink = ({
   id,

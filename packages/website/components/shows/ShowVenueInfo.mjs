@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Address } from '../locations/Address.mjs'
-import { EventLocation } from 'polocas-napadu-ui/events.mjs'
+import { EventLocation } from '@polocas-napadu/ui/events.mjs'
 import { ExternalLink } from '../links.mjs'
-import { Heading } from 'polocas-napadu-ui/content.mjs'
-import { LocationIcon } from 'polocas-napadu-ui/icons.mjs'
+import { Heading } from '@polocas-napadu/ui/content.mjs'
+import { LocationIcon } from '@polocas-napadu/ui/icons.mjs'
 import { LogisticInfo } from './LogisticInfo.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const ShowVenueInfo = withTranslation(({ show, t }) => (
   <LogisticInfo

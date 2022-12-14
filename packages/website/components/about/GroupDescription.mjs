@@ -1,7 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const GroupDescription = withTranslation(({ t }) => (
   <section>

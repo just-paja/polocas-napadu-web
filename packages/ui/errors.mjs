@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ArrayList } from './text.mjs'
-import { ErrorType } from 'polocas-napadu-core/proptypes.mjs'
+import { ErrorType } from '@polocas-napadu/core/proptypes.mjs'
 import { withTranslation } from './i18n.mjs'
 
 export const AppError = () => <div>Application failed with Error!</div>

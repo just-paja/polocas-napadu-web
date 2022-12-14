@@ -2,8 +2,8 @@ import React from 'react'
 import Markdown from 'react-markdown'
 import styles from './NgoContact.module.scss'
 
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 const ListItem = ({ label, value }) => (
   <li>

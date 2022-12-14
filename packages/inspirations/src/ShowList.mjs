@@ -2,15 +2,15 @@ import React from 'react'
 import styles from './ShowList.module.scss'
 
 import { gql } from '@apollo/client'
-import { Heading, Main, Section } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Main, Section } from '@polocas-napadu/ui/content.mjs'
 import { Link } from 'react-router-dom'
-import { withQuery } from 'polocas-napadu-ui/apollo.mjs'
+import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
 import { useTranslation } from 'react-i18next'
 import {
   ShowStart,
   ShowLocation,
   ShowFormat,
-} from 'polocas-napadu-ui/shows.mjs'
+} from '@polocas-napadu/ui/shows.mjs'
 
 const GET_SHOWS = gql`
   query ShowList {

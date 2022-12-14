@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
-import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
-import { PlainInput } from 'polocas-napadu-ui/Input.mjs'
-import { SendIcon } from 'polocas-napadu-ui/icons.mjs'
+import { Button } from '@polocas-napadu/ui/Button.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
+import { PlainInput } from '@polocas-napadu/ui/Input.mjs'
+import { SendIcon } from '@polocas-napadu/ui/icons.mjs'
 
 export const InspirationForm = ({ onSubmit, error, saving }) => {
   const [inspiration, setInspiration] = useState('')

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 
-import { usePage } from 'polocas-napadu-core/context.mjs'
+import { usePage } from '@polocas-napadu/core/context.mjs'
 
 export const OgEvent = ({ event }) => (
   <Head>

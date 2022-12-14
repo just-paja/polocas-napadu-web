@@ -5,7 +5,7 @@ import { gql } from '@apollo/client'
 import { CommonLayout, ContentContainer } from '../components/layout'
 import { FoulTypeDetail } from '../components/games'
 import { withPageProps } from '../pages.mjs'
-import { compose, withQueryset } from 'polocas-napadu-ui/decorators.mjs'
+import { compose, withQueryset } from '@polocas-napadu/ui/decorators.mjs'
 
 const foulTypeQuery = gql`
   query FoulType($slug: String!) {

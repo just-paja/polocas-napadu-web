@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Section, Heading } from 'polocas-napadu-ui/content.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { Section, Heading } from '@polocas-napadu/ui/content.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 function formatPlace(place) {
   return place.location.name

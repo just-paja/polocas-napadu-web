@@ -1,9 +1,9 @@
 import Markdown from 'react-markdown'
 import React from 'react'
 
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
 import { Location } from './Location.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 const UsualPlace = ({ place }) => (
   <Section>

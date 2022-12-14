@@ -3,7 +3,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 
 import { ShowListItem } from './ShowListItem.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n'
+import { withTranslation } from '@polocas-napadu/ui/i18n'
 
 const NoFutureShows = withTranslation(({ t }) => (
   <Alert className="mt-3" variant="light">

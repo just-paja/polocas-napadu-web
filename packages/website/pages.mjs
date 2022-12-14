@@ -1,8 +1,8 @@
 import getConfig from 'next/config'
 
-import { apolloClient } from 'polocas-napadu-ui/apollo-next.mjs'
+import { apolloClient } from '@polocas-napadu/ui/apollo-next.mjs'
 import { gql } from '@apollo/client'
-import { mergeQueryResults, stripData } from 'polocas-napadu-ui/apollo.mjs'
+import { mergeQueryResults, stripData } from '@polocas-napadu/ui/apollo.mjs'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations.js'
 import { sponsorsQuery } from './graphql.mjs'
 

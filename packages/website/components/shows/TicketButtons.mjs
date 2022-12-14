@@ -1,9 +1,9 @@
 import moment from 'moment'
 import React from 'react'
 
-import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { TicketsIcon } from 'polocas-napadu-ui/icons.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { Button } from '@polocas-napadu/ui/Button.mjs'
+import { TicketsIcon } from '@polocas-napadu/ui/icons.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 function LinkButton({ href, label, ...props }) {
   if (!href) {

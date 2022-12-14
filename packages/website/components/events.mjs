@@ -1,8 +1,8 @@
 import moment from 'moment-timezone'
 import React from 'react'
 
-import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { DateLabel } from 'polocas-napadu-ui/datetime.mjs'
+import { Button } from '@polocas-napadu/ui/Button.mjs'
+import { DateLabel } from '@polocas-napadu/ui/datetime.mjs'
 import { qsm } from 'query-string-manipulator'
 import { useUrl } from './hooks.mjs'
 

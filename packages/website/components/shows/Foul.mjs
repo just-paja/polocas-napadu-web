@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { formatName } from '../profiles/names'
+import { formatName } from '../profiles/names.mjs'
 import { Link } from '../links.mjs'
 
 function getActorName(foul) {

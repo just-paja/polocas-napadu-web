@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import styles from './LogisticInfo.module.scss'
 
-import { Children } from 'polocas-napadu-core/proptypes'
-import { Details } from 'polocas-napadu-ui/content.mjs'
+import { Children } from '@polocas-napadu/core/proptypes'
+import { Details } from '@polocas-napadu/ui/content.mjs'
 
 function ignore(e) {
   e.preventDefault()

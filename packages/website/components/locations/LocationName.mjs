@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Location } from 'polocas-napadu-core/proptypes'
+import { Location } from '@polocas-napadu/core/proptypes'
 
 export const LocationName = ({ location }) => (
   <>

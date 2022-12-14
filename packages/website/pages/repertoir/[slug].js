@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CommonLayout } from '../../components/layout'
-import { compose, withQueryset } from 'polocas-napadu-ui/decorators.mjs'
+import { compose, withQueryset } from '@polocas-napadu/ui/decorators.mjs'
 import { gql } from '@apollo/client'
 import { ShowFormatDetail } from '../../components/shows/ShowFormatDetail.mjs'
 import { showFormatQuery } from '../../graphql.mjs'

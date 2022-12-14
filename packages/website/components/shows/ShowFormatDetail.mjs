@@ -9,7 +9,7 @@ import { Link } from '../links.mjs'
 import { List } from '../layout/List.mjs'
 import { Markdown } from '../markdown.mjs'
 import { Title } from '../meta.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
   return (

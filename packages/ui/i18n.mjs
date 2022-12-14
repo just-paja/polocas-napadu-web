@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { propsTranslated } from 'polocas-napadu-core/proptypes.mjs'
+import { propsTranslated } from '@polocas-napadu/core/proptypes.mjs'
 import { use } from 'i18next'
 import { useTranslation, initReactI18next } from 'react-i18next'
 

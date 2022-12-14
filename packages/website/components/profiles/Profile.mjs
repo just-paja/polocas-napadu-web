@@ -11,7 +11,7 @@ import { Link } from '../links.mjs'
 import { PageHeading } from '../layout/PageHeading.mjs'
 import { ProfileListItem } from './ProfileList.mjs'
 import { Title } from '../meta.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const ProfileComponent = withTranslation(({ data, t }) => {
   const { profile } = data

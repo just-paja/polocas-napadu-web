@@ -4,8 +4,8 @@ import React from 'react'
 import styles from './ShowListItem.module.scss'
 
 import { Link } from '../links.mjs'
-import { Show } from 'polocas-napadu-core/proptypes.mjs'
-import { EventLocation, EventStart } from 'polocas-napadu-ui/events.mjs'
+import { Show } from '@polocas-napadu/core/proptypes.mjs'
+import { EventLocation, EventStart } from '@polocas-napadu/ui/events.mjs'
 
 export function ShowListItem({ show }) {
   const isFuture = false

@@ -1,5 +1,5 @@
 {
-  "name": "longforman-website",
+  "name": "@longforman/website",
   "version": "0.9.18",
   "private": true,
   "scripts": {

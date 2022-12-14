@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Markdown from 'react-markdown'
 import React from 'react'
 
-import { Section, Heading } from 'polocas-napadu-ui/content.mjs'
+import { Section, Heading } from '@polocas-napadu/ui/content.mjs'
 import { Title } from '../meta.mjs'
 
 export const GameDetail = ({ rules }) => (

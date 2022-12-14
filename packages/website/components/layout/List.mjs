@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './List.module.scss'
 
-import { Children } from 'polocas-napadu-core/proptypes'
+import { Children } from '@polocas-napadu/core/proptypes'
 
 export function List({ as: Component, className, children }) {
   return (

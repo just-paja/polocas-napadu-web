@@ -3,9 +3,9 @@ import styles from './sponsors.module.scss'
 
 import { Image } from './images.mjs'
 import { openExternalUrl } from './links.mjs'
-import { Sponsor } from 'polocas-napadu-core/proptypes.mjs'
-import { useSponsors } from 'polocas-napadu-core/context.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { Sponsor } from '@polocas-napadu/core/proptypes.mjs'
+import { useSponsors } from '@polocas-napadu/core/context.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 const SiteSponsorLogo = ({ sponsor }) => (
   <Image

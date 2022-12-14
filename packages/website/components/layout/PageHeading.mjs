@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import React from 'react'
 import styles from './PageHeading.module.scss'
 
-import { Children } from 'polocas-napadu-core/proptypes'
+import { Children } from '@polocas-napadu/core/proptypes'
 import { ContentContainer } from './ContentContainer.mjs'
 
 const BackgroundBlur = ({ children, image }) => {

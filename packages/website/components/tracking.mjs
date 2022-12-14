@@ -8,8 +8,8 @@ import Script from 'next/script'
 import styles from './tracking.module.scss'
 
 import { getCookie, setCookies } from 'cookies-next'
-import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { Form, FormControls, Input } from 'polocas-napadu-ui/Form.mjs'
+import { Button } from '@polocas-napadu/ui/Button.mjs'
+import { Form, FormControls, Input } from '@polocas-napadu/ui/Form.mjs'
 import { useTranslation } from 'next-i18next'
 
 const COOKIE_CONSENT = 'cookieConsent'

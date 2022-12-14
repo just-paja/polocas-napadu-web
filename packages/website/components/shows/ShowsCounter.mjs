@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import styles from './ShowsCounter.module.scss'
 
 import { Markdown } from '../markdown.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 import { Link } from '../links.mjs'
 
 const ShowsCounterItem = ({ format }) => (

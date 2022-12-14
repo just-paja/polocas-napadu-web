@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './i18n.module.scss'
 
 import { OptionalLink } from './links.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 const renderLink = (t, lngCurrent, lngChoice) => {
   return (

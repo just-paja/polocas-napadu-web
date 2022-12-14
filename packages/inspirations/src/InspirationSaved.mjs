@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Button } from 'polocas-napadu-ui/Button.mjs'
-import { AgainIcon } from 'polocas-napadu-ui/icons.mjs'
+import { Button } from '@polocas-napadu/ui/Button.mjs'
+import { AgainIcon } from '@polocas-napadu/ui/icons.mjs'
 
 export const InspirationSaved = ({ onContinue }) => (
   <div>

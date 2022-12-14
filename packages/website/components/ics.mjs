@@ -4,7 +4,7 @@ import React from 'react'
 
 import { openExternalUrl } from './links.mjs'
 import { qsm } from 'query-string-manipulator'
-import { withTranslation } from 'polocas-napadu-ui/i18n'
+import { withTranslation } from '@polocas-napadu/ui/i18n'
 
 const dateFormat = 'YYYYMMDDTHHmmss\\Z'
 

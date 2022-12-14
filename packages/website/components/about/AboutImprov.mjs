@@ -6,7 +6,7 @@ import drawing from './photos/drawing.webp'
 import React from 'react'
 import styles from './AboutImprov.module.scss'
 
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 const GalleryPhoto = ({ src, alt }) => (
   <div className={styles.photo}>

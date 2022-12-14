@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 
 import { Image } from '../images.mjs'
-import { Photo } from 'polocas-napadu-core/proptypes.mjs'
-import { usePage } from 'polocas-napadu-core/context.mjs'
+import { Photo } from '@polocas-napadu/core/proptypes.mjs'
+import { usePage } from '@polocas-napadu/core/context.mjs'
 
 import styles from './BannerCarousel.module.scss'
 

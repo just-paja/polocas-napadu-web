@@ -11,7 +11,7 @@ import {
   compose,
   withTranslation,
   withQueryset,
-} from 'polocas-napadu-ui/decorators.mjs'
+} from '@polocas-napadu/ui/decorators.mjs'
 
 const foulTypeListQuery = gql`
   query FoulTypeList() {

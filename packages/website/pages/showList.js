@@ -12,10 +12,10 @@ import { HomeStageNotice } from '../components/shows/HomeStageNotice.mjs'
 import { MonthShowList } from '../components/shows/MonthShowList.mjs'
 import { OgImage } from '../components/opengraph.mjs'
 import { showListQuery, usualPlacesQuery } from '../graphql.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
-import { compose, withQueryset } from 'polocas-napadu-ui/decorators.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
+import { compose, withQueryset } from '@polocas-napadu/ui/decorators.mjs'
 import { withPageProps } from '../pages.mjs'
-import { Heading, Main } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Main } from '@polocas-napadu/ui/content.mjs'
 import { EventFilter } from '../components/events.mjs'
 
 const withSelectedMonth = fn => props => {

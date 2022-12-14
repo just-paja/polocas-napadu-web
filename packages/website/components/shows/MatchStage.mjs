@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from '../links.mjs'
 import { getStageOption, STAGE_GAME } from './stages.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 function getGameLabel(stage) {
   if (stage.game && stage.game.rules) {

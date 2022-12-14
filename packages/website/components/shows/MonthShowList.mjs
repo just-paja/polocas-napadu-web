@@ -3,17 +3,17 @@ import classnames from 'classnames'
 import React from 'react'
 import styles from './MonthShowList.module.scss'
 
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
 import { Link } from '../links.mjs'
 import { TicketButtons } from './TicketButtons.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n'
-import { isLive, isPast } from 'polocas-napadu-ui/events.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n'
+import { isLive, isPast } from '@polocas-napadu/ui/events.mjs'
 import {
   ShowStart,
   ShowLocation,
   ShowFormat,
   ShowTicketPriceSummary,
-} from 'polocas-napadu-ui/shows.mjs'
+} from '@polocas-napadu/ui/shows.mjs'
 
 const ListItem = ({ show }) => {
   return (

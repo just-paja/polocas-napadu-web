@@ -4,7 +4,7 @@ import React, { cloneElement, useCallback } from 'react'
 import { reverse } from '../routes.mjs'
 import { qsm } from 'query-string-manipulator'
 import { useRouter } from 'next/router'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const openExternalUrl = (e, url) => {
   const target = url || e.target.href

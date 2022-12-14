@@ -2,7 +2,7 @@ import Error from 'next/error'
 import Head from 'next/head'
 import React from 'react'
 
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 import { useRouter } from 'next/router'
 
 export const MetaBase = () => {

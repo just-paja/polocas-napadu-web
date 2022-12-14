@@ -15,7 +15,7 @@ const securityHeaders = [
   },
 ]
 
-const withModules = transpileModules(['polocas-napadu-ui'])
+const withModules = transpileModules(['@polocas-napadu/ui'])
 
 export default withModules({
   publicRuntimeConfig: {

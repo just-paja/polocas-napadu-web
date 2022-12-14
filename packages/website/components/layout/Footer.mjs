@@ -5,7 +5,7 @@ import { ContentContainer } from './ContentContainer.mjs'
 import { LanguageSwitcher } from '../i18n.mjs'
 import { SiteSponsors } from '../sponsors.mjs'
 import { SocialNetworks } from '../social.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const Footer = withTranslation(({ sponsors, t }) => (
   <>

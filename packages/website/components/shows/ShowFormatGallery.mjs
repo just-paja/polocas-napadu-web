@@ -4,7 +4,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './ShowFormatGallery.module.scss'
 
-import { Heading, Section } from 'polocas-napadu-ui/content.mjs'
+import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
 import { List } from '../layout/List.mjs'
 import { Markdown } from '../markdown.mjs'
 import { ContentContainer } from '../layout/ContentContainer.mjs'

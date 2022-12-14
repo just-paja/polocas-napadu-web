@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import React from 'react'
 
-import { Children } from 'polocas-napadu-core/proptypes'
+import { Children } from '@polocas-napadu/core/proptypes'
 import { Footer } from './Footer.mjs'
 import { MainMenu } from './MainMenu.mjs'
 

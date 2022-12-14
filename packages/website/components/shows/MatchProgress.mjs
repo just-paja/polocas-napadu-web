@@ -8,7 +8,7 @@ import { Foul } from './Foul.mjs'
 import { STAGE_INTRO, getStageOption } from './stages.mjs'
 import { MatchStage } from './MatchStage.mjs'
 import { ScorePoint } from './ScorePoint.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 function getFouls(match) {
   return match.contestantGroups.reduce(

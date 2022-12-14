@@ -5,7 +5,7 @@ import React from 'react'
 import styles from './MainMenu.module.scss'
 
 import { Linker } from '../links.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const MainMenu = withTranslation(({ t }) => (
   <Navbar bg="primary" collapseOnSelect expand="lg" sticky="top" variant="dark">

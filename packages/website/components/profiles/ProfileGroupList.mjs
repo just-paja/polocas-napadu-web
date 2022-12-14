@@ -3,7 +3,7 @@ import styles from './ProfileGroupList.module.scss'
 
 import { ContentContainer } from '../layout/ContentContainer.mjs'
 import { ProfileList } from './ProfileList.mjs'
-import { withTranslation } from 'polocas-napadu-ui/i18n.mjs'
+import { withTranslation } from '@polocas-napadu/ui/i18n.mjs'
 
 export const ProfileGroupList = withTranslation(({ groups, t }) => (
   <section className={styles.block} id={t('membersAnchor')}>

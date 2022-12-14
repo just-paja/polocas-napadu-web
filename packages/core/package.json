@@ -1,5 +1,5 @@
 {
-  "name": "polocas-napadu-core",
+  "name": "@polocas-napadu/core",
   "version": "0.9.18",
   "description": "Core libraries for Poločas nápadu apps",
   "private": true,

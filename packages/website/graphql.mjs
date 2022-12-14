@@ -159,7 +159,7 @@ export const showListQuery = `
   }
 `
 
-const matchQuery = `
+export const matchQuery = `
   query GetMatch($id: Int!) {
     match(id: $id) {
       contestantGroups {
@@ -291,7 +291,7 @@ export const showFormatQuery = `
   }
 `
 
-const profileQuery = `
+export const profileQuery = `
   query GetProfile($slug: String!) {
     profile(slug: $slug) {
       about

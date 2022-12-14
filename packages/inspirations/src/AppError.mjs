@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ErrorMessage } from 'polocas-napadu-core/proptypes.mjs'
+import { ErrorMessage } from '@polocas-napadu/core/proptypes.mjs'
 
 export const AppError = ({ error }) => {
   if (!error) {
