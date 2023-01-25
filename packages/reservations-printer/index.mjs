@@ -1,9 +1,11 @@
 import fetch from 'cross-fetch'
 import open from 'open'
 import pdf from 'html-pdf'
+import puppeteer from 'puppeteer'
 
 import { file } from 'tmp-promise'
 import { parse } from 'csv-parse'
+import { writeFile } from 'fs/promises'
 
 const getCsvUrl = (documentId, sheetId) =>
   `https://docs.google.com/spreadsheets/d/${documentId}/export?format=csv&gid=${sheetId}`
@@ -143,21 +145,12 @@ const createDocument = data => {
   )}</body></html>`
 }
 
-const createPdf = async (doc, dest) =>
-  await new Promise((resolve, reject) => {
-    const options = {
-      border: '10mm',
-      format: 'A4',
-      orientation: 'portrait'
-    }
-    pdf.create(doc, options).toFile(dest, (err, res) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(res)
-      }
-    })
-  })
+const createPdf = async (browser, doc, dest) => {
+  const page = await browser.newPage();
+  await page.setContent(doc)
+  const pdf = await page.pdf({ format: 'A4' });
+  await writeFile(dest, pdf)
+}
 
 const main = async documentUrl => {
   const { documentId, sheetId } = parseDocumentId(documentUrl)
@@ -167,9 +160,11 @@ const main = async documentUrl => {
   const data = parseRecords(records)
   const dest = await file({ postfix: 'print.pdf' })
   const html = createDocument(data)
-  await createPdf(html, dest.path)
+  const browser = await puppeteer.launch({ headless: true })
+  await createPdf(browser, html, dest.path)
   await open(dest.path, { wait: true })
-  await dest.cleanup()
+  console.log(dest.path)
+  //await dest.cleanup()
 }
 
 await main(process.argv[2])
