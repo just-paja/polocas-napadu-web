@@ -4,6 +4,9 @@ const { guessRootConfig } = require('lerna-jest')
 module.exports = guessRootConfig(__dirname)
 
 const jsdomProjects = [
+  '@polocas-napadu/inspirations-integration',
+  '@polocas-napadu/referee-integration',
+  '@polocas-napadu/scoreboard-integration',
   '@polocas-napadu/scoreboard-integration',
   '@polocas-napadu/website-integration',
 ]
