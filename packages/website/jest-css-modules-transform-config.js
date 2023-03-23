@@ -1,7 +1,10 @@
-const path = require('path')
+const { join, resolve } = require('path')
 
 module.exports = {
   sassConfig: {
-    includePaths: [path.join(__dirname, 'lib', 'styles')],
+    includePaths: [
+      join(__dirname, 'lib', 'styles'),
+      resolve(__dirname, '..', '..', 'node_modules'),
+    ],
   },
 }

@@ -1,18 +1,18 @@
-import App from '../App.mjs'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 
+import { App } from '../App.mjs'
 import { MockedProvider } from '@apollo/client/testing'
 
 describe('app', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div')
-    ReactDOM.render(
+    const root = ReactDOM.createRoot(div)
+    root.render(
       <MockedProvider>
         <App />
-      </MockedProvider>,
-      div
+      </MockedProvider>
     )
-    ReactDOM.unmountComponentAtNode(div)
+    root.unmount()
   })
 })

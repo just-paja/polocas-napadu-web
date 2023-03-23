@@ -17,10 +17,12 @@ for (const project of module.exports.projects) {
     ...project.moduleNameMapper,
     '^.+\\.md$': 'markdown-loader-jest',
     '.+\\.svg': 'jest-svg-transformer',
-    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|scss|css)$':
-      join(__dirname, 'packages', '__jest__', 'fileMock.js'),
+    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      join(__dirname, '__jest__', 'fileMock.js'),
   }
   if (jsdomProjects.includes(project.displayName)) {
     project.testEnvironment = 'jsdom'
   }
 }
+
+console.log(module.exports.projects.map(p => p.transform))
