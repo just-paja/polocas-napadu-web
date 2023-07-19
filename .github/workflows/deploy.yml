@@ -64,6 +64,7 @@ jobs:
           NODE_PROJECT_ENVIRONMENT: production
           NODE_API_URL: ${{ secrets.PRODUCTION_NODE_API_URL }}
           NODE_GA_CODE: ${{ secrets.PRODUCTION_NODE_GA_CODE }}
+          NODE_GTM_CODE: ${{ secrets.PRODUCTION_NODE_GTM_CODE }}
         run: |
           cp dist/polocas-napadu-website.tgz packages/website/
           cd ./packages/website

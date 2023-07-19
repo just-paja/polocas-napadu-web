@@ -10,4 +10,5 @@
       become: true
       env:
         NODE_GA_CODE: '{{ lookup("env", "NODE_GA_CODE") }}'
+        NODE_GTM_CODE: '{{ lookup("env", "NODE_GTM_CODE") }}'
         NODE_API_URL: '{{ lookup("env", "NODE_API_URL") }}'
